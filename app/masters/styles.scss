@@ -1,0 +1,63 @@
+@mixin master($name, $statics, $slots) {
+  .#{$name} {
+    display: grid;
+    [data-slot],
+    [data-static] {
+      height: 100%;
+      width: 100%;
+    }
+
+    @each $static in $statics {
+      [data-static="#{$static}"] {
+        grid-area: #{$static};
+      }
+    }
+
+    @each $slot in $slots {
+      [data-slot="#{$slot}"] {
+        grid-area: #{$slot};
+      }
+    }
+    @content;
+  }
+}
+
+@include master('Base', ('Header'), ('Top', 'Bottom')) {
+  grid-template-columns: auto 60%;
+  grid-template-rows: 5em calc(50vh - 5em) auto;
+  grid-template-areas:
+    "Header Header"
+    "Top Top"
+    "Bottom Bottom";
+
+  [data-slot="Top"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+.Base {
+  --slide-background: #fff;
+  --slide-color: #000;
+}
+
+.Blue {
+  composes: Base;
+  --highlight-color: #3300d1;
+}
+
+.Red {
+  composes: Base;
+  --highlight-color: #fc0043;
+}
+
+.Green {
+  composes: Base;
+  --highlight-color: #22ffa8;
+}
+
+.dark {
+  --slide-background: #16181f;
+  --slide-color: #fff;
+}

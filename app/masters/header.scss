@@ -1,0 +1,13 @@
+.header {
+  line-height: 1.5em;
+  padding: 0.25em 1em 0.25em 3em;
+  height: 5em;
+  box-shadow: inset 2em 0 0 var(--highlight-color, #000);
+}
+
+.title {
+  font-size: 1em;
+  margin: 0;
+  font-weight: lighter;
+}
+
