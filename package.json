@@ -10,9 +10,11 @@
     "build:demo": "rm -rf demo-public && cross-env NODE_ENV=production webpack --config webpack.demo.config.js",
     "build:desktop": "rm -rf desktop-public && cross-env NODE_ENV=production webpack --config webpack.desktop.config.js",
     "build:web": "rm -rf web-public && cross-env NODE_ENV=production webpack --config webpack.web.config.js",
+    "build:ui": "rm -rf web-public && cross-env NODE_ENV=production webpack --config webpack.ui.config.js",
     "dev:demo": "npm run build:demo && webpack-dev-server --config webpack.demo.config.js",
     "dev:desktop": "npm run build:desktop && webpack-dev-server --config webpack.desktop.config.js",
     "dev:web": "npm run build:web && webpack-dev-server --config webpack.web.config.js",
+    "dev:ui": "npm run build:web && webpack-dev-server --config webpack.ui.config.js",
     "launch:desktop": "electron desktop-public",
     "lint:js": "xo '{src,dekk-*}/**/*.js'",
     "watch:desktop": "rm -rf public && webpack --config webpack.desktop.config.js --progress --colors --watch"
