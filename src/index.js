@@ -3,7 +3,7 @@ import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import * as reducers from './reducers'
 
-import Deck from './components/deck'
+import Deck, {Deck as Slave} from './components/deck'
 
 const reducer = combineReducers({
   ...reducers
@@ -18,10 +18,17 @@ class Dekk extends Component {
     super(props)
   }
 
+  get deck() {
+    if (this.props.slave) {
+      return <Slave {...this.props}/>
+    }
+    return <Deck {...this.props}/>
+  }
+
   render() {
     return (
       <Provider store={store}>
-        <Deck {...this.props}/>
+        {this.deck}
       </Provider>
     )
   }

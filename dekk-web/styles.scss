@@ -1,0 +1,80 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  $checker-1: #fff;
+  $checker-2: #ddd;
+  $size: 20px;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+  background-color: $checker-1;
+  background-image:
+    linear-gradient(45deg, #{$checker-2} 25%, transparent 25%),
+    linear-gradient(-45deg, #{$checker-2} 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #{$checker-2} 75%),
+    linear-gradient(-45deg, transparent 75%, #{$checker-2} 75%);
+  background-size: $size  $size;
+  background-position: 0 0, 0 0.5 * $size, 0.5 * $size -0.5 * $size, -0.5 * $size 0;
+
+  &:global(.react-draggable-transparent-selection) {
+    :global(.react-draggable) {
+      cursor: grabbing;
+    }
+  }
+
+  :global(.react-draggable) {
+    cursor: grab;
+  }
+}
+
+.dekkWrapper {
+  overflow: hidden;
+  height: 50vh;
+  width: 50vw;
+}
+
+.artboard {
+  height: 100vh;
+  width: 100vw;
+  padding: 20px 200px 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dekk {
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  background: #fff;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: #212121;
+}
+
+.sidebarLeft {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  background: #212121;
+}
+
+.sidebarRight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: #212121;
+}

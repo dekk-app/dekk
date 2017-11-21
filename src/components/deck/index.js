@@ -102,15 +102,26 @@ class Deck extends Component {
       .filter((c, i) => range(i, page + 1, page - 1))
   }
 
-  render(){
-    const {page, children} = this.props
-    // Inject the paging logic
-    // and render the slides
-    return (
-      <div className={classNames(this.props.className, styles.deck, {[styles.present]: this.props.present})}>
+  get paging() {
+    if (this.props.slave) {
+      return false
+    } else {
+      const {page, children} = this.props
+      return (
         <Paging page={page}
                 pages={children.length}
                 trigger='keyup'/>
+      )
+    }
+  }
+
+  render(){
+    // Inject the paging logic
+    // and render the slides
+    console.log(this.props)
+    return (
+      <div className={classNames(this.props.className, styles.deck, {[styles.present]: this.props.present})}>
+        {this.paging}
         {this.slides}
       </div>
     )
@@ -123,4 +134,5 @@ Deck.PropTypes = {
   page: PropTypes.number.isRequired
 }
 
+export {Deck}
 export default connect(state => ({page: state.goToPage.page}), {goToPage})(Deck)
