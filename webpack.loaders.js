@@ -17,15 +17,6 @@ function generator(opts = {}) {
 }
 
 const generateScopedName = new generator()
-const emojify = new generator({
-  chars: [
-    '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇',
-    '🙂', '🙃', '😉', '😌', '😍', '😘', '😗', '😙', '😚', '😋',
-    '😜', '😝', '😛', '🤑', '🤗', '🤓', '😎', '🤡', '🤠', '😏',
-    '😒', '😞', '😔', '😟', '😕', '🙁', '😣', '😖', '😫', '😩',
-    '😤', '😠', '😡', '😶', '😐', '😑', '😯', '😦', '😧', '😮'
-  ]
-})
 
 const rootFolderName = __dirname.split('/').reverse()[0]
 
@@ -50,7 +41,6 @@ module.exports = [
             getLocalIdent: ({resource}, localIdentName, localName) => {
               if (NODE_ENV === 'production') {
                 return generateScopedName(localName, resource)
-                // return emojify(localName, resource)
               }
               const reversedPath = resource.replace('.scss', '').split('/').reverse()
               const index = reversedPath.indexOf(rootFolderName)

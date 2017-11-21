@@ -14,7 +14,7 @@ const plugins = [
     allChunks: true
   }),
   new FaviconsWebpackPlugin({
-    logo: path.join(__dirname, 'app/assets/logo.png'),
+    logo: path.join(__dirname, './app/assets/logo.png'),
     //prefix: 'icons',
     //icons: {
     //  android: true,
@@ -30,7 +30,7 @@ if (NODE_ENV === 'production') {
     new UglifyJSPlugin(),
     new MinifyPlugin(),
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: './app/index.html',
       // inlineSource: '.(js, css)$',
       minify: {
         collapseWhitespace: true
@@ -41,7 +41,7 @@ if (NODE_ENV === 'production') {
 } else {
   plugins.push(
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: './app/index.html',
     }),
     new HotModuleReplacementPlugin()
   )
@@ -53,7 +53,7 @@ module.exports = {
     demo: './app/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, './public'),
     filename: '[name].js',
     sourceMapFilename: 'sourcemaps/[file].map',
     crossOriginLoading: false
@@ -64,7 +64,7 @@ module.exports = {
   devtool: 'source-map', // enum
   context: __dirname,
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, './public'),
     hot: true,
     port: 8080,
     https: true,
