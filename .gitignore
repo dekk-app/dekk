@@ -58,4 +58,6 @@ typings/
 .env
 
 # generated
-public
+demo-public
+web-public
+desktop-public
