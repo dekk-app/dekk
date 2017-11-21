@@ -1,0 +1,13 @@
+.image {
+  /**! */
+
+  &.loaded {
+    display: none;
+  }
+}
+
+.mask {
+  background-size: cover;
+  width: var(--width);
+  height: var(--height);
+}
