@@ -1,10 +1,38 @@
 const {extract} = require('extract-text-webpack-plugin')
 const path = require('path')
+const ABCQ = require('abcq')
 const {NODE_ENV} = process.env
+
+function generator(opts = {}) {
+  const shortid = new ABCQ(opts)
+  this.names = {}
+  return (name, file) => {
+    const obj = this.names[file] || {}
+    if (!(name in obj)) {
+      obj[name] = shortid.generate()
+    }
+    this.names[file] = obj
+    return obj[name]
+  }
+}
+
+const generateScopedName = new generator()
+const emojify = new generator({
+  chars: [
+    '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇',
+    '🙂', '🙃', '😉', '😌', '😍', '😘', '😗', '😙', '😚', '😋',
+    '😜', '😝', '😛', '🤑', '🤗', '🤓', '😎', '🤡', '🤠', '😏',
+    '😒', '😞', '😔', '😟', '😕', '🙁', '😣', '😖', '😫', '😩',
+    '😤', '😠', '😡', '😶', '😐', '😑', '😯', '😦', '😧', '😮'
+  ]
+})
+
+const rootFolderName = __dirname.split('/').reverse()[0]
 
 module.exports = [
   {
     test: /\.js$/,
+    exclude: /(node_modules)/,
     loader: 'babel-loader'
   },
   {
@@ -16,23 +44,40 @@ module.exports = [
           loader: 'css-loader',
           options: {
             modules: true,
-            sourceMap: true,
-            camelCase: true,
+            sourceMap: NODE_ENV !== 'production',
             importLoaders: 2,
             ident: 'css',
-            getLocalIdent: (context, localIdentName, localName, options) => {
-              const {name} = path.parse(context.context)
-              return `${name}_${localName}`
+            getLocalIdent: ({resource}, localIdentName, localName) => {
+              if (NODE_ENV === 'production') {
+                return generateScopedName(localName, resource)
+                // return emojify(localName, resource)
+              }
+              const reversedPath = resource.replace('.scss', '').split('/').reverse()
+              const index = reversedPath.indexOf(rootFolderName)
+              const pathString = reversedPath.splice(0, index).reverse().join('/')
+              const className = `${pathString}[${localName}]`
+              return className
             }
           }
        },
        {
-        loader: 'postcss-loader'
-       },
-       {
-        loader: 'sass-loader'
-       }
-     ]
+          loader: 'postcss-loader',
+          options: {
+            config: {
+              ctx: {
+                'normalize': {},
+                'clean': false,
+                autoprefixer: {
+                  browsers: ['last 2 versions']
+                }
+              }
+            }
+          }
+        },
+        {
+          loader: 'sass-loader'
+        }
+      ]
     })
   },
   {

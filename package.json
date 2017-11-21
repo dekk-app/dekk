@@ -2,28 +2,33 @@
   "name": "dekk",
   "version": "0.0.1",
   "description": "A presentation tool written in react.js",
-  "main": "lib/index.js",
+  "main": "main.js",
   "repository": "git@github.com:sinnerschrader/dekk.git",
   "author": "Gregor Adams <greg@pixelass.com>",
   "license": "MIT",
   "scripts": {
     "start:dev": "webpack-dev-server",
-    "webpack:build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
-    "webpack:watch": "webpack --config webpack.config.js --progress --colors --watch",
-    "build": "npm run webpack:build",
-    "start": "npm run start:dev"
+    "webpack:build": "rm -rf public && NODE_ENV=production webpack --config webpack.config.js",
+    "webpack:watch": "rm -rf public && webpack --config webpack.config.js --progress --colors --watch",
+    "build": "npm run webpack:build"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "easing-utils": "^0.0.7",
+    "lodash.omit": "^4.5.0",
     "prop-types": "^15.6.0",
+    "pubnub-react": "^1.1.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
+    "react-draggable": "^3.0.3",
+    "react-motion": "^0.5.2",
     "react-redux": "^5.0.6",
     "react-syntax-highlighter": "^5.8.0",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "abcq": "^0.2.2",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -31,9 +36,13 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "base64-image-loader": "^1.2.0",
     "css-loader": "^0.28.7",
+    "electron": "1.7.9",
     "extract-text-webpack-plugin": "^3.0.2",
+    "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^1.1.5",
+    "html-webpack-inline-source-plugin": "^0.0.9",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.6.1",
     "postcss-clean": "^1.1.0",
@@ -42,6 +51,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
+    "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   }
