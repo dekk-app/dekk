@@ -41,7 +41,7 @@ class Slide extends Component {
           ({time}) => {
             const style = {
               '--time': ~~(time * 1000) / 1000,
-              '--slide-background': background && `url("${background}")`
+              '--slide-background': background
             }
             return (
               <div className={this.classNames}

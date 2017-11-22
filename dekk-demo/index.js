@@ -63,33 +63,26 @@ const App = () => (
       )
     })(Blue.dark)}
 
-    {M.Red.dark(Slide => {
-      return (
-        <Slide background={red}>
-          <Slide.Top>
-            <Title>Dekk</Title>
-          </Slide.Top>
-          <Slide.Bottom>
-            <Subtitle>powered by React.js</Subtitle>
-          </Slide.Bottom>
-        </Slide>
-      )
-    })}
+    {M.Red.dark(Slide => (
+      <Slide background={red}>
+        <Slide.Top>
+          <Title>Dekk</Title>
+        </Slide.Top>
+        <Slide.Bottom>
+          <Subtitle>powered by React.js</Subtitle>
+        </Slide.Bottom>
+      </Slide>
+    ))}
 
-    {M.Green(Slide => {
-      const {Top, Bottom} = Slide
-      return (
-        <Slide className={styles.fade}>
-          <Top>
-            <Title>Dekk</Title>
-          </Top>
-          <Bottom>
-            <Subtitle>powered by React.js</Subtitle>
-            <Credits>the <Bold>next generation</Bold> presentation tool</Credits>
-          </Bottom>
-        </Slide>
-      )
-    })}
+    <Green.dark className={styles.fade}>
+      <Green.dark.Top>
+        <Title>Dekk</Title>
+      </Green.dark.Top>
+      <Green.dark.Bottom>
+        <Subtitle>powered by React.js</Subtitle>
+        <Credits>the <Bold>next generation</Bold> presentation tool</Credits>
+      </Green.dark.Bottom>
+    </Green.dark>
 
   </Deck>
 )

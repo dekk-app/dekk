@@ -130,7 +130,10 @@ Deck.propTypes = {
   children: PropTypes.node,
   slave: PropTypes.bool,
   goToPage: PropTypes.func,
-  pubnub: PropTypes.object,
+  pubnub: PropTypes.shape({
+    publishKey: PropTypes.string,
+    subscribeKey: PropTypes.string
+  }),
   page: PropTypes.number.isRequired
 }
 

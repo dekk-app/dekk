@@ -12,7 +12,6 @@ import {Slot, Static} from './helpers'
 import styles from './styles.scss'
 
 class Master extends Component {
-
   constructor(props) {
     super(props)
     if (typeof props.pubnub === 'object' && (LIVE || PRESENT)) {
@@ -180,9 +179,12 @@ class Master extends Component {
 }
 
 Master.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.instanceOf(Slot), PropTypes.instanceOf(Static)]),
   content: PropTypes.node,
-  pubnub: PropTypes.object,
+  pubnub: PropTypes.shape({
+    publishKey: PropTypes.string,
+    subscribeKey: PropTypes.string
+  }),
   pageIndex: PropTypes.number,
   setElementOffset: PropTypes.func,
   offset: PropTypes.object

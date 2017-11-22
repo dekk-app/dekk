@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import * as reducers from './reducers'
@@ -12,11 +13,14 @@ const reducer = combineReducers({
 const store = createStore(
   reducer
 )
+const Dekk = props => (
+  <Provider store={store}>
+    {props.slave ? <Controlled {...props}/> : <Uncontrolled {...props}/>}
+  </Provider>
+)
 
-export default function (props) {
-  return (
-    <Provider store={store}>
-      {props.slave ? <Controlled {...props}/> : <Uncontrolled {...props}/>}
-    </Provider>
-  )
+Dekk.propTypes = {
+  slave: PropTypes.bool
 }
+
+export default Dekk
