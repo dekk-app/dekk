@@ -57,7 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
-# generated
-demo-public
-web-public
-desktop-public
+# public directories
+public
+*-public
+
