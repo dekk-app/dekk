@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {goToPage} from '../../actions'
-import {LIVE, PRESENT} from '../../helpers/query-params'
+import {LIVE} from '../../helpers/query-params'
 
 class Paging extends Component {
   constructor(props) {
@@ -26,22 +26,26 @@ class Paging extends Component {
     const previous = Math.max(0, page - 1)
     const next = Math.min((pages - 1), page + 1)
 
-    switch(which) {
+    switch (which) {
       case 39:
         return goToPage(next)
-        break
       case 37:
         return goToPage(previous)
-        break
       default:
         return false
-        break
     }
   }
 
-  render(){
+  render() {
     return null
   }
+}
+
+Paging.propTypes = {
+  trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,
+  page: PropTypes.number.isRequired,
+  pages: PropTypes.number.isRequired,
+  goToPage: PropTypes.func.isRequired
 }
 
 export default connect(state => ({page: state.goToPage.page}), {goToPage})(Paging)

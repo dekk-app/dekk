@@ -9,4 +9,9 @@ const Bold = props => (
   </strong>
 )
 
+Bold.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+
 export default Bold

@@ -9,4 +9,9 @@ const Center = props => (
   </div>
 )
 
+Center.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+
 export default Center

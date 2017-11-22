@@ -1,15 +1,13 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {render} from 'react-dom'
+import PropTypes from 'prop-types'
 import {createStore, combineReducers} from 'redux'
 import {Provider, connect} from 'react-redux'
-import * as reducers from './reducers'
-import {goToPage} from './actions'
-
-import classNames from 'classnames'
-
 import Deck from '../src'
 import Slide from '../src/components/slide'
 import {Title, Subtitle} from '../src/components/text'
+import * as reducers from './reducers'
+import {goToPage} from './actions'
 import styles from './styles.scss'
 
 const reducer = combineReducers({
@@ -30,31 +28,36 @@ const slides = [
   </Slide>
 ]
 let Dekk = props => {
-  const nextPage = () => {
+  function nextPage() {
     props.goToPage(props.page + 1)
   }
 
-  const previousPage = () => {
+  function previousPage() {
     props.goToPage(props.page - 1)
   }
 
   return (
-  <div className={styles.artboard}>
-    <header className={styles.header}/>
-    <aside className={styles.sidebarLeft}>
-      <button onClick={previousPage} disabled={props.page === 0}>-</button>
-      <button onClick={nextPage} disabled={props.page === slides.length - 1}>+</button>
-    </aside>
-    <aside className={styles.sidebarRight}/>
-    <div className={styles.dekkWrapper}>
-      <Deck className={styles.dekk}
-            page={props.page}
-            slave>
-        {slides}
-      </Deck>
+    <div className={styles.artboard}>
+      <header className={styles.header}/>
+      <aside className={styles.sidebarLeft}>
+        <button onClick={previousPage} disabled={props.page === 0}>-</button>
+        <button onClick={nextPage} disabled={props.page === slides.length - 1}>+</button>
+      </aside>
+      <aside className={styles.sidebarRight}/>
+      <div className={styles.dekkWrapper}>
+        <Deck className={styles.dekk}
+              page={props.page}
+              slave>
+          {slides}
+        </Deck>
+      </div>
     </div>
-  </div>
-)
+  )
+}
+
+Dekk.propTypes = {
+  page: PropTypes.number,
+  goToPage: PropTypes.func
 }
 
 Dekk = connect(state => state, {goToPage})(Dekk)
@@ -66,6 +69,7 @@ const App = () => {
     </Provider>
   )
 }
+
 const mountPoint = document.getElementById('mountPoint')
 
 render(<App/>, mountPoint)

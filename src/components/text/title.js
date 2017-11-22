@@ -9,4 +9,9 @@ const Title = props => (
   </h1>
 )
 
+Title.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+
 export default Title

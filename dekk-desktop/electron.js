@@ -4,10 +4,9 @@ const url = require('url')
 
 const {app, BrowserWindow} = electron
 
-
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,

@@ -2,7 +2,7 @@ export const getQueryParams = search => {
   const queryParams = {}
   search.replace(/^\?/, '').split('&').forEach(str => {
     const [key, value] = str.split('=')
-    switch(value) {
+    switch (value) {
       case 'true':
         queryParams[key] = true
         break

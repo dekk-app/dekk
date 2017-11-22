@@ -9,4 +9,9 @@ const Subtitle = props => (
   </h2>
 )
 
+Subtitle.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+
 export default Subtitle

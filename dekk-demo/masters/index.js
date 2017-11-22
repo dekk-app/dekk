@@ -1,8 +1,7 @@
-import React, {Children} from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
-import Image from '../../src/components/image'
-import Text, {
+import {
   Title,
   Subtitle
 } from '../../src/components/text'

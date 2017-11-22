@@ -9,4 +9,9 @@ const Uppercase = props => (
   </span>
 )
 
+Uppercase.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+
 export default Uppercase

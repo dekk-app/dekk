@@ -1,9 +1,9 @@
 import React from 'react'
-import {omit} from 'lodash'
+import PropTypes from 'prop-types'
 import styles from './styles.scss'
 
 const Warning = props => {
-  const {not, only, invalid, missing, required, type} = props
+  const {not, only, invalid, missing, type} = props
   let message
   let onlyMessage
   let notMessage
@@ -49,6 +49,14 @@ const Warning = props => {
       {message}
     </div>
   )
+}
+
+Warning.propTypes = {
+  not: PropTypes.array,
+  only: PropTypes.array,
+  type: PropTypes.string,
+  invalid: PropTypes.bool,
+  missing: PropTypes.bool
 }
 
 export default Warning

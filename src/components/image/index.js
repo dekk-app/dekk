@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {omit} from 'lodash'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import styles from './styles.scss'
@@ -8,13 +7,15 @@ class Image extends Component {
   constructor(props) {
     super(props)
     this.state = {}
+    this.getImage = this.getImage.bind(this)
+    this.handleLoad = this.handleLoad.bind(this)
   }
 
   handleLoad() {
     this.setState({
       loaded: true,
       height: this.image.height,
-      width: this.image.width,
+      width: this.image.width
     })
   }
 
@@ -38,18 +39,24 @@ class Image extends Component {
 
   render() {
     return (
-      <div {...omit(this.props, ['alt', 'title', 'src'])}
-           style={this.style}
+      <div style={this.style}
            className={classNames(this.props.className, styles.mask)}>
-        <img ref={this.getImage.bind(this)}
+        <img ref={this.getImage}
              className={this.imageClasses}
              src={this.props.src}
              alt={this.props.alt}
              title={this.props.title}
-             onLoad={this.handleLoad.bind(this)}/>
+             onLoad={this.handleLoad}/>
       </div>
-      )
+    )
   }
+}
+
+Image.propTypes = {
+  className: PropTypes.string,
+  alt: PropTypes.string,
+  title: PropTypes.string,
+  src: PropTypes.string
 }
 
 export default Image

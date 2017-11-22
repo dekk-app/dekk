@@ -9,4 +9,9 @@ const Notes = props => (
   </aside>
 )
 
+Notes.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.string
+}
+
 export default Notes

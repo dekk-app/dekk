@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import PubNubReact from 'pubnub-react'
 import {connect} from 'react-redux'
 import classNames from 'classnames'
-import Slide from '../slide'
 import Paging from '../paging'
-import styles from './styles.scss'
 import range from '../../helpers/range'
 import {LIVE, PRESENT} from '../../helpers/query-params'
 import {goToPage} from '../../actions'
+import styles from './styles.scss'
 
 /**
  * @private
@@ -25,17 +24,17 @@ class Deck extends Component {
     this.state = {
       direction: 0
     }
-    if (typeof props.pubnub === 'object' && (LIVE || PRESENT)) {
+    if (typeof props.pubnub === 'object' && (LIVE || PRESENT)) {
       this.pubnub = new PubNubReact({
         publishKey: props.pubnub.publishKey,
         subscribeKey: props.pubnub.subscribeKey
-      });
+      })
       this.pubnub.init(this)
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.page === this.props.page) {
+    if (newProps.page === this.props.page) {
       return
     }
     this.setState({
@@ -58,9 +57,9 @@ class Deck extends Component {
         withPresence: true
       })
 
-      this.pubnub.getMessage('paging', (msg) => {
+      this.pubnub.getMessage('paging', msg => {
         const {page} = msg.message
-          this.props.goToPage(page)
+        this.props.goToPage(page)
       })
     }
   }
@@ -74,7 +73,7 @@ class Deck extends Component {
   }
 
   /**
-   * filters the `children` by a range of `+-1` around the current slide.
+   * Filters the `children` by a range of `+-1` around the current slide.
    * Therefore renders a maximum of 3 slides (previous, current, next)
    * This allows various transitions between slides.
    *
@@ -85,7 +84,7 @@ class Deck extends Component {
     const {direction} = this.state
     return Children
       .map(children, (child, i) =>
-        // clone the element and add properties
+        // Clone the element and add properties
         cloneElement(child, {
           pageIndex: i,
           current: page === i,
@@ -98,29 +97,28 @@ class Deck extends Component {
           direction: this.state.direction,
           pubnub: this.props.pubnub
         }))
-      // filter by a range of `+-1`
+      // Filter by a range of `+-1`
       .filter((c, i) => range(i, page + 1, page - 1))
   }
 
   get paging() {
     if (this.props.slave) {
       return false
-    } else {
-      const {page, children} = this.props
-      return (
-        <Paging page={page}
-                pages={children.length}
-                trigger='keyup'/>
-      )
     }
+    const {page, children} = this.props
+    return (
+      <Paging page={page}
+              pages={children.length}
+              trigger='keyup'/>
+    )
   }
 
-  render(){
+  render() {
     // Inject the paging logic
     // and render the slides
     console.log(this.props)
     return (
-      <div className={classNames(this.props.className, styles.deck, {[styles.present]: this.props.present})}>
+      <div className={classNames(this.props.className, styles.deck)}>
         {this.paging}
         {this.slides}
       </div>
@@ -128,9 +126,12 @@ class Deck extends Component {
   }
 }
 
-Deck.PropTypes = {
+Deck.propTypes = {
   className: PropTypes.string,
   children: PropTypes.element,
+  slave: PropTypes.bool,
+  goToPage: PropTypes.func,
+  pubnub: PropTypes.object,
   page: PropTypes.number.isRequired
 }
 

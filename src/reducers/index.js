@@ -7,7 +7,6 @@ export const goToPage = (state = {page: 0}, {type, page}) => {
   return state
 }
 
-
 export const setElementOffset = (state = {offset: {}}, {type, offset, name}) => {
   if (type === SET_ELEMENT_OFFSET) {
     return {...state, offset: {

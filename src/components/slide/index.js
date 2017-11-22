@@ -12,10 +12,6 @@ import styles from './styles.scss'
  *
  */
 class Slide extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   get classNames() {
     return classNames(this.props.className, styles.slide, {
       [styles.current]: this.props.current,
@@ -28,10 +24,9 @@ class Slide extends Component {
     })
   }
 
-  render(){
+  render() {
     const {
       previous,
-      current,
       next,
       children,
       springSettings,
@@ -42,21 +37,37 @@ class Slide extends Component {
     }
     return (
       <Motion style={springStyle}>
-        {({time}) => {
-          const style = {
-            '--time': ~~(time * 1000) / 1000,
-            '--slide-background': background && `url("${background}")`
+        {
+          ({time}) => {
+            const style = {
+              '--time': ~~(time * 1000) / 1000,
+              '--slide-background': background && `url("${background}")`
+            }
+            return (
+              <div className={this.classNames}
+                   style={style}>
+                {children}
+              </div>
+            )
           }
-          return (
-            <div className={this.classNames}
-                 style={style}>
-              {children}
-            </div>
-          )}
         }
       </Motion>
     )
   }
+}
+
+Slide.propTypes = {
+  current: PropTypes.bool,
+  previous: PropTypes.bool,
+  next: PropTypes.bool,
+  toPrevious: PropTypes.bool,
+  fromPrevious: PropTypes.bool,
+  toNext: PropTypes.bool,
+  fromNext: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node,
+  springSettings: PropTypes.object,
+  background: PropTypes.string
 }
 
 export default connect(state => state, {})(Slide)

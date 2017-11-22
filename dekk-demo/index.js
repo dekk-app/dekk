@@ -1,23 +1,17 @@
-import React, {Children} from 'react'
+import React from 'react'
 import {render} from 'react-dom'
-import classNames from 'classnames'
 
 import Deck from '../src'
 import Notes from '../src/components/notes'
-import Image from '../src/components/image'
 import Text, {
   Title,
   Subtitle,
-  Center,
-  Bold,
-  zenburn as colorScheme
+  Bold
 } from '../src/components/text'
 
 import Credits from './masters/credits'
 
 import hero from './assets/hero.jpg'
-import blue from './assets/blue.jpg'
-import green from './assets/green.jpg'
 import red from './assets/red.jpg'
 
 import styles from './styles.scss'
@@ -36,7 +30,7 @@ const pubnub = {
   subscribeKey: 'sub-c-9bee7be6-cac3-11e7-be55-4e84f57698c8'
 }
 
-const App = props => (
+const App = () => (
   <Deck className={styles.dekk}
         pubnub={pubnub}>
 
