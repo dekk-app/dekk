@@ -13,10 +13,10 @@ const store = createStore(
   reducer
 )
 
-export default function () {
+export default function (props) {
   return (
     <Provider store={store}>
-      {this.props.slave ? <Controlled {...this.props}/> : <Uncontrolled {...this.props}/>}
+      {props.slave ? <Controlled {...props}/> : <Uncontrolled {...props}/>}
     </Provider>
   )
 }

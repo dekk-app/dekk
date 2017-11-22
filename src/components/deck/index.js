@@ -116,7 +116,6 @@ class Deck extends Component {
   render() {
     // Inject the paging logic
     // and render the slides
-    console.log(this.props)
     return (
       <div className={classNames(this.props.className, styles.deck)}>
         {this.paging}
@@ -128,7 +127,7 @@ class Deck extends Component {
 
 Deck.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.node,
   slave: PropTypes.bool,
   goToPage: PropTypes.func,
   pubnub: PropTypes.object,
