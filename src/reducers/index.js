@@ -1,19 +1,23 @@
-import {GO_TO_PAGE, SET_ELEMENT_OFFSET} from '../constants'
+import update from 'immutability-helper'
+import {GO_TO_PAGE, SET_ELEMENT_OFFSET, SET_TITLE} from '../constants'
 
-export const goToPage = (state = {page: 0}, {type, page}) => {
+export const page = (state = 0, {type, page}) => {
   if (type === GO_TO_PAGE) {
-    return {...state, page}
+    return page
   }
   return state
 }
 
-export const setElementOffset = (state = {offset: {}}, {type, offset, name}) => {
+export const elementOffset = (state = {}, {type, offset, name}) => {
   if (type === SET_ELEMENT_OFFSET) {
-    return {...state, offset: {
-      ...state.offset,
-      [name]: offset
-    }}
+    return update(state, {$set: {[name]: offset}})
   }
   return state
 }
 
+export const title = (state = 'Dekk 1.0.0-alpha', {type, title}) => {
+  if (type === SET_TITLE) {
+    return title
+  }
+  return state
+}

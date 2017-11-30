@@ -2,19 +2,26 @@
   "name": "dekk",
   "version": "0.0.1",
   "description": "A presentation tool written in react.js",
-  "main": "main.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:sinnerschrader/dekk.git",
   "author": "Gregor Adams <greg@pixelass.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=8 <9"
+  },
   "scripts": {
+    "babel": "NODE_ENV=production babel src --out-dir lib --copy-files",
     "build:demo": "rm -rf demo-public && cross-env NODE_ENV=production webpack --config webpack.demo.config.js",
     "build:desktop": "rm -rf desktop-public && cross-env NODE_ENV=production webpack --config webpack.desktop.config.js",
     "build:web": "rm -rf web-public && cross-env NODE_ENV=production webpack --config webpack.web.config.js",
+    "build:ui": "rm -rf web-public && cross-env NODE_ENV=production webpack --config webpack.ui.config.js",
     "dev:demo": "npm run build:demo && webpack-dev-server --config webpack.demo.config.js",
     "dev:desktop": "npm run build:desktop && webpack-dev-server --config webpack.desktop.config.js",
     "dev:web": "npm run build:web && webpack-dev-server --config webpack.web.config.js",
+    "dev:ui": "npm run build:web && webpack-dev-server --config webpack.ui.config.js",
     "launch:desktop": "electron desktop-public",
     "lint:js": "xo '{src,dekk-*}/**/*.js'",
+    "postinstall": "npm install husky",
     "watch:desktop": "rm -rf public && webpack --config webpack.desktop.config.js --progress --colors --watch"
   },
   "dependencies": {
@@ -24,6 +31,8 @@
     "prop-types": "^15.6.0",
     "pubnub-react": "^1.1.1",
     "react": "^16.1.0",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.1.0",
     "react-draggable": "^3.0.3",
     "react-motion": "^0.5.2",
@@ -54,9 +63,12 @@
     "html-webpack-inline-source-plugin": "^0.0.9",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
+    "immutability-helper": "^2.5.1",
     "node-sass": "^4.6.1",
+    "postcss": "^6.0.14",
     "postcss-clean": "^1.1.0",
     "postcss-loader": "^2.0.8",
+    "postcss-modules": "^1.1.0",
     "postcss-normalize": "^4.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
@@ -76,16 +88,28 @@
     "plugins": [
       "react"
     ],
-    "globals": ["window", "document"],
+    "globals": [
+      "window",
+      "document"
+    ],
     "rules": {
       "import/prefer-default-export": 0,
       "react/require-default-props": 0,
       "react/no-array-index-key": 0,
       "react/forbid-component-props": 0,
-      "react/jsx-first-prop-new-line": [2, "never"],
-      "react/jsx-closing-bracket-location": [2, "after-props"],
+      "react/jsx-first-prop-new-line": [
+        2,
+        "never"
+      ],
+      "react/jsx-closing-bracket-location": [
+        2,
+        "after-props"
+      ],
       "react/jsx-indent-props": 0,
-      "jsx-quotes": [2, "prefer-single"],
+      "jsx-quotes": [
+        2,
+        "prefer-single"
+      ],
       "new-cap": 1
     }
   }

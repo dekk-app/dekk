@@ -1,9 +1,16 @@
-import {GO_TO_PAGE, SET_ELEMENT_OFFSET} from '../constants'
+import {GO_TO_PAGE, SET_ELEMENT_OFFSET, SET_TITLE} from '../constants'
 
 export const goToPage = page => {
   return {
     page,
     type: GO_TO_PAGE
+  }
+}
+
+export const setTitle = title => {
+  return {
+    title,
+    type: SET_TITLE
   }
 }
 

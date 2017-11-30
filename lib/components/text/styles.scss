@@ -1,0 +1,45 @@
+.text {
+  /**! */
+  padding: 1em;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--title-font-size, 4em);
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--subtitle-font-size, 2em);
+  text-align: center;
+}
+
+.code {
+  font-size: var(--code-font-size, 1em);
+}
+
+.figure {
+  margin: 0;
+}
+
+.quote {
+  margin: 0;
+}
+
+.caption {
+  /**! */
+}
+
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+

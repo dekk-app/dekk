@@ -48,4 +48,4 @@ Paging.propTypes = {
   goToPage: PropTypes.func.isRequired
 }
 
-export default connect(state => ({page: state.goToPage.page}), {goToPage})(Paging)
+export default connect(state => ({page: state.page}), {goToPage})(Paging)

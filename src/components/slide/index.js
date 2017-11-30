@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import classNames from 'classnames'
 import {Motion, spring} from 'react-motion'
+import {setTitle} from '../../actions'
 import styles from './styles.scss'
 
 /**
@@ -12,6 +13,7 @@ import styles from './styles.scss'
  *
  */
 class Slide extends Component {
+
   get classNames() {
     return classNames(this.props.className, styles.slide, {
       [styles.current]: this.props.current,
@@ -70,4 +72,6 @@ Slide.propTypes = {
   background: PropTypes.string
 }
 
-export default connect(state => state, {})(Slide)
+export {Slide}
+
+export default connect(state => ({page: state.page}))(Slide)

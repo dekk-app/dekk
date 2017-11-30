@@ -1,5 +1,7 @@
 # Dekk
 
+<p align="center"><img width="300" src="https://raw.githubusercontent.com/sinnerschrader/dekk/master/resources/logo.png" alt="Dekk logo"/></p>
+
 A presentation tool written in **react.js**.
 
 > Nothing to see here except a prototype !!!
@@ -114,3 +116,23 @@ const mountPoint = document.getElementById('mountPoint')
 render(<App/>, mountPoint)
 
 ```
+
+
+## Styleguide
+
+TBD
+
+### Colors
+
+> AAA compliant
+
+| Background | default | hover   | Text  |
+| -----------|:-------:| -------:| -----:|
+| light:     | #e8e8e3 | #D8D8D4 | #000  |
+| dark:      | #1c1b17 | #191503 | #FFF  |
+| primary:   | #e8d77d | #DBC96D | #000  |
+| secondary: | #26547C | #2A486B | #FFF  |
+
+<img width="300" src="https://raw.githubusercontent.com/sinnerschrader/dekk/master/resources/colors.png" alt="Dekk colors | light theme with yellow highlight & dark theme with blue highlight"/>
+
+dark/light switch primary/secondary
