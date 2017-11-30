@@ -3,11 +3,12 @@ import {render} from 'react-dom'
 
 import Deck from '../src'
 import Notes from '../src/components/notes'
+import SetTitle from '../src/setters/title'
 import Text, {
-  Title,
   Subtitle,
   Bold
 } from '../src/components/text'
+import Title from './elements/title'
 
 import Credits from './masters/credits'
 
@@ -19,70 +20,41 @@ import styles from './styles.scss'
 import * as masters from './masters'
 
 const {Red, Green, Blue} = masters
-const M = {}
-Object.keys(masters).forEach(key => {
-  M[key] = fn => fn(masters[key])
-  M[key].dark = fn => fn(masters[key].dark)
-})
 
-const pubnub = {
-  publishKey: 'pub-c-361b8f9d-5d80-44aa-883e-efdf98350d09',
-  subscribeKey: 'sub-c-9bee7be6-cac3-11e7-be55-4e84f57698c8'
+const renderMaster = (master, cb, dark = false) => {
+  const m = dark ? master.dark : master
+  return cb(m, m.Top, m.Bottom)
 }
+const slide1 = renderMaster(Blue, (Slide, Top, Bottom) => (
+  <Slide className={styles.flip}>
+    <SetTitle>Dekk <Bold>preview</Bold><br/>[ALPHA]</SetTitle>
+    <Top><Title>Dekk</Title></Top>
+    <Bottom><Subtitle>It just works</Subtitle></Bottom>
+  </Slide>
+))
 
 const App = () => (
-  <Deck className={styles.dekk}
-        pubnub={pubnub}>
+  <Deck className={styles.dekk}>
 
-    <Red/>
+    {slide1}
+    <Green/>
+    <Blue/>
     <Green>
+      <SetTitle>Magic titles</SetTitle>
       <Green.Top>
         <Subtitle>foo</Subtitle>
       </Green.Top>
     </Green>
 
-    {(Slide => {
-      const {Top, Bottom} = Slide
-      return (
-        <Slide background={hero}>
-          <Top>
-            <Title>Dekk</Title>
-          </Top>
-          <Bottom>
-            <Subtitle>powered by React.js</Subtitle>
-          </Bottom>
-          <Notes>
-            <Text>
-              These are some <Bold>notes</Bold>.
-              <br/>
-              This information will help you remember what to say or not to
-              forget important information.
-            </Text>
-          </Notes>
-        </Slide>
-      )
-    })(Blue.dark)}
-
-    {M.Red.dark(Slide => (
-      <Slide background={red}>
-        <Slide.Top>
-          <Title>Dekk</Title>
-        </Slide.Top>
-        <Slide.Bottom>
-          <Subtitle>powered by React.js</Subtitle>
-        </Slide.Bottom>
-      </Slide>
-    ))}
-
-    <Green.dark className={styles.fade}>
-      <Green.dark.Top>
+    <Blue.dark className={styles.fade}>
+      <Blue.dark.Top>
         <Title>Dekk</Title>
-      </Green.dark.Top>
-      <Green.dark.Bottom>
+      </Blue.dark.Top>
+      <Blue.dark.Bottom>
         <Subtitle>powered by React.js</Subtitle>
         <Credits>the <Bold>next generation</Bold> presentation tool</Credits>
-      </Green.dark.Bottom>
-    </Green.dark>
+      </Blue.dark.Bottom>
+    </Blue.dark>
 
   </Deck>
 )

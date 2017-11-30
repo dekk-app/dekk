@@ -1,0 +1,51 @@
+.slide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  transform: translate3d(calc(var(--time, 1) * 100% * var(--direction, -1)), 0, 0);
+  overflow: hidden;
+  color: var(--slide-color, inherit);
+  background: var(--slide-background, none);
+  background-size: cover;
+}
+
+.current {
+  /**! */
+  z-index: 1;
+  --direction: 0;
+}
+
+.previous {
+  /**! */
+  --direction: -1;
+}
+
+.next {
+  /**! */
+  --direction: 1;
+}
+
+.toPrevious {
+  /**! */
+  --direction: -1;
+}
+
+.toNext {
+  /**! */
+  --direction: 1;
+}
+
+.fromNext {
+  /**! */
+  --direction: 1;
+}
+
+.fromPrevious {
+  /**! */
+  --direction: -1;
+}
+
+

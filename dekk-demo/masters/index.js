@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 
 import {
-  Title,
   Subtitle
 } from '../../src/components/text'
 
@@ -12,6 +11,7 @@ import createMaster, {
   Slot
 } from '../../src/components/master'
 
+import Title from '../elements/title'
 import Header from './header'
 import Credits from './credits'
 

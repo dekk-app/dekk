@@ -6,7 +6,7 @@ import {Slot} from './helpers'
 
 export default function (master) {
   const {children, className} = master.props
-  const Component = props => {
+  const Slide = props => {
     return (
       <Master {...props}
               className={classNames(props.className, className)}
@@ -16,7 +16,7 @@ export default function (master) {
             if (child.type === Slot) {
               return cloneElement(child, {
                 key: `master-slot__${i}`,
-                component: Component[child.props.name]
+                component: Slide[child.props.name]
               })
             }
             return child
@@ -27,13 +27,14 @@ export default function (master) {
   }
 
   Children.toArray(children).filter(child => child.type === Slot).forEach(slot => {
-    Component[slot.props.name] = () => null
+    const {name} = slot.props
+    Slide[name] = new Function(`return function ${name}(props){return null}`)()
   })
 
-  Component.propTypes = {
+  Slide.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string
   }
 
-  return Component
+  return Slide
 }

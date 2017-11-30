@@ -83,9 +83,9 @@ class Deck extends Component {
     const {page, children} = this.props
     const {direction} = this.state
     return Children
-      .map(children, (child, i) =>
+      .map(children, (child, i) => {
         // Clone the element and add properties
-        cloneElement(child, {
+        return cloneElement(child, {
           pageIndex: i,
           current: page === i,
           previous: page === i + 1,
@@ -94,18 +94,18 @@ class Deck extends Component {
           fromNext: page === i && direction === 1,
           toPrevious: page === i + 1 && direction === 1,
           toNext: page === i - 1 && direction === -1,
-          direction: this.state.direction,
-          pubnub: this.props.pubnub
-        }))
+          direction: direction
+        })
+      })
       // Filter by a range of `+-1`
       .filter((c, i) => range(i, page + 1, page - 1))
   }
 
   get paging() {
-    if (this.props.slave) {
+    const {page, children, slave} = this.props
+    if (slave) {
       return false
     }
-    const {page, children} = this.props
     return (
       <Paging page={page}
               pages={children.length}
@@ -138,4 +138,4 @@ Deck.propTypes = {
 }
 
 export {Deck}
-export default connect(state => ({page: state.goToPage.page}), {goToPage})(Deck)
+export default connect(state => ({page: state.page}), {goToPage})(Deck)

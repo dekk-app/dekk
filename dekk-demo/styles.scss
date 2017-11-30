@@ -39,13 +39,13 @@ body {
   font-size: 1.5rem;
 }
 
-.fade {
+.fade[class] {
   $scale: calc(1 - var(--time));
   transform: scale3d(#{$scale}, #{$scale}, 1);
   opacity: calc(1 - var(--time));
 }
 
-.flip {
+.flip[class] {
   $deg: calc(90deg * var(--time) * var(--direction));
   transform:
     perspective(100vh)

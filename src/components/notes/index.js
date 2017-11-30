@@ -11,7 +11,7 @@ const Notes = props => (
 
 Notes.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.string
+  children: PropTypes.node
 }
 
 export default Notes
