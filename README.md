@@ -133,6 +133,6 @@ TBD
 | primary:   | #e8d77d | #DBC96D | #000  |
 | secondary: | #26547C | #2A486B | #FFF  |
 
-<img width="300" src="https://raw.githubusercontent.com/sinnerschrader/dekk/master/resources/colors.png" alt="Dekk colors | light theme with yellow highlight & dark theme with blue highlight"/>
+<img width="300" src="https://cdn.rawgit.com/sinnerschrader/dekk/master/resources/colors.svg#0000000001" alt="Dekk colors | light theme with yellow highlight & dark theme with blue highlight"/>
 
 dark/light switch primary/secondary
