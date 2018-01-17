@@ -5,20 +5,6 @@
 }
 
 body {
-  $checker-1: #fff;
-  $checker-2: #ddd;
-  $size: 20px;
-  margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-  // background-color: $checker-1;
-  // background-image:
-  //   linear-gradient(45deg, #{$checker-2} 25%, transparent 25%),
-  //   linear-gradient(-45deg, #{$checker-2} 25%, transparent 25%),
-  //   linear-gradient(45deg, transparent 75%, #{$checker-2} 75%),
-  //   linear-gradient(-45deg, transparent 75%, #{$checker-2} 75%);
-  // background-size: $size  $size;
-  // background-position: 0 0, 0 0.5 * $size, 0.5 * $size -0.5 * $size, -0.5 * $size 0;
-
   &:global(.react-draggable-transparent-selection) {
     :global(.react-draggable) {
       cursor: grabbing;
@@ -30,6 +16,12 @@ body {
   }
 }
 
+body {
+  margin: 0;
+  font-size: 1em;
+  min-height: 100vh;
+}
+
 :root {
   --title-font-size: 5rem;
   --subtitle-font-size: 3rem;
@@ -39,23 +31,12 @@ body {
   font-size: 1.5rem;
 }
 
-.fade[class] {
-  $scale: calc(1 - var(--time));
-  transform: scale3d(#{$scale}, #{$scale}, 1);
-  opacity: calc(1 - var(--time));
-}
-
-.flip[class] {
-  $deg: calc(90deg * var(--time) * var(--direction));
-  transform:
-    perspective(100vh)
-    translate3d(0, 0, -50vw)
-    rotate3d(0, 1, 0, #{$deg})
-    translate3d(0, 0, 50vw);
-  backface-visibility: hidden;
-}
-
 .full {
   height: 100%;
   width: 100%;
+}
+
+.codeBox {
+  margin: 0 15vw;
+  width: 70vw;
 }

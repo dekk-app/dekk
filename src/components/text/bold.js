@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import {bold} from './styles.scss'
+import {bold, highlight} from './styles.scss'
 
 const Bold = props => (
-  <strong {...props} className={classNames(props.className, bold)}>
+  <strong {...props} className={classNames(props.className, bold, {[highlight]: props.highlight})}>
     {props.children}
   </strong>
 )

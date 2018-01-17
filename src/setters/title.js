@@ -8,8 +8,7 @@ class SetTitle extends Component {
     super(props)
   }
   componentWillMount() {
-    console.log(this.props.children)
-    this.props.setTitle(this.props.children)
+    this.props.setTitle(this.props.children || '')
   }
   render () {
     return null
@@ -17,7 +16,7 @@ class SetTitle extends Component {
 }
 
 SetTitle.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 }
 
 export default connect(state => ({}), {setTitle})(SetTitle)

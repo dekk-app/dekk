@@ -15,7 +15,7 @@ export const elementOffset = (state = {}, {type, offset, name}) => {
   return state
 }
 
-export const title = (state = 'Dekk 1.0.0-alpha', {type, title}) => {
+export const title = (state = '', {type, title}) => {
   if (type === SET_TITLE) {
     return title
   }

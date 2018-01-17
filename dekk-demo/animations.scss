@@ -1,0 +1,28 @@
+.zoom[class] {
+  $scale: calc(1 - var(--time));
+  transform: scale3d(#{$scale}, #{$scale}, 1);
+  opacity: calc(1 - var(--time));
+}
+
+.cube[class] {
+  $deg: calc(90deg * var(--time) * var(--direction));
+  transform:
+    perspective(200vh)
+    translate3d(0, 0, -50vw)
+    rotate3d(0, 1, 0, #{$deg})
+    translate3d(0, 0, 50vw);
+  backface-visibility: hidden;
+}
+
+.flip[class] {
+  $deg: calc(180deg * var(--time) * var(--direction));
+  transform:
+    perspective(200vh)
+    rotate3d(0, 1, 0, #{$deg});
+  backface-visibility: hidden;
+}
+
+.drop[class] {
+  $y: calc(-100% * var(--time) * var(--direction));
+  transform: translate3d(0, $y, 0);
+}

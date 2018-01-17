@@ -1,5 +1,6 @@
 @mixin master($name, $statics, $slots) {
   .#{$name} {
+    font-family: 'Maison', sans-serif;
     display: grid;
     [data-slot],
     [data-static] {
@@ -22,13 +23,65 @@
   }
 }
 
-@include master('Base', ('Header'), ('Top', 'Bottom')) {
-  grid-template-columns: auto 60%;
-  grid-template-rows: 5em calc(50vh - 5em) auto;
+@include master('Base', ('Header'), ('View')) {
+  grid-template-columns: 100%;
+  grid-template-rows: 8.125rem 4.375rem calc(100vh - (8.125rem + 4.375rem));
   grid-template-areas:
-    "Header Header"
-    "Top Top"
-    "Bottom Bottom";
+    "Header"
+    "."
+    "View";
+
+  [data-slot="View"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+  }
+}
+
+@include master('Chapter', ('Header'), ('View')) {
+  grid-template-columns: 100%;
+  grid-template-rows: 8.125rem 4.375rem calc(100vh - (8.125rem + 4.375rem) * 2);
+  grid-template-areas:
+    "Header"
+    "."
+    "View";
+
+  [data-slot="View"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+}
+
+@include master('Cover', ('Header'), ('View')) {
+  grid-template-columns: 100%;
+  grid-template-rows: 8.125rem 4.375rem calc(100vh - (8.125rem + 4.375rem) * 2);
+  grid-template-areas:
+    "Header"
+    "."
+    "View";
+
+  [data-slot="View"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+}
+
+@include master('Divider', ('Header'), ('Top', 'Bottom')) {
+  grid-template-columns: 100%;
+  grid-template-rows: 8.125rem 4.375rem calc(50vh - 8.125rem - 4.375rem) auto;
+  grid-template-areas:
+    "Header"
+    "."
+    "Top"
+    "Bottom";
 
   [data-slot="Top"] {
     display: flex;
@@ -54,6 +107,51 @@
 
 .Green {
   composes: Base;
+  --highlight-color: #22ffa8;
+}
+
+.BlueChapter {
+  composes: Chapter;
+  --highlight-color: #3300d1;
+}
+
+.RedChapter {
+  composes: Chapter;
+  --highlight-color: #fc0043;
+}
+
+.GreenChapter {
+  composes: Chapter;
+  --highlight-color: #22ffa8;
+}
+
+.BlueCover {
+  composes: Cover;
+  --highlight-color: #3300d1;
+}
+
+.RedCover {
+  composes: Cover;
+  --highlight-color: #fc0043;
+}
+
+.GreenCover {
+  composes: Cover;
+  --highlight-color: #22ffa8;
+}
+
+.BlueDivider {
+  composes: Divider;
+  --highlight-color: #3300d1;
+}
+
+.RedDivider {
+  composes: Divider;
+  --highlight-color: #fc0043;
+}
+
+.GreenDivider {
+  composes: Divider;
   --highlight-color: #22ffa8;
 }
 

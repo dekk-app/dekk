@@ -14,7 +14,7 @@ import styles from './styles.scss'
 
 class Master extends Component {
   render() {
-    const {children, content, pageIndex} = this.props
+    const {children, content, pageIndex, current} = this.props
     // All `Slot` instances
     const slots = Children.toArray(children)
       .filter(child => child.type === Slot)
@@ -110,7 +110,7 @@ class Master extends Component {
       </div>
     ) : null
 
-    const title = Children.toArray(content).filter(child => (child.type === SetTitle))
+    const title = current ? Children.toArray(content).filter(child => (child.type === SetTitle)) : null
 
     return (
       <Slide {...this.props}>
@@ -137,7 +137,8 @@ Master.propTypes = {
       return error;
   },
   content: PropTypes.node,
-  pageIndex: PropTypes.number
+  pageIndex: PropTypes.number,
+  current: PropTypes.bool
 }
 
 export default connect(state => {
