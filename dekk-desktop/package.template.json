@@ -1,9 +1,0 @@
-{
-  "name": "dekk-desktop",
-  "version": "1.0.0",
-  "description": "Desktop version of Dekk",
-  "main": "index.js",
-  "repository": "git@github.com:sinnerschrader/dekk.git",
-  "author": "Gregor Adams <greg@pixelass.com>",
-  "license": "MIT"
-}
