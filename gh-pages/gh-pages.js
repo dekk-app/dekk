@@ -2,13 +2,13 @@ import React from 'react'
 import {render} from 'react-dom'
 import styled from 'styled-components'
 
-import Deck from '@dekk/dekk/lib/components/deck'
+import Deck from '@dekk/deck'
 
 import createMaster, {
   Master,
   Static,
   Slot
-} from '@dekk/dekk/lib/components/master'
+} from '@dekk/master'
 
 const renderMaster = (master, cb) => cb(master)
 
@@ -22,7 +22,11 @@ const Slide = createMaster(
 
 
 const App = () => (
-  <Deck page={0}>
+  <Deck page={1}>
+    <Slide>
+      <Slide.Top>Top</Slide.Top>
+      <Slide.Bottom>Bottom</Slide.Bottom>
+    </Slide>
     <Slide>
       <Slide.Top>Top</Slide.Top>
       <Slide.Bottom>Bottom</Slide.Bottom>
