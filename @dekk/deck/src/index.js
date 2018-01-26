@@ -1,8 +1,10 @@
 import React, {Component, Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
+import {observer} from 'mobx-react'
 import styled from 'styled-components'
 import Paging from '@dekk/paging'
 import {range} from '@dekk/utils'
+import {DeckModel} from '@dekk/store'
 
 /**
  * @private
@@ -13,20 +15,27 @@ import {range} from '@dekk/utils'
  * Renders 3 slides (previous, current, next) to allow various transitions
  * between slides.
  */
+@observer
 class Deck extends Component {
-  constructor(props) {
+  constructor(props, context) {
     super(props)
     this.state = {
       direction: 0
     }
+    console.log(this.props.store)
   }
 
+  getChildContext() {
+    return {store: this.props.store}
+  }
+
+
   componentWillReceiveProps(newProps) {
-    if (newProps.page === this.props.page) {
+    if (newProps.store.page === this.props.store.page) {
       return
     }
     this.setState({
-      direction: this.props.page > newProps.page ? -1 : 1
+      direction: this.props.store.page > newProps.store.page ? -1 : 1
     })
   }
 
@@ -38,7 +47,8 @@ class Deck extends Component {
    * @return {array} returns an array of max 3 slides
    */
   get slides() {
-    const {page, children} = this.props
+    const {store, children} = this.props
+    const {page} = store
     const {direction} = this.state
     return Children
       .map(children, (child, i) => {
@@ -60,7 +70,8 @@ class Deck extends Component {
   }
 
   get paging() {
-    const {page, children, slave} = this.props
+    const {store, children, slave} = this.props
+    const {page} = store
     if (slave) {
       return false
     }
@@ -96,8 +107,11 @@ const Wrapper = styled.div`
 Deck.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  slave: PropTypes.bool,
-  page: PropTypes.number.isRequired
+  slave: PropTypes.bool
+}
+
+Deck.childContextTypes = {
+  store: PropTypes.object.isRequired
 }
 
 export default Deck

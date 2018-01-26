@@ -16,17 +16,21 @@ class Paging extends Component {
   }
 
   goToPage({which}) {
-    const {page, pages, goToPage} = this.props
+    const {pages} = this.props
+    const {store} = this.context
+    const {page, goToPage} = store
     const previous = Math.max(0, page - 1)
     const next = Math.min((pages - 1), page + 1)
 
     switch (which) {
       case 39:
-        return goToPage(next)
+        goToPage(next)
+        break
       case 37:
-        return goToPage(previous)
+        goToPage(previous)
+        break
       default:
-        return false
+        break
     }
   }
 
@@ -35,11 +39,14 @@ class Paging extends Component {
   }
 }
 
+
 Paging.propTypes = {
   trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,
-  page: PropTypes.number.isRequired,
-  pages: PropTypes.number.isRequired,
-  goToPage: PropTypes.func.isRequired
+  pages: PropTypes.number.isRequired
+}
+
+Paging.contextTypes = {
+  store: PropTypes.object.isRequired
 }
 
 export default Paging
