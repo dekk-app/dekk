@@ -1,15 +1,15 @@
 {
   "name": "dekk",
   "version": "0.0.1",
-  "description": "A presentation tool written in react.js",
-  "repository": "git@github.com:sinnerschrader/dekk.git",
-  "author": "Gregor Adams <greg@pixelass.com>",
-  "license": "MIT",
   "private": true,
+  "description": "A presentation tool written in react.js",
+  "license": "MIT",
+  "author": "Gregor Adams <greg@pixelass.com>",
+  "repository": "git@github.com:sinnerschrader/dekk.git",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
     "babel": "lerna run babel",
     "babel:watch": "lerna run babel:watch --parallel",
+    "bootstrap": "lerna bootstrap",
     "build": "webpack",
     "clean": "lerna clean",
     "commitmsg": "commitlint -e $GIT_PARAMS",
@@ -19,9 +19,6 @@
     "test": "lerna run test",
     "watch": "webpack-dev-server"
   },
-  "workspaces": [
-    "@dekk/*"
-  ],
   "devDependencies": {
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
@@ -46,5 +43,8 @@
     "styled-components": "^3.0.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
-  }
+  },
+  "workspaces": [
+    "@dekk/*"
+  ]
 }

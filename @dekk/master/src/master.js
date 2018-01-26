@@ -46,18 +46,15 @@ class Master extends Component {
       }
       const children = Children.toArray(onlyContent[index].props.children)
         .map((child, idx) => {
-          const slotId = `${pageIndex}.${i}.${idx}`
-          const draggableOptions = {
-            children: child
-          }
           if (only) {
             if (only.includes(child.type)) {
               return child
             }
+            console.log(child)
             return (
               <Warning {...item.props}
                        key={`slot_${idx}`}
-                       type={(child.type && child.type.name) || `"${child}"`}
+                       type={(child.type && (child.type.displayName || child.type.name)) || `"${child}"`}
                        invalid/>
             )
           }
@@ -66,7 +63,7 @@ class Master extends Component {
               return (
                 <Warning {...item.props}
                          key={`slot_${idx}`}
-                         type={(child.type && child.type.name) || `"${child}"`}
+                         type={(child.type && (child.type.displayName || child.type.name)) || `"${child}"`}
                          invalid/>
               )
             }

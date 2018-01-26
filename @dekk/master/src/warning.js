@@ -11,7 +11,7 @@ const Warning = props => {
     onlyMessage = (
       <div>
         <strong>Allowed components:</strong>
-        <ul>{only.map((component, i) => <li key={`warning_item__${i}`}>{component.name}</li>)}</ul>
+        <ul>{only.map((component, i) => <li key={`warning_item__${i}`}>{(component.displayName || component.name)}</li>)}</ul>
       </div>
     )
   }
@@ -20,7 +20,7 @@ const Warning = props => {
     notMessage = (
       <div>
         <strong>Forbidden components:</strong>
-        <ul>{not.map((component, i) => <li key={`warning_item__${i}`}>{component.name}</li>)}</ul>
+        <ul>{not.map((component, i) => <li key={`warning_item__${i}`}>{(component.displayName || component.name)}</li>)}</ul>
       </div>
     )
   }

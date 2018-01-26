@@ -10,8 +10,8 @@ export {default as Center} from './center'
 export {default as Bold} from './bold'
 export {default as Uppercase} from './uppercase'
 
-const Text = styled.div`
-  padding: 1em;
+const Text = styled.p`
+  padding: 0;
 `
 
 Text.propTypes = {
