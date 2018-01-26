@@ -19,24 +19,10 @@ import {DeckModel} from '@dekk/store'
 class Deck extends Component {
   constructor(props, context) {
     super(props)
-    this.state = {
-      direction: 0
-    }
-    console.log(this.props.store)
   }
 
   getChildContext() {
     return {store: this.props.store}
-  }
-
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.store.page === this.props.store.page) {
-      return
-    }
-    this.setState({
-      direction: this.props.store.page > newProps.store.page ? -1 : 1
-    })
   }
 
   /**
@@ -48,20 +34,22 @@ class Deck extends Component {
    */
   get slides() {
     const {store, children} = this.props
-    const {page} = store
-    const {direction} = this.state
+    const {page, direction} = store
     return Children
       .map(children, (child, i) => {
         // Clone the element and add properties
+        const current = page === i
+        const previous = page === i + 1
+        const next = page === i - 1
         return cloneElement(child, {
           pageIndex: i,
-          current: page === i,
-          previous: page === i + 1,
-          next: page === i - 1,
-          fromPrevious: page === i && direction === -1,
-          fromNext: page === i && direction === 1,
-          toPrevious: page === i + 1 && direction === 1,
-          toNext: page === i - 1 && direction === -1,
+          current,
+          previous,
+          next,
+          fromPrevious: current && direction === -1,
+          fromNext: current && direction === 1,
+          toPrevious: previous && direction === 1,
+          toNext: next && direction === -1,
           direction: direction
         })
       })

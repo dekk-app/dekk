@@ -49,7 +49,7 @@ class Slide extends Component {
   }
 }
 
-const StyledSlide = styled.div`
+const SlideDirection = styled.div`
   ${props => {
     if (props.fromPrevious) {
       return `
@@ -61,6 +61,7 @@ const StyledSlide = styled.div`
         --direction: 1;
       `
     }
+
     if (props.toPrevious) {
       return `
         --direction: -1;
@@ -71,6 +72,7 @@ const StyledSlide = styled.div`
         --direction: 1;
       `
     }
+
     if (props.previous) {
       return `
         --direction: -1;
@@ -87,13 +89,16 @@ const StyledSlide = styled.div`
       `
     }
   }}
+  z-index: ${props => props.current ? 1 : 0};
+`
+
+const StyledSlide = styled(SlideDirection)`
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: ${props => props.current ? 1 : 0};
-  transform: translate3d(calc(var(--time, 1) * 100% * var(--direction, -1)), 0, 0);
+  transform: translate3d(calc(100% * var(--direction, -1) * var(--time, 1)), 0, 0);
   overflow: hidden;
   color: var(--slide-color, inherit);
   background: var(--slide-background, none);

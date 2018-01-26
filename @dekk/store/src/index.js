@@ -3,7 +3,8 @@ import { observable } from 'mobx'
 
 export default class Store {
   id = uuid()
-  @observable page
+  @observable page = 0
+  @observable direction  = 0
   constructor(props) {
     this.page = props.page
     this.title = props.title
@@ -24,14 +25,15 @@ export default class Store {
   }
 
   goToPage(page) {
+    this.direction = page > this.page ? 1 : -1
     this.page = page
   }
 
   nextPage() {
-    ++this.page
+    this.goToPage(this.page + 1)
   }
 
   previousPage() {
-    --this.page
+    this.goToPage(this.page - 1)
   }
 }

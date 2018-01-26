@@ -50,7 +50,6 @@ class Master extends Component {
             if (only.includes(child.type)) {
               return child
             }
-            console.log(child)
             return (
               <Warning {...item.props}
                        key={`slot_${idx}`}
