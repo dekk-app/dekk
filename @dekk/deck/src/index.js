@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 import styled from 'styled-components'
 import Paging from '@dekk/paging'
 import {range} from '@dekk/utils'
-import {DeckModel} from '@dekk/store'
+import Store from '@dekk/store'
 
 /**
  * @private
@@ -17,12 +17,15 @@ import {DeckModel} from '@dekk/store'
  */
 @observer
 class Deck extends Component {
+  store = new Store({
+    page: 0
+  })
   constructor(props, context) {
     super(props)
   }
 
   getChildContext() {
-    return {store: this.props.store}
+    return {store: this.store}
   }
 
   /**
@@ -33,8 +36,8 @@ class Deck extends Component {
    * @return {array} returns an array of max 3 slides
    */
   get slides() {
-    const {store, children} = this.props
-    const {page, direction} = store
+    const {children} = this.props
+    const {page, direction} = this.store
     return Children
       .map(children, (child, i) => {
         // Clone the element and add properties
@@ -58,8 +61,8 @@ class Deck extends Component {
   }
 
   get paging() {
-    const {store, children, slave} = this.props
-    const {page} = store
+    const {children, slave} = this.props
+    const {page} = this.store
     if (slave) {
       return false
     }
