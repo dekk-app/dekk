@@ -18,16 +18,19 @@ class Paging extends Component {
   goToPage({which}) {
     const {pages} = this.props
     const {store} = this.context
-    const {page, goToPage} = store
-    const previous = Math.max(0, page - 1)
-    const next = Math.min((pages - 1), page + 1)
+    const {page, goToPage, fragment, fragments, goToFragment, setFragment} = store
+    const previousFragment = Math.max(0, fragment - 1)
+    const nextFragment = Math.min((fragments - 1), fragment + 1)
+    const previousPage = Math.max(0, page - 1)
+    const nextPage = Math.min((pages - 1), page + 1)
+
 
     switch (which) {
       case 39:
-        goToPage(next)
+        (fragments && nextFragment > fragment) ? goToFragment(nextFragment) : goToPage(nextPage)
         break
       case 37:
-        goToPage(previous)
+        (fragments && previousFragment < fragment) ? goToFragment(previousFragment) : goToPage(previousPage)
         break
       default:
         break

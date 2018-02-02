@@ -6,6 +6,51 @@ import Warning from './warning'
 import {Slot, Static} from './components'
 
 class Master extends Component {
+  setFragments() {
+    const {content = []} = this.props
+    const {setFragments} = this.context.store
+    const fragments = Children.toArray(content)
+      .reduce((a, b) => a.concat(b), [])
+      .map(x => x.props.children)
+      .reduce((a, b) => a.concat(b), [])
+      .filter(
+        x => typeof x === 'object' && typeof x.props.fragment === 'number'
+      )
+      .sort((a, b) => {
+        if (a.props.fragment > b.props.fragment) {
+          return 1
+        } else if (a.props.fragment < b.props.fragment) {
+          return -1
+        }
+        return 0
+      })
+    const length = fragments.reduce(
+      (a, b) =>
+        a.indexOf(b.props.fragment) < 0 ? a.concat(b.props.fragment) : a,
+      []
+    ).length
+
+    setFragments(
+      fragments.reduce(
+        (a, b) =>
+          a.indexOf(b.props.fragment) < 0 ? a.concat(b.props.fragment) : a,
+        []
+      ).length
+    )
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.current) {
+      this.setFragments()
+    }
+  }
+
+  componentWillMount() {
+    if (this.props.current) {
+      this.setFragments()
+    }
+  }
+
   render() {
     const {children, content, pageIndex, current} = this.props
     // All `Slot` instances
@@ -38,7 +83,9 @@ class Master extends Component {
       .reduce((a, b) => a.concat(b), [])
       .map(x => x.props.children)
       .reduce((a, b) => a.concat(b), [])
-      .filter(x => typeof x === 'object' && typeof x.props.fragment === 'number')
+      .filter(
+        x => typeof x === 'object' && typeof x.props.fragment === 'number'
+      )
       .sort((a, b) => {
         if (a.props.fragment > b.props.fragment) {
           return 1
@@ -144,6 +191,10 @@ Master.propTypes = {
   content: PropTypes.node,
   pageIndex: PropTypes.number,
   current: PropTypes.bool
+}
+
+Master.contextTypes = {
+  store: PropTypes.object.isRequired
 }
 
 export default Master
