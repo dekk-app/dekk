@@ -1,0 +1,52 @@
+{
+  "destination": "./docs/api",
+  "source": "./@gaffney/",
+  "includes": ["\\.js$"],
+  "package": "./package.json",
+  "index": "./README.md",
+  "excludes": [
+    "lib",
+    "node_modules",
+    "tests",
+    "webpack.*.*js$"
+  ],
+  "plugins": [{
+    "name": "esdoc-standard-plugin",
+    "option": {
+      "brand": {
+        "title": "Gaffney"
+      }
+    }
+  }, {
+    "name": "esdoc-ecmascript-proposal-plugin",
+    "option": {
+      "all": true
+    }
+  },
+  {
+    "name": "esdoc-importpath-plugin",
+    "option": {
+      "stripPackageName": true,
+      "replaces": [
+        {"from": "src/.*", "to": ""},
+        {"from": "/$", "to": ""}
+      ]
+    }
+  },
+  {
+    "name": "esdoc-brand-plugin",
+    "option": {
+      "title": "Gaffney",
+      "description": "A library for lunar and astrology calendars",
+      "repository": "https://github.com/pixelass/gaffney",
+      "site": "pixelass.github.io/gaffney",
+      "author": "https://github.com/pixelass"
+    }
+  },
+  {
+    "name": "esdoc-lint-plugin",
+    "option": {
+      "enable": true
+    }
+  }]
+}

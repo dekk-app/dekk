@@ -57,7 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# public directories
-public
-*-public
+# lib directories
+**/lib
 
