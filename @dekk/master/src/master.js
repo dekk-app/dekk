@@ -1,58 +1,64 @@
-import React, {Component, Children} from 'react'
+import React, {Component, Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid/v4'
+import styled from 'styled-components'
 import Slide from '@dekk/slide'
 import Notes from '@dekk/speaker-notes'
+import Fragment from '@dekk/fragment'
 import Warning from './warning'
 import {Slot, Static} from './components'
 
-class Master extends Component {
-  setFragments() {
-    const {content = []} = this.props
-    const {setFragments} = this.context.store
-    const fragments = Children.toArray(content)
-      .reduce((a, b) => a.concat(b), [])
-      .map(x => x.props.children)
-      .reduce((a, b) => a.concat(b), [])
-      .filter(
-        x => typeof x === 'object' && typeof x.props.fragment === 'number'
-      )
-      .sort((a, b) => {
-        if (a.props.fragment > b.props.fragment) {
-          return 1
-        } else if (a.props.fragment < b.props.fragment) {
-          return -1
-        }
-        return 0
-      })
-    const length = fragments.reduce(
-      (a, b) =>
-        a.indexOf(b.props.fragment) < 0 ? a.concat(b.props.fragment) : a,
-      []
-    ).length
-
-    setFragments(
-      fragments.reduce(
-        (a, b) =>
-          a.indexOf(b.props.fragment) < 0 ? a.concat(b.props.fragment) : a,
-        []
-      ).length
-    )
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.current) {
-      this.setFragments()
+const invalid = (child, index, itemProps) => (
+  <Warning
+    {...itemProps}
+    key={`slot_${index}`}
+    type={
+      (child.type && (child.type.displayName || child.type.name)) ||
+      `"${child}"`
     }
-  }
+    invalid
+  />
+)
 
-  componentWillMount() {
-    if (this.props.current) {
-      this.setFragments()
+const onlyOrWarning = (only, child, index, itemProps) => {
+  // Check if child is allowed
+  if (only.includes(child.type)) {
+    return child
+  }
+  // in case the child is a fragment, check all child elements
+  if (child.type === Fragment) {
+    return cloneElement(child, {
+      children: Children.toArray(child.props.children).map(child =>
+        onlyOrWarning(only, child)
+      )
+    })
+  }
+  return invalid(child, index, itemProps)
+}
+
+const notOrWarning = (not, child, index, itemProps) => {
+  if (child.type === Fragment) {
+    return cloneElement(child, {
+      children: Children.toArray(child.props.children).map(child =>
+        notOrWarning(only, child)
+      )
+    })
+  }
+  if (not.includes(child.type)) {
+    return invalid(child, index, itemProps)
+  }
+  return child
+}
+
+class Master extends Component {
+  getChildContext() {
+    return {
+      fragmentHost: this.props.pageIndex
     }
   }
 
   render() {
-    const {children, content, pageIndex, current} = this.props
+    const {children, content, pageIndex, fragmentIndex, current} = this.props
     // All `Slot` instances
     const slots = Children.toArray(children).filter(
       child => child.type === Slot
@@ -78,27 +84,11 @@ class Master extends Component {
       </div>
     ))
 
-    // Allow page fragments
-    const fragments = onlyContent
-      .reduce((a, b) => a.concat(b), [])
-      .map(x => x.props.children)
-      .reduce((a, b) => a.concat(b), [])
-      .filter(
-        x => typeof x === 'object' && typeof x.props.fragment === 'number'
-      )
-      .sort((a, b) => {
-        if (a.props.fragment > b.props.fragment) {
-          return 1
-        } else if (a.props.fragment < b.props.fragment) {
-          return -1
-        }
-        return 0
-      })
-
     const filledSlots = slots
       .map((item, i) => {
         const {only, not, required, component, name} = item.props
         const index = onlyContent.map(child => child.type).indexOf(component)
+        const Element = item.props.as || 'div'
 
         if (index < 0) {
           if (required) {
@@ -112,53 +102,25 @@ class Master extends Component {
         }
         const children = Children.toArray(
           onlyContent[index].props.children
-        ).map((child, idx) => {
-          if (only) {
-            if (only.includes(child.type)) {
-              return child
-            }
-            return (
-              <Warning
-                {...item.props}
-                key={`slot_${idx}`}
-                type={
-                  (child.type && (child.type.displayName || child.type.name)) ||
-                  `"${child}"`
-                }
-                invalid
-              />
-            )
-          }
-          if (not) {
-            if (not.includes(child.type)) {
-              return (
-                <Warning
-                  {...item.props}
-                  key={`slot_${idx}`}
-                  type={
-                    (child.type &&
-                      (child.type.displayName || child.type.name)) ||
-                    `"${child}"`
-                  }
-                  invalid
-                />
-              )
-            }
-            return child
-          }
-          return child
-        })
+        ).map(
+          (child, idx) =>
+            // Check for `only` and `not` options
+            // If neither is defined simply return the child
+            only
+              ? onlyOrWarning(only, child, idx, item.props)
+              : not ? notOrWarning(only, child, idx, item.props) : child
+        )
         if (required && children.length === 0) {
           return (
-            <div key={`item__${i}`} data-slot={item.props.name}>
+            <Element key={`item__${i}`} data-slot={item.props.name}>
               <Warning {...item.props} missing />
-            </div>
+            </Element>
           )
         }
         return (
-          <div key={`item__${i}`} data-slot={item.props.name}>
+          <Element key={`item__${i}`} data-slot={item.props.name}>
             {children}
-          </div>
+          </Element>
         )
       })
       .filter(x => Boolean(x))
@@ -190,11 +152,16 @@ Master.propTypes = {
   },
   content: PropTypes.node,
   pageIndex: PropTypes.number,
+  fragmentIndex: PropTypes.number,
   current: PropTypes.bool
 }
 
 Master.contextTypes = {
   store: PropTypes.object.isRequired
+}
+
+Master.childContextTypes = {
+  fragmentHost: PropTypes.number
 }
 
 export default Master
