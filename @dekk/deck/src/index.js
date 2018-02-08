@@ -18,14 +18,18 @@ import Store from '@dekk/store'
 @observer
 class Deck extends Component {
   store = new Store({
-    page: 0
+    page: 0,
+    fragmentHosts: []
   })
+
   constructor(props, context) {
-    super(props)
+    super(props, context)
   }
 
   getChildContext() {
-    return {store: this.store}
+    return {
+      store: this.store
+    }
   }
 
   /**
@@ -37,14 +41,19 @@ class Deck extends Component {
    */
   get slides() {
     const {children} = this.props
-    const {page, direction} = this.store
-    return Children
-      .map(children, (child, i) => {
+    const {page, direction, fragment, fragmentHosts} = this.store
+    Children.toArray(children).forEach((child, index) => {
+      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []
+    })
+    return (
+      Children.map(children, (child, i) => {
         // Clone the element and add properties
+        const {length = 0} = this.store.fragmentHosts[i]
         const current = page === i
         const previous = page === i + 1
         const next = page === i - 1
         return cloneElement(child, {
+          fragmentIndex: current ? fragment : previous ? length : 0,
           pageIndex: i,
           current,
           previous,
@@ -56,8 +65,9 @@ class Deck extends Component {
           direction: direction
         })
       })
-      // Filter by a range of `+-1`
-      .filter((c, i) => range(i, page + 1, page - 1))
+        // Filter by a range of `+-1`
+        .filter((c, i) => range(i, page + 1, page - 1))
+    )
   }
 
   get paging() {
@@ -66,19 +76,14 @@ class Deck extends Component {
     if (slave) {
       return false
     }
-    return (
-      <Paging page={page}
-              goToPage={()=>{}}
-              pages={children.length}
-              trigger='keyup'/>
-    )
+    return <Paging page={page} pages={children.length} trigger="keyup" />
   }
 
   render() {
     // Inject the paging logic
     // and render the slides
     return (
-      <Wrapper>
+      <Wrapper mixin={this.props.mixin}>
         {this.paging}
         {this.slides}
       </Wrapper>
@@ -93,6 +98,7 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   overflow: hidden;
+  ${props => props.mixin || ''};
 `
 
 Deck.propTypes = {
@@ -102,7 +108,8 @@ Deck.propTypes = {
 }
 
 Deck.childContextTypes = {
-  store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
+  fragmentHost: PropTypes.number
 }
 
 export default Deck
