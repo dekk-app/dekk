@@ -33,11 +33,13 @@ class Image extends Component {
   render() {
     return (
       <Mask style={this.style}>
-        <Img ref={this.getImage}
-             src={this.props.src}
-             alt={this.props.alt}
-             title={this.props.title}
-             onLoad={this.handleLoad}/>
+        <Img
+          ref={this.getImage}
+          src={this.props.src}
+          alt={this.props.alt}
+          title={this.props.title}
+          onLoad={this.handleLoad}
+        />
       </Mask>
     )
   }
@@ -49,7 +51,7 @@ const Mask = styled.div`
   height: var(--height);
 `
 const Img = styled.img`
-  ${props => props.loaded ? 'display: none;' : ''}
+  ${props => (props.loaded ? 'display: none;' : '')};
 `
 
 Image.propTypes = {
