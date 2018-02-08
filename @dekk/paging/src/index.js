@@ -18,19 +18,40 @@ class Paging extends Component {
   goToPage({which}) {
     const {pages} = this.props
     const {store} = this.context
-    const {page, goToPage, fragment, fragments, goToFragment, setFragment} = store
-    const previousFragment = Math.max(0, fragment - 1)
-    const nextFragment = Math.min((fragments - 1), fragment + 1)
+    const {
+      page,
+      goToPage,
+      fragmentCount,
+      fragmentHosts,
+      goToFragment,
+      setFragment
+    } = store
+    const {length = 0} = fragmentHosts[page]
+    const previousFragment = Math.max(0, fragmentCount - 1)
+    const nextFragment = Math.min(length - 1, fragmentCount + 1)
     const previousPage = Math.max(0, page - 1)
-    const nextPage = Math.min((pages - 1), page + 1)
-
+    const nextPage = Math.min(pages - 1, page + 1)
 
     switch (which) {
       case 39:
-        (fragments && nextFragment > fragment) ? goToFragment(nextFragment) : goToPage(nextPage)
+        ;(() => {
+          if (length && nextFragment > fragmentCount) {
+            goToFragment(nextFragment)
+          } else if (nextPage !== page) {
+            goToPage(nextPage)
+            goToFragment(0)
+          }
+        })()
         break
       case 37:
-        (fragments && previousFragment < fragment) ? goToFragment(previousFragment) : goToPage(previousPage)
+        ;(() => {
+          if (length && previousFragment < fragmentCount) {
+            goToFragment(previousFragment)
+          } else if (previousPage !== page) {
+            goToPage(previousPage)
+            goToFragment(fragmentHosts[previousPage].length - 1)
+          }
+        })()
         break
       default:
         break
@@ -41,7 +62,6 @@ class Paging extends Component {
     return null
   }
 }
-
 
 Paging.propTypes = {
   trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,
