@@ -11,4 +11,6 @@ Uppercase.propTypes = {
   children: PropTypes.node
 }
 
+Uppercase.displayName = 'Uppercase'
+
 export default Uppercase

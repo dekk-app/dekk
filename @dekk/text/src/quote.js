@@ -25,4 +25,6 @@ Quote.propTypes = {
   children: PropTypes.node
 }
 
+Quote.displayName = 'Quote'
+
 export default Quote

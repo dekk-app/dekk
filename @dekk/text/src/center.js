@@ -11,4 +11,6 @@ Center.propTypes = {
   children: PropTypes.node
 }
 
+Center.displayName = 'Center'
+
 export default Center

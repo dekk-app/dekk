@@ -13,4 +13,6 @@ Subtitle.propTypes = {
   children: PropTypes.node
 }
 
+Subtitle.displayName = 'Subtitle'
+
 export default Subtitle
