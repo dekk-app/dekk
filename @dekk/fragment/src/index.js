@@ -17,29 +17,38 @@ class Fragment extends Component {
   constructor(props, context) {
     super(props, context)
   }
+
+  getChildContext() {
+    return {
+      hostedFragment: this.props.host ? this.props.fragment : 0
+    }
+  }
+
   componentWillMount() {
-    const {fragment} = this.props
-    const {fragmentHost, store} = this.context
-    const host = store.fragmentHosts[fragmentHost] || []
-    if (host.indexOf(fragment) < 0) {
-      host.push(fragment)
+    const {fragment, host} = this.props
+    const {fragmentHost, store, hostedFragment = 0} = this.context
+    const localHost = store.fragmentHosts[fragmentHost] || []
+    const calculatedFragment = fragment + hostedFragment
+    if (localHost.indexOf(calculatedFragment) < 0) {
+      localHost.push(calculatedFragment)
     }
-    if (host.length && host.indexOf(0) < 0) {
-      host.push(0)
+    if (localHost.length && localHost.indexOf(0) < 0) {
+      localHost.push(0)
     }
-    store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)
+    store.fragmentHosts[fragmentHost] = localHost.sort((a, b) => a - b)
   }
   get length() {
     return this.context.store.fragmentHosts[this.context.fragmentHost].length
   }
   render() {
     const {fragment, children, animation} = this.props
-    const {fragmentHost, store} = this.context
+    const {fragmentHost, store, hostedFragment = 0} = this.context
     const previous = fragmentHost < store.page
     const next = fragmentHost > store.page
+    const calculatedFragment = fragment + hostedFragment
     const active = previous
       ? true
-      : next ? fragment === 0 : store.fragment >= fragment
+      : next ? calculatedFragment === 0 : store.fragment >= calculatedFragment
     return (
       <StyledFragment active={active} animation={animation}>
         {children}
@@ -50,7 +59,12 @@ class Fragment extends Component {
 
 Fragment.contextTypes = {
   store: PropTypes.object.isRequired,
-  fragmentHost: PropTypes.number
+  fragmentHost: PropTypes.number,
+  hostedFragment: PropTypes.number
+}
+
+Fragment.childContextTypes = {
+  hostedFragment: PropTypes.number
 }
 
 export default Fragment
