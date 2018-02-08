@@ -3,10 +3,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const StyledFragment = styled.span`
+  display: inline-block;
+  white-space: pre-wrap;
+  width: inherit;
   ${props =>
-    props.animation
-      ? props.animation(props)
-      : `opacity: ${props.active ? 1 : 0};`};
+    props.animation ||
+    `
+      opacity: ${props.active ? 1 : 0}
+  `};
 `
 
 class Fragment extends Component {
@@ -24,27 +28,22 @@ class Fragment extends Component {
       host.push(0)
     }
     store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)
-    if (this.props.renderAs) {
-      this.Component = StyledFragment.withComponent(this.props.renderAs)
-    } else {
-      this.Component = StyledFragment
-    }
   }
   get length() {
     return this.context.store.fragmentHosts[this.context.fragmentHost].length
   }
   render() {
-    const previous = this.context.fragmentHost < this.context.store.page
-    const next = this.context.fragmentHost > this.context.store.page
+    const {fragment, children, animation} = this.props
+    const {fragmentHost, store} = this.context
+    const previous = fragmentHost < store.page
+    const next = fragmentHost > store.page
     const active = previous
       ? true
-      : next
-        ? this.props.fragment === 0
-        : this.context.store.fragment >= this.props.fragment
+      : next ? fragment === 0 : store.fragment >= fragment
     return (
-      <this.Component active={active} animation={this.props.animation}>
-        {this.props.children}
-      </this.Component>
+      <StyledFragment active={active} animation={animation}>
+        {children}
+      </StyledFragment>
     )
   }
 }
