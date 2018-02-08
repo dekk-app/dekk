@@ -10,40 +10,38 @@ import {Motion, spring} from 'react-motion'
  *
  */
 class Slide extends Component {
- render() {
-    const {
-      previous,
-      next,
-      children,
-      springSettings,
-      background
-    } = this.props
+  render() {
+    const {previous, next, children, springSettings} = this.props
     const springStyle = {
-      time: spring(previous || next ? 1 : 0, springSettings)
+      time: spring(previous || next ? 1 : 0, {
+        stiffness: 100,
+        damping: 20,
+        ...springSettings
+      })
     }
     return (
       <Motion style={springStyle}>
-        {
-          ({time}) => {
-            const style = {
-              '--time': ~~(time * 1000) / 1000,
-              '--slide-background': background
-            }
-            return (
-              <StyledSlide className={this.props.className}
-                           current={this.props.current}
-                           next={this.props.next}
-                           previous={this.props.previous}
-                           toPrevious={this.props.toPrevious}
-                           toNext={this.props.toNext}
-                           fromPrevious={this.props.fromPrevious}
-                           fromNext={this.props.fromNext}
-                           style={style}>
-                {children}
-              </StyledSlide>
-            )
+        {({time}) => {
+          const style = {
+            '--time': ~~(time * 1000) / 1000
           }
-        }
+          return (
+            <StyledSlide
+              background={this.props.background}
+              mixin={this.props.animation}
+              className={this.props.className}
+              current={this.props.current}
+              next={next}
+              previous={previous}
+              toPrevious={this.props.toPrevious}
+              toNext={this.props.toNext}
+              fromPrevious={this.props.fromPrevious}
+              fromNext={this.props.fromNext}
+              style={style}>
+              {children}
+            </StyledSlide>
+          )
+        }}
       </Motion>
     )
   }
@@ -88,8 +86,7 @@ const SlideDirection = styled.div`
         --direction: 0;
       `
     }
-  }}
-  z-index: ${props => props.current ? 1 : 0};
+  }} z-index: ${props => (props.current ? 1 : 0)};
 `
 
 const StyledSlide = styled(SlideDirection)`
@@ -98,11 +95,16 @@ const StyledSlide = styled(SlideDirection)`
   right: 0;
   bottom: 0;
   left: 0;
-  transform: translate3d(calc(100% * var(--direction, -1) * var(--time, 1)), 0, 0);
+  transform: translate3d(
+    calc(100% * var(--direction, -1) * var(--time, 1)),
+    0,
+    0
+  );
   overflow: hidden;
   color: var(--slide-color, inherit);
-  background: var(--slide-background, none);
+  background: ${props => props.background || 'none'};
   background-size: cover;
+  ${props => props.mixin || ''};
 `
 
 Slide.propTypes = {
