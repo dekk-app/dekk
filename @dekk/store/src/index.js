@@ -12,22 +12,12 @@ export default class Store {
     this.fragmentHosts = props.fragmentHosts
     this.title = props.title
 
-    this.setTitle = this.setTitle.bind(this)
-    this.clearTitle = this.clearTitle.bind(this)
     this.goToPage = this.goToPage.bind(this)
     this.nextPage = this.nextPage.bind(this)
     this.previousPage = this.previousPage.bind(this)
     this.goToFragment = this.goToFragment.bind(this)
     this.nextFragment = this.nextFragment.bind(this)
     this.previousFragment = this.previousFragment.bind(this)
-  }
-
-  setTitle(title) {
-    this.tilte = title
-  }
-
-  clearTitle(title) {
-    this.tilte = title
   }
 
   goToPage(n) {

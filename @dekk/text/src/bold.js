@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 const Bold = styled.strong`
   font-weight: bold;
-  ${props => (props.highlight ? 'color: var(--highlight-color);' : '')};
+  ${props =>
+    props.highlight ? 'color: var(--highlight-color, inherit);' : ''};
 `
 
 Bold.propTypes = {

@@ -4,41 +4,6 @@
 
 A presentation tool written in **react.js**.
 
-> Nothing to see here except a prototype !!!
-> There might be errors when trying to build or develop the app.
-> This project is at an early stage and still needs some seatbelts.
-
-## npm / yarn (not available yet)
-
-```shell
-npm i dekk --S ## yarn add dekk
-```
-
-> This space does not exist in npm yet. Don't expect it to work. 💩
-
-
-## Don't install with **yarn** (development)
-
-This project uses husky and therefore requires to be installed with npm
-
-```shell
-npm i ## npm install
-```
-
-
-### To develop the web app
-
-```shell
-yarn dev:web ### npm run dev:web
-```
-
-
-### To develop dekk
-
-```shell
-yarn dev:demo ### npm run dev:demo
-```
-
 
 ### Creating master slides
 
@@ -51,14 +16,14 @@ import React from 'react'
 import {
   Title,
   Subtitle
-} from 'path/to/src/components/text'
+} from '@dekk/text'
 import createMaster, {
   Master,
   Static,
   Slot
-} from 'path/to/src/components/master'
+} from '@dekk/master'
 
-// Own components
+// Custom components
 import Header from './components/text'
 import SomeComponent from './components/some-component'
 
@@ -82,12 +47,12 @@ export default createMaster(
 ```jsx
 import React from 'react'
 import {render} from 'react-dom'
-import Deck from 'path/to/src'
+import Deck from '@dekk/deck'
 import {
   Title,
   Subtitle
-} from 'path/to/src/components/text'
-import Slide from 'path/to/src/components/slide'
+} from '@dekk/text'
+import Slide from '@dekk/slide'
 import Master from './master-slide'
 import SomeComponent from './components/some-component'
 
@@ -95,44 +60,27 @@ const App = () => (
   <Deck>
     <Master>
       <Master.Top>
-        <Title>Hello Dekk!</Title>
+        <Title>hello dekk</Title>
       </Master.Top>
       <Master.Bottom>
-        <Subtitle>next generation presatation tool!</Subtitle>
+        <Subtitle>a subtitle</Subtitle>
         <SomeComponent/>
       </Master.Bottom>
     </Master>
     <Slide>
-      <Title>This is not a master slide</Title>
+      <Title>a title</Title>
     </Slide>
     <Slide background='url("./background.jpg")'>
-      <Title>Slides are easy</Title>
+      <Title>a title</Title>
     </Slide>
   </Deck>
 )
 
-const mountPoint = document.getElementById('mountPoint')
+const mountPoint = document.getElementById('mount-point')
 
 render(<App/>, mountPoint)
 
 ```
 
-
-## Styleguide
-
-TBD
-
-### Colors
-
-> AAA compliant
-
-| Background | default | hover   | Text  |
-| -----------|:-------:| -------:| -----:|
-| light:     | #e8e8e3 | #D8D8D4 | #000  |
-| dark:      | #1c1b17 | #191503 | #FFF  |
-| primary:   | #e8d77d | #DBC96D | #000  |
-| secondary: | #26547C | #2A486B | #FFF  |
-
-<img width="300" src="https://cdn.rawgit.com/sinnerschrader/dekk/master/resources/colors.svg#0000000001" alt="Dekk colors | light theme with yellow highlight & dark theme with blue highlight"/>
-
-dark/light switch primary/secondary
+© Copyright 2018 [Gregor Adams](https://github.com/pixelass)  
+Proudly powered by [Sinnerschrader](https://sinnerschrader.com)([Github](https://github.com/sinnerschrader))

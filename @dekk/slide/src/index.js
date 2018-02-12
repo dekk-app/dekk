@@ -10,12 +10,22 @@ import {Motion, spring} from 'react-motion'
  *
  */
 class Slide extends Component {
+  static get childContextTypes() {
+    return {
+      fragmentHost: PropTypes.number
+    }
+  }
+  getChildContext() {
+    return {
+      fragmentHost: this.props.pageIndex
+    }
+  }
   render() {
     const {previous, next, children, springSettings} = this.props
     const springStyle = {
       time: spring(previous || next ? 1 : 0, {
-        stiffness: 100,
-        damping: 20,
+        //stiffness: 100,
+        //damping: 20,
         ...springSettings
       })
     }

@@ -4,7 +4,7 @@ import uuid from 'uuid/v4'
 import styled from 'styled-components'
 import Slide from '@dekk/slide'
 import Notes from '@dekk/speaker-notes'
-import Fragment from '@dekk/fragment'
+import Fragment, {FragmentRoot} from '@dekk/fragment'
 import Warning from './warning'
 import {Slot, Static} from './components'
 
@@ -20,13 +20,19 @@ const invalid = (child, index, itemProps) => (
   />
 )
 
+const missing = (name, index, itemProps) => (
+  <div key={`slot__${i}`} data-slot={name}>
+    <Warning {...itemProps} missing />
+  </div>
+)
+
 const onlyOrWarning = (only, child, index, itemProps) => {
   // Check if child is allowed
   if (only.includes(child.type)) {
     return child
   }
   // in case the child is a fragment, check all child elements
-  if (child.type === Fragment) {
+  if (child.type === Fragment || child.type === FragmentRoot) {
     return cloneElement(child, {
       children: Children.toArray(child.props.children).map(child =>
         onlyOrWarning(only, child)
@@ -37,7 +43,7 @@ const onlyOrWarning = (only, child, index, itemProps) => {
 }
 
 const notOrWarning = (not, child, index, itemProps) => {
-  if (child.type === Fragment) {
+  if (child.type === Fragment || child.type === FragmentRoot) {
     return cloneElement(child, {
       children: Children.toArray(child.props.children).map(child =>
         notOrWarning(only, child)
@@ -51,14 +57,8 @@ const notOrWarning = (not, child, index, itemProps) => {
 }
 
 class Master extends Component {
-  getChildContext() {
-    return {
-      fragmentHost: this.props.pageIndex
-    }
-  }
-
   render() {
-    const {children, content, pageIndex, fragmentIndex, current} = this.props
+    const {children, content} = this.props
     // All `Slot` instances
     const slots = Children.toArray(children).filter(
       child => child.type === Slot
@@ -92,11 +92,7 @@ class Master extends Component {
 
         if (index < 0) {
           if (required) {
-            return (
-              <div key={`slot__${i}`} data-slot={name}>
-                <Warning {...item.props} missing />
-              </div>
-            )
+            return missing(name, i, item.props)
           }
           return null
         }
@@ -125,13 +121,10 @@ class Master extends Component {
       })
       .filter(x => Boolean(x))
 
-    const title = null
-
     return (
       <Slide {...this.props}>
         {filledStatics}
         {filledSlots}
-        {title}
       </Slide>
     )
   }
@@ -150,18 +143,7 @@ Master.propTypes = {
     })
     return error
   },
-  content: PropTypes.node,
-  pageIndex: PropTypes.number,
-  fragmentIndex: PropTypes.number,
-  current: PropTypes.bool
-}
-
-Master.contextTypes = {
-  store: PropTypes.object.isRequired
-}
-
-Master.childContextTypes = {
-  fragmentHost: PropTypes.number
+  content: PropTypes.node
 }
 
 export default Master

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Master from './master'
 import {Slot} from './components'
 
-export default function(master) {
+export default function create(master) {
   const {children, className} = master.props
   const Slide = props => {
     return (
