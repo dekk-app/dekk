@@ -4,6 +4,7 @@
 
 A presentation tool written in **react.js**.
 
+[Documentation](https://sinnerschrader.github.io/dekk/api/)
 
 ### Creating master slides
 
