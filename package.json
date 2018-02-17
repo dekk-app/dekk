@@ -14,7 +14,8 @@
     "clean": "lerna clean",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "develop": "npm-run-all --parallel babel:watch watch",
-    "docs": "esdoc",
+    "docgen": "esdoc",
+    "docs": "open docs/api/index.html",
     "format:js": "lerna run format:js",
     "test": "lerna run test",
     "watch": "webpack-dev-server"
