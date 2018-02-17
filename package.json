@@ -10,7 +10,7 @@
     "babel": "lerna run babel",
     "babel:watch": "lerna run babel:watch --parallel",
     "bootstrap": "lerna bootstrap",
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "clean": "lerna clean",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "develop": "npm-run-all --parallel babel:watch watch",
