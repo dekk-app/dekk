@@ -8,12 +8,13 @@ import StyledFragment from './fragment'
  * Class for fragment.
  * @public
  *
- * @class Fragment @reactProps {Object} props
+ * @class Fragment
+ * @param {Object} props
  *   The properties
- * @reactProps {(ReactElement|ReactElement[])} props.children
- * @reactProps {number} props.order
- * @reactProps {?Boolean} props.root
- * @reactProps {Object} context
+ * @param {(ReactElement|ReactElement[])} props.children
+ * @param {number} props.order
+ * @param {?Boolean} props.root
+ * @param {Object} context
  *   The context
  */
 export default class Fragment extends Component {
@@ -59,13 +60,13 @@ export default class Fragment extends Component {
 
   /**
    * Constructor
-   * @private
-   * @property {Object}                  props
+   * @public
+   * @param {Object}                  props
    *   The properties
-   * @property {(ReactNode|ReactNode[])} props.children
-   * @property {number}                  props.order
-   * @property {?Boolean}                props.root
-   * @property {Object}                  context
+   * @param {(ReactNode|ReactNode[])} props.children
+   * @param {number}                  props.order
+   * @param {?Boolean}                props.root
+   * @param {Object}                  context
    *   The context
    */
   constructor(props, context) {

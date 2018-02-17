@@ -33,7 +33,7 @@ class Image extends Component {
   }
   /**
    * Constructs the object.
-   * @private
+   * @public
    * @param {Object} props
    *   The properties
    * @param {String} props.alt

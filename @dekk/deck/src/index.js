@@ -83,7 +83,7 @@ export default class Deck extends Component {
 
   /**
    * Constructor
-   * @private
+   * @public
    * @param {Object} props
    *   The properties
    * @param {(Slide|Slide[])} props.children
