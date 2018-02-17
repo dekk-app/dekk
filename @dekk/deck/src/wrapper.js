@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Slide from '@dekk/slide'
 
 /**
  * Styled Wrapper Component. This component is used to wrap the slides.

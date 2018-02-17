@@ -1,6 +1,5 @@
 import React, {Component, Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
-import uuid from 'uuid/v4'
 import styled from 'styled-components'
 import Slide from '@dekk/slide'
 import Notes from '@dekk/speaker-notes'
