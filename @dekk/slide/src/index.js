@@ -10,22 +10,50 @@ import {Motion, spring} from 'react-motion'
  *
  */
 class Slide extends Component {
+  /**
+   * @private
+   */
   static get childContextTypes() {
     return {
       fragmentHost: PropTypes.number
     }
   }
+
+  /**
+   * @private
+   */
+  static get propTypes() {
+    return {
+      current: PropTypes.bool,
+      previous: PropTypes.bool,
+      next: PropTypes.bool,
+      toPrevious: PropTypes.bool,
+      fromPrevious: PropTypes.bool,
+      toNext: PropTypes.bool,
+      fromNext: PropTypes.bool,
+      className: PropTypes.string,
+      children: PropTypes.node,
+      springSettings: PropTypes.object,
+      background: PropTypes.string
+    }
+  }
+
+  /**
+   * @private
+   */
   getChildContext() {
     return {
       fragmentHost: this.props.pageIndex
     }
   }
+
+  /**
+   * @private
+   */
   render() {
     const {previous, next, children, springSettings} = this.props
     const springStyle = {
       time: spring(previous || next ? 1 : 0, {
-        //stiffness: 100,
-        //damping: 20,
         ...springSettings
       })
     }
@@ -57,6 +85,9 @@ class Slide extends Component {
   }
 }
 
+/**
+ * @private
+ */
 const SlideDirection = styled.div`
   ${props => {
     if (props.fromPrevious) {
@@ -99,6 +130,9 @@ const SlideDirection = styled.div`
   }} z-index: ${props => (props.current ? 1 : 0)};
 `
 
+/**
+ * @private
+ */
 const StyledSlide = styled(SlideDirection)`
   position: absolute;
   top: 0;
@@ -116,19 +150,5 @@ const StyledSlide = styled(SlideDirection)`
   background-size: cover;
   ${props => props.mixin || ''};
 `
-
-Slide.propTypes = {
-  current: PropTypes.bool,
-  previous: PropTypes.bool,
-  next: PropTypes.bool,
-  toPrevious: PropTypes.bool,
-  fromPrevious: PropTypes.bool,
-  toNext: PropTypes.bool,
-  fromNext: PropTypes.bool,
-  className: PropTypes.string,
-  children: PropTypes.node,
-  springSettings: PropTypes.object,
-  background: PropTypes.string
-}
 
 export default Slide

@@ -1,6 +1,9 @@
 import uuid from 'uuid/v4'
 import {observable} from 'mobx'
 
+/**
+ * @private
+ */
 export default class Store {
   id = uuid()
   @observable page = 0
@@ -20,29 +23,47 @@ export default class Store {
     this.previousFragment = this.previousFragment.bind(this)
   }
 
+  /**
+   * @private
+   */
   goToPage(n) {
     this.direction = n > this.page ? 1 : -1
     this.page = n
   }
 
+  /**
+   * @private
+   */
   nextPage() {
     this.goToPage(this.page + 1)
   }
 
+  /**
+   * @private
+   */
   previousPage() {
     this.goToPage(this.page - 1)
   }
 
+  /**
+   * @private
+   */
   goToFragment(n) {
     const m = this.fragmentHosts[this.page][n]
     this.fragment = m
     this.fragmentCount = n
   }
 
+  /**
+   * @private
+   */
   nextFragment() {
     this.goToFragment(this.fragmentCount + 1)
   }
 
+  /**
+   * @private
+   */
   previousFragment() {
     this.goToFragment(this.fragmentCount - 1)
   }

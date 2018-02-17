@@ -1,3 +1,6 @@
+/**
+ * @private
+ */
 export const getQueryParams = search => {
   const queryParams = {}
   search
