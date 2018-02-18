@@ -121,6 +121,8 @@ class Paging extends Component {
       default:
         break
     }
+
+    this.props.url(store.page, store.fragment)
   }
 
   /**

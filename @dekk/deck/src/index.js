@@ -5,6 +5,7 @@ import Paging from '@dekk/paging'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
 import Slide from '@dekk/slide'
+import {url} from '@dekk/url'
 import Wrapper from './wrapper'
 
 /**
@@ -60,6 +61,7 @@ export default class Deck extends Component {
    */
   static get propTypes() {
     return {
+      url: PropTypes.func,
       children: PropTypes.node.isRequired,
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       slave: PropTypes.bool
@@ -103,6 +105,14 @@ export default class Deck extends Component {
     return {
       store: this.store
     }
+  }
+
+  componentDidMount() {
+    // @TODO allow other formats too
+    const {hash = '#!/0/0'} = url()
+    const [, page = 0, fragment = 0] = hash.split('/')
+    this.store.goToPage(parseInt(page, 10))
+    this.store.goToFragment(parseInt(fragment, 10))
   }
 
   /**
@@ -163,6 +173,7 @@ export default class Deck extends Component {
     }
     return (
       <Paging
+        url={this.props.url}
         page={this.store.page}
         pages={this.props.children.length}
         trigger="keyup"
