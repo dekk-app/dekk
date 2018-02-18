@@ -1,6 +1,6 @@
 {
   "name": "@dekk/deck",
-  "version": "1.0.0-0",
+  "version": "1.0.0-1",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "@dekk/paging": "^1.0.0-0",
+    "@dekk/paging": "^1.0.0-1",
     "@dekk/slide": "^1.0.0-0",
     "@dekk/store": "^1.0.0-0",
     "@dekk/utils": "^1.0.0-0",
