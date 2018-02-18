@@ -19,6 +19,7 @@
     "format:js": "lerna run format:js",
     "test": "lerna run test",
     "watch": "webpack-dev-server",
+    "prepublish": "yarn babel",
     "publish": "lerna publish --conventional-commits"
   },
   "devDependencies": {
