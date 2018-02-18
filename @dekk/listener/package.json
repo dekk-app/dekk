@@ -1,6 +1,6 @@
 {
   "name": "@dekk/listener",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "main": "lib/index.js",
