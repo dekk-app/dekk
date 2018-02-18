@@ -11,13 +11,28 @@ export const writeHash = (page = 0, fragment = 0) => {
 /**
  * @private
  */
+export const writeQuery = (page = 0, fragment = 0, old = '') => {
+  const oldQuery = window.location.search
+    .split(/[\?&]/)
+    .filter(x => x !== '' && !x.match(/(page|fragment)/))
+    .join('&')
+  history.pushState(
+    {page, fragment},
+    `page ${page}, fragment ${fragment}`,
+    `?page=${page}&fragment=${fragment}${oldQuery ? `&${oldQuery}` : ''}`
+  )
+}
+
+/**
+ * @private
+ */
 class Url extends Component {
   /**
    * @private
    */
   static get propTypes() {
     return {
-      type: PropTypes.oneOf(['hash', 'query', 'route']),
+      type: PropTypes.oneOf(['hash', 'query']),
       page: PropTypes.number,
       fragmentCount: PropTypes.number
     }
@@ -47,10 +62,16 @@ class Url extends Component {
 
   /**
    * @private
-   * @todo implement route and query
    */
   componentDidMount() {
-    const {hash = ''} = new URL(window.location.href)
+    this[this.props.type](window.location.href)
+  }
+
+  /**
+   * @private
+   */
+  hash(url) {
+    const {hash = ''} = new URL(url)
     const [, page = 0, fragment = 0] = hash.split('/')
     this.context.store.goToPage(parseInt(page, 10))
     this.context.store.goToFragment(parseInt(fragment, 10))
@@ -59,8 +80,31 @@ class Url extends Component {
   /**
    * @private
    */
+  query(url) {
+    const {search = ''} = new URL(url)
+    const parts = search.split(/[\?&]/).filter(Boolean)
+    const {page = 0, fragment = 0} = parts.reduce((a, b) => {
+      const [key, value] = b.split('=')
+      return {...a, [key]: value}
+    }, {})
+    this.context.store.goToPage(parseInt(page, 10))
+    this.context.store.goToFragment(parseInt(fragment, 10))
+  }
+
+  /**
+   * @private
+   */
   componentWillReceiveProps({page, fragmentCount}) {
-    writeHash(page, fragmentCount)
+    switch (this.props.type) {
+      case 'hash':
+        writeHash(page, fragmentCount)
+        break
+      case 'query':
+        writeQuery(page, fragmentCount)
+        break
+      default:
+        break
+    }
   }
 
   /**

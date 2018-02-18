@@ -11,13 +11,13 @@ import Wrapper from './wrapper'
 
 export const Config = () => null
 Config.propTypes = {
+  present: PropTypes.oneOf([true]),
   paging: PropTypes.oneOf([false]),
   listeners: PropTypes.shape({
     onFragement: PropTypes.func,
     onPage: PropTypes.func
   }),
-  paging: PropTypes.oneOf([false]),
-  url: PropTypes.oneOf(['hash', 'route', 'query'])
+  url: PropTypes.oneOf(['hash', 'query'])
 }
 /**
  * A wrapper around the slides. It includes a paging component to allow
@@ -45,8 +45,7 @@ Config.propTypes = {
  *  color: #fff;
  * `
  * const App = ({slave}) => (
- *   <Dekk slave={slave}
- *         mixin={appStyles}>
+ *   <Dekk mixin={appStyles}>
  *     <Slide>1</Slide>
  *     <Slide>2</Slide>
  *     <Slide>3</Slide>
@@ -73,8 +72,7 @@ export default class Deck extends Component {
   static get propTypes() {
     return {
       children: PropTypes.node.isRequired,
-      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-      slave: PropTypes.bool
+      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
     }
   }
 
@@ -180,10 +178,6 @@ export default class Deck extends Component {
    *   The `<Paging/>` component
    */
   get paging() {
-    // Don't allow navigation on slave decks
-    if (this.props.slave) {
-      return false
-    }
     return (
       this.config.paging !== false && (
         <Paging
