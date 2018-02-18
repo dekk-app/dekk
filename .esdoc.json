@@ -79,7 +79,8 @@
             "./.manual/usage.md",
             "./.manual/configuration.md",
             "./.manual/examples.md",
-            "./.manual/advanced.md"
+            "./.manual/advanced.md",
+            "./CHANGELOG.md"
           ]
         }
       }
