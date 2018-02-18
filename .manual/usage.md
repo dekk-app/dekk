@@ -101,18 +101,8 @@ You can use fragment roots to ensure that parent fragments are activated before 
 
 **How does it behave under the hood?**  
 
-Take a fragment root with the order `4`.
-A nested fragment with the order `5` is now handled as `9`
-
-**Example below in detail**
-
-* 1: The first fragment to be activated
-* 6: The third fragment to be activated (with 5 -> 1)
-* 7: The fourth fragment to be activated
-* root 5: The second fragment to be activated
-  * 1 (6): The third fragment to be activated (with 6)
-  * 4 (9): The last fragment to be activated
-    4 + 5(root) = 9
+In a fragment root with the order `4`, a nested fragment with the
+order `5` is now handled as `9` (`5 + 4`)
 
 **Resulting order**
 
@@ -151,6 +141,106 @@ export default (
       <Fragment order={4}> 4 + 5 = 9 </Fragment>
     </Fragment>
   </Slide>
+)
+```
+
+
+## Adding Config
+
+To configure your Deck you can use the Config component. This allows you
+to choose the type of URLs Dekk writes or add listeners as well as disable
+paging
+
+### Default values
+
+* `paging`: `true`
+* `url`: `undefined`
+* `listeners`: `undefined`
+
+```jsx
+import React from 'react'
+import Deck, {Config} from '@dekk/deck'
+import Slide from '@dekk/slide'
+
+const listeners = {
+  onPage: page => {
+    console.log(page)
+  },
+  onFragment: (page, fragmentIndex, fragmentOrder) => {
+    console.log(page, fragmentIndex, fragmentOrder) // eg. 0 1 12
+  } 
+}
+
+export default (
+  <Deck>
+    <Config paging={false} url='hash' listeners={listeners}/>
+    <Slide> 1 </Slide>
+    <Slide> 2 </Slide>
+    <Slide> 3 </Slide>
+  </Deck>
+)
+```
+
+### Adding listeners
+
+* `onPage(page: number)`
+* `onFragment(page: number, fragmentIndex: number, fragmentOrder: number)`
+
+```jsx
+import React from 'react'
+import Deck, {Config} from '@dekk/deck'
+import Slide from '@dekk/slide'
+
+const listeners = {
+  onPage(page) {
+    console.log(page)
+  },
+  onFragment(page, fragmentIndex, fragmentOrder) {
+    console.log(page, fragmentIndex, fragmentOrder)
+  } 
+}
+
+export default (
+  <Deck>
+    <Config listeners={listeners}/>
+    <Slide> 1 </Slide>
+    <Slide> 2 </Slide>
+    <Slide> 3 </Slide>
+  </Deck>
+)
+```
+
+### Adding URLs
+
+```jsx
+import React from 'react'
+import Deck, {Config} from '@dekk/deck'
+import Slide from '@dekk/slide'
+
+export default (
+  <Deck>
+    <Config url='hash'/>
+    <Slide> 1 </Slide>
+    <Slide> 2 </Slide>
+    <Slide> 3 </Slide>
+  </Deck>
+)
+```
+
+### Disable paging
+
+```jsx
+import React from 'react'
+import Deck, {Config} from '@dekk/deck'
+import Slide from '@dekk/slide'
+
+export default (
+  <Deck>
+    <Config paging={false}/>
+    <Slide> 1 </Slide>
+    <Slide> 2 </Slide>
+    <Slide> 3 </Slide>
+  </Deck>
 )
 ```
 
