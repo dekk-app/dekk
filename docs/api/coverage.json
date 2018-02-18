@@ -1,12 +1,17 @@
 {
-  "coverage": "88.5%",
-  "expectCount": 87,
-  "actualCount": 77,
+  "coverage": "85.84%",
+  "expectCount": 106,
+  "actualCount": 91,
   "files": {
     "@dekk/deck/src/index.js": {
-      "expectCount": 9,
-      "actualCount": 9,
-      "undocumentLines": []
+      "expectCount": 14,
+      "actualCount": 10,
+      "undocumentLines": [
+        12,
+        57,
+        119,
+        126
+      ]
     },
     "@dekk/deck/src/wrapper.js": {
       "expectCount": 1,
@@ -28,6 +33,13 @@
       "actualCount": 10,
       "undocumentLines": [
         132
+      ]
+    },
+    "@dekk/listener/src/index.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        4
       ]
     },
     "@dekk/master/src/components.js": {
@@ -119,6 +131,11 @@
     "@dekk/text/src/uppercase.js": {
       "expectCount": 1,
       "actualCount": 1,
+      "undocumentLines": []
+    },
+    "@dekk/url/src/index.js": {
+      "expectCount": 8,
+      "actualCount": 8,
       "undocumentLines": []
     },
     "@dekk/utils/src/query-params.js": {

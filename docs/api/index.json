@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "@dekk/deck/src/index.js",
-    "content": "import React, {Component, Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport {observer} from 'mobx-react'\nimport Paging from '@dekk/paging'\nimport {range} from '@dekk/utils'\nimport Store from '@dekk/store'\nimport Slide from '@dekk/slide'\nimport Wrapper from './wrapper'\n\n/**\n * A wrapper around the slides. It includes a paging component to allow\n * navigating the slides and fragments.\n *\n * `<Deck/>` renders 3 slides (previous, current, next) to allow various\n * transitions.\n *\n * The internal store is handled by mobX. {@link https://github.com/mobxjs/}\n *\n * @class Deck\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(Slide|Slide[])} props.children\n * @reactProps {?String} props.mixin\n * @reactProps {?Boolean} props.slave\n *\n * @example\n * import React from 'react'\n * import Deck from '@dekk/deck'\n * import Slide from '@dekk/slide'\n *\n * const appStyles = `\n *  background: #000;\n *  color: #fff;\n * `\n * const App = ({slave}) => (\n *   <Dekk slave={slave}\n *         mixin={appStyles}>\n *     <Slide>1</Slide>\n *     <Slide>2</Slide>\n *     <Slide>3</Slide>\n *   </Dekk>\n * )\n */\n@observer\nexport default class Deck extends Component {\n  /**\n   * Store.\n   * It handles paging and fragment navigation\n   * @private\n   */\n  store = new Store({\n    page: 0,\n    fragmentHosts: []\n  })\n\n  /**\n   * @private\n   * @return {{children: (Slide|Slide[]), mixin: ?String, slave: ?Boolean}}\n   *   Allowed propTypes for `<Deck/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      slave: PropTypes.bool\n    }\n  }\n\n  /**\n   * Sends context to decendants.\n   * Includes the app store to allow all deck components to access the store\n   * without having to include its own logic.\n   * @private\n   * @return {{store: Object, fragmentHost: number}}\n   *   The `store` and the `fragmentHost`\n   */\n  static get childContextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {(Slide|Slide[])} props.children\n   * @param {?String} props.mixin\n   * @param {?Boolean} props.slave\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   * @return {{store: store}}\n   *   The child context.\n   */\n  getChildContext() {\n    return {\n      store: this.store\n    }\n  }\n\n  /**\n   * Get the `children` by a range of `+-1` around the current slide.\n   * It renders a maximum of 3 slides (previous, current, next)\n   * This allows various transitions between slides.\n   *\n   * @private\n   * @return {Array<Slide>} returns an array of max 3 slides\n   */\n  get slides() {\n    const {children} = this.props\n    const {page, direction, fragment, fragmentHosts} = this.store\n    Children.toArray(children).forEach((child, index) => {\n      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []\n    })\n    return (\n      Children\n        // Assign the original index for the Component\n        .map(children, (child, originalIndex) => ({child, originalIndex}))\n        // Filter by a range of `+-1`\n        // Filter first to reduce the number of clones\n        .filter((c, i) => range(i, page + 1, page - 1))\n        // Modify the remaining slides (maximum of 3)\n        .map(({child, originalIndex}) => {\n          const {length = 0} = this.store.fragmentHosts[originalIndex]\n          const current = page === originalIndex\n          const previous = page === originalIndex + 1\n          const next = page === originalIndex - 1\n\n          // Clone the element to add the logic\n          return cloneElement(child, {\n            key: `slide_${originalIndex}`,\n            fragmentIndex: current ? fragment : previous ? length : 0,\n            pageIndex: originalIndex,\n            current,\n            previous,\n            next,\n            fromPrevious: current && direction === -1,\n            fromNext: current && direction === 1,\n            toPrevious: previous && direction === 1,\n            toNext: next && direction === -1,\n            direction: direction\n          })\n        })\n    )\n  }\n\n  /**\n   * @private\n   * @return {Paging}\n   *   The `<Paging/>` component\n   */\n  get paging() {\n    // Don't allow navigation on slave decks\n    if (this.props.slave) {\n      return false\n    }\n    return (\n      <Paging\n        page={this.store.page}\n        pages={this.props.children.length}\n        trigger=\"keyup\"\n      />\n    )\n  }\n\n  /**\n   * @private\n   * @return {Wrapper}\n   *   The entire Deck including paging logic inside a Wrapper\n   */\n  render() {\n    return (\n      <Wrapper mixin={this.props.mixin}>\n        {this.paging}\n        {this.slides}\n      </Wrapper>\n    )\n  }\n}\n",
+    "content": "import React, {Component, Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport {observer} from 'mobx-react'\nimport Paging from '@dekk/paging'\nimport {range} from '@dekk/utils'\nimport Store from '@dekk/store'\nimport Slide from '@dekk/slide'\nimport Url from '@dekk/url'\nimport Listener from '@dekk/listener'\nimport Wrapper from './wrapper'\n\nexport const Config = () => null\nConfig.propTypes = {\n  paging: PropTypes.oneOf([false]),\n  listeners: PropTypes.shape({\n    onFragement: PropTypes.func,\n    onPage: PropTypes.func\n  }),\n  paging: PropTypes.oneOf([false]),\n  url: PropTypes.oneOf(['hash', 'route', 'query'])\n}\n/**\n * A wrapper around the slides. It includes a paging component to allow\n * navigating the slides and fragments.\n *\n * `<Deck/>` renders 3 slides (previous, current, next) to allow various\n * transitions.\n *\n * The internal store is handled by mobX. {@link https://github.com/mobxjs/}\n *\n * @class Deck\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(Slide|Slide[])} props.children\n * @reactProps {?String} props.mixin\n * @reactProps {?Boolean} props.slave\n *\n * @example\n * import React from 'react'\n * import Deck from '@dekk/deck'\n * import Slide from '@dekk/slide'\n *\n * const appStyles = `\n *  background: #000;\n *  color: #fff;\n * `\n * const App = ({slave}) => (\n *   <Dekk slave={slave}\n *         mixin={appStyles}>\n *     <Slide>1</Slide>\n *     <Slide>2</Slide>\n *     <Slide>3</Slide>\n *   </Dekk>\n * )\n */\n@observer\nexport default class Deck extends Component {\n  /**\n   * Store.\n   * It handles paging and fragment navigation\n   * @private\n   */\n  store = new Store({\n    page: 0,\n    fragmentHosts: []\n  })\n\n  /**\n   * @private\n   * @return {{children: (Slide|Slide[]), mixin: ?String, slave: ?Boolean}}\n   *   Allowed propTypes for `<Deck/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      slave: PropTypes.bool\n    }\n  }\n\n  /**\n   * Sends context to decendants.\n   * Includes the app store to allow all deck components to access the store\n   * without having to include its own logic.\n   * @private\n   * @return {{store: Object, fragmentHost: number}}\n   *   The `store` and the `fragmentHost`\n   */\n  static get childContextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {(Slide|Slide[]|Config|Config[])} props.children\n   * @param {?String} props.mixin\n   * @param {?Boolean} props.slave\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   * @return {{store: store}}\n   *   The child context.\n   */\n  getChildContext() {\n    return {\n      store: this.store\n    }\n  }\n  get config() {\n    return (\n      Children.toArray(this.props.children).filter(\n        child => child.type === Config\n      )[0] || {}\n    ).props\n  }\n  get slides() {\n    return Children.toArray(this.props.children).filter(\n      child => child.type !== Config\n    )\n  }\n  /**\n   * Get the `children` by a range of `+-1` around the current slide.\n   * It renders a maximum of 3 slides (previous, current, next)\n   * This allows various transitions between slides.\n   *\n   * @private\n   * @return {Array<Slide>} returns an array of max 3 slides\n   */\n  get visibleSlides() {\n    const {children} = this.props\n    const {page, direction, fragment, fragmentHosts} = this.store\n    this.slides.forEach((child, index) => {\n      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []\n    })\n    return (\n      this.slides\n        // Assign the original index for the Component\n        .map((child, originalIndex) => ({child, originalIndex}))\n        // Filter by a range of `+-1`\n        // Filter first to reduce the number of clones\n        .filter((c, i) => range(i, page + 1, page - 1))\n        // Modify the remaining slides (maximum of 3)\n        .map(({child, originalIndex}) => {\n          const {length = 0} = this.store.fragmentHosts[originalIndex]\n          const current = page === originalIndex\n          const previous = page === originalIndex + 1\n          const next = page === originalIndex - 1\n\n          // Clone the element to add the logic\n          return cloneElement(child, {\n            key: `slide_${originalIndex}`,\n            fragmentIndex: current ? fragment : previous ? length : 0,\n            pageIndex: originalIndex,\n            current,\n            previous,\n            next,\n            fromPrevious: current && direction === -1,\n            fromNext: current && direction === 1,\n            toPrevious: previous && direction === 1,\n            toNext: next && direction === -1,\n            direction: direction\n          })\n        })\n    )\n  }\n\n  /**\n   * @private\n   * @return {Paging}\n   *   The `<Paging/>` component\n   */\n  get paging() {\n    // Don't allow navigation on slave decks\n    if (this.props.slave) {\n      return false\n    }\n    return (\n      this.config.paging !== false && (\n        <Paging\n          page={this.store.page}\n          pages={this.slides.length}\n          trigger=\"keyup\"\n        />\n      )\n    )\n  }\n\n  /**\n   * @private\n   * @return {Url}\n   *   The `<Url/>` component\n   */\n  get url() {\n    return (\n      this.config.url && (\n        <Url\n          type={this.config.url}\n          page={this.store.page}\n          fragmentCount={this.store.fragmentCount}\n        />\n      )\n    )\n  }\n\n  /**\n   * @private\n   * @return {Listener}\n   *   The `<Listener/>` component\n   */\n  get listeners() {\n    return (\n      this.config.listeners && (\n        <Listener\n          page={this.store.page}\n          fragmentCount={this.store.fragmentCount}\n          fragment={this.store.fragment}\n          onPage={this.config.listeners.onPage}\n          onFragment={this.config.listeners.onFragment}\n        />\n      )\n    )\n  }\n\n  /**\n   * @private\n   * @return {Wrapper}\n   *   The entire Deck including paging logic inside a Wrapper\n   */\n  render() {\n    return (\n      <Wrapper mixin={this.props.mixin}>\n        {this.paging}\n        {this.url}\n        {this.listeners}\n        {this.visibleSlides}\n      </Wrapper>\n    )\n  }\n}\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/deck/src/index.js",
     "access": "public",
@@ -576,6 +576,25 @@
   },
   {
     "__docId__": 49,
+    "kind": "function",
+    "name": "Config",
+    "memberof": "@dekk/deck/src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "@dekk/deck/src/index.js~Config",
+    "access": "public",
+    "export": true,
+    "importPath": "@dekk/deck",
+    "importStyle": "{Config}",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 50,
     "kind": "class",
     "name": "Deck",
     "memberof": "@dekk/deck/src/index.js",
@@ -585,33 +604,9 @@
     "export": true,
     "importPath": "@dekk/deck",
     "importStyle": "Deck",
-    "description": "A wrapper around the slides. It includes a paging component to allow\nnavigating the slides and fragments.\n\n`<Deck/>` renders 3 slides (previous, current, next) to allow various\ntransitions.\n\nThe internal store is handled by mobX. {@link https://github.com/mobxjs/}",
-    "examples": [
-      "import React from 'react'\nimport Deck from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nconst appStyles = `\n background: #000;\n color: #fff;\n`\nconst App = ({slave}) => (\n  <Dekk slave={slave}\n        mixin={appStyles}>\n    <Slide>1</Slide>\n    <Slide>2</Slide>\n    <Slide>3</Slide>\n  </Dekk>\n)"
-    ],
-    "lineNumber": 45,
-    "unknown": [
-      {
-        "tagName": "@class",
-        "tagValue": "Deck"
-      },
-      {
-        "tagName": "@reactProps",
-        "tagValue": "{Object} props\n  The properties"
-      },
-      {
-        "tagName": "@reactProps",
-        "tagValue": "{(Slide|Slide[])} props.children"
-      },
-      {
-        "tagName": "@reactProps",
-        "tagValue": "{?String} props.mixin"
-      },
-      {
-        "tagName": "@reactProps",
-        "tagValue": "{?Boolean} props.slave"
-      }
-    ],
+    "description": null,
+    "lineNumber": 57,
+    "undocument": true,
     "decorators": [
       {
         "name": "observer",
@@ -624,7 +619,7 @@
     ]
   },
   {
-    "__docId__": 50,
+    "__docId__": 51,
     "kind": "member",
     "name": "store",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -632,7 +627,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#store",
     "access": "private",
     "description": "Store.\nIt handles paging and fragment navigation",
-    "lineNumber": 51,
+    "lineNumber": 63,
     "ignore": true,
     "type": {
       "types": [
@@ -641,7 +636,7 @@
     }
   },
   {
-    "__docId__": 51,
+    "__docId__": 52,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -651,7 +646,7 @@
     "longname": "@dekk/deck/src/index.js~Deck.propTypes",
     "access": "private",
     "description": "",
-    "lineNumber": 61,
+    "lineNumber": 73,
     "return": {
       "nullable": null,
       "types": [
@@ -668,7 +663,7 @@
     }
   },
   {
-    "__docId__": 52,
+    "__docId__": 53,
     "kind": "get",
     "name": "childContextTypes",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -678,7 +673,7 @@
     "longname": "@dekk/deck/src/index.js~Deck.childContextTypes",
     "access": "private",
     "description": "Sends context to decendants.\nIncludes the app store to allow all deck components to access the store\nwithout having to include its own logic.",
-    "lineNumber": 77,
+    "lineNumber": 89,
     "return": {
       "nullable": null,
       "types": [
@@ -695,7 +690,7 @@
     }
   },
   {
-    "__docId__": 53,
+    "__docId__": 54,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -705,7 +700,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#constructor",
     "access": "public",
     "description": "Constructor",
-    "lineNumber": 93,
+    "lineNumber": 105,
     "params": [
       {
         "nullable": null,
@@ -721,7 +716,9 @@
         "nullable": null,
         "types": [
           "Slide",
-          "Slide[]"
+          "Slide[]",
+          "Config",
+          "Config[]"
         ],
         "spread": false,
         "optional": false,
@@ -751,7 +748,7 @@
     ]
   },
   {
-    "__docId__": 54,
+    "__docId__": 55,
     "kind": "method",
     "name": "getChildContext",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -761,7 +758,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#getChildContext",
     "access": "private",
     "description": "",
-    "lineNumber": 102,
+    "lineNumber": 114,
     "return": {
       "nullable": null,
       "types": [
@@ -774,7 +771,26 @@
     "params": []
   },
   {
-    "__docId__": 55,
+    "__docId__": 56,
+    "kind": "get",
+    "name": "config",
+    "memberof": "@dekk/deck/src/index.js~Deck",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/deck/src/index.js~Deck#config",
+    "access": "public",
+    "description": null,
+    "lineNumber": 119,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
     "kind": "get",
     "name": "slides",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -782,9 +798,28 @@
     "async": false,
     "static": false,
     "longname": "@dekk/deck/src/index.js~Deck#slides",
+    "access": "public",
+    "description": null,
+    "lineNumber": 126,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "get",
+    "name": "visibleSlides",
+    "memberof": "@dekk/deck/src/index.js~Deck",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/deck/src/index.js~Deck#visibleSlides",
     "access": "private",
     "description": "Get the `children` by a range of `+-1` around the current slide.\nIt renders a maximum of 3 slides (previous, current, next)\nThis allows various transitions between slides.",
-    "lineNumber": 116,
+    "lineNumber": 139,
     "return": {
       "nullable": null,
       "types": [
@@ -801,7 +836,7 @@
     }
   },
   {
-    "__docId__": 56,
+    "__docId__": 59,
     "kind": "get",
     "name": "paging",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -811,7 +846,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#paging",
     "access": "private",
     "description": "",
-    "lineNumber": 159,
+    "lineNumber": 182,
     "return": {
       "nullable": null,
       "types": [
@@ -828,7 +863,61 @@
     }
   },
   {
-    "__docId__": 57,
+    "__docId__": 60,
+    "kind": "get",
+    "name": "url",
+    "memberof": "@dekk/deck/src/index.js~Deck",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/deck/src/index.js~Deck#url",
+    "access": "private",
+    "description": "",
+    "lineNumber": 203,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Url"
+      ],
+      "spread": false,
+      "description": "The `<Url/>` component"
+    },
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "get",
+    "name": "listeners",
+    "memberof": "@dekk/deck/src/index.js~Deck",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/deck/src/index.js~Deck#listeners",
+    "access": "private",
+    "description": "",
+    "lineNumber": 220,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Listener"
+      ],
+      "spread": false,
+      "description": "The `<Listener/>` component"
+    },
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -838,7 +927,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#render",
     "access": "private",
     "description": "",
-    "lineNumber": 178,
+    "lineNumber": 239,
     "return": {
       "nullable": null,
       "types": [
@@ -851,7 +940,7 @@
     "params": []
   },
   {
-    "__docId__": 58,
+    "__docId__": 63,
     "kind": "file",
     "name": "@dekk/deck/src/wrapper.js",
     "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * Styled Wrapper Component. This component is used to wrap the slides.\n * It is private but allows modification by passing a mixin to `<Deck/>`\n * @private\n * @type {StyledComponent}\n * @property {{mixin: ?String, children: Array<Deck.slides,Deck.paging>}} props\n *   A mixin to allow extending Deck's style.\n *\n *   Required Styles are declared as `!important`\n *\n *   **The following properties are locked:**\n *\n *   * `position`\n *   * `top`\n *   * `right`\n *   * `bottom`\n *   * `left`\n *   * `overflow`\n *\n *   In rare cases when these need to be modified an `!important` declaration\n *   is required.\n *   A mixin can be any valid set of CSS rules.\n *\n *   Syntax features are as defined\n *   by styled-components {@link https://www.styled-components.com/docs}\n *\n *   @example\n *   // This private Component shoulld only be used by Decck itself\n *   // It is used as follows\n *   return (\n *     <Wrapper mixin={this.props.mixin}>\n *       {this.paging}\n *       {this.slides}\n *     </Wrapper>\n *   )\n */\nconst Wrapper = styled.div`\n  position: absolute !important;\n  top: 0 !important;\n  right: 0 !important;\n  bottom: 0 !important;\n  left: 0 !important;\n  overflow: hidden !important;\n  ${props => props.mixin || ''};\n`\n\n/**\n * Display name for `<Wrapper/>`\n * @private\n * @type {String}\n */\nWrapper.displayName = 'Wapper'\n\n/**\n * Allowed propTypes for `<Wrapper/>`\n * @private\n * @param {Array<Deck.slides,Deck.paging>} children\n * @param {String} mixin\n * @type {Object}\n */\nWrapper.propTypes = {\n  children: PropTypes.node,\n  mixin: PropTypes.string\n}\n\nexport default Wrapper\n",
@@ -862,7 +951,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 59,
+    "__docId__": 64,
     "kind": "variable",
     "name": "Wrapper",
     "memberof": "@dekk/deck/src/wrapper.js",
@@ -900,7 +989,7 @@
     "ignore": true
   },
   {
-    "__docId__": 60,
+    "__docId__": 65,
     "kind": "file",
     "name": "@dekk/fragment/src/fragment.js",
     "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * Styled version of the Fragment component\n * @see Fragment\n * @private\n * @type {StyledComponent}\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(ReactNode|ReactNode[])} children\n * @reactProps {?Boolean} active\n * @reactProps {?string} animation\n */\nconst StyledFragment = styled.span`\n  display: inline-block;\n  white-space: pre-wrap;\n  width: inherit;\n  ${props =>\n    props.animation ||\n    `\n      opacity: ${props.active ? 1 : 0}\n  `};\n`\n\n/**\n * @private\n * @type {String}\n */\nStyledFragment.displayName = 'StyledFragment'\n\n/**\n * @private\n * @type {Object}\n * @prop {(ReactNode|ReactNode[])} children\n * @prop {?Boolean} active\n * @prop {?(String|Array)} animation\n */\nStyledFragment.propTypes = {\n  children: PropTypes.node,\n  active: PropTypes.bool,\n  animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string])\n}\n\nexport default StyledFragment\n",
@@ -911,7 +1000,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 61,
+    "__docId__": 66,
     "kind": "variable",
     "name": "StyledFragment",
     "memberof": "@dekk/fragment/src/fragment.js",
@@ -955,7 +1044,7 @@
     "ignore": true
   },
   {
-    "__docId__": 62,
+    "__docId__": 67,
     "kind": "file",
     "name": "@dekk/fragment/src/index.js",
     "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nimport StyledFragment from './fragment'\n\n/**\n * Class for fragment.\n * @public\n *\n * @class Fragment\n * @param {Object} props\n *   The properties\n * @param {(ReactElement|ReactElement[])} props.children\n * @param {number} props.order\n * @param {?Boolean} props.root\n * @param {Object} context\n *   The context\n */\nexport default class Fragment extends Component {\n  /**\n   * @private\n   * @return {{children: (ReactElement|ReactElement[]), animation: ?(String|Array), order: ?number}}\n   *   Allowed propTypes for `<Fragment/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      order: PropTypes.number.isRequired\n    }\n  }\n\n  /**\n   * Get contextTypes\n   * @private\n   *\n   * @return {{store: store, fragmentHost: number, hostedFragment: number}}\n   */\n  static get contextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number,\n      hostedFragment: PropTypes.number\n    }\n  }\n\n  /**\n   * Sends context to decendants. Includes the app store to allow all deck\n   * components to access the store without having to include its own logic.\n   * @private\n   *\n   * @return {{hostedFragment: number}}\n   */\n  static get childContextTypes() {\n    return {\n      hostedFragment: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object}                  props\n   *   The properties\n   * @param {(ReactNode|ReactNode[])} props.children\n   * @param {number}                  props.order\n   * @param {?Boolean}                props.root\n   * @param {Object}                  context\n   *   The context\n   */\n  constructor(props, context) {\n    super(props, context)\n  }\n\n  /**\n   * Gets the child context.\n   * @private\n   * @return {{hostedFragment: number}}\n   *   The child context.\n   */\n  getChildContext() {\n    return {\n      hostedFragment: this.props.root ? this.props.order : 0\n    }\n  }\n\n  /**\n   * Before the fragments are mounted we need to tell the application about\n   * their exitsance and behavior.\n   * @private\n   */\n  componentWillMount() {\n    const {order} = this.props\n    const {fragmentHost, store, hostedFragment = 0} = this.context\n    // Get the current host to allow extending it.\n    const host = store.fragmentHosts[fragmentHost] || []\n\n    // Handle root components. the root index is added to nested fragments\n    // to allow them to be rendered before or after their parent fragment\n    const fragmentOrder = order + hostedFragment\n\n    // Only add new indexes to the queue.\n    // Duplicate indexes will appear at the same time.\n    // Root components are respected by definition.\n    if (host.indexOf(fragmentOrder) < 0) {\n      host.push(fragmentOrder)\n    }\n\n    // If no fragment has been defined with `0` we need to add a position to\n    // our host\n    if (host.length && host.indexOf(0) < 0) {\n      host.push(0)\n    }\n    // Sort the fragment indexes and update the store\n    store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)\n  }\n\n  /**\n   * @private\n   * @return {number}\n   *   The number of fragment indexes (steps to next slide)\n   */\n  get length() {\n    return this.context.store.fragmentHosts[this.context.fragmentHost].length\n  }\n\n  /**\n   * @private\n   * @return {StyledFragment}\n   *   The fragment including the entire logic\n   */\n  render() {\n    const {order, children, animation} = this.props\n    const {fragmentHost, store, hostedFragment = 0} = this.context\n    // Define several flags to determine the acitve state\n    // of the fragment.\n    const isPrevious = fragmentHost < store.page\n    const isNext = fragmentHost > store.page\n    const fragmentOrder = order + hostedFragment\n    const isZero = fragmentOrder === 0\n    const isActivated = store.fragment >= fragmentOrder\n    const isActive = isPrevious || (isNext ? isZero : isActivated)\n    return (\n      <StyledFragment active={isActive} animation={animation}>\n        {children}\n      </StyledFragment>\n    )\n  }\n}\n\n/**\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n */\nexport const FragmentRoot = props => <Fragment {...props} root />\n",
@@ -966,7 +1055,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 63,
+    "__docId__": 68,
     "kind": "class",
     "name": "Fragment",
     "memberof": "@dekk/fragment/src/index.js",
@@ -1043,7 +1132,7 @@
     ]
   },
   {
-    "__docId__": 64,
+    "__docId__": 69,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1070,7 +1159,7 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 70,
     "kind": "get",
     "name": "contextTypes",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1097,7 +1186,7 @@
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 71,
     "kind": "get",
     "name": "childContextTypes",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1124,7 +1213,7 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 72,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1190,7 +1279,7 @@
     ]
   },
   {
-    "__docId__": 68,
+    "__docId__": 73,
     "kind": "method",
     "name": "getChildContext",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1213,7 +1302,7 @@
     "params": []
   },
   {
-    "__docId__": 69,
+    "__docId__": 74,
     "kind": "method",
     "name": "componentWillMount",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1229,7 +1318,7 @@
     "return": null
   },
   {
-    "__docId__": 70,
+    "__docId__": 75,
     "kind": "get",
     "name": "length",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1256,7 +1345,7 @@
     }
   },
   {
-    "__docId__": 71,
+    "__docId__": 76,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1279,7 +1368,7 @@
     "params": []
   },
   {
-    "__docId__": 72,
+    "__docId__": 77,
     "kind": "function",
     "name": "FragmentRoot",
     "memberof": "@dekk/fragment/src/index.js",
@@ -1332,7 +1421,7 @@
     ]
   },
   {
-    "__docId__": 73,
+    "__docId__": 78,
     "kind": "file",
     "name": "@dekk/image/src/index.js",
     "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled, {css} from 'styled-components'\n\n/**\n * Class for image.\n * It loads an image as a background-image. The original image is still\n * rendered for accessibility reasons.\n * @public\n * @class Image\n * @reactProps {Object} props\n *   The properties\n * @reactProps {String} props.alt\n * @reactProps {String} props.src\n * @reactProps {?String} props.title\n */\nclass Image extends Component {\n  /**\n   * @private\n   */\n  state = {}\n  /**\n   * @private\n   * @return {{alt: String, src: String, title: ?String}}\n   *   Allowed propTypes for `<Fragment/>`\n   */\n  static get propTypes() {\n    return {\n      alt: PropTypes.string.isRequired,\n      src: PropTypes.string.isRequired,\n      title: PropTypes.string\n    }\n  }\n  /**\n   * Constructs the object.\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {String} props.alt\n   * @param {String} props.src\n   * @param {?String} props.title\n   */\n  constructor(props) {\n    super(props)\n    this.getImage = this.getImage.bind(this)\n    this.handleLoad = this.handleLoad.bind(this)\n  }\n\n  /**\n   * Handles the load event of the image.\n   * @private\n   */\n  handleLoad() {\n    this.setState({\n      loaded: true,\n      height: this.image.height,\n      width: this.image.width\n    })\n  }\n\n  /**\n   * Additional CSS rules for the mask\n   * @private\n   * @return {String|Array}\n   */\n  get mixin() {\n    return css`\n      --height: ${this.state.height}px;\n      --width: ${this.state.width}px;\n      background-image: url(\"${this.props.src}\");\n    `\n  }\n\n  /**\n   * Assigns the image to `ref`.\n   * @private\n   * @param {ReactElement} el\n   */\n  getImage(el) {\n    /**\n     * @private\n     */\n    this.image = el\n  }\n\n  /**\n   * @private\n   * @return {Mask}\n   *   An image nested inside a mask\n   */\n  render() {\n    return (\n      <Mask mixin={this.mixin}>\n        <Img\n          ref={this.getImage}\n          src={this.props.src}\n          alt={this.props.alt}\n          title={this.props.title}\n          onLoad={this.handleLoad}\n        />\n      </Mask>\n    )\n  }\n}\n\n/**\n * The image mask\n * @private\n * @type {StyledComponent}\n */\nconst Mask = styled.div`\n  ${props => props.mixin || ''} background-size: cover;\n  width: var(--width);\n  height: var(--height);\n`\n\n/**\n * @private\n * @return {{mixin: ?(String|Array), children: (ReactElement|ReactElement[])}}\n *   Allowed propTypes for `<Mask/>`\n */\nMask.propTypes = {\n  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n  children: PropTypes.instanceOf(Img)\n}\n\n/**\n * Styled img\n * @private\n * @type {StyledComponent}\n */\nconst Img = styled.img`\n  ${props => (props.loaded ? 'display: none;' : '')};\n`\n\n/**\n * @private\n * @return {{loaded: Boolean, onLoad: Function, ref: Function, src: String, alt: String, title ?String)}}\n *   Allowed propTypes for `<Img/>`\n */\nImg.propTypes = {\n  loaded: PropTypes.boolean,\n  onLoad: PropTypes.func,\n  ref: PropTypes.func,\n  src: PropTypes.string.isRequired,\n  alt: PropTypes.string.isRequired,\n  title: PropTypes.string\n}\n\nexport default Image\n",
@@ -1343,7 +1432,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 74,
+    "__docId__": 79,
     "kind": "variable",
     "name": "Mask",
     "memberof": "@dekk/image/src/index.js",
@@ -1366,7 +1455,7 @@
     "ignore": true
   },
   {
-    "__docId__": 75,
+    "__docId__": 80,
     "kind": "variable",
     "name": "Img",
     "memberof": "@dekk/image/src/index.js",
@@ -1387,7 +1476,7 @@
     "ignore": true
   },
   {
-    "__docId__": 76,
+    "__docId__": 81,
     "kind": "class",
     "name": "Image",
     "memberof": "@dekk/image/src/index.js",
@@ -1427,7 +1516,7 @@
     ]
   },
   {
-    "__docId__": 77,
+    "__docId__": 82,
     "kind": "member",
     "name": "state",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1444,7 +1533,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 83,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1471,7 +1560,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 84,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1526,7 +1615,7 @@
     ]
   },
   {
-    "__docId__": 82,
+    "__docId__": 87,
     "kind": "method",
     "name": "handleLoad",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1542,7 +1631,7 @@
     "return": null
   },
   {
-    "__docId__": 83,
+    "__docId__": 88,
     "kind": "get",
     "name": "mixin",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1570,7 +1659,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 89,
     "kind": "method",
     "name": "getImage",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1597,7 +1686,7 @@
     "return": null
   },
   {
-    "__docId__": 85,
+    "__docId__": 90,
     "kind": "member",
     "name": "image",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1614,7 +1703,7 @@
     }
   },
   {
-    "__docId__": 86,
+    "__docId__": 91,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1637,7 +1726,150 @@
     "params": []
   },
   {
-    "__docId__": 87,
+    "__docId__": 92,
+    "kind": "file",
+    "name": "@dekk/listener/src/index.js",
+    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\n\nclass Listener extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      onPage: PropTypes.func,\n      onFragment: PropTypes.func\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get defaultProps() {\n    return {\n      onPage: () => null,\n      onFragment: () => null\n    }\n  }\n\n  /**\n   * @private\n   * @param {Object} props\n   *   The properties\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   */\n  componentWillReceiveProps({page, fragment, fragmentCount}) {\n    if (\n      this.props.fragmentCount !== fragmentCount &&\n      typeof fragment !== 'undefined'\n    ) {\n      this.props.onFragment(page, fragmentCount, fragment)\n    } else if (this.props.page !== page) {\n      this.props.onPage(page)\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\nexport default Listener\n",
+    "static": true,
+    "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/listener/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 93,
+    "kind": "class",
+    "name": "Listener",
+    "memberof": "@dekk/listener/src/index.js",
+    "static": true,
+    "longname": "@dekk/listener/src/index.js~Listener",
+    "access": "public",
+    "export": true,
+    "importPath": "@dekk/listener",
+    "importStyle": "Listener",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ]
+  },
+  {
+    "__docId__": 94,
+    "kind": "get",
+    "name": "propTypes",
+    "memberof": "@dekk/listener/src/index.js~Listener",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "@dekk/listener/src/index.js~Listener.propTypes",
+    "access": "private",
+    "description": "",
+    "lineNumber": 8,
+    "ignore": true,
+    "type": {
+      "types": [
+        "{\"onPage\": *, \"onFragment\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "get",
+    "name": "defaultProps",
+    "memberof": "@dekk/listener/src/index.js~Listener",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "@dekk/listener/src/index.js~Listener.defaultProps",
+    "access": "private",
+    "description": "",
+    "lineNumber": 18,
+    "ignore": true,
+    "type": {
+      "types": [
+        "{\"onPage\": *, \"onFragment\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "@dekk/listener/src/index.js~Listener",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/listener/src/index.js~Listener#constructor",
+    "access": "private",
+    "description": "",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "The properties"
+      }
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "method",
+    "name": "componentWillReceiveProps",
+    "memberof": "@dekk/listener/src/index.js~Listener",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/listener/src/index.js~Listener#componentWillReceiveProps",
+    "access": "private",
+    "description": "",
+    "lineNumber": 37,
+    "ignore": true,
+    "params": [
+      {
+        "name": "objectPattern",
+        "types": [
+          "{\"page\": *, \"fragment\": *, \"fragmentCount\": *}"
+        ],
+        "defaultRaw": {
+          "page": null,
+          "fragment": null,
+          "fragmentCount": null
+        },
+        "defaultValue": "{\"page\":null,\"fragment\":null,\"fragmentCount\":null}"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 98,
+    "kind": "method",
+    "name": "render",
+    "memberof": "@dekk/listener/src/index.js~Listener",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/listener/src/index.js~Listener#render",
+    "access": "private",
+    "description": "",
+    "lineNumber": 51,
+    "ignore": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
     "kind": "file",
     "name": "@dekk/master/src/components.js",
     "content": "/**\n * Helper function for Slot.\n * It can be used to define Master slides\n * @see function#static-function-create\n * @public\n * @return {null}\n */\nexport const Slot = () => null\n/**\n * Helper function for Static.\n * It can be used to define Master slides\n * @see function#static-function-create\n * @public\n * @return {null}\n */\nexport const Static = () => null\n/**\n * Helper function for Master.\n * It can be used to define Master slides\n * @see function#static-function-create\n * @public\n * @return {null}\n */\nexport const Master = () => null\n",
@@ -1648,7 +1880,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 88,
+    "__docId__": 100,
     "kind": "function",
     "name": "Slot",
     "memberof": "@dekk/master/src/components.js",
@@ -1676,7 +1908,7 @@
     "params": []
   },
   {
-    "__docId__": 89,
+    "__docId__": 101,
     "kind": "function",
     "name": "Static",
     "memberof": "@dekk/master/src/components.js",
@@ -1704,7 +1936,7 @@
     "params": []
   },
   {
-    "__docId__": 90,
+    "__docId__": 102,
     "kind": "function",
     "name": "Master",
     "memberof": "@dekk/master/src/components.js",
@@ -1732,7 +1964,7 @@
     "params": []
   },
   {
-    "__docId__": 91,
+    "__docId__": 103,
     "kind": "file",
     "name": "@dekk/master/src/create.js",
     "content": "import React, {Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport Master from './master'\nimport {Slot} from './components'\n\n/**\n * # createMaster\n * This is a helper function to create master slides.\n * A master slide is an already layouted slide with predefined slots.\n * \n * To create a master a wrapping component is used. While it does not\n * matter what this component is, Dekk already provides this for you.\n * Simply use `Master` from `./components`.\n * \n * The schildren are then parsed and cheked to ensure the slides have\n * the correct content. These checks are very simple and only define\n * which children should be used. \n * To ensure further safety you can define PropTypes or other mechanisms\n * to ensure the intended usage of your master slides.\n * \n * This function returns a smart React Component which has all allowed\n * slots as statics. \n * @public\n * @param {ReactComponent} master \n *   A wrapping component (could even be just a `<div>`)\n * @return {MasterSlide}\n * @example\n * import React from 'react'\n * import createmaster, {Master, Slot} from '@dekk/master'\n * import {Title, Subtitle} from './components/headlines/'\n *\n * const CoverSlide = createMaster(\n *   <Master>\n *     <Slot name=\"Top\"\n *           only={[Title]}/>\n *     <Slot name=\"Bottom\"\n *           only={[Subtitle]}/>\n *   </Master>\n * )\n * \n * @example\n * import React from 'react'\n * import createmaster, {Master, Slot} from '@dekk/master'\n * import Image from '@dekk/Image'\n *\n * const ImageAndText = createMaster(\n *   <Master>\n *     <Slot name=\"Left\"\n *           not={[Image]}/>\n *     <Slot name=\"Right\"\n *           only={[Image]}/>\n *   </Master>\n * )\n */\nexport default function createMaster(master) {\n  const {children, className} = master.props\n  \n\n  /**\n   * @public\n   * @type {MasterSlide}\n   */\n  const Slide = props => {\n    return (\n      <Master {...props} content={props.children}>\n        {Children.toArray(children).map((child, i) => {\n          if (child.type === Slot) {\n            return cloneElement(child, {\n              key: `master-slot__${i}`,\n              component: Slide[child.props.name]\n            })\n          }\n          return child\n        })}\n      </Master>\n    )\n  }\n\n  // Filter all non `Slot` Components (`<Static/>` is removed)\n  // then set them as statics on `Slide`\n  // Each slot creates an empty unique function which is used to\n  // validate the content.\n  Children.toArray(children)\n    .filter(child => child.type === Slot)\n    .forEach(slot => {\n      const {name} = slot.props\n      Slide[name] = props => null\n    })\n\n   /**\n   * Allowed propTypes for `<Slide/>`\n   * @private\n   * @property {ReactElement} children\n   * @property {String} className\n   */\n  Slide.propTypes = {\n    children: PropTypes.node, \n    className: PropTypes.string\n  }\n\n  return Slide\n}\n/**\n * This Component will be returned by `createMaster`.\n * It has a static method for each slot that has been added.\n * @public\n * @typedef MasterSlide\n * @type {ReactComponent}\n * @param {Object} props\n * @param {Object} props.mixin\n *   A mixin that is added to the style block\n */\n",
@@ -1743,7 +1975,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 92,
+    "__docId__": 104,
     "kind": "function",
     "name": "createMaster",
     "memberof": "@dekk/master/src/create.js",
@@ -1783,7 +2015,7 @@
     }
   },
   {
-    "__docId__": 93,
+    "__docId__": 105,
     "kind": "typedef",
     "name": "MasterSlide",
     "memberof": "@dekk/master/src/create.js",
@@ -1822,7 +2054,7 @@
     }
   },
   {
-    "__docId__": 94,
+    "__docId__": 106,
     "kind": "file",
     "name": "@dekk/master/src/index.js",
     "content": "export * from './components'\nexport {default} from './create'\n",
@@ -1833,7 +2065,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 95,
+    "__docId__": 107,
     "kind": "file",
     "name": "@dekk/master/src/master.js",
     "content": "import React, {Component, Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport Slide from '@dekk/slide'\nimport Notes from '@dekk/speaker-notes'\nimport Fragment, {FragmentRoot} from '@dekk/fragment'\nimport Warning from './warning'\nimport {Slot, Static} from './components'\n\n/**\n * Renders a component that displays a warning about an invalid\n * child component.\n * @private\n * @param {ReactComponent} child\n *   Can be any react component\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n * @returns {Warning}\n *   An invalid component warning\n */\nconst invalid = (child, index, itemProps) => (\n  <div key={`slot__${index}`} data-slot={name}>\n    <Warning\n      {...itemProps}\n      type={\n        (child.type && (child.type.displayName || child.type.name)) ||\n        `\"${child}\"`\n      }\n      invalid\n    />\n  </div>\n)\n\n/**\n * Renders a component that displays a warning about an invalid\n * child component.\n * @private\n * @param {String} name\n *   Name of the Component\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n * @returns {Warning}\n *   A missing component warning\n */\nconst missing = (name, index, itemProps) => (\n  <div key={`slot__${index}`} data-slot={name}>\n    <Warning {...itemProps} missing />\n  </div>\n)\n\n/**\n * Either renders a component defined in the `only` parameter\n * or returns a warning in case the child does not match the accepted\n * types.\n * @private\n * @param {ReactComponent[]} only\n *   A list of ReactComponents that are allowed\n * @param {ReactComponent} child\n *   The child element that is intended to be added\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n */\nconst onlyOrWarning = (only, child, index, itemProps) => {\n  // Check if child is allowed\n  if (only.includes(child.type)) {\n    return child\n  }\n  // in case the child is a fragment, check all child elements\n  if (child.type === Fragment || child.type === FragmentRoot) {\n    return cloneElement(child, {\n      children: Children.toArray(child.props.children).map(child =>\n        onlyOrWarning(only, child)\n      )\n    })\n  }\n  return invalid(child, index, itemProps)\n}\n\n/**\n * Either renders a component not defined in the `not` parameter\n * or returns a warning in case the child matches the unaccepted\n * types.\n * @private\n * @param {ReactComponent[]} not\n *   A list of ReactComponents that are not allowed\n * @param {ReactComponent} child\n *   The child element that is intended to be added\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n */\nconst notOrWarning = (not, child, index, itemProps) => {\n  if (child.type === Fragment || child.type === FragmentRoot) {\n    return cloneElement(child, {\n      children: Children.toArray(child.props.children).map(child =>\n        notOrWarning(only, child)\n      )\n    })\n  }\n  if (not.includes(child.type)) {\n    return invalid(child, index, itemProps)\n  }\n  return child\n}\n\n/**\n * This component is hte heart of Dekk/master.\n * It will filter different content types and evaluate based on the\n * configuration.\n *\n * Invalid or missing slots are marked with a visual error to allow\n * creating slides on very strict guidelines.\n *\n * **A master can have different use cases:**\n *\n * * resrict layout of slides\n * * render static components by default\n * * predefine a layout/styles\n * * provide an easy API/usage\n *\n * This class should not be used. It is used inside `createMaster`\n * @see {createMaster}\n *\n * @private\n * @param {Object} props\n *   The properties\n * @param {ReactElement,ReactElement[]} props.children\n *   The slots injected by the slide creator (developer/user)\n * @param {ReactElement,ReactElement[]} props.content\n *   The children injected by the createMaster function (internal/private)\n */\nclass Master extends Component {\n  render() {\n    const {children, content} = this.props\n    // All `Slot` instances\n    const slots = Children.toArray(children).filter(\n      child => child.type === Slot\n    )\n\n    // All `Static` instances\n    const statics = Children.toArray(children).filter(\n      child => child.type === Static\n    )\n\n    // Helper slots are filtered from the children.\n    // These slots are allowed and will be ignored.\n    // state setters, notes etc should be added here\n    const helperSlots = [Notes]\n\n    // Filtered children of the component.\n    // Excludes helperSlots\n    const onlyContent = Children.toArray(content).filter(\n      child => !helperSlots.includes(child.type)\n    )\n\n    // Fill all static stols.\n    // Adds a wrapping element with a data-attribute.\n    const filledStatics = statics.map((item, i) => (\n      <div key={`static__${i}`} data-static={item.props.name}>\n        {item.props.children}\n      </div>\n    ))\n\n    const filledSlots = slots\n      .map((item, i) => {\n        const {only, not, required, component, name} = item.props\n        // Get the index of the component inside slot\n        const index = onlyContent.map(child => child.type).indexOf(component)\n        /**\n         * @deprecated\n         * @todo Is this still needed?\n         * Please describe this and add an example.\n         */\n        //const Element = item.props.as || 'div'\n\n        // if no component present either return null\n        // or a warning if the slot requires a child.\n        if (index < 0) {\n          return required ? missing(name, i, item.props) : null\n        }\n        const children = Children.toArray(\n          onlyContent[index].props.children\n        ).map(\n          (child, idx) =>\n            // Check for `only` and `not` options\n            // If neither is defined simply return the child\n            only\n              ? onlyOrWarning(only, child, idx, item.props)\n              : not ? notOrWarning(only, child, idx, item.props) : child\n        )\n        // If no children exist in a required slot\n        // render a warning about missing content\n        if (required && children.length === 0) {\n          return missing(name, i, item.props)\n        }\n\n        // Return the components wrapped in a slot.\n        return (\n          <div key={`item__${i}`} data-slot={item.props.name}>\n            {children}\n          </div>\n        )\n      })\n      // filter to only return valid content\n      .filter(x => Boolean(x))\n\n    /**\n     * Return a slide with the entire content.\n     * @todo add notes to allow rendering them in hte presenter view\n     */\n    return (\n      <Slide {...this.props}>\n        {filledStatics}\n        {filledSlots}\n      </Slide>\n    )\n  }\n}\n\n/**\n * Allowed propTypes for `<Master/>`\n * @private\n * @property {Slot,Static} children\n * @property {ReactElement,ReactElement[]} content\n */\nMaster.propTypes = {\n  children: (props, propName, componentName) => {\n    /**\n     * An error might be caused and is therefore returned .\n     * @todo find a more functional way of doing this.\n     */\n    let error\n    const prop = props[propName]\n    Children.forEach(prop, child => {\n      if ([Static, Slot].indexOf(child.type) < 0) {\n        error = new Error(\n          `\"Master\" only accepts children of type \"Slot\" or \"Static\"`\n        )\n      }\n    })\n    return error\n  },\n  content: PropTypes.node\n}\n\nexport default Master\n",
@@ -1844,7 +2076,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 96,
+    "__docId__": 108,
     "kind": "function",
     "name": "invalid",
     "memberof": "@dekk/master/src/master.js",
@@ -1907,7 +2139,7 @@
     "ignore": true
   },
   {
-    "__docId__": 97,
+    "__docId__": 109,
     "kind": "function",
     "name": "missing",
     "memberof": "@dekk/master/src/master.js",
@@ -1970,7 +2202,7 @@
     "ignore": true
   },
   {
-    "__docId__": 98,
+    "__docId__": 110,
     "kind": "function",
     "name": "onlyOrWarning",
     "memberof": "@dekk/master/src/master.js",
@@ -2034,7 +2266,7 @@
     }
   },
   {
-    "__docId__": 99,
+    "__docId__": 111,
     "kind": "function",
     "name": "notOrWarning",
     "memberof": "@dekk/master/src/master.js",
@@ -2098,7 +2330,7 @@
     }
   },
   {
-    "__docId__": 100,
+    "__docId__": 112,
     "kind": "class",
     "name": "Master",
     "memberof": "@dekk/master/src/master.js",
@@ -2152,7 +2384,7 @@
     "ignore": true
   },
   {
-    "__docId__": 101,
+    "__docId__": 113,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2172,7 +2404,7 @@
     }
   },
   {
-    "__docId__": 102,
+    "__docId__": 114,
     "kind": "file",
     "name": "@dekk/master/src/warning.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * Renders a warning containing useful information about the error that\n * caused the warning.\n * In general, it tells you what is wrong and what the correct usage\n * would look like. This is typically a text telling you that while \n * you used component \"A\" only component \"B\" or \"C\" are allowed.\n * \n * @private\n * @param {props} props\n *   The properties\n * @param {RectElement[]} props.not\n *   A list of components that are \"not\" allowed\n * @param {RectElement[]} props.only\n *   A list of \"only\" those components that are allowed\n * @param {Boolean} props.invalid\n *   Set this parameter if the warning is about invalid content\n * @param {Boolean} props.missing\n *   Set this parameter if the warning is about missing content\n * @param {String} props.type\n *   The type that was used and caused this warning\n */\nconst Warning = props => {\n  const {not, only, invalid, missing, type} = props\n\n  /**\n   * Prepare a couple of messages that might be returned\n   * @todo Reafactor to use `const`\n   */\n  let message\n  let onlyMessage\n  let notMessage\n\n  /**\n   * No documentation\n   * @todo refactor the entire section. This is an absolute overload\n   * of checks\n   */\n  if (only) {\n    onlyMessage = (\n      <div>\n        <strong>Allowed components:</strong>\n        <ul>\n          {only.map((component, i) => (\n            <li key={`warning_item__${i}`}>\n              {component.displayName || component.name}\n            </li>\n          ))}\n        </ul>\n      </div>\n    )\n  }\n\n  if (not) {\n    notMessage = (\n      <div>\n        <strong>Forbidden components:</strong>\n        <ul>\n          {not.map((component, i) => (\n            <li key={`warning_item__${i}`}>\n              {component.displayName || component.name}\n            </li>\n          ))}\n        </ul>\n      </div>\n    )\n  }\n\n  if (missing) {\n    message = (\n      <div>\n        <strong>Error: Required slot</strong>\n        {notMessage}\n        {onlyMessage}\n      </div>\n    )\n  } else if (invalid) {\n    message = (\n      <div>\n        <strong>Error: Invalid component</strong>\n        <p>Tried to use {type}</p>\n        {notMessage}\n        {onlyMessage}\n      </div>\n    )\n  }\n  return <div>{message}</div>\n}\n\n/**\n * Allowed propTypes for `<Warning/>`\n * @private\n * @property {?ReactElement[]} not\n * @property {?ReactElement[]} only\n * @property {String} type\n * @property {?Boolean} invalid\n * @property {?Boolean} missing\n */\nWarning.propTypes = {\n  not: PropTypes.array,\n  only: PropTypes.array,\n  type: PropTypes.string,\n  invalid: PropTypes.bool,\n  missing: PropTypes.bool\n}\n\nexport default Warning\n",
@@ -2183,7 +2415,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 103,
+    "__docId__": 115,
     "kind": "function",
     "name": "Warning",
     "memberof": "@dekk/master/src/warning.js",
@@ -2267,10 +2499,10 @@
     }
   },
   {
-    "__docId__": 104,
+    "__docId__": 116,
     "kind": "file",
     "name": "@dekk/paging/src/index.js",
-    "content": "import {Component} from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * This component does not render any content but adds paging via key\n * commands.\n *\n * If a page has fragments this component will split the page into\n * different steps.\n * Without this components fragments won't work. They are rendered as\n * normal elements but never get activated.\n *\n * This is a private component which is used by Dekk internally.\n *\n * Due to the importance of this component it is not possible do\n * modify or access any parts. If you need acces to data you can always\n * use the store provided by Dekk.\n * @private\n */\nclass Paging extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,\n      pages: PropTypes.number.isRequired\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get contextTypes() {\n    return {\n      store: PropTypes.object.isRequired\n    }\n  }\n\n  /**\n   * @private\n   * @param {Object} props\n   *   The properties\n   * @param {String} props.trigger\n   *   The event that triggers paging\n   * @param {number} props.pages\n   * @param {Object} context\n   *   The context\n   * @param {Object} context.store\n   *   The mobx store passed through via context\n   */\n  constructor(props, context) {\n    super(props, context)\n    this.goTo = this.goTo.bind(this)\n  }\n\n  /**\n   * Listen to events before we mount the component\n   * @private\n   */\n  componentWillMount() {\n    window.addEventListener(this.props.trigger, this.goTo)\n  }\n\n  /**\n   * Unlisten to events before we unmount the component\n   * @private\n   */\n  componentWillUnmount() {\n    window.removeEventListener(this.props.trigger, this.goTo)\n  }\n\n  /**\n   * Method to navigate to fragments or pages.\n   * Uses left and right arrow buttons to navigate\n   * @private\n   * @param  {Object} e\n   *   The event\n   * @param {number} e.which\n   *   The keyCode that has been triggered by the event\n   */\n  goTo({which}) {\n    const {pages} = this.props\n    const {store} = this.context\n    const {\n      page,\n      goToPage,\n      fragmentCount,\n      fragmentHosts,\n      goToFragment,\n      setFragment\n    } = store\n    const {length = 0} = fragmentHosts[page]\n    const previousFragment = Math.max(0, fragmentCount - 1)\n    const nextFragment = Math.min(length - 1, fragmentCount + 1)\n    const previousPage = Math.max(0, page - 1)\n    const nextPage = Math.min(pages - 1, page + 1)\n\n    // Switch between left and right arrow buttons\n    switch (which) {\n      case 39:\n        ;(() => {\n          if (length && nextFragment > fragmentCount) {\n            goToFragment(nextFragment)\n          } else if (nextPage !== page) {\n            goToPage(nextPage)\n            goToFragment(0)\n          }\n        })()\n        break\n      case 37:\n        ;(() => {\n          if (length && previousFragment < fragmentCount) {\n            goToFragment(previousFragment)\n          } else if (previousPage !== page) {\n            goToPage(previousPage)\n            goToFragment(fragmentHosts[previousPage].length - 1)\n          }\n        })()\n        break\n      default:\n        break\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\nexport default Paging\n",
+    "content": "import {Component} from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * This component does not render any content but adds paging via key\n * commands.\n *\n * If a page has fragments this component will split the page into\n * different steps.\n * Without this components fragments won't work. They are rendered as\n * normal elements but never get activated.\n *\n * This is a private component which is used by Dekk internally.\n *\n * Due to the importance of this component it is not possible do\n * modify or access any parts. If you need acces to data you can always\n * use the store provided by Dekk.\n * @private\n */\nclass Paging extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,\n      pages: PropTypes.number.isRequired\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get contextTypes() {\n    return {\n      store: PropTypes.object.isRequired\n    }\n  }\n\n  /**\n   * @private\n   * @param {Object} props\n   *   The properties\n   * @param {String} props.trigger\n   *   The event that triggers paging\n   * @param {number} props.pages\n   * @param {Object} context\n   *   The context\n   * @param {Object} context.store\n   *   The mobx store passed through via context\n   */\n  constructor(props, context) {\n    super(props, context)\n    this.goTo = this.goTo.bind(this)\n  }\n\n  /**\n   * Listen to events before we mount the component\n   * @private\n   */\n  componentWillMount() {\n    window.addEventListener(this.props.trigger, this.goTo)\n  }\n\n  /**\n   * Unlisten to events before we unmount the component\n   * @private\n   */\n  componentWillUnmount() {\n    window.removeEventListener(this.props.trigger, this.goTo)\n  }\n\n  /**\n   * Method to navigate to fragments or pages.\n   * Uses left and right arrow buttons to navigate\n   * @private\n   * @param  {Object} e\n   *   The event\n   * @param {number} e.which\n   *   The keyCode that has been triggered by the event\n   */\n  goTo({which}) {\n    const {pages} = this.props\n    const {store} = this.context\n    const {\n      page,\n      toPreviousPage,\n      toNextPage,\n      fragmentCount,\n      fragmentHosts,\n      toNextFragment,\n      toPreviousFragment,\n      setFragment\n    } = store\n    const {length = 0} = fragmentHosts[page]\n    const previousFragment = Math.max(0, fragmentCount - 1)\n    const nextFragment = Math.min(length - 1, fragmentCount + 1)\n    const previousPage = Math.max(0, page - 1)\n    const nextPage = Math.min(pages - 1, page + 1)\n\n    // Switch between left and right arrow buttons\n    switch (which) {\n      case 39:\n        ;(() => {\n          if (length && nextFragment > fragmentCount) {\n            toNextFragment()\n          } else if (nextPage !== page) {\n            toNextPage()\n          }\n        })()\n        break\n      case 37:\n        ;(() => {\n          if (length && previousFragment < fragmentCount) {\n            toPreviousFragment()\n          } else if (previousPage !== page) {\n            toPreviousPage()\n          }\n        })()\n        break\n      default:\n        break\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\nexport default Paging\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/paging/src/index.js",
     "access": "public",
@@ -2278,7 +2510,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 105,
+    "__docId__": 117,
     "kind": "class",
     "name": "Paging",
     "memberof": "@dekk/paging/src/index.js",
@@ -2297,7 +2529,7 @@
     "ignore": true
   },
   {
-    "__docId__": 106,
+    "__docId__": 118,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2316,7 +2548,7 @@
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 119,
     "kind": "get",
     "name": "contextTypes",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2335,7 +2567,7 @@
     }
   },
   {
-    "__docId__": 108,
+    "__docId__": 120,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2401,7 +2633,7 @@
     "ignore": true
   },
   {
-    "__docId__": 110,
+    "__docId__": 122,
     "kind": "method",
     "name": "componentWillMount",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2417,7 +2649,7 @@
     "return": null
   },
   {
-    "__docId__": 111,
+    "__docId__": 123,
     "kind": "method",
     "name": "componentWillUnmount",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2433,7 +2665,7 @@
     "return": null
   },
   {
-    "__docId__": 112,
+    "__docId__": 124,
     "kind": "method",
     "name": "goTo",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2470,7 +2702,7 @@
     "return": null
   },
   {
-    "__docId__": 113,
+    "__docId__": 125,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -2490,7 +2722,7 @@
     }
   },
   {
-    "__docId__": 114,
+    "__docId__": 126,
     "kind": "file",
     "name": "@dekk/slide/src/index.js",
     "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport {Motion, spring} from 'react-motion'\n\n/**\n * A single slide.\n * Renders a slide inside a `react-motion` wrapper.\n * Assigns css-variables to allow various transitions\n *\n */\nclass Slide extends Component {\n  /**\n   * @private\n   */\n  static get childContextTypes() {\n    return {\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      current: PropTypes.bool,\n      previous: PropTypes.bool,\n      next: PropTypes.bool,\n      toPrevious: PropTypes.bool,\n      fromPrevious: PropTypes.bool,\n      toNext: PropTypes.bool,\n      fromNext: PropTypes.bool,\n      className: PropTypes.string,\n      children: PropTypes.node,\n      springSettings: PropTypes.object,\n      background: PropTypes.string\n    }\n  }\n\n  /**\n   * @private\n   */\n  getChildContext() {\n    return {\n      fragmentHost: this.props.pageIndex\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    const {previous, next, children, springSettings} = this.props\n    const springStyle = {\n      time: spring(previous || next ? 1 : 0, {\n        ...springSettings\n      })\n    }\n    return (\n      <Motion style={springStyle}>\n        {({time}) => {\n          const style = {\n            '--time': ~~(time * 1000) / 1000\n          }\n          return (\n            <StyledSlide\n              background={this.props.background}\n              mixin={this.props.animation}\n              className={this.props.className}\n              current={this.props.current}\n              next={next}\n              previous={previous}\n              toPrevious={this.props.toPrevious}\n              toNext={this.props.toNext}\n              fromPrevious={this.props.fromPrevious}\n              fromNext={this.props.fromNext}\n              style={style}>\n              {children}\n            </StyledSlide>\n          )\n        }}\n      </Motion>\n    )\n  }\n}\n\n/**\n * @private\n */\nconst SlideDirection = styled.div`\n  ${props => {\n    if (props.fromPrevious) {\n      return `\n        --direction: -1;\n      `\n    }\n    if (props.fromNext) {\n      return `\n        --direction: 1;\n      `\n    }\n\n    if (props.toPrevious) {\n      return `\n        --direction: -1;\n      `\n    }\n    if (props.toNext) {\n      return `\n        --direction: 1;\n      `\n    }\n\n    if (props.previous) {\n      return `\n        --direction: -1;\n      `\n    }\n    if (props.next) {\n      return `\n        --direction: 1;\n      `\n    }\n    if (props.current) {\n      return `\n        --direction: 0;\n      `\n    }\n  }} z-index: ${props => (props.current ? 1 : 0)};\n`\n\n/**\n * @private\n */\nconst StyledSlide = styled(SlideDirection)`\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  transform: translate3d(\n    calc(100% * var(--direction, -1) * var(--time, 1)),\n    0,\n    0\n  );\n  overflow: hidden;\n  color: var(--slide-color, inherit);\n  background: ${props => props.background || 'none'};\n  background-size: cover;\n  ${props => props.mixin || ''};\n`\n\nexport default Slide\n",
@@ -2501,7 +2733,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 115,
+    "__docId__": 127,
     "kind": "variable",
     "name": "SlideDirection",
     "memberof": "@dekk/slide/src/index.js",
@@ -2521,7 +2753,7 @@
     }
   },
   {
-    "__docId__": 116,
+    "__docId__": 128,
     "kind": "variable",
     "name": "StyledSlide",
     "memberof": "@dekk/slide/src/index.js",
@@ -2541,7 +2773,7 @@
     }
   },
   {
-    "__docId__": 117,
+    "__docId__": 129,
     "kind": "class",
     "name": "Slide",
     "memberof": "@dekk/slide/src/index.js",
@@ -2559,7 +2791,7 @@
     ]
   },
   {
-    "__docId__": 118,
+    "__docId__": 130,
     "kind": "get",
     "name": "childContextTypes",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -2578,7 +2810,7 @@
     }
   },
   {
-    "__docId__": 119,
+    "__docId__": 131,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -2597,7 +2829,7 @@
     }
   },
   {
-    "__docId__": 120,
+    "__docId__": 132,
     "kind": "method",
     "name": "getChildContext",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -2617,7 +2849,7 @@
     }
   },
   {
-    "__docId__": 121,
+    "__docId__": 133,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -2637,7 +2869,7 @@
     }
   },
   {
-    "__docId__": 122,
+    "__docId__": 134,
     "kind": "file",
     "name": "@dekk/speaker-notes/src/index.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Notes = styled.aside``\n\n/**\n * @private\n */\nNotes.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\nexport default Notes\n",
@@ -2648,7 +2880,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 123,
+    "__docId__": 135,
     "kind": "variable",
     "name": "Notes",
     "memberof": "@dekk/speaker-notes/src/index.js",
@@ -2667,10 +2899,10 @@
     }
   },
   {
-    "__docId__": 124,
+    "__docId__": 136,
     "kind": "file",
     "name": "@dekk/store/src/index.js",
-    "content": "import uuid from 'uuid/v4'\nimport {observable} from 'mobx'\n\n/**\n * @private\n */\nexport default class Store {\n  id = uuid()\n  @observable page = 0\n  @observable fragment = 0\n  @observable fragmentCount = 0\n  @observable direction = 0\n  constructor(props) {\n    this.page = props.page\n    this.fragmentHosts = props.fragmentHosts\n    this.title = props.title\n\n    this.goToPage = this.goToPage.bind(this)\n    this.nextPage = this.nextPage.bind(this)\n    this.previousPage = this.previousPage.bind(this)\n    this.goToFragment = this.goToFragment.bind(this)\n    this.nextFragment = this.nextFragment.bind(this)\n    this.previousFragment = this.previousFragment.bind(this)\n  }\n\n  /**\n   * @private\n   */\n  goToPage(n) {\n    this.direction = n > this.page ? 1 : -1\n    this.page = n\n  }\n\n  /**\n   * @private\n   */\n  nextPage() {\n    this.goToPage(this.page + 1)\n  }\n\n  /**\n   * @private\n   */\n  previousPage() {\n    this.goToPage(this.page - 1)\n  }\n\n  /**\n   * @private\n   */\n  goToFragment(n) {\n    const m = this.fragmentHosts[this.page][n]\n    this.fragment = m\n    this.fragmentCount = n\n  }\n\n  /**\n   * @private\n   */\n  nextFragment() {\n    this.goToFragment(this.fragmentCount + 1)\n  }\n\n  /**\n   * @private\n   */\n  previousFragment() {\n    this.goToFragment(this.fragmentCount - 1)\n  }\n}\n",
+    "content": "import uuid from 'uuid/v4'\nimport {observable} from 'mobx'\n\n/**\n * @private\n */\nexport default class Store {\n  id = uuid()\n  @observable page = 0\n  @observable fragment = 0\n  @observable fragmentCount = 0\n  @observable direction = 0\n  constructor(props) {\n    this.page = props.page\n    this.fragmentHosts = props.fragmentHosts\n    this.title = props.title\n\n    this.goToPage = this.goToPage.bind(this)\n    this.toNextPage = this.toNextPage.bind(this)\n    this.toPreviousPage = this.toPreviousPage.bind(this)\n    this.goToFragment = this.goToFragment.bind(this)\n    this.toNextFragment = this.toNextFragment.bind(this)\n    this.toPreviousFragment = this.toPreviousFragment.bind(this)\n  }\n\n  /**\n   * @private\n   */\n  goToPage(n) {\n    this.direction = n > this.page ? 1 : -1\n    this.page = n\n  }\n\n  /**\n   * @private\n   */\n  toNextPage() {\n    this.goToPage(this.page + 1)\n    this.goToFragment(0)\n  }\n\n  /**\n   * @private\n   */\n  toPreviousPage() {\n    const {length} = this.fragmentHosts[this.page - 1]\n    this.goToPage(this.page - 1)\n    this.goToFragment(Math.max(0, length - 1))\n  }\n\n  /**\n   * @private\n   */\n  goToFragment(n) {\n    const m = this.fragmentHosts[this.page][n]\n    this.fragment = m\n    this.fragmentCount = n\n  }\n\n  /**\n   * @private\n   */\n  toNextFragment() {\n    this.goToFragment(this.fragmentCount + 1)\n  }\n\n  /**\n   * @private\n   */\n  toPreviousFragment() {\n    this.goToFragment(this.fragmentCount - 1)\n  }\n}\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/store/src/index.js",
     "access": "public",
@@ -2678,7 +2910,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 125,
+    "__docId__": 137,
     "kind": "class",
     "name": "Store",
     "memberof": "@dekk/store/src/index.js",
@@ -2694,7 +2926,7 @@
     "ignore": true
   },
   {
-    "__docId__": 126,
+    "__docId__": 138,
     "kind": "member",
     "name": "id",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2711,7 +2943,7 @@
     }
   },
   {
-    "__docId__": 127,
+    "__docId__": 139,
     "kind": "member",
     "name": "page",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2734,7 +2966,7 @@
     }
   },
   {
-    "__docId__": 128,
+    "__docId__": 140,
     "kind": "member",
     "name": "fragment",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2757,7 +2989,7 @@
     }
   },
   {
-    "__docId__": 129,
+    "__docId__": 141,
     "kind": "member",
     "name": "fragmentCount",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2780,7 +3012,7 @@
     }
   },
   {
-    "__docId__": 130,
+    "__docId__": 142,
     "kind": "member",
     "name": "direction",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2803,7 +3035,7 @@
     }
   },
   {
-    "__docId__": 131,
+    "__docId__": 143,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2817,7 +3049,7 @@
     "undocument": true
   },
   {
-    "__docId__": 133,
+    "__docId__": 145,
     "kind": "member",
     "name": "fragmentHosts",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2834,7 +3066,7 @@
     }
   },
   {
-    "__docId__": 134,
+    "__docId__": 146,
     "kind": "member",
     "name": "title",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2851,7 +3083,7 @@
     }
   },
   {
-    "__docId__": 141,
+    "__docId__": 153,
     "kind": "method",
     "name": "goToPage",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2874,14 +3106,14 @@
     "return": null
   },
   {
-    "__docId__": 144,
+    "__docId__": 156,
     "kind": "method",
-    "name": "nextPage",
+    "name": "toNextPage",
     "memberof": "@dekk/store/src/index.js~Store",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "@dekk/store/src/index.js~Store#nextPage",
+    "longname": "@dekk/store/src/index.js~Store#toNextPage",
     "access": "private",
     "description": "",
     "lineNumber": 37,
@@ -2890,23 +3122,23 @@
     "return": null
   },
   {
-    "__docId__": 145,
+    "__docId__": 157,
     "kind": "method",
-    "name": "previousPage",
+    "name": "toPreviousPage",
     "memberof": "@dekk/store/src/index.js~Store",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "@dekk/store/src/index.js~Store#previousPage",
+    "longname": "@dekk/store/src/index.js~Store#toPreviousPage",
     "access": "private",
     "description": "",
-    "lineNumber": 44,
+    "lineNumber": 45,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 146,
+    "__docId__": 158,
     "kind": "method",
     "name": "goToFragment",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -2916,7 +3148,7 @@
     "longname": "@dekk/store/src/index.js~Store#goToFragment",
     "access": "private",
     "description": "",
-    "lineNumber": 51,
+    "lineNumber": 54,
     "ignore": true,
     "params": [
       {
@@ -2929,39 +3161,39 @@
     "return": null
   },
   {
-    "__docId__": 149,
+    "__docId__": 161,
     "kind": "method",
-    "name": "nextFragment",
+    "name": "toNextFragment",
     "memberof": "@dekk/store/src/index.js~Store",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "@dekk/store/src/index.js~Store#nextFragment",
+    "longname": "@dekk/store/src/index.js~Store#toNextFragment",
     "access": "private",
     "description": "",
-    "lineNumber": 60,
+    "lineNumber": 63,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 150,
+    "__docId__": 162,
     "kind": "method",
-    "name": "previousFragment",
+    "name": "toPreviousFragment",
     "memberof": "@dekk/store/src/index.js~Store",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "@dekk/store/src/index.js~Store#previousFragment",
+    "longname": "@dekk/store/src/index.js~Store#toPreviousFragment",
     "access": "private",
     "description": "",
-    "lineNumber": 67,
+    "lineNumber": 70,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 151,
+    "__docId__": 163,
     "kind": "file",
     "name": "@dekk/text/src/bold.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Bold = styled.strong`\n  font-weight: bold;\n  ${props =>\n    props.highlight ? 'color: var(--highlight-color, inherit);' : ''};\n`\n\n/**\n * @private\n */\nBold.propTypes = {\n  className: PropTypes.string,\n  highlight: PropTypes.bool,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nBold.displayName = 'Bold'\n\nexport default Bold\n",
@@ -2972,7 +3204,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 152,
+    "__docId__": 164,
     "kind": "variable",
     "name": "Bold",
     "memberof": "@dekk/text/src/bold.js",
@@ -2991,7 +3223,7 @@
     }
   },
   {
-    "__docId__": 153,
+    "__docId__": 165,
     "kind": "file",
     "name": "@dekk/text/src/center.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Center = styled.div`\n  text-align: center;\n`\n\n/**\n * @private\n */\nCenter.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nCenter.displayName = 'Center'\n\nexport default Center\n",
@@ -3002,7 +3234,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 154,
+    "__docId__": 166,
     "kind": "variable",
     "name": "Center",
     "memberof": "@dekk/text/src/center.js",
@@ -3021,7 +3253,7 @@
     }
   },
   {
-    "__docId__": 155,
+    "__docId__": 167,
     "kind": "file",
     "name": "@dekk/text/src/code.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport SyntaxHighlighter from 'react-syntax-highlighter'\nimport * as colorSchemes from 'react-syntax-highlighter/styles/hljs'\n\n/**\n * @private\n */\nconst RawCode = props => {\n  return (\n    <SyntaxHighlighter\n      className={props.className}\n      language={props.language}\n      style={props.style}>\n      {props.children}\n    </SyntaxHighlighter>\n  )\n}\n\n/**\n * @bublic\n */\nconst Code = styled(RawCode)`\n  font-size: var(--code-font-size, 1em);\n`\n\n/**\n * @private\n */\nCode.propTypes = {\n  style: PropTypes.object,\n  language: PropTypes.string,\n  className: PropTypes.string,\n  className: PropTypes.string,\n  children: PropTypes.string\n}\n\n/**\n * @private\n */\nCode.displayName = 'Code'\n\nexport {colorSchemes}\nexport default Code\n",
@@ -3032,7 +3264,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 156,
+    "__docId__": 168,
     "kind": "function",
     "name": "RawCode",
     "memberof": "@dekk/text/src/code.js",
@@ -3062,7 +3294,7 @@
     }
   },
   {
-    "__docId__": 157,
+    "__docId__": 169,
     "kind": "variable",
     "name": "Code",
     "memberof": "@dekk/text/src/code.js",
@@ -3087,7 +3319,7 @@
     }
   },
   {
-    "__docId__": 158,
+    "__docId__": 170,
     "kind": "file",
     "name": "@dekk/text/src/index.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nexport {default as Title} from './title'\nexport {default as Subtitle} from './subtitle'\nexport {default as Code, colorSchemes} from './code'\nexport {default as Quote} from './quote'\nexport {default as Center} from './center'\nexport {default as Bold} from './bold'\nexport {default as Uppercase} from './uppercase'\n\n/**\n * @public\n */\nconst Text = styled.p`\n  padding: 0;\n`\n/**\n * @private\n */\nText.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nText.displayName = 'Text'\n\nexport default Text\n",
@@ -3098,7 +3330,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 159,
+    "__docId__": 171,
     "kind": "variable",
     "name": "Text",
     "memberof": "@dekk/text/src/index.js",
@@ -3117,7 +3349,7 @@
     }
   },
   {
-    "__docId__": 160,
+    "__docId__": 172,
     "kind": "file",
     "name": "@dekk/text/src/quote.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Quote = props => (\n  <Figure>\n    <BlockQuote className={quote} cite={props.cite}>\n      {props.children}\n    </BlockQuote>\n    <figcaption>{props.author}</figcaption>\n  </Figure>\n)\n\n/**\n * @private\n */\nconst BlockQuote = styled.blockquote`\n  margin: 0;\n`\n\n/**\n * @private\n */\nconst Figure = styled.figure`\n  margin: 0;\n`\n\n/**\n * @private\n */\nQuote.propTypes = {\n  cite: PropTypes.string,\n  author: PropTypes.node,\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nQuote.displayName = 'Quote'\n\nexport default Quote\n",
@@ -3128,7 +3360,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 161,
+    "__docId__": 173,
     "kind": "variable",
     "name": "BlockQuote",
     "memberof": "@dekk/text/src/quote.js",
@@ -3148,7 +3380,7 @@
     }
   },
   {
-    "__docId__": 162,
+    "__docId__": 174,
     "kind": "variable",
     "name": "Figure",
     "memberof": "@dekk/text/src/quote.js",
@@ -3168,7 +3400,7 @@
     }
   },
   {
-    "__docId__": 163,
+    "__docId__": 175,
     "kind": "function",
     "name": "Quote",
     "memberof": "@dekk/text/src/quote.js",
@@ -3193,7 +3425,7 @@
     "return": null
   },
   {
-    "__docId__": 164,
+    "__docId__": 176,
     "kind": "file",
     "name": "@dekk/text/src/subtitle.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Subtitle = styled.h2`\n  margin: 0;\n  font-size: var(--subtitle-font-size, 2em);\n  text-align: center;\n`\n\n/**\n * @private\n */\nSubtitle.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nSubtitle.displayName = 'Subtitle'\n\nexport default Subtitle\n",
@@ -3204,7 +3436,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 165,
+    "__docId__": 177,
     "kind": "variable",
     "name": "Subtitle",
     "memberof": "@dekk/text/src/subtitle.js",
@@ -3223,7 +3455,7 @@
     }
   },
   {
-    "__docId__": 166,
+    "__docId__": 178,
     "kind": "file",
     "name": "@dekk/text/src/title.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Title = styled.h1`\n  margin: 0;\n  font-size: var(--title-font-size, 4em);\n  text-align: center;\n`\n\n/**\n * @private\n */\nTitle.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nTitle.displayName = 'Title'\n\nexport default Title\n",
@@ -3234,7 +3466,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 167,
+    "__docId__": 179,
     "kind": "variable",
     "name": "Title",
     "memberof": "@dekk/text/src/title.js",
@@ -3253,7 +3485,7 @@
     }
   },
   {
-    "__docId__": 168,
+    "__docId__": 180,
     "kind": "file",
     "name": "@dekk/text/src/uppercase.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Uppercase = styled.span`\n  text-transform: uppercase;\n`\n\n/**\n * @private\n */\nUppercase.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nUppercase.displayName = 'Uppercase'\n\nexport default Uppercase\n",
@@ -3264,7 +3496,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 169,
+    "__docId__": 181,
     "kind": "variable",
     "name": "Uppercase",
     "memberof": "@dekk/text/src/uppercase.js",
@@ -3283,7 +3515,226 @@
     }
   },
   {
-    "__docId__": 170,
+    "__docId__": 182,
+    "kind": "file",
+    "name": "@dekk/url/src/index.js",
+    "content": "import {Component} from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * @private\n */\nexport const writeHash = (page = 0, fragment = 0) => {\n  window.location.hash = `#!/${page}/${fragment}/`\n}\n\n/**\n * @private\n */\nclass Url extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      type: PropTypes.oneOf(['hash', 'query', 'route']),\n      page: PropTypes.number,\n      fragmentCount: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get contextTypes() {\n    return {\n      store: PropTypes.object.isRequired\n    }\n  }\n\n  /**\n   * @private\n   * @param {Object} props\n   *   The properties\n   * @param {Object} context\n   *   The context\n   * @param {Object} context.store\n   *   The mobx store passed through via context\n   */\n  constructor(props, context) {\n    super(props, context)\n  }\n\n  /**\n   * @private\n   * @todo implement route and query\n   */\n  componentDidMount() {\n    const {hash = ''} = new URL(window.location.href)\n    const [, page = 0, fragment = 0] = hash.split('/')\n    this.context.store.goToPage(parseInt(page, 10))\n    this.context.store.goToFragment(parseInt(fragment, 10))\n  }\n\n  /**\n   * @private\n   */\n  componentWillReceiveProps({page, fragmentCount}) {\n    writeHash(page, fragmentCount)\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\nexport default Url\n",
+    "static": true,
+    "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/url/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 183,
+    "kind": "function",
+    "name": "writeHash",
+    "memberof": "@dekk/url/src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "@dekk/url/src/index.js~writeHash",
+    "access": "private",
+    "export": true,
+    "importPath": "@dekk/url",
+    "importStyle": "{writeHash}",
+    "description": "",
+    "lineNumber": 7,
+    "ignore": true,
+    "params": [
+      {
+        "name": "page",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 0,
+        "defaultValue": "0"
+      },
+      {
+        "name": "fragment",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 0,
+        "defaultValue": "0"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 184,
+    "kind": "class",
+    "name": "Url",
+    "memberof": "@dekk/url/src/index.js",
+    "static": true,
+    "longname": "@dekk/url/src/index.js~Url",
+    "access": "private",
+    "export": true,
+    "importPath": "@dekk/url",
+    "importStyle": "Url",
+    "description": "",
+    "lineNumber": 14,
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 185,
+    "kind": "get",
+    "name": "propTypes",
+    "memberof": "@dekk/url/src/index.js~Url",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "@dekk/url/src/index.js~Url.propTypes",
+    "access": "private",
+    "description": "",
+    "lineNumber": 18,
+    "ignore": true,
+    "type": {
+      "types": [
+        "{\"type\": *, \"page\": *, \"fragmentCount\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 186,
+    "kind": "get",
+    "name": "contextTypes",
+    "memberof": "@dekk/url/src/index.js~Url",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "@dekk/url/src/index.js~Url.contextTypes",
+    "access": "private",
+    "description": "",
+    "lineNumber": 29,
+    "ignore": true,
+    "type": {
+      "types": [
+        "{\"store\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 187,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "@dekk/url/src/index.js~Url",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/url/src/index.js~Url#constructor",
+    "access": "private",
+    "description": "",
+    "lineNumber": 44,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "The properties"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": "The context"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context.store",
+        "description": "The mobx store passed through via context"
+      }
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 188,
+    "kind": "method",
+    "name": "componentDidMount",
+    "memberof": "@dekk/url/src/index.js~Url",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/url/src/index.js~Url#componentDidMount",
+    "access": "private",
+    "description": "",
+    "lineNumber": 52,
+    "todo": [
+      "implement route and query"
+    ],
+    "ignore": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 189,
+    "kind": "method",
+    "name": "componentWillReceiveProps",
+    "memberof": "@dekk/url/src/index.js~Url",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/url/src/index.js~Url#componentWillReceiveProps",
+    "access": "private",
+    "description": "",
+    "lineNumber": 62,
+    "ignore": true,
+    "params": [
+      {
+        "name": "objectPattern",
+        "types": [
+          "{\"page\": *, \"fragmentCount\": *}"
+        ],
+        "defaultRaw": {
+          "page": null,
+          "fragmentCount": null
+        },
+        "defaultValue": "{\"page\":null,\"fragmentCount\":null}"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 190,
+    "kind": "method",
+    "name": "render",
+    "memberof": "@dekk/url/src/index.js~Url",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "@dekk/url/src/index.js~Url#render",
+    "access": "private",
+    "description": "",
+    "lineNumber": 69,
+    "ignore": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 191,
     "kind": "file",
     "name": "@dekk/utils/src/index.js",
     "content": "export * from './query-params'\nexport * from './range'\n",
@@ -3294,7 +3745,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 171,
+    "__docId__": 192,
     "kind": "file",
     "name": "@dekk/utils/src/query-params.js",
     "content": "/**\n * @private\n */\nexport const getQueryParams = search => {\n  const queryParams = {}\n  search\n    .replace(/^\\?/, '')\n    .split('&')\n    .forEach(str => {\n      const [key, value] = str.split('=')\n      switch (value) {\n        case 'true':\n          queryParams[key] = true\n          break\n        case 'false':\n          queryParams[key] = false\n          break\n        default:\n          queryParams[key] = value\n          break\n      }\n    })\n  return queryParams\n}\n",
@@ -3305,7 +3756,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 172,
+    "__docId__": 193,
     "kind": "function",
     "name": "getQueryParams",
     "memberof": "@dekk/utils/src/query-params.js",
@@ -3335,7 +3786,7 @@
     }
   },
   {
-    "__docId__": 173,
+    "__docId__": 194,
     "kind": "file",
     "name": "@dekk/utils/src/range.js",
     "content": "/**\n * @private\n */\nexport const range = (n, max, min = 0) => n >= min && n <= max\n",
@@ -3346,7 +3797,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 174,
+    "__docId__": 195,
     "kind": "function",
     "name": "range",
     "memberof": "@dekk/utils/src/range.js",
@@ -3396,7 +3847,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"dekk\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"description\": \"A presentation tool written in react.js\",\n  \"license\": \"MIT\",\n  \"author\": \"Gregor Adams <greg@pixelass.com>\",\n  \"repository\": \"git@github.com:sinnerschrader/dekk.git\",\n  \"scripts\": {\n    \"babel\": \"lerna run babel\",\n    \"babel:watch\": \"lerna run babel:watch --parallel\",\n    \"bootstrap\": \"lerna bootstrap\",\n    \"build\": \"cross-env NODE_ENV=production webpack\",\n    \"clean\": \"lerna clean\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"develop\": \"npm-run-all --parallel babel:watch watch\",\n    \"docgen\": \"esdoc\",\n    \"docs\": \"open docs/api/index.html\",\n    \"format:js\": \"lerna run format:js\",\n    \"test\": \"lerna run test\",\n    \"watch\": \"webpack-dev-server\",\n    \"publish\": \"lerna publish --conventional-commits\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.0.2\",\n    \"@commitlint/config-conventional\": \"^6.0.2\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-preset-stage-2\": \"^6.24.1\",\n    \"cross-env\": \"^5.1.3\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-brand-plugin\": \"^1.0.0\",\n    \"esdoc-custom-theme\": \"^1.0.0-rc1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-importpath-plugin\": \"^1.0.1\",\n    \"esdoc-inject-style-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-lint-plugin\": \"1.0.1\",\n    \"esdoc-publish-html-plugin\": \"^1.1.0\",\n    \"esdoc-react-plugin\": \"^1.0.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"favicons-webpack-plugin\": \"^0.0.7\",\n    \"html-webpack-harddisk-plugin\": \"^0.1.0\",\n    \"html-webpack-plugin\": \"^2.30.1\",\n    \"husky\": \"^0.14.3\",\n    \"lerna\": \"^2.5.1\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"react\": \"^16.2.0\",\n    \"react-dom\": \"^16.2.0\",\n    \"styled-components\": \"^3.0.2\",\n    \"webpack\": \"^3.10.0\",\n    \"webpack-dev-server\": \"^2.11.1\"\n  },\n  \"workspaces\": [\n    \"@dekk/*\"\n  ]\n}\n",
+    "content": "{\n  \"name\": \"dekk\",\n  \"version\": \"1.0.0-0\",\n  \"private\": true,\n  \"description\": \"A presentation tool written in react.js\",\n  \"license\": \"MIT\",\n  \"author\": \"Gregor Adams <greg@pixelass.com>\",\n  \"repository\": \"git@github.com:sinnerschrader/dekk.git\",\n  \"scripts\": {\n    \"babel\": \"lerna run babel\",\n    \"babel:watch\": \"lerna run babel:watch --parallel\",\n    \"bootstrap\": \"lerna bootstrap\",\n    \"build\": \"cross-env NODE_ENV=production webpack\",\n    \"clean\": \"lerna clean\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"develop\": \"npm-run-all --parallel babel:watch watch\",\n    \"docgen\": \"esdoc\",\n    \"docs\": \"open docs/api/index.html\",\n    \"format:js\": \"lerna run format:js\",\n    \"test\": \"lerna run test\",\n    \"watch\": \"webpack-dev-server\",\n    \"prepublish\": \"yarn babel\",\n    \"publish\": \"lerna publish --conventional-commits\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.0.2\",\n    \"@commitlint/config-conventional\": \"^6.0.2\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-preset-stage-2\": \"^6.24.1\",\n    \"cross-env\": \"^5.1.3\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-brand-plugin\": \"^1.0.0\",\n    \"esdoc-custom-theme\": \"^1.0.0-rc1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-importpath-plugin\": \"^1.0.1\",\n    \"esdoc-inject-style-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-lint-plugin\": \"1.0.1\",\n    \"esdoc-publish-html-plugin\": \"^1.1.0\",\n    \"esdoc-react-plugin\": \"^1.0.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"favicons-webpack-plugin\": \"^0.0.7\",\n    \"html-webpack-harddisk-plugin\": \"^0.1.0\",\n    \"html-webpack-plugin\": \"^2.30.1\",\n    \"husky\": \"^0.14.3\",\n    \"lerna\": \"^2.5.1\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"react\": \"^16.2.0\",\n    \"react-dom\": \"^16.2.0\",\n    \"styled-components\": \"^3.0.2\",\n    \"webpack\": \"^3.10.0\",\n    \"webpack-dev-server\": \"^2.11.1\"\n  },\n  \"workspaces\": [\n    \"@dekk/*\"\n  ]\n}\n",
     "longname": "/Users/greada/Documents/workspace/s2/dekk/package.json",
     "name": "package.json",
     "static": true,
@@ -3430,7 +3881,7 @@
     "kind": "manual",
     "longname": "/Users/greada/Documents/workspace/s2/dekk/.manual/usage.md",
     "name": "./.manual/usage.md",
-    "content": "# Usage\n\n## Creating a Deck\n\nTo create a Deck you need two core packages, \"Deck\" and \"Slide\".\n\n```jsx\nimport React from 'react'\nimport Deck from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nexport default (\n  <Deck>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Page fragments\n\nA slide can have multiple fragments which are activated before the next slide.\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={1}> 1 </Fragment>\n    <Fragment order={2}> 2 </Fragment>\n    <Fragment order={3}> 3 </Fragment>\n  </Slide>\n)\n```\n\n### Fragment order\n\nEach fragment order adds a step to the slide, while multiple fragments can appear at once.\nThe order is used to sort the fragments. \n\n> Pro Tip: You can create blocks of 20 to make changes easier.\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={21}> 2 </Fragment>\n    <Fragment order={22}> 3 </Fragment>\n    <Fragment order={23}> 4 </Fragment>\n    <Fragment order={24}> 5 </Fragment>\n    {/* It's easy to extend this list */)}\n    <Fragment order={41}> 6 </Fragment>\n    {/* Items can appear at the same time */)}\n    <Fragment order={42}> 7 </Fragment>\n    <Fragment order={42}> 7 </Fragment>\n    {/* This is the first fragment */)}\n    <Fragment order={1}> 1 </Fragment>\n    {/* This fragment is already active */)}\n    <Fragment order={0}> 0 </Fragment>\n  </Slide>\n)\n```\n\n### Nested Fragments\n\nFragments can be nested in each other.\n\n> Pro Tip: A nested fragment can be activated before its parent.\n> This allows very complex behavior\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={1}> 1 </Fragment>\n    {/* The next 2 fragments are activated in order 2, 3 (parent, child) */}\n    <Fragment order={2}> 2\n      <Fragment order={3}> 3 </Fragment>\n    </Fragment>\n    {/* The next 2 fragments are activated in order 4, 5 (child, parent) */}\n    <Fragment order={5}> 5\n      <Fragment order={4}> 4 </Fragment>\n    </Fragment>\n  </Slide>\n)\n```\n\n\n### Fragment root\n\nYou can use fragment roots to ensure that parent fragments are activated before their children.\n\n**How does it behave under the hood?**  \n\nTake a fragment root with the order `4`.\nA nested fragment with the order `5` is now handled as `9`\n\n**Example below in detail**\n\n* 1: The first fragment to be activated\n* 6: The third fragment to be activated (with 5 -> 1)\n* 7: The fourth fragment to be activated\n* root 5: The second fragment to be activated\n  * 1 (6): The third fragment to be activated (with 6)\n  * 4 (9): The last fragment to be activated\n    4 + 5(root) = 9\n\n**Resulting order**\n\n```\n1       1 -> 1\n5 ╸╸┓   5 -> 2\n6   ╻   6 -> 3\n1 + 5 = 6 -> 3\n7   ╹   7 -> 4\n4 + 5 = 9 -> 5\n```\n\n**Code**\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={1}> 1 </Fragment>\n    {/* The next 2 fragments are activated in order 6, 7 (child, parent)\n      * The parent is activated at the same time as the first child of the next\n      * fragment block (5 + 1 = 6) is activated.\n      * The parent and child are activated before the last child of the next\n      * fragment block (5 + 4 = 9) is activated.\n      */}\n    <Fragment order={7}> 7\n      <Fragment order={6}> 6 </Fragment>\n    </Fragment>\n    {/* The next 2 fragments are activated in order 5, 1, 4 (parent, child, child) */}\n    <Fragment order={5} root> 5\n      <Fragment order={1}> 1 + 5 = 6 </Fragment>\n      {/* This fragment is last in the list */}\n      <Fragment order={4}> 4 + 5 = 9 </Fragment>\n    </Fragment>\n  </Slide>\n)\n```\n\n## Master slides\nThis section will guide you through the options and explain how master slides work.\n\n### Creating master slides\n\nTo create a Slide with the same layout and style you can define a Master slide.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Slot} from '@dekk/master'\n\nexport default createMaster(\n  <Master>\n    <Slot name='Content'/>\n  </Master>\n)\n```\n\n### Adding Slots\n\nIf you want different sections in your slide you can simply add more slots.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Slot} from '@dekk/master'\n\nexport default createMaster(\n  <Master>\n    <Slot name='Left'/>\n    <Slot name='Right'/>\n  </Master>\n)\n```\n\n### Content types\n\nA slot can be configured to only allow certain components.\nComponents can be allowed or forbidden.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Slot} from '@dekk/master'\nimport Image from '@dekk/image'\n\nexport default createMaster(\n  <Master>\n    <Slot name='Left' only={[Image]}/>\n    <Slot name='Right' not={[Image]}/>\n  </Master>\n)\n```\n\n### Static Slots\n\nIn some cases you might want a slot to always appear without having to add it to every slide.\nYou can add static slots to allow this feature.\n\nUsecases:\n  * Header / Footer\n  * Navigation elements / Page number\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Static, Slot} from '@dekk/master'\nimport Image from '@dekk/image'\n\nimport Footer from './path/to/custom/footer.js'\n\nexport default createMaster(\n  <Master>\n    <Static name=\"Footer\"><Footer/></Static>\n    <Slot name='Content'/>\n  </Master>\n)\n```\n\n### Adding Styles\n\nDekk uses styled-components under the hood.\nIt is recommended to follow this concept to style your slides.\n\nThe example below uses css-grid to create a custom layout.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Static, Slot} from '@dekk/master'\nimport Image from '@dekk/image'\nimport styled from 'styled-components'\n\nimport Footer from './path/to/custom/footer.js'\n\nconst MasterSlide = createMaster(\n  <Master>\n    <Static name=\"Footer\"><Footer/></Static>\n    <Slot name='Content'/>\n  </Master>\n)\n\nexport default MasterSlide\n\nexport const Slide = styled(MasterSlide)`\n  display: grid;\n  grid-template-columns: 100%;\n  grid-template-rows: calc(100% - 2rem) 2rem;\n  grid-template-areas:\n    \"Content\"\n    \"Footer\";\n\n  [data-slot],\n  [data-static] {\n    height: 100%;\n    width: 100%;\n  }\n  [data-static=\"Footer\"] {\n    grid-area: Footer;\n  }\n  [data-slot=\"Content\"] {\n    grid-area: Content;\n  }\n`\n```\n",
+    "content": "# Usage\n\n## Creating a Deck\n\nTo create a Deck you need two core packages, \"Deck\" and \"Slide\".\n\n```jsx\nimport React from 'react'\nimport Deck from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nexport default (\n  <Deck>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Page fragments\n\nA slide can have multiple fragments which are activated before the next slide.\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={1}> 1 </Fragment>\n    <Fragment order={2}> 2 </Fragment>\n    <Fragment order={3}> 3 </Fragment>\n  </Slide>\n)\n```\n\n### Fragment order\n\nEach fragment order adds a step to the slide, while multiple fragments can appear at once.\nThe order is used to sort the fragments. \n\n> Pro Tip: You can create blocks of 20 to make changes easier.\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={21}> 2 </Fragment>\n    <Fragment order={22}> 3 </Fragment>\n    <Fragment order={23}> 4 </Fragment>\n    <Fragment order={24}> 5 </Fragment>\n    {/* It's easy to extend this list */)}\n    <Fragment order={41}> 6 </Fragment>\n    {/* Items can appear at the same time */)}\n    <Fragment order={42}> 7 </Fragment>\n    <Fragment order={42}> 7 </Fragment>\n    {/* This is the first fragment */)}\n    <Fragment order={1}> 1 </Fragment>\n    {/* This fragment is already active */)}\n    <Fragment order={0}> 0 </Fragment>\n  </Slide>\n)\n```\n\n### Nested Fragments\n\nFragments can be nested in each other.\n\n> Pro Tip: A nested fragment can be activated before its parent.\n> This allows very complex behavior\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={1}> 1 </Fragment>\n    {/* The next 2 fragments are activated in order 2, 3 (parent, child) */}\n    <Fragment order={2}> 2\n      <Fragment order={3}> 3 </Fragment>\n    </Fragment>\n    {/* The next 2 fragments are activated in order 4, 5 (child, parent) */}\n    <Fragment order={5}> 5\n      <Fragment order={4}> 4 </Fragment>\n    </Fragment>\n  </Slide>\n)\n```\n\n\n### Fragment root\n\nYou can use fragment roots to ensure that parent fragments are activated before their children.\n\n**How does it behave under the hood?**  \n\nIn a fragment root with the order `4`, a nested fragment with the\norder `5` is now handled as `9` (`5 + 4`)\n\n**Resulting order**\n\n```\n1       1 -> 1\n5 ╸╸┓   5 -> 2\n6   ╻   6 -> 3\n1 + 5 = 6 -> 3\n7   ╹   7 -> 4\n4 + 5 = 9 -> 5\n```\n\n**Code**\n\n```jsx\nimport React from 'react'\nimport Slide from '@dekk/slide'\nimport Fragment from '@dekk/fragment'\n\nexport default (\n  <Slide>\n    <Fragment order={1}> 1 </Fragment>\n    {/* The next 2 fragments are activated in order 6, 7 (child, parent)\n      * The parent is activated at the same time as the first child of the next\n      * fragment block (5 + 1 = 6) is activated.\n      * The parent and child are activated before the last child of the next\n      * fragment block (5 + 4 = 9) is activated.\n      */}\n    <Fragment order={7}> 7\n      <Fragment order={6}> 6 </Fragment>\n    </Fragment>\n    {/* The next 2 fragments are activated in order 5, 1, 4 (parent, child, child) */}\n    <Fragment order={5} root> 5\n      <Fragment order={1}> 1 + 5 = 6 </Fragment>\n      {/* This fragment is last in the list */}\n      <Fragment order={4}> 4 + 5 = 9 </Fragment>\n    </Fragment>\n  </Slide>\n)\n```\n\n\n## Adding Config\n\nTo configure your Deck you can use the Config component. This allows you\nto choose the type of URLs Dekk writes or add listeners as well as disable\npaging\n\n### Default values\n\n* `paging`: `true`\n* `url`: `undefined`\n* `listeners`: `undefined`\n\n```jsx\nimport React from 'react'\nimport Deck, {Config} from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nconst listeners = {\n  onPage: page => {\n    console.log(page)\n  },\n  onFragment: (page, fragmentIndex, fragmentOrder) => {\n    console.log(page, fragmentIndex, fragmentOrder) // eg. 0 1 12\n  } \n}\n\nexport default (\n  <Deck>\n    <Config paging={false} url='hash' listeners={listeners}/>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n### Adding listeners\n\n* `onPage(page: number)`\n* `onFragment(page: number, fragmentIndex: number, fragmentOrder: number)`\n\n```jsx\nimport React from 'react'\nimport Deck, {Config} from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nconst listeners = {\n  onPage(page) {\n    console.log(page)\n  },\n  onFragment(page, fragmentIndex, fragmentOrder) {\n    console.log(page, fragmentIndex, fragmentOrder)\n  } \n}\n\nexport default (\n  <Deck>\n    <Config listeners={listeners}/>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n### Adding URLs\n\n```jsx\nimport React from 'react'\nimport Deck, {Config} from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nexport default (\n  <Deck>\n    <Config url='hash'/>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n### Disable paging\n\n```jsx\nimport React from 'react'\nimport Deck, {Config} from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nexport default (\n  <Deck>\n    <Config paging={false}/>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Master slides\nThis section will guide you through the options and explain how master slides work.\n\n### Creating master slides\n\nTo create a Slide with the same layout and style you can define a Master slide.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Slot} from '@dekk/master'\n\nexport default createMaster(\n  <Master>\n    <Slot name='Content'/>\n  </Master>\n)\n```\n\n### Adding Slots\n\nIf you want different sections in your slide you can simply add more slots.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Slot} from '@dekk/master'\n\nexport default createMaster(\n  <Master>\n    <Slot name='Left'/>\n    <Slot name='Right'/>\n  </Master>\n)\n```\n\n### Content types\n\nA slot can be configured to only allow certain components.\nComponents can be allowed or forbidden.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Slot} from '@dekk/master'\nimport Image from '@dekk/image'\n\nexport default createMaster(\n  <Master>\n    <Slot name='Left' only={[Image]}/>\n    <Slot name='Right' not={[Image]}/>\n  </Master>\n)\n```\n\n### Static Slots\n\nIn some cases you might want a slot to always appear without having to add it to every slide.\nYou can add static slots to allow this feature.\n\nUsecases:\n  * Header / Footer\n  * Navigation elements / Page number\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Static, Slot} from '@dekk/master'\nimport Image from '@dekk/image'\n\nimport Footer from './path/to/custom/footer.js'\n\nexport default createMaster(\n  <Master>\n    <Static name=\"Footer\"><Footer/></Static>\n    <Slot name='Content'/>\n  </Master>\n)\n```\n\n### Adding Styles\n\nDekk uses styled-components under the hood.\nIt is recommended to follow this concept to style your slides.\n\nThe example below uses css-grid to create a custom layout.\n\n```jsx\nimport React from 'react'\nimport createMaster, {Master, Static, Slot} from '@dekk/master'\nimport Image from '@dekk/image'\nimport styled from 'styled-components'\n\nimport Footer from './path/to/custom/footer.js'\n\nconst MasterSlide = createMaster(\n  <Master>\n    <Static name=\"Footer\"><Footer/></Static>\n    <Slot name='Content'/>\n  </Master>\n)\n\nexport default MasterSlide\n\nexport const Slide = styled(MasterSlide)`\n  display: grid;\n  grid-template-columns: 100%;\n  grid-template-rows: calc(100% - 2rem) 2rem;\n  grid-template-areas:\n    \"Content\"\n    \"Footer\";\n\n  [data-slot],\n  [data-static] {\n    height: 100%;\n    width: 100%;\n  }\n  [data-static=\"Footer\"] {\n    grid-area: Footer;\n  }\n  [data-slot=\"Content\"] {\n    grid-area: Content;\n  }\n`\n```\n",
     "static": true,
     "access": "public"
   },
@@ -3462,7 +3913,7 @@
     "kind": "manual",
     "longname": "/Users/greada/Documents/workspace/s2/dekk/CHANGELOG.md",
     "name": "./CHANGELOG.md",
-    "content": "# Change Log\n\nAll notable changes to this project will be documented in this file.\nSee [Conventional Commits](https://conventionalcommits.org) for commit guidelines.\n\n<a name=\"0.0.0\"></a>\n# 0.0.0 (2018-02-17)\n\n\n### Bug Fixes\n\n* add dependencies ([478b424](https://github.com/sinnerschrader/dekk/commit/478b424))\n* fixes issues after refactor ([1e061ea](https://github.com/sinnerschrader/dekk/commit/1e061ea))\n* fixes random issues ([6ac2fb2](https://github.com/sinnerschrader/dekk/commit/6ac2fb2))\n\n\n### Features\n\n* Demo app ([d0c082d](https://github.com/sinnerschrader/dekk/commit/d0c082d))\n* **dekk:** basic prototype ([b235783](https://github.com/sinnerschrader/dekk/commit/b235783))\n* **dekk:** basic prototype demo ([2afb92b](https://github.com/sinnerschrader/dekk/commit/2afb92b))\n* **fragment:** nested fragments are hosted or flattened ([e68cba7](https://github.com/sinnerschrader/dekk/commit/e68cba7))\n* **web-app:** added wrapper ([5c014cc](https://github.com/sinnerschrader/dekk/commit/5c014cc))\n",
+    "content": "# Change Log\n\nAll notable changes to this project will be documented in this file.\nSee [Conventional Commits](https://conventionalcommits.org) for commit guidelines.\n\n<a name=\"1.0.0-0\"></a>\n# 1.0.0-0 (2018-02-17)\n\n### Bug Fixes\n\n* add dependencies ([478b424](https://github.com/sinnerschrader/dekk/commit/478b424))\n\n<a name=\"0.1.0-beta.5cbe4f15\"></a>\n# 0.1.0-beta.5cbe4f15 (2018-02-17)\n\n### Bug Fixes\n\n* fixes issues after refactor ([1e061ea](https://github.com/sinnerschrader/dekk/commit/1e061ea))\n* fixes random issues ([6ac2fb2](https://github.com/sinnerschrader/dekk/commit/6ac2fb2))\n\n\n### Features\n\n* Demo app ([d0c082d](https://github.com/sinnerschrader/dekk/commit/d0c082d))\n* **dekk:** basic prototype ([b235783](https://github.com/sinnerschrader/dekk/commit/b235783))\n* **dekk:** basic prototype demo ([2afb92b](https://github.com/sinnerschrader/dekk/commit/2afb92b))\n* **fragment:** nested fragments are hosted or flattened ([e68cba7](https://github.com/sinnerschrader/dekk/commit/e68cba7))\n* **web-app:** added wrapper ([5c014cc](https://github.com/sinnerschrader/dekk/commit/5c014cc))\n",
     "static": true,
     "access": "public"
   }

@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@dekk/deck~config",
+    "function/index.html#static-function-Config",
+    "<span>Config</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "function"
+  ],
+  [
     "@dekk/deck~deck",
     "class/@dekk/deck/src/index.js~Deck.html",
     "<span>Deck</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
@@ -39,6 +45,12 @@ window.esdocSearchIndex = [
     "@dekk/image~image",
     "class/@dekk/image/src/index.js~Image.html",
     "<span>Image</span> <span class=\"search-result-import-path\">@dekk/image</span>",
+    "class"
+  ],
+  [
+    "@dekk/listener~listener",
+    "class/@dekk/listener/src/index.js~Listener.html",
+    "<span>Listener</span> <span class=\"search-result-import-path\">@dekk/listener</span>",
     "class"
   ],
   [
@@ -396,10 +408,22 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/deck/src/index.js~deck#config",
+    "class/@dekk/deck/src/index.js~Deck.html#instance-get-config",
+    "@dekk/deck/src/index.js~Deck#config",
+    "member"
+  ],
+  [
     "@dekk/deck/src/index.js~deck#constructor",
     "class/@dekk/deck/src/index.js~Deck.html#instance-constructor-constructor",
     "@dekk/deck/src/index.js~Deck#constructor",
     "method"
+  ],
+  [
+    "@dekk/deck/src/index.js~deck#slides",
+    "class/@dekk/deck/src/index.js~Deck.html#instance-get-slides",
+    "@dekk/deck/src/index.js~Deck#slides",
+    "member"
   ],
   [
     "@dekk/deck/src/wrapper.js",
@@ -436,6 +460,12 @@ window.esdocSearchIndex = [
     "class/@dekk/image/src/index.js~Image.html#instance-constructor-constructor",
     "@dekk/image/src/index.js~Image#constructor",
     "method"
+  ],
+  [
+    "@dekk/listener/src/index.js",
+    "file/@dekk/listener/src/index.js.html",
+    "@dekk/listener/src/index.js",
+    "file"
   ],
   [
     "@dekk/master/src/components.js",
@@ -543,6 +573,12 @@ window.esdocSearchIndex = [
     "@dekk/text/src/uppercase.js",
     "file/@dekk/text/src/uppercase.js.html",
     "@dekk/text/src/uppercase.js",
+    "file"
+  ],
+  [
+    "@dekk/url/src/index.js",
+    "file/@dekk/url/src/index.js.html",
+    "@dekk/url/src/index.js",
     "file"
   ],
   [
