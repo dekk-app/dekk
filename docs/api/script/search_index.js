@@ -48,22 +48,10 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@dekk/master~master",
-    "class/@dekk/master/src/master.js~Master.html",
-    "<span>Master</span> <span class=\"search-result-import-path\">@dekk/master</span>",
-    "class"
-  ],
-  [
     "@dekk/speaker-notes~notes",
     "variable/index.html#static-variable-Notes",
     "<span>Notes</span> <span class=\"search-result-import-path\">@dekk/speaker-notes</span>",
     "variable"
-  ],
-  [
-    "@dekk/paging~paging",
-    "class/@dekk/paging/src/index.js~Paging.html",
-    "<span>Paging</span> <span class=\"search-result-import-path\">@dekk/paging</span>",
-    "class"
   ],
   [
     "@dekk/text~quote",
@@ -90,12 +78,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@dekk/store~store",
-    "class/@dekk/store/src/index.js~Store.html",
-    "<span>Store</span> <span class=\"search-result-import-path\">@dekk/store</span>",
-    "class"
-  ],
-  [
     "@dekk/text~subtitle",
     "variable/index.html#static-variable-Subtitle",
     "<span>Subtitle</span> <span class=\"search-result-import-path\">@dekk/text</span>",
@@ -120,27 +102,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@dekk/master~warning",
-    "function/index.html#static-function-Warning",
-    "<span>Warning</span> <span class=\"search-result-import-path\">@dekk/master</span>",
-    "function"
-  ],
-  [
-    "@dekk/master~create",
-    "function/index.html#static-function-create",
-    "<span>create</span> <span class=\"search-result-import-path\">@dekk/master</span>",
-    "function"
-  ],
-  [
-    "@dekk/utils~getqueryparams",
-    "function/index.html#static-function-getQueryParams",
-    "<span>getQueryParams</span> <span class=\"search-result-import-path\">@dekk/utils</span>",
-    "function"
-  ],
-  [
-    "@dekk/utils~range",
-    "function/index.html#static-function-range",
-    "<span>range</span> <span class=\"search-result-import-path\">@dekk/utils</span>",
+    "@dekk/master~createmaster",
+    "function/index.html#static-function-createMaster",
+    "<span>createMaster</span> <span class=\"search-result-import-path\">@dekk/master</span>",
     "function"
   ],
   [
@@ -432,6 +396,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/deck/src/index.js~deck#constructor",
+    "class/@dekk/deck/src/index.js~Deck.html#instance-constructor-constructor",
+    "@dekk/deck/src/index.js~Deck#constructor",
+    "method"
+  ],
+  [
     "@dekk/deck/src/wrapper.js",
     "file/@dekk/deck/src/wrapper.js.html",
     "@dekk/deck/src/wrapper.js",
@@ -450,10 +420,22 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/fragment/src/index.js~fragment#constructor",
+    "class/@dekk/fragment/src/index.js~Fragment.html#instance-constructor-constructor",
+    "@dekk/fragment/src/index.js~Fragment#constructor",
+    "method"
+  ],
+  [
     "@dekk/image/src/index.js",
     "file/@dekk/image/src/index.js.html",
     "@dekk/image/src/index.js",
     "file"
+  ],
+  [
+    "@dekk/image/src/index.js~image#constructor",
+    "class/@dekk/image/src/index.js~Image.html#instance-constructor-constructor",
+    "@dekk/image/src/index.js~Image#constructor",
+    "method"
   ],
   [
     "@dekk/master/src/components.js",
@@ -468,6 +450,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/master/src/create.js~masterslide",
+    "typedef/index.html#static-typedef-MasterSlide",
+    "@dekk/master/src/create.js~MasterSlide",
+    "typedef"
+  ],
+  [
     "@dekk/master/src/index.js",
     "file/@dekk/master/src/index.js.html",
     "@dekk/master/src/index.js",
@@ -478,12 +466,6 @@ window.esdocSearchIndex = [
     "file/@dekk/master/src/master.js.html",
     "@dekk/master/src/master.js",
     "file"
-  ],
-  [
-    "@dekk/master/src/master.js~master#render",
-    "class/@dekk/master/src/master.js~Master.html#instance-method-render",
-    "@dekk/master/src/master.js~Master#render",
-    "method"
   ],
   [
     "@dekk/master/src/warning.js",
@@ -498,58 +480,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "@dekk/paging/src/index.js~paging#componentwillmount",
-    "class/@dekk/paging/src/index.js~Paging.html#instance-method-componentWillMount",
-    "@dekk/paging/src/index.js~Paging#componentWillMount",
-    "method"
-  ],
-  [
-    "@dekk/paging/src/index.js~paging#componentwillunmount",
-    "class/@dekk/paging/src/index.js~Paging.html#instance-method-componentWillUnmount",
-    "@dekk/paging/src/index.js~Paging#componentWillUnmount",
-    "method"
-  ],
-  [
-    "@dekk/paging/src/index.js~paging#constructor",
-    "class/@dekk/paging/src/index.js~Paging.html#instance-constructor-constructor",
-    "@dekk/paging/src/index.js~Paging#constructor",
-    "method"
-  ],
-  [
-    "@dekk/paging/src/index.js~paging#gotopage",
-    "class/@dekk/paging/src/index.js~Paging.html#instance-method-goToPage",
-    "@dekk/paging/src/index.js~Paging#goToPage",
-    "method"
-  ],
-  [
-    "@dekk/paging/src/index.js~paging#render",
-    "class/@dekk/paging/src/index.js~Paging.html#instance-method-render",
-    "@dekk/paging/src/index.js~Paging#render",
-    "method"
-  ],
-  [
     "@dekk/slide/src/index.js",
     "file/@dekk/slide/src/index.js.html",
     "@dekk/slide/src/index.js",
     "file"
-  ],
-  [
-    "@dekk/slide/src/index.js~slide#getchildcontext",
-    "class/@dekk/slide/src/index.js~Slide.html#instance-method-getChildContext",
-    "@dekk/slide/src/index.js~Slide#getChildContext",
-    "method"
-  ],
-  [
-    "@dekk/slide/src/index.js~slide#render",
-    "class/@dekk/slide/src/index.js~Slide.html#instance-method-render",
-    "@dekk/slide/src/index.js~Slide#render",
-    "method"
-  ],
-  [
-    "@dekk/slide/src/index.js~slide.childcontexttypes",
-    "class/@dekk/slide/src/index.js~Slide.html#static-get-childContextTypes",
-    "@dekk/slide/src/index.js~Slide.childContextTypes",
-    "member"
   ],
   [
     "@dekk/speaker-notes/src/index.js",
@@ -562,90 +496,6 @@ window.esdocSearchIndex = [
     "file/@dekk/store/src/index.js.html",
     "@dekk/store/src/index.js",
     "file"
-  ],
-  [
-    "@dekk/store/src/index.js~store#constructor",
-    "class/@dekk/store/src/index.js~Store.html#instance-constructor-constructor",
-    "@dekk/store/src/index.js~Store#constructor",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#direction",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-direction",
-    "@dekk/store/src/index.js~Store#direction",
-    "member"
-  ],
-  [
-    "@dekk/store/src/index.js~store#fragment",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-fragment",
-    "@dekk/store/src/index.js~Store#fragment",
-    "member"
-  ],
-  [
-    "@dekk/store/src/index.js~store#fragmentcount",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-fragmentCount",
-    "@dekk/store/src/index.js~Store#fragmentCount",
-    "member"
-  ],
-  [
-    "@dekk/store/src/index.js~store#fragmenthosts",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-fragmentHosts",
-    "@dekk/store/src/index.js~Store#fragmentHosts",
-    "member"
-  ],
-  [
-    "@dekk/store/src/index.js~store#gotofragment",
-    "class/@dekk/store/src/index.js~Store.html#instance-method-goToFragment",
-    "@dekk/store/src/index.js~Store#goToFragment",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#gotopage",
-    "class/@dekk/store/src/index.js~Store.html#instance-method-goToPage",
-    "@dekk/store/src/index.js~Store#goToPage",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#id",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-id",
-    "@dekk/store/src/index.js~Store#id",
-    "member"
-  ],
-  [
-    "@dekk/store/src/index.js~store#nextfragment",
-    "class/@dekk/store/src/index.js~Store.html#instance-method-nextFragment",
-    "@dekk/store/src/index.js~Store#nextFragment",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#nextpage",
-    "class/@dekk/store/src/index.js~Store.html#instance-method-nextPage",
-    "@dekk/store/src/index.js~Store#nextPage",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#page",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-page",
-    "@dekk/store/src/index.js~Store#page",
-    "member"
-  ],
-  [
-    "@dekk/store/src/index.js~store#previousfragment",
-    "class/@dekk/store/src/index.js~Store.html#instance-method-previousFragment",
-    "@dekk/store/src/index.js~Store#previousFragment",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#previouspage",
-    "class/@dekk/store/src/index.js~Store.html#instance-method-previousPage",
-    "@dekk/store/src/index.js~Store#previousPage",
-    "method"
-  ],
-  [
-    "@dekk/store/src/index.js~store#title",
-    "class/@dekk/store/src/index.js~Store.html#instance-member-title",
-    "@dekk/store/src/index.js~Store#title",
-    "member"
   ],
   [
     "@dekk/text/src/bold.js",
