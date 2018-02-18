@@ -5,9 +5,20 @@ import Paging from '@dekk/paging'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
 import Slide from '@dekk/slide'
-import {url} from '@dekk/url'
+import Url from '@dekk/url'
+import Listener from '@dekk/listener'
 import Wrapper from './wrapper'
 
+export const Config = () => null
+Config.propTypes = {
+  paging: PropTypes.oneOf([false]),
+  listeners: PropTypes.shape({
+    onFragement: PropTypes.func,
+    onPage: PropTypes.func
+  }),
+  paging: PropTypes.oneOf([false]),
+  url: PropTypes.oneOf(['hash', 'route', 'query'])
+}
 /**
  * A wrapper around the slides. It includes a paging component to allow
  * navigating the slides and fragments.
@@ -61,7 +72,6 @@ export default class Deck extends Component {
    */
   static get propTypes() {
     return {
-      url: PropTypes.func,
       children: PropTypes.node.isRequired,
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       slave: PropTypes.bool
@@ -88,7 +98,7 @@ export default class Deck extends Component {
    * @public
    * @param {Object} props
    *   The properties
-   * @param {(Slide|Slide[])} props.children
+   * @param {(Slide|Slide[]|Config|Config[])} props.children
    * @param {?String} props.mixin
    * @param {?Boolean} props.slave
    */
@@ -106,15 +116,18 @@ export default class Deck extends Component {
       store: this.store
     }
   }
-
-  componentDidMount() {
-    // @TODO allow other formats too
-    const {hash = '#!/0/0'} = url()
-    const [, page = 0, fragment = 0] = hash.split('/')
-    this.store.goToPage(parseInt(page, 10))
-    this.store.goToFragment(parseInt(fragment, 10))
+  get config() {
+    return (
+      Children.toArray(this.props.children).filter(
+        child => child.type === Config
+      )[0] || {}
+    ).props
   }
-
+  get slides() {
+    return Children.toArray(this.props.children).filter(
+      child => child.type !== Config
+    )
+  }
   /**
    * Get the `children` by a range of `+-1` around the current slide.
    * It renders a maximum of 3 slides (previous, current, next)
@@ -123,16 +136,16 @@ export default class Deck extends Component {
    * @private
    * @return {Array<Slide>} returns an array of max 3 slides
    */
-  get slides() {
+  get visibleSlides() {
     const {children} = this.props
     const {page, direction, fragment, fragmentHosts} = this.store
-    Children.toArray(children).forEach((child, index) => {
+    this.slides.forEach((child, index) => {
       this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []
     })
     return (
-      Children
+      this.slides
         // Assign the original index for the Component
-        .map(children, (child, originalIndex) => ({child, originalIndex}))
+        .map((child, originalIndex) => ({child, originalIndex}))
         // Filter by a range of `+-1`
         // Filter first to reduce the number of clones
         .filter((c, i) => range(i, page + 1, page - 1))
@@ -172,12 +185,49 @@ export default class Deck extends Component {
       return false
     }
     return (
-      <Paging
-        url={this.props.url}
-        page={this.store.page}
-        pages={this.props.children.length}
-        trigger="keyup"
-      />
+      this.config.paging !== false && (
+        <Paging
+          page={this.store.page}
+          pages={this.slides.length}
+          trigger="keyup"
+        />
+      )
+    )
+  }
+
+  /**
+   * @private
+   * @return {Url}
+   *   The `<Url/>` component
+   */
+  get url() {
+    return (
+      this.config.url && (
+        <Url
+          type={this.config.url}
+          page={this.store.page}
+          fragmentCount={this.store.fragmentCount}
+        />
+      )
+    )
+  }
+
+  /**
+   * @private
+   * @return {Listener}
+   *   The `<Listener/>` component
+   */
+  get listeners() {
+    return (
+      this.config.listeners && (
+        <Listener
+          page={this.store.page}
+          fragmentCount={this.store.fragmentCount}
+          fragment={this.store.fragment}
+          onPage={this.config.listeners.onPage}
+          onFragment={this.config.listeners.onFragment}
+        />
+      )
     )
   }
 
@@ -190,7 +240,9 @@ export default class Deck extends Component {
     return (
       <Wrapper mixin={this.props.mixin}>
         {this.paging}
-        {this.slides}
+        {this.url}
+        {this.listeners}
+        {this.visibleSlides}
       </Wrapper>
     )
   }

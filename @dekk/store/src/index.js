@@ -16,11 +16,11 @@ export default class Store {
     this.title = props.title
 
     this.goToPage = this.goToPage.bind(this)
-    this.nextPage = this.nextPage.bind(this)
-    this.previousPage = this.previousPage.bind(this)
+    this.toNextPage = this.toNextPage.bind(this)
+    this.toPreviousPage = this.toPreviousPage.bind(this)
     this.goToFragment = this.goToFragment.bind(this)
-    this.nextFragment = this.nextFragment.bind(this)
-    this.previousFragment = this.previousFragment.bind(this)
+    this.toNextFragment = this.toNextFragment.bind(this)
+    this.toPreviousFragment = this.toPreviousFragment.bind(this)
   }
 
   /**
@@ -34,15 +34,18 @@ export default class Store {
   /**
    * @private
    */
-  nextPage() {
+  toNextPage() {
     this.goToPage(this.page + 1)
+    this.goToFragment(0)
   }
 
   /**
    * @private
    */
-  previousPage() {
+  toPreviousPage() {
+    const {length} = this.fragmentHosts[this.page - 1]
     this.goToPage(this.page - 1)
+    this.goToFragment(Math.max(0, length - 1))
   }
 
   /**
@@ -57,14 +60,14 @@ export default class Store {
   /**
    * @private
    */
-  nextFragment() {
+  toNextFragment() {
     this.goToFragment(this.fragmentCount + 1)
   }
 
   /**
    * @private
    */
-  previousFragment() {
+  toPreviousFragment() {
     this.goToFragment(this.fragmentCount - 1)
   }
 }

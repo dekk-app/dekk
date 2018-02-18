@@ -84,10 +84,12 @@ class Paging extends Component {
     const {store} = this.context
     const {
       page,
-      goToPage,
+      toPreviousPage,
+      toNextPage,
       fragmentCount,
       fragmentHosts,
-      goToFragment,
+      toNextFragment,
+      toPreviousFragment,
       setFragment
     } = store
     const {length = 0} = fragmentHosts[page]
@@ -101,28 +103,24 @@ class Paging extends Component {
       case 39:
         ;(() => {
           if (length && nextFragment > fragmentCount) {
-            goToFragment(nextFragment)
+            toNextFragment()
           } else if (nextPage !== page) {
-            goToPage(nextPage)
-            goToFragment(0)
+            toNextPage()
           }
         })()
         break
       case 37:
         ;(() => {
           if (length && previousFragment < fragmentCount) {
-            goToFragment(previousFragment)
+            toPreviousFragment()
           } else if (previousPage !== page) {
-            goToPage(previousPage)
-            goToFragment(fragmentHosts[previousPage].length - 1)
+            toPreviousPage()
           }
         })()
         break
       default:
         break
     }
-
-    this.props.url(store.page, store.fragment)
   }
 
   /**
