@@ -4,27 +4,29 @@ import PropTypes from 'prop-types'
 /**
  * @private
  */
-export const writeHash = (page = 0, fragment = 0) => {
-  window.location.hash = `#!/${page}/${fragment}/`
+export const writeHash = (slideIndex = 0, fragmentIndex = 0) => {
+  window.location.hash = `#!/${slideIndex}/${fragmentIndex}/`
 }
 
 /**
  * @private
  */
-export const writeQuery = (page = 0, fragment = 0, old = '') => {
+export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {
   const oldQuery = window.location.search
     .split(/[\?&]/)
     .filter(x => x !== '' && !x.match(/(page|fragment)/))
     .join('&')
   history.pushState(
-    {page, fragment},
-    `page ${page}, fragment ${fragment}`,
-    `?page=${page}&fragment=${fragment}${oldQuery ? `&${oldQuery}` : ''}`
+    {page: slideIndex, fragment: fragmentIndex},
+    `page ${slideIndex}, fragment ${fragmentIndex}`,
+    `?page=${slideIndex}&fragment=${fragmentIndex}${
+      oldQuery ? `&${oldQuery}` : ''
+    }`
   )
 }
 
 /**
- * @private
+ * @public
  */
 class Url extends Component {
   /**
@@ -33,31 +35,51 @@ class Url extends Component {
   static get propTypes() {
     return {
       type: PropTypes.oneOf(['hash', 'query']),
-      page: PropTypes.number,
-      fragmentCount: PropTypes.number
+      slideIndex: PropTypes.number,
+      fragmentIndex: PropTypes.number
     }
   }
 
   /**
    * @private
    */
-  static get contextTypes() {
+  static get defaultProps() {
     return {
-      store: PropTypes.object.isRequired
+      type: 'hash',
+      slideIndex: 0,
+      fragmentIndex: 0
     }
   }
 
   /**
-   * @private
+   * @public
    * @param {Object} props
    *   The properties
-   * @param {Object} context
-   *   The context
-   * @param {Object} context.store
-   *   The mobx store passed through via context
+   * @param {String} [props.type='hash']
+   *   Either `hash` or `query` to enable hash(bang) or search query URLs
+   * @param {number} props.slideIndex
+   *   (private: Injected via Dekk)
+   * @param {number} props.fragmentCount
+   *   (private: Injected via Dekk)
+   * @param {number} props.fragmentIndex
+   *   (private: Injected via Dekk)
+   * @param {number} props.fragmnetOrder
+   *   (private: Injected via Dekk)
+   * @param {function} props.toFragment
+   *   (private: Injected via Dekk)
+   * @param {function} props.toSlide
+   *   (private: Injected via Dekk)
+   * @param {function} props.toNextFragment
+   *   (private: Injected via Dekk)
+   * @param {function} props.toPrevFragment
+   *   (private: Injected via Dekk)
+   * @param {function} props.toNextSlide
+   *   (private: Injected via Dekk)
+   * @param {function} props.toPrevSlide
+   *   (private: Injected via Dekk)
    */
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
   }
 
   /**
@@ -72,9 +94,9 @@ class Url extends Component {
    */
   hash(url) {
     const {hash = ''} = new URL(url)
-    const [, page = 0, fragment = 0] = hash.split('/')
-    this.context.store.goToPage(parseInt(page, 10))
-    this.context.store.goToFragment(parseInt(fragment, 10))
+    const [, slideIndex = 0, fragmentIndex = 0] = hash.split('/')
+    this.toSlide(slideIndex)
+    this.toFragment(fragmentIndex)
   }
 
   /**
@@ -83,24 +105,41 @@ class Url extends Component {
   query(url) {
     const {search = ''} = new URL(url)
     const parts = search.split(/[\?&]/).filter(Boolean)
-    const {page = 0, fragment = 0} = parts.reduce((a, b) => {
-      const [key, value] = b.split('=')
-      return {...a, [key]: value}
-    }, {})
-    this.context.store.goToPage(parseInt(page, 10))
-    this.context.store.goToFragment(parseInt(fragment, 10))
+    const {page: slideIndex = 0, fragment: fragmentIndex = 0} = parts.reduce(
+      (a, b) => {
+        const [key, value] = b.split('=')
+        return {...a, [key]: value}
+      },
+      {}
+    )
+    this.toSlide(slideIndex)
+    this.toFragment(fragmentIndex)
   }
 
   /**
    * @private
    */
-  componentWillReceiveProps({page, fragmentCount}) {
+  toFragment(fragmentIndex) {
+    this.props.toFragment(parseInt(fragmentIndex, 10))
+  }
+
+  /**
+   * @private
+   */
+  toSlide(slideIndex) {
+    this.props.toSlide(parseInt(slideIndex, 10))
+  }
+
+  /**
+   * @private
+   */
+  componentWillReceiveProps({slideIndex, fragmentIndex}) {
     switch (this.props.type) {
       case 'hash':
-        writeHash(page, fragmentCount)
+        writeHash(slideIndex, fragmentIndex)
         break
       case 'query':
-        writeQuery(page, fragmentCount)
+        writeQuery(slideIndex, fragmentIndex)
         break
       default:
         break

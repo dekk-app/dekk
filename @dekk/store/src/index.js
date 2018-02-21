@@ -23,6 +23,17 @@ export default class Store {
     this.toPreviousFragment = this.toPreviousFragment.bind(this)
   }
 
+  get publicMethods() {
+    return {
+      toSlide: this.goToPage,
+      toNextSlide: this.toNextPage,
+      toPrevSlide: this.toPreviousPage,
+      toFragment: this.goToFragment,
+      toNextFragment: this.toNextFragment,
+      toPrevFragment: this.toPreviousFragment
+    }
+  }
+
   /**
    * @private
    */

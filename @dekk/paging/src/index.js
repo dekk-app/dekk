@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
  * This component does not render any content but adds paging via key
  * commands.
  *
- * If a page has fragments this component will split the page into
+ * If a pageIndex has fragments this component will split the pageIndex into
  * different steps.
  * Without this components fragments won't work. They are rendered as
  * normal elements but never get activated.
@@ -23,17 +23,26 @@ class Paging extends Component {
    */
   static get propTypes() {
     return {
-      trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,
-      pages: PropTypes.number.isRequired
+      trigger: PropTypes.oneOf(['keyup', 'keydown']),
+      toNextFragment: PropTypes.func,
+      toPrevFragment: PropTypes.func,
+      toFragment: PropTypes.func,
+      toNextSlide: PropTypes.func,
+      toPrevSlide: PropTypes.func,
+      toSlide: PropTypes.func,
+      slideCount: PropTypes.number,
+      slideIndex: PropTypes.number,
+      fragmentCount: PropTypes.number,
+      fragmentIndex: PropTypes.number
     }
   }
 
   /**
    * @private
    */
-  static get contextTypes() {
+  static get defaultProps() {
     return {
-      store: PropTypes.object.isRequired
+      trigger: 'keydown'
     }
   }
 
@@ -43,14 +52,31 @@ class Paging extends Component {
    *   The properties
    * @param {String} props.trigger
    *   The event that triggers paging
-   * @param {number} props.pages
-   * @param {Object} context
-   *   The context
-   * @param {Object} context.store
-   *   The mobx store passed through via context
+   * @param {number} props.slideCount
+   *   (Injected via Dekk)
+   * @param {number} props.slideIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentCount
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmnetOrder
+   *   (Injected via Dekk)
+   * @param {function} props.toFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toNextFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toNextSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevSlide
+   *   (Injected via Dekk)
    */
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
     this.goTo = this.goTo.bind(this)
   }
 
@@ -71,7 +97,7 @@ class Paging extends Component {
   }
 
   /**
-   * Method to navigate to fragments or pages.
+   * Method to navigate to fragments or slideCount.
    * Uses left and right arrow buttons to navigate
    * @private
    * @param  {Object} e
@@ -80,43 +106,51 @@ class Paging extends Component {
    *   The keyCode that has been triggered by the event
    */
   goTo({which}) {
-    const {pages} = this.props
-    const {store} = this.context
     const {
-      page,
-      toPreviousPage,
-      toNextPage,
+      slideCount,
+      slideIndex,
+      fragmentIndex,
       fragmentCount,
-      fragmentHosts,
+      toNextSlide,
+      toPrevSlide,
       toNextFragment,
-      toPreviousFragment,
-      setFragment
-    } = store
-    const {length = 0} = fragmentHosts[page]
-    const previousFragment = Math.max(0, fragmentCount - 1)
-    const nextFragment = Math.min(length - 1, fragmentCount + 1)
-    const previousPage = Math.max(0, page - 1)
-    const nextPage = Math.min(pages - 1, page + 1)
+      toPrevFragment
+    } = this.props
+
+    const hasFragments = Boolean(fragmentCount)
+
+    const lastFragment = Math.max(0, fragmentCount - 1)
+
+    const previousFragment = Math.max(0, fragmentIndex - 1)
+    const nextFragment = Math.min(lastFragment, fragmentIndex + 1)
+
+    const lastSlide = Math.max(0, slideCount - 1)
+    const previousSlide = Math.max(0, slideIndex - 1)
+    const nextSlide = Math.min(lastSlide, slideIndex + 1)
+
+    const handleNext = () => {
+      if (hasFragments && nextFragment > fragmentIndex) {
+        toNextFragment()
+      } else if (nextSlide !== slideIndex) {
+        toNextSlide()
+      }
+    }
+
+    const handlePrev = () => {
+      if (hasFragments && previousFragment < fragmentIndex) {
+        toPrevFragment()
+      } else if (previousSlide !== slideIndex) {
+        toPrevSlide()
+      }
+    }
 
     // Switch between left and right arrow buttons
     switch (which) {
       case 39:
-        ;(() => {
-          if (length && nextFragment > fragmentCount) {
-            toNextFragment()
-          } else if (nextPage !== page) {
-            toNextPage()
-          }
-        })()
+        handleNext()
         break
       case 37:
-        ;(() => {
-          if (length && previousFragment < fragmentCount) {
-            toPreviousFragment()
-          } else if (previousPage !== page) {
-            toPreviousPage()
-          }
-        })()
+        handlePrev()
         break
       default:
         break
