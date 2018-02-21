@@ -132,15 +132,15 @@ export default class Fragment extends Component {
    */
   render() {
     const {order, children, animation} = this.props
-    const {fragmentHost, hostedFragmentOrder = 0} = this.context
+    const {fragmentHost, hostedFragmentOrder = 0, store} = this.context
     // Define several flags to determine the acitve state
     // of the fragment.
-    const isPrevious = fragmentHost < this.context.store.slideIndex
-    const isNext = fragmentHost > this.context.store.slideIndex
+    const isPrev = fragmentHost < store.slideIndex
+    const isNext = fragmentHost > store.slideIndex
     const fragmentOrder = order + hostedFragmentOrder
     const isZero = fragmentOrder === 0
-    const isActivated = this.context.store.fragmentOrder >= fragmentOrder
-    const isActive = isPrevious || (isNext ? isZero : isActivated)
+    const isActivated = store.fragmentOrder >= fragmentOrder
+    const isActive = isPrev || (isNext ? isZero : isActivated)
     const springStyle = {
       time: spring(isActive ? 0 : 1, {
         ...this.props.springSettings
