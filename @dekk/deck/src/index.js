@@ -129,6 +129,7 @@ export default class Deck extends Component {
     return plugins.map((plugin, index) =>
       cloneElement(plugin, {
         key: `${plugin.type.name}_${index}`,
+        ...this.store.publicMethods,
         slideIndex,
         slideCount,
         fragmentIndex,

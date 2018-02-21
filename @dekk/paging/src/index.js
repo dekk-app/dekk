@@ -24,6 +24,12 @@ class Paging extends Component {
   static get propTypes() {
     return {
       trigger: PropTypes.oneOf(['keyup', 'keydown']),
+      toNextFragment: PropTypes.func,
+      toPrevFragment: PropTypes.func,
+      toFragment: PropTypes.func,
+      toNextSlide: PropTypes.func,
+      toPrevSlide: PropTypes.func,
+      toSlide: PropTypes.func,
       slideCount: PropTypes.number,
       slideIndex: PropTypes.number,
       fragmentCount: PropTypes.number,
@@ -36,20 +42,7 @@ class Paging extends Component {
    */
   static get defaultProps() {
     return {
-      trigger: 'keydown',
-      slideCount: 1,
-      slideIndex: 0,
-      fragmentCount: 0,
-      fragmentIndex: 0
-    }
-  }
-
-  /**
-   * @private
-   */
-  static get contextTypes() {
-    return {
-      store: PropTypes.object.isRequired
+      trigger: 'keydown'
     }
   }
 
@@ -60,13 +53,30 @@ class Paging extends Component {
    * @param {String} props.trigger
    *   The event that triggers paging
    * @param {number} props.slideCount
-   * @param {Object} context
-   *   The context
-   * @param {Object} context.store
-   *   The mobx store passed through via context
+   *   (Injected via Dekk)
+   * @param {number} props.slideIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentCount
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmnetOrder
+   *   (Injected via Dekk)
+   * @param {function} props.toFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toNextFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toNextSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevSlide
+   *   (Injected via Dekk)
    */
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
     this.goTo = this.goTo.bind(this)
   }
 
@@ -96,14 +106,16 @@ class Paging extends Component {
    *   The keyCode that has been triggered by the event
    */
   goTo({which}) {
-    const {slideCount, slideIndex, fragmentIndex, fragmentCount} = this.props
-    const {store} = this.context
     const {
-      toPreviousPage,
-      toNextPage,
+      slideCount,
+      slideIndex,
+      fragmentIndex,
+      fragmentCount,
+      toNextSlide,
+      toPrevSlide,
       toNextFragment,
-      toPreviousFragment
-    } = store
+      toPrevFragment
+    } = this.props
 
     const hasFragments = Boolean(fragmentCount)
 
@@ -120,15 +132,15 @@ class Paging extends Component {
       if (hasFragments && nextFragment > fragmentIndex) {
         toNextFragment()
       } else if (nextSlide !== slideIndex) {
-        toNextPage()
+        toNextSlide()
       }
     }
 
     const handlePrev = () => {
       if (hasFragments && previousFragment < fragmentIndex) {
-        toPreviousFragment()
+        toPrevFragment()
       } else if (previousSlide !== slideIndex) {
-        toPreviousPage()
+        toPrevSlide()
       }
     }
 

@@ -7,7 +7,7 @@ class Listener extends Component {
    */
   static get propTypes() {
     return {
-      onPage: PropTypes.func,
+      onSlide: PropTypes.func,
       onFragment: PropTypes.func
     }
   }
@@ -17,7 +17,7 @@ class Listener extends Component {
    */
   static get defaultProps() {
     return {
-      onPage: () => null,
+      onSlide: () => null,
       onFragment: () => null
     }
   }
@@ -26,6 +26,32 @@ class Listener extends Component {
    * @private
    * @param {Object} props
    *   The properties
+   * @param {number} props.slideCount
+   *   (Injected via Dekk)
+   * @param {number} props.onSlide
+   *   Callback when the slide changes
+   * @param {number} props.onFragment
+   *   Callback when the fragmnet changes
+   * @param {number} props.slideIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentCount
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmnetOrder
+   *   (Injected via Dekk)
+   * @param {function} props.toFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toNextFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toNextSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevSlide
+   *   (Injected via Dekk)
    */
   constructor(props) {
     super(props)
@@ -34,14 +60,14 @@ class Listener extends Component {
   /**
    * @private
    */
-  componentWillReceiveProps({page, fragment, fragmentCount}) {
+  componentWillReceiveProps({slideIndex, fragmentOrder, fragmentIndex}) {
     if (
-      this.props.fragmentCount !== fragmentCount &&
-      typeof fragment !== 'undefined'
+      this.props.fragmentIndex !== fragmentIndex &&
+      typeof fragmentOrder !== 'undefined'
     ) {
-      this.props.onFragment(page, fragmentCount, fragment)
-    } else if (this.props.page !== page) {
-      this.props.onPage(page)
+      this.props.onFragment(slideIndex, fragmentIndex, fragmentOrder)
+    } else if (this.props.slideIndex !== slideIndex) {
+      this.props.onSlide(slideIndex)
     }
   }
 

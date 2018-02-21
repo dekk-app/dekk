@@ -26,7 +26,7 @@ export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {
 }
 
 /**
- * @private
+ * @public
  */
 class Url extends Component {
   /**
@@ -52,25 +52,34 @@ class Url extends Component {
   }
 
   /**
-   * @private
-   */
-  static get contextTypes() {
-    return {
-      store: PropTypes.object.isRequired
-    }
-  }
-
-  /**
-   * @private
+   * @public
    * @param {Object} props
    *   The properties
-   * @param {Object} context
-   *   The context
-   * @param {Object} context.store
-   *   The mobx store passed through via context
+   * @param {String} [props.type='hash']
+   *   Either `hash` or `query` to enable hash(bang) or search query URLs
+   * @param {number} props.slideIndex
+   *   (private: Injected via Dekk)
+   * @param {number} props.fragmentCount
+   *   (private: Injected via Dekk)
+   * @param {number} props.fragmentIndex
+   *   (private: Injected via Dekk)
+   * @param {number} props.fragmnetOrder
+   *   (private: Injected via Dekk)
+   * @param {function} props.toFragment
+   *   (private: Injected via Dekk)
+   * @param {function} props.toSlide
+   *   (private: Injected via Dekk)
+   * @param {function} props.toNextFragment
+   *   (private: Injected via Dekk)
+   * @param {function} props.toPrevFragment
+   *   (private: Injected via Dekk)
+   * @param {function} props.toNextSlide
+   *   (private: Injected via Dekk)
+   * @param {function} props.toPrevSlide
+   *   (private: Injected via Dekk)
    */
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
   }
 
   /**
@@ -86,8 +95,8 @@ class Url extends Component {
   hash(url) {
     const {hash = ''} = new URL(url)
     const [, slideIndex = 0, fragmentIndex = 0] = hash.split('/')
-    this.context.store.goToPage(parseInt(slideIndex, 10))
-    this.context.store.goToFragment(parseInt(fragmentIndex, 10))
+    this.toSlide(slideIndex)
+    this.toFragment(fragmentIndex)
   }
 
   /**
@@ -103,8 +112,22 @@ class Url extends Component {
       },
       {}
     )
-    this.context.store.goToPage(parseInt(slideIndex, 10))
-    this.context.store.goToFragment(parseInt(fragmentIndex, 10))
+    this.toSlide(slideIndex)
+    this.toFragment(fragmentIndex)
+  }
+
+  /**
+   * @private
+   */
+  toFragment(fragmentIndex) {
+    this.props.toFragment(parseInt(fragmentIndex, 10))
+  }
+
+  /**
+   * @private
+   */
+  toSlide(slideIndex) {
+    this.props.toSlide(parseInt(slideIndex, 10))
   }
 
   /**
