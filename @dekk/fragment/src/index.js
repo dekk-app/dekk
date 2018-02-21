@@ -142,7 +142,7 @@ export default class Fragment extends Component {
     const isActivated = this.context.store.fragmentOrder >= fragmentOrder
     const isActive = isPrevious || (isNext ? isZero : isActivated)
     const springStyle = {
-      time: spring(isActive ? 1 : 0, {
+      time: spring(isActive ? 0 : 1, {
         ...this.props.springSettings
       })
     }
