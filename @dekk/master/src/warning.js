@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
  * Renders a warning containing useful information about the error that
  * caused the warning.
  * In general, it tells you what is wrong and what the correct usage
- * would look like. This is typically a text telling you that while 
+ * would look like. This is typically a text telling you that while
  * you used component "A" only component "B" or "C" are allowed.
- * 
+ *
  * @private
  * @param {props} props
  *   The properties

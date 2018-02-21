@@ -7,21 +7,21 @@ import {Slot} from './components'
  * # createMaster
  * This is a helper function to create master slides.
  * A master slide is an already layouted slide with predefined slots.
- * 
+ *
  * To create a master a wrapping component is used. While it does not
  * matter what this component is, Dekk already provides this for you.
  * Simply use `Master` from `./components`.
- * 
+ *
  * The schildren are then parsed and cheked to ensure the slides have
  * the correct content. These checks are very simple and only define
- * which children should be used. 
+ * which children should be used.
  * To ensure further safety you can define PropTypes or other mechanisms
  * to ensure the intended usage of your master slides.
- * 
+ *
  * This function returns a smart React Component which has all allowed
- * slots as statics. 
+ * slots as statics.
  * @public
- * @param {ReactComponent} master 
+ * @param {ReactComponent} master
  *   A wrapping component (could even be just a `<div>`)
  * @return {MasterSlide}
  * @example
@@ -37,7 +37,7 @@ import {Slot} from './components'
  *           only={[Subtitle]}/>
  *   </Master>
  * )
- * 
+ *
  * @example
  * import React from 'react'
  * import createmaster, {Master, Slot} from '@dekk/master'
@@ -54,7 +54,6 @@ import {Slot} from './components'
  */
 export default function createMaster(master) {
   const {children, className} = master.props
-  
 
   /**
    * @public
@@ -87,14 +86,14 @@ export default function createMaster(master) {
       Slide[name] = props => null
     })
 
-   /**
+  /**
    * Allowed propTypes for `<Slide/>`
    * @private
    * @property {ReactElement} children
    * @property {String} className
    */
   Slide.propTypes = {
-    children: PropTypes.node, 
+    children: PropTypes.node,
     className: PropTypes.string
   }
 
