@@ -187,7 +187,7 @@ class Master extends Component {
             // If neither is defined simply return the child
             only
               ? onlyOrWarning(only, child, idx, item.props)
-              : not ? notOrWarning(only, child, idx, item.props) : child
+              : not ? notOrWarning(not, child, idx, item.props) : child
         )
         // If no children exist in a required slot
         // render a warning about missing content
