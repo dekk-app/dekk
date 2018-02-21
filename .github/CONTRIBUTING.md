@@ -13,5 +13,5 @@ Use the PULL_REQUEST_TEMPLATE
 Reporting issues
 Ensure any install or build dependencies are removed before the end of the layer when doing a build.
 Create a new issue (bug/some-bug)
-Always list "npm/yarn version", "node version" and "gaffney version"
+Always list "npm/yarn version", "node version" and "dekk version"
 Use the ISSUE_TEMPLATE
