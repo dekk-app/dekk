@@ -9,4 +9,4 @@
 
 1. npm/yarn: x.x.x
 2. node x.x.x
-3. gaffney: x.x.x
+3. dekk: x.x.x
