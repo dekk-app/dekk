@@ -1,23 +1,17 @@
 import React, {Component, Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
 import {observer} from 'mobx-react'
-import Paging from '@dekk/paging'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
 import Slide from '@dekk/slide'
-import Url from '@dekk/url'
-import Listener from '@dekk/listener'
 import Wrapper from './wrapper'
 
-export const Config = () => null
-Config.propTypes = {
-  present: PropTypes.oneOf([true]),
-  paging: PropTypes.oneOf([false]),
-  listeners: PropTypes.shape({
-    onFragement: PropTypes.func,
-    onPage: PropTypes.func
-  }),
-  url: PropTypes.oneOf(['hash', 'query'])
+export const Plugins = () => null
+Plugins.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ])
 }
 /**
  * A wrapper around the slides. It includes a paging component to allow
@@ -96,7 +90,7 @@ export default class Deck extends Component {
    * @public
    * @param {Object} props
    *   The properties
-   * @param {(Slide|Slide[]|Config|Config[])} props.children
+   * @param {(Slide|Slide[]|Plugins|Plugins[])} props.children
    * @param {?String} props.mixin
    * @param {?Boolean} props.slave
    */
@@ -114,16 +108,38 @@ export default class Deck extends Component {
       store: this.store
     }
   }
-  get config() {
-    return (
-      Children.toArray(this.props.children).filter(
-        child => child.type === Config
-      )[0] || {}
-    ).props
+  get plugins() {
+    const {
+      page: slideIndex,
+      fragmentCount: fragmentIndex,
+      frgment: fragmentOrder
+    } = this.store
+    const {length: slideCount} = this.slides
+    const pluginContainers = Children.toArray(this.props.children).filter(
+      child => child.type === Plugins
+    )
+    const plugins = pluginContainers.reduce(
+      (a, b) => a.concat(b.props.children),
+      []
+    )
+    this.store.fragmentHosts[slideIndex] =
+      this.store.fragmentHosts[slideIndex] || []
+    const fragmentCount = this.store.fragmentHosts[slideIndex].length
+
+    return plugins.map((plugin, index) =>
+      cloneElement(plugin, {
+        key: `${plugin.type.name}_${index}`,
+        slideIndex,
+        slideCount,
+        fragmentIndex,
+        fragmentCount,
+        fragmentOrder
+      })
+    )
   }
   get slides() {
     return Children.toArray(this.props.children).filter(
-      child => child.type !== Config
+      child => child.type !== Plugins
     )
   }
   /**
@@ -174,68 +190,13 @@ export default class Deck extends Component {
 
   /**
    * @private
-   * @return {Paging}
-   *   The `<Paging/>` component
-   */
-  get paging() {
-    return (
-      this.config.paging !== false && (
-        <Paging
-          page={this.store.page}
-          pages={this.slides.length}
-          trigger="keyup"
-        />
-      )
-    )
-  }
-
-  /**
-   * @private
-   * @return {Url}
-   *   The `<Url/>` component
-   */
-  get url() {
-    return (
-      this.config.url && (
-        <Url
-          type={this.config.url}
-          page={this.store.page}
-          fragmentCount={this.store.fragmentCount}
-        />
-      )
-    )
-  }
-
-  /**
-   * @private
-   * @return {Listener}
-   *   The `<Listener/>` component
-   */
-  get listeners() {
-    return (
-      this.config.listeners && (
-        <Listener
-          page={this.store.page}
-          fragmentCount={this.store.fragmentCount}
-          fragment={this.store.fragment}
-          onPage={this.config.listeners.onPage}
-          onFragment={this.config.listeners.onFragment}
-        />
-      )
-    )
-  }
-
-  /**
-   * @private
    * @return {Wrapper}
    *   The entire Deck including paging logic inside a Wrapper
    */
   render() {
     return (
       <Wrapper mixin={this.props.mixin}>
-        {this.paging}
-        {this.url}
-        {this.listeners}
+        {this.plugins}
         {this.visibleSlides}
       </Wrapper>
     )

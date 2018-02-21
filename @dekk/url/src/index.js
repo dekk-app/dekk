@@ -4,22 +4,24 @@ import PropTypes from 'prop-types'
 /**
  * @private
  */
-export const writeHash = (page = 0, fragment = 0) => {
-  window.location.hash = `#!/${page}/${fragment}/`
+export const writeHash = (slideIndex = 0, fragmentIndex = 0) => {
+  window.location.hash = `#!/${slideIndex}/${fragmentIndex}/`
 }
 
 /**
  * @private
  */
-export const writeQuery = (page = 0, fragment = 0, old = '') => {
+export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {
   const oldQuery = window.location.search
     .split(/[\?&]/)
     .filter(x => x !== '' && !x.match(/(page|fragment)/))
     .join('&')
   history.pushState(
-    {page, fragment},
-    `page ${page}, fragment ${fragment}`,
-    `?page=${page}&fragment=${fragment}${oldQuery ? `&${oldQuery}` : ''}`
+    {page: slideIndex, fragment: fragmentIndex},
+    `page ${slideIndex}, fragment ${fragmentIndex}`,
+    `?page=${slideIndex}&fragment=${fragmentIndex}${
+      oldQuery ? `&${oldQuery}` : ''
+    }`
   )
 }
 
@@ -33,8 +35,19 @@ class Url extends Component {
   static get propTypes() {
     return {
       type: PropTypes.oneOf(['hash', 'query']),
-      page: PropTypes.number,
-      fragmentCount: PropTypes.number
+      slideIndex: PropTypes.number,
+      fragmentIndex: PropTypes.number
+    }
+  }
+
+  /**
+   * @private
+   */
+  static get defaultProps() {
+    return {
+      type: 'hash',
+      slideIndex: 0,
+      fragmentIndex: 0
     }
   }
 
@@ -72,9 +85,9 @@ class Url extends Component {
    */
   hash(url) {
     const {hash = ''} = new URL(url)
-    const [, page = 0, fragment = 0] = hash.split('/')
-    this.context.store.goToPage(parseInt(page, 10))
-    this.context.store.goToFragment(parseInt(fragment, 10))
+    const [, slideIndex = 0, fragmentIndex = 0] = hash.split('/')
+    this.context.store.goToPage(parseInt(slideIndex, 10))
+    this.context.store.goToFragment(parseInt(fragmentIndex, 10))
   }
 
   /**
@@ -83,24 +96,27 @@ class Url extends Component {
   query(url) {
     const {search = ''} = new URL(url)
     const parts = search.split(/[\?&]/).filter(Boolean)
-    const {page = 0, fragment = 0} = parts.reduce((a, b) => {
-      const [key, value] = b.split('=')
-      return {...a, [key]: value}
-    }, {})
-    this.context.store.goToPage(parseInt(page, 10))
-    this.context.store.goToFragment(parseInt(fragment, 10))
+    const {page: slideIndex = 0, fragment: fragmentIndex = 0} = parts.reduce(
+      (a, b) => {
+        const [key, value] = b.split('=')
+        return {...a, [key]: value}
+      },
+      {}
+    )
+    this.context.store.goToPage(parseInt(slideIndex, 10))
+    this.context.store.goToFragment(parseInt(fragmentIndex, 10))
   }
 
   /**
    * @private
    */
-  componentWillReceiveProps({page, fragmentCount}) {
+  componentWillReceiveProps({slideIndex, fragmentIndex}) {
     switch (this.props.type) {
       case 'hash':
-        writeHash(page, fragmentCount)
+        writeHash(slideIndex, fragmentIndex)
         break
       case 'query':
-        writeQuery(page, fragmentCount)
+        writeQuery(slideIndex, fragmentIndex)
         break
       default:
         break

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
  * This component does not render any content but adds paging via key
  * commands.
  *
- * If a page has fragments this component will split the page into
+ * If a pageIndex has fragments this component will split the pageIndex into
  * different steps.
  * Without this components fragments won't work. They are rendered as
  * normal elements but never get activated.
@@ -23,8 +23,24 @@ class Paging extends Component {
    */
   static get propTypes() {
     return {
-      trigger: PropTypes.oneOf(['keyup', 'keydown']).isRequired,
-      pages: PropTypes.number.isRequired
+      trigger: PropTypes.oneOf(['keyup', 'keydown']),
+      slideCount: PropTypes.number,
+      slideIndex: PropTypes.number,
+      fragmentCount: PropTypes.number,
+      fragmentIndex: PropTypes.number
+    }
+  }
+
+  /**
+   * @private
+   */
+  static get defaultProps() {
+    return {
+      trigger: 'keydown',
+      slideCount: 1,
+      slideIndex: 0,
+      fragmentCount: 0,
+      fragmentIndex: 0
     }
   }
 
@@ -43,7 +59,7 @@ class Paging extends Component {
    *   The properties
    * @param {String} props.trigger
    *   The event that triggers paging
-   * @param {number} props.pages
+   * @param {number} props.slideCount
    * @param {Object} context
    *   The context
    * @param {Object} context.store
@@ -71,7 +87,7 @@ class Paging extends Component {
   }
 
   /**
-   * Method to navigate to fragments or pages.
+   * Method to navigate to fragments or slideCount.
    * Uses left and right arrow buttons to navigate
    * @private
    * @param  {Object} e
@@ -80,43 +96,49 @@ class Paging extends Component {
    *   The keyCode that has been triggered by the event
    */
   goTo({which}) {
-    const {pages} = this.props
+    const {slideCount, slideIndex, fragmentIndex, fragmentCount} = this.props
     const {store} = this.context
     const {
-      page,
       toPreviousPage,
       toNextPage,
-      fragmentCount,
-      fragmentHosts,
       toNextFragment,
-      toPreviousFragment,
-      setFragment
+      toPreviousFragment
     } = store
-    const {length = 0} = fragmentHosts[page]
-    const previousFragment = Math.max(0, fragmentCount - 1)
-    const nextFragment = Math.min(length - 1, fragmentCount + 1)
-    const previousPage = Math.max(0, page - 1)
-    const nextPage = Math.min(pages - 1, page + 1)
+
+    const hasFragments = Boolean(fragmentCount)
+
+    const lastFragment = Math.max(0, fragmentCount - 1)
+
+    const previousFragment = Math.max(0, fragmentIndex - 1)
+    const nextFragment = Math.min(lastFragment, fragmentIndex + 1)
+
+    const lastSlide = Math.max(0, slideCount - 1)
+    const previousSlide = Math.max(0, slideIndex - 1)
+    const nextSlide = Math.min(lastSlide, slideIndex + 1)
+
+    const handleNext = () => {
+      if (hasFragments && nextFragment > fragmentIndex) {
+        toNextFragment()
+      } else if (nextSlide !== slideIndex) {
+        toNextPage()
+      }
+    }
+
+    const handlePrev = () => {
+      if (hasFragments && previousFragment < fragmentIndex) {
+        toPreviousFragment()
+      } else if (previousSlide !== slideIndex) {
+        toPreviousPage()
+      }
+    }
 
     // Switch between left and right arrow buttons
     switch (which) {
       case 39:
-        ;(() => {
-          if (length && nextFragment > fragmentCount) {
-            toNextFragment()
-          } else if (nextPage !== page) {
-            toNextPage()
-          }
-        })()
+        handleNext()
         break
       case 37:
-        ;(() => {
-          if (length && previousFragment < fragmentCount) {
-            toPreviousFragment()
-          } else if (previousPage !== page) {
-            toPreviousPage()
-          }
-        })()
+        handlePrev()
         break
       default:
         break
