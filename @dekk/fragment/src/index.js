@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import {Motion, spring} from 'react-motion'
 
 import StyledFragment from './fragment'
 
@@ -141,10 +141,27 @@ export default class Fragment extends Component {
     const isZero = fragmentOrder === 0
     const isActivated = this.context.store.fragmentOrder >= fragmentOrder
     const isActive = isPrevious || (isNext ? isZero : isActivated)
+    const springStyle = {
+      time: spring(isActive ? 1 : 0, {
+        ...this.props.springSettings
+      })
+    }
     return (
-      <StyledFragment active={isActive} animation={animation}>
-        {children}
-      </StyledFragment>
+      <Motion style={springStyle}>
+        {({time}) => {
+          const style = {
+            '--time': time
+          }
+          return (
+            <StyledFragment
+              style={style}
+              active={isActive}
+              animation={animation}>
+              {children}
+            </StyledFragment>
+          )
+        }}
+      </Motion>
     )
   }
 }

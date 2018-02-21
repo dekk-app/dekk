@@ -14,13 +14,11 @@ import styled from 'styled-components'
  * @reactProps {?string} animation
  */
 const StyledFragment = styled.span`
-  display: inline-block;
-  white-space: pre-wrap;
-  width: inherit;
+  display: ${({display}) => display || 'inline-block'};
   ${props =>
     props.animation ||
     `
-      opacity: ${props.active ? 1 : 0}
+      visibility: ${props.active ? 'visible' : 'hidden'}
   `};
 `
 
