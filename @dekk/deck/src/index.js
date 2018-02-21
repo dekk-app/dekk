@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
 import Slide from '@dekk/slide'
-import Wrapper from './wrapper'
+import Wrapper, {SlidesWrapper} from './wrapper'
 
 export const Plugins = () => null
 Plugins.propTypes = {
@@ -13,6 +13,15 @@ Plugins.propTypes = {
     PropTypes.arrayOf(PropTypes.element)
   ])
 }
+
+export const Elements = () => null
+Elements.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ])
+}
+
 /**
  * A wrapper around the slides. It includes a paging component to allow
  * navigating the slides and fragments.
@@ -108,41 +117,98 @@ export default class Deck extends Component {
       store: this.store
     }
   }
+
+  /**
+   * @private
+   */
+  componentWillMount() {
+    this.buildFragmentHosts()
+  }
+
+  /**
+   * @private
+   */
+  componentWillReceiveProps(newProps) {
+    // Rebuild fragmentHost when children change
+    // this will prevent undefined hosts while reducing the number
+    // of calls
+    if (newProps.children !== this.props.children) {
+      this.buildFragmentHosts()
+    }
+  }
+
+  /**
+   * @private
+   */
+  buildFragmentHosts() {
+    this.slides.forEach((child, index) => {
+      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []
+    })
+  }
+
   /**
    * @private
    */
   get plugins() {
     const {slideIndex, fragmentIndex, fragmentOrder} = this.store
     const {length: slideCount} = this.slides
-    const pluginContainers = Children.toArray(this.props.children).filter(
-      child => child.type === Plugins
-    )
-    const plugins = pluginContainers.reduce(
-      (a, b) => a.concat(b.props.children),
-      []
-    )
-    // ensure fragmentHosts
-    this.store.fragmentHosts[slideIndex] =
-      this.store.fragmentHosts[slideIndex] || []
-    const fragmentCount = this.store.fragmentHosts[slideIndex].length
+    const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]
 
-    return plugins.map((plugin, index) =>
-      cloneElement(plugin, {
-        key: `${plugin.type.name}_${index}`,
-        ...this.store.publicMethods,
-        slideIndex,
-        slideCount,
-        fragmentIndex,
-        fragmentCount,
-        fragmentOrder
-      })
-    )
+    return Children.toArray(this.props.children)
+      .filter(child => child.type === Plugins)
+      .reduce((a, b) => a.concat(b.props.children), [])
+      .map((plugin, index) =>
+        cloneElement(plugin, {
+          key: `${plugin.type.name}_${index}`,
+          ...this.store.publicMethods,
+          slideIndex,
+          slideCount,
+          fragmentIndex,
+          fragmentCount,
+          fragmentOrder
+        })
+      )
   }
+
+  /**
+   * @private
+   */
+  get elements() {
+    const {slideIndex, fragmentIndex, fragmentOrder} = this.store
+    const {length: slideCount} = this.slides
+    const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]
+    return Children.toArray(this.props.children)
+      .filter(child => child.type === Elements)
+      .reduce((a, b) => a.concat(b.props.children), [])
+      .map((plugin, index) =>
+        cloneElement(plugin, {
+          key: `${plugin.type.name}_${index}`,
+          ...this.store.publicMethods,
+          slideIndex,
+          slideCount,
+          fragmentIndex,
+          fragmentCount,
+          fragmentOrder
+        })
+      )
+  }
+
+  /**
+   * @private
+   */
+  get helperSlots() {
+    return [Plugins, Elements]
+  }
+
+  /**
+   * @private
+   */
   get slides() {
     return Children.toArray(this.props.children).filter(
-      child => child.type !== Plugins
+      child => !this.helperSlots.includes(child.type)
     )
   }
+
   /**
    * Get the `children` by a range of `+-1` around the current slide.
    * It renders a maximum of 3 slides (previous, current, next)
@@ -154,9 +220,6 @@ export default class Deck extends Component {
   get visibleSlides() {
     const {children} = this.props
     const {slideIndex, direction, fragmentOrder, fragmentHosts} = this.store
-    this.slides.forEach((child, index) => {
-      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []
-    })
     return (
       this.slides
         // Assign the original index for the Component
@@ -166,12 +229,17 @@ export default class Deck extends Component {
         .filter((c, i) => range(i, slideIndex + 1, slideIndex - 1))
         // Modify the remaining slides (maximum of 3)
         .map(({child, originalIndex}) => {
-          const {length = 0} = this.store.fragmentHosts[originalIndex]
+          const {length: fragmentCount = 0} = this.store.fragmentHosts[
+            originalIndex
+          ]
+          const lastFragment = Math.max(0, fragmentCount - 1)
           // Flags to check for value
           const isCurrent = slideIndex === originalIndex
           const isPrev = slideIndex === originalIndex + 1
           const isNext = slideIndex === originalIndex - 1
-
+          // Flags to check for directional movement
+          // Slides could obviously move anywhere but this is something
+          // we all understand
           const movesRight = direction === 1
           const movesLeft = direction === -1
 
@@ -182,7 +250,9 @@ export default class Deck extends Component {
             isNext,
             isCurrent,
             key: `slide_${originalIndex}`,
-            fragmentOrder: isCurrent ? fragmentOrder : isPrev ? length : 0,
+            fragmentOrder: isCurrent
+              ? fragmentOrder
+              : isPrev ? lastFragment : 0,
             slideIndex: originalIndex,
             fromPrev: isCurrent && movesLeft,
             fromNext: isCurrent && movesRight,
@@ -202,7 +272,8 @@ export default class Deck extends Component {
     return (
       <Wrapper mixin={this.props.mixin}>
         {this.plugins}
-        {this.visibleSlides}
+        {this.elements}
+        <SlidesWrapper>{this.visibleSlides}</SlidesWrapper>
       </Wrapper>
     )
   }

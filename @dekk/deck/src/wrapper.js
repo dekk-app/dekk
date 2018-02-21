@@ -43,8 +43,9 @@ const Wrapper = styled.div`
   right: 0 !important;
   bottom: 0 !important;
   left: 0 !important;
-  overflow: hidden !important;
-  ${props => props.mixin || ''};
+  display: flex !important;
+  box-sizing: border-box !important;
+  ${({mixin}) => mixin || ''};
 `
 
 /**
@@ -57,13 +58,31 @@ Wrapper.displayName = 'Wapper'
 /**
  * Allowed propTypes for `<Wrapper/>`
  * @private
- * @param {Array<Deck.slides,Deck.paging>} children
- * @param {String} mixin
+ * @param {Array<SlidesWrapper,Deck.elements,Dekk.plugins>} children
+ * @param {String,Array} mixin
  * @type {Object}
  */
 Wrapper.propTypes = {
   children: PropTypes.node,
-  mixin: PropTypes.string
+  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
+}
+
+export const SlidesWrapper = styled.div`
+  flex: 1 0 100%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+`
+
+/**
+ * Allowed propTypes for `<SlidesWrapper/>`
+ * @private
+ * @param {Array<Deck.visibleSlides>} children
+ * @type {Object}
+ */
+SlidesWrapper.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element)
 }
 
 export default Wrapper
