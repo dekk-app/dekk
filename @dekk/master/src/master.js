@@ -173,14 +173,8 @@ class Master extends Component {
         const {only, not, required, component, name} = item.props
         // Get the index of the component inside slot
         const index = onlyContent.map(child => child.type).indexOf(component)
-        /**
-         * @deprecated
-         * @todo Is this still needed?
-         * Please describe this and add an example.
-         */
-        //const Element = item.props.as || 'div'
 
-        // if no component present either return null
+        // If no component present either return null
         // or a warning if the slot requires a child.
         if (index < 0) {
           return required ? missing(name, i, item.props) : null
@@ -213,7 +207,6 @@ class Master extends Component {
 
     /**
      * Return a slide with the entire content.
-     * @todo add notes to allow rendering them in hte presenter view
      */
     return (
       <Slide {...this.props}>
@@ -234,18 +227,21 @@ Master.propTypes = {
   children: (props, propName, componentName) => {
     /**
      * An error might be caused and is therefore returned .
-     * @todo find a more functional way of doing this.
      */
-    let error
-    const prop = props[propName]
-    Children.forEach(prop, child => {
-      if ([Static, Slot].indexOf(child.type) < 0) {
-        error = new Error(
-          `"Master" only accepts children of type "Slot" or "Static"`
-        )
-      }
-    })
-    return error
+    const error = new Error(
+      `"Master" only accepts children of type "Slot" or "Static"`
+    )
+    const hasErrors = Boolean(
+      Children.toArray(props[propName])
+        .map(child => {
+          if (![Static, Slot].includes(child.type)) {
+            return error
+          }
+          return child
+        })
+        .filter(x => x === error).length
+    )
+    return hasErrors ? error : null
   },
   content: PropTypes.node
 }

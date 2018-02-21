@@ -24,68 +24,47 @@ import PropTypes from 'prop-types'
  */
 const Warning = props => {
   const {not, only, invalid, missing, type} = props
+  // Prepare a couple of messages that might be returned
+  const onlyMessage = only ? (
+    <div>
+      <strong>Allowed components:</strong>
+      <ul>
+        {only.map((component, i) => (
+          <li key={`warning_item__${i}`}>
+            {component.displayName || component.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null
 
-  /**
-   * Prepare a couple of messages that might be returned
-   * @todo Reafactor to use `const`
-   */
-  let message
-  let onlyMessage
-  let notMessage
+  const notMessage = not ? (
+    <div>
+      <strong>Forbidden components:</strong>
+      <ul>
+        {not.map((component, i) => (
+          <li key={`warning_item__${i}`}>
+            {component.displayName || component.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null
 
-  /**
-   * No documentation
-   * @todo refactor the entire section. This is an absolute overload
-   * of checks
-   */
-  if (only) {
-    onlyMessage = (
-      <div>
-        <strong>Allowed components:</strong>
-        <ul>
-          {only.map((component, i) => (
-            <li key={`warning_item__${i}`}>
-              {component.displayName || component.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-
-  if (not) {
-    notMessage = (
-      <div>
-        <strong>Forbidden components:</strong>
-        <ul>
-          {not.map((component, i) => (
-            <li key={`warning_item__${i}`}>
-              {component.displayName || component.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-
-  if (missing) {
-    message = (
-      <div>
-        <strong>Error: Required slot</strong>
-        {notMessage}
-        {onlyMessage}
-      </div>
-    )
-  } else if (invalid) {
-    message = (
-      <div>
-        <strong>Error: Invalid component</strong>
-        <p>Tried to use {type}</p>
-        {notMessage}
-        {onlyMessage}
-      </div>
-    )
-  }
+  const message = missing ? (
+    <div>
+      <strong>Error: Required slot</strong>
+      {notMessage}
+      {onlyMessage}
+    </div>
+  ) : invalid ? (
+    <div>
+      <strong>Error: Invalid component</strong>
+      <p>Tried to use {type}</p>
+      {notMessage}
+      {onlyMessage}
+    </div>
+  ) : null
   return <div>{message}</div>
 }
 
