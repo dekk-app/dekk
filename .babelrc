@@ -1,3 +1,8 @@
 {
-  "presets": ["stage-2", "react", "env"]
+  "presets": ["stage-2", "react", "env"],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "styled-components"
+  ]
 }
