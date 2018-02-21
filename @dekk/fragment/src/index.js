@@ -35,13 +35,13 @@ export default class Fragment extends Component {
    * Get contextTypes
    * @private
    *
-   * @return {{store: store, fragmentHost: number, hostedFragment: number}}
+   * @return {{store: store, fragmentHost: number, hostedFragmentOrder: number}}
    */
   static get contextTypes() {
     return {
       store: PropTypes.object.isRequired,
       fragmentHost: PropTypes.number,
-      hostedFragment: PropTypes.number
+      hostedFragmentOrder: PropTypes.number
     }
   }
 
@@ -50,11 +50,11 @@ export default class Fragment extends Component {
    * components to access the store without having to include its own logic.
    * @private
    *
-   * @return {{hostedFragment: number}}
+   * @return {{hostedFragmentOrder: number}}
    */
   static get childContextTypes() {
     return {
-      hostedFragment: PropTypes.number
+      hostedFragmentOrder: PropTypes.number
     }
   }
 
@@ -76,12 +76,12 @@ export default class Fragment extends Component {
   /**
    * Gets the child context.
    * @private
-   * @return {{hostedFragment: number}}
+   * @return {{hostedFragmentOrder: number}}
    *   The child context.
    */
   getChildContext() {
     return {
-      hostedFragment: this.props.root ? this.props.order : 0
+      hostedFragmentOrder: this.props.root ? this.props.order : 0
     }
   }
 
@@ -92,13 +92,13 @@ export default class Fragment extends Component {
    */
   componentWillMount() {
     const {order} = this.props
-    const {fragmentHost, store, hostedFragment = 0} = this.context
+    const {fragmentHost, hostedFragmentOrder = 0} = this.context
     // Get the current host to allow extending it.
-    const host = store.fragmentHosts[fragmentHost] || []
+    const host = this.context.store.fragmentHosts[fragmentHost] || []
 
     // Handle root components. the root index is added to nested fragments
     // to allow them to be rendered before or after their parent fragment
-    const fragmentOrder = order + hostedFragment
+    const fragmentOrder = order + hostedFragmentOrder
 
     // Only add new indexes to the queue.
     // Duplicate indexes will appear at the same time.
@@ -113,7 +113,7 @@ export default class Fragment extends Component {
       host.push(0)
     }
     // Sort the fragment indexes and update the store
-    store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)
+    this.context.store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)
   }
 
   /**
@@ -132,14 +132,14 @@ export default class Fragment extends Component {
    */
   render() {
     const {order, children, animation} = this.props
-    const {fragmentHost, store, hostedFragment = 0} = this.context
+    const {fragmentHost, hostedFragmentOrder = 0} = this.context
     // Define several flags to determine the acitve state
     // of the fragment.
-    const isPrevious = fragmentHost < store.page
-    const isNext = fragmentHost > store.page
-    const fragmentOrder = order + hostedFragment
+    const isPrevious = fragmentHost < this.context.store.slideIndex
+    const isNext = fragmentHost > this.context.store.slideIndex
+    const fragmentOrder = order + hostedFragmentOrder
     const isZero = fragmentOrder === 0
-    const isActivated = store.fragment >= fragmentOrder
+    const isActivated = this.context.store.fragmentOrder >= fragmentOrder
     const isActive = isPrevious || (isNext ? isZero : isActivated)
     return (
       <StyledFragment active={isActive} animation={animation}>

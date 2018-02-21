@@ -50,11 +50,11 @@ Plugins.propTypes = {
 export default class Deck extends Component {
   /**
    * Store.
-   * It handles paging and fragment navigation
+   * It handles paging and fragmentOrder navigation
    * @private
    */
   store = new Store({
-    page: 0,
+    slideIndex: 0,
     fragmentHosts: []
   })
 
@@ -108,12 +108,11 @@ export default class Deck extends Component {
       store: this.store
     }
   }
+  /**
+   * @private
+   */
   get plugins() {
-    const {
-      page: slideIndex,
-      fragmentCount: fragmentIndex,
-      frgment: fragmentOrder
-    } = this.store
+    const {slideIndex, fragmentIndex, fragmentOrder} = this.store
     const {length: slideCount} = this.slides
     const pluginContainers = Children.toArray(this.props.children).filter(
       child => child.type === Plugins
@@ -122,6 +121,7 @@ export default class Deck extends Component {
       (a, b) => a.concat(b.props.children),
       []
     )
+    // ensure fragmentHosts
     this.store.fragmentHosts[slideIndex] =
       this.store.fragmentHosts[slideIndex] || []
     const fragmentCount = this.store.fragmentHosts[slideIndex].length
@@ -153,7 +153,7 @@ export default class Deck extends Component {
    */
   get visibleSlides() {
     const {children} = this.props
-    const {page, direction, fragment, fragmentHosts} = this.store
+    const {slideIndex, direction, fragmentOrder, fragmentHosts} = this.store
     this.slides.forEach((child, index) => {
       this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []
     })
@@ -163,27 +163,31 @@ export default class Deck extends Component {
         .map((child, originalIndex) => ({child, originalIndex}))
         // Filter by a range of `+-1`
         // Filter first to reduce the number of clones
-        .filter((c, i) => range(i, page + 1, page - 1))
+        .filter((c, i) => range(i, slideIndex + 1, slideIndex - 1))
         // Modify the remaining slides (maximum of 3)
         .map(({child, originalIndex}) => {
           const {length = 0} = this.store.fragmentHosts[originalIndex]
-          const current = page === originalIndex
-          const previous = page === originalIndex + 1
-          const next = page === originalIndex - 1
+          // Flags to check for value
+          const isCurrent = slideIndex === originalIndex
+          const isPrev = slideIndex === originalIndex + 1
+          const isNext = slideIndex === originalIndex - 1
+
+          const movesRight = direction === 1
+          const movesLeft = direction === -1
 
           // Clone the element to add the logic
           return cloneElement(child, {
+            direction,
+            isPrev,
+            isNext,
+            isCurrent,
             key: `slide_${originalIndex}`,
-            fragmentIndex: current ? fragment : previous ? length : 0,
-            pageIndex: originalIndex,
-            current,
-            previous,
-            next,
-            fromPrevious: current && direction === -1,
-            fromNext: current && direction === 1,
-            toPrevious: previous && direction === 1,
-            toNext: next && direction === -1,
-            direction: direction
+            fragmentOrder: isCurrent ? fragmentOrder : isPrev ? length : 0,
+            slideIndex: originalIndex,
+            fromPrev: isCurrent && movesLeft,
+            fromNext: isCurrent && movesRight,
+            toPrev: isPrev && movesRight,
+            toNext: isNext && movesLeft
           })
         })
     )

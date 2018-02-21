@@ -24,17 +24,18 @@ class Slide extends Component {
    */
   static get propTypes() {
     return {
-      current: PropTypes.bool,
-      previous: PropTypes.bool,
-      next: PropTypes.bool,
-      toPrevious: PropTypes.bool,
-      fromPrevious: PropTypes.bool,
+      isCurrent: PropTypes.bool,
+      isPrev: PropTypes.bool,
+      isNext: PropTypes.bool,
+      toPrev: PropTypes.bool,
+      fromPrev: PropTypes.bool,
       toNext: PropTypes.bool,
       fromNext: PropTypes.bool,
       className: PropTypes.string,
       children: PropTypes.node,
       springSettings: PropTypes.object,
-      background: PropTypes.string
+      background: PropTypes.string,
+      slideIndex: PropTypes.number
     }
   }
 
@@ -43,7 +44,7 @@ class Slide extends Component {
    */
   getChildContext() {
     return {
-      fragmentHost: this.props.pageIndex
+      fragmentHost: this.props.slideIndex
     }
   }
 
@@ -51,9 +52,9 @@ class Slide extends Component {
    * @private
    */
   render() {
-    const {previous, next, children, springSettings} = this.props
+    const {isPrev, isNext, children, springSettings} = this.props
     const springStyle = {
-      time: spring(previous || next ? 1 : 0, {
+      time: spring(isPrev || isNext ? 1 : 0, {
         ...springSettings
       })
     }
@@ -68,12 +69,12 @@ class Slide extends Component {
               background={this.props.background}
               mixin={this.props.animation}
               className={this.props.className}
-              current={this.props.current}
-              next={next}
-              previous={previous}
-              toPrevious={this.props.toPrevious}
+              isCurrent={this.props.isCurrent}
+              isNext={isNext}
+              isPrev={isPrev}
+              toPrev={this.props.toPrev}
               toNext={this.props.toNext}
-              fromPrevious={this.props.fromPrevious}
+              fromPrev={this.props.fromPrev}
               fromNext={this.props.fromNext}
               style={style}>
               {children}
@@ -90,18 +91,19 @@ class Slide extends Component {
  */
 const SlideDirection = styled.div`
   ${props => {
-    if (props.fromPrevious) {
+    if (props.fromPrev) {
       return `
         --direction: -1;
       `
     }
+
     if (props.fromNext) {
       return `
         --direction: 1;
       `
     }
 
-    if (props.toPrevious) {
+    if (props.toPrev) {
       return `
         --direction: -1;
       `
@@ -112,22 +114,24 @@ const SlideDirection = styled.div`
       `
     }
 
-    if (props.previous) {
+    if (props.isPrev) {
       return `
         --direction: -1;
       `
     }
-    if (props.next) {
+
+    if (props.isNext) {
       return `
         --direction: 1;
       `
     }
-    if (props.current) {
+
+    if (props.isCurrent) {
       return `
         --direction: 0;
       `
     }
-  }} z-index: ${props => (props.current ? 1 : 0)};
+  }} z-index: ${props => (props.isCurrent ? 1 : 0)};
 `
 
 /**

@@ -6,79 +6,86 @@ import {observable} from 'mobx'
  */
 export default class Store {
   id = uuid()
-  @observable page = 0
-  @observable fragment = 0
-  @observable fragmentCount = 0
+  @observable slideIndex = 0
+  @observable fragmentOrder = 0
+  @observable fragmentIndex = 0
   @observable direction = 0
   constructor(props) {
     this.page = props.page
     this.fragmentHosts = props.fragmentHosts
-    this.title = props.title
 
-    this.goToPage = this.goToPage.bind(this)
-    this.toNextPage = this.toNextPage.bind(this)
-    this.toPreviousPage = this.toPreviousPage.bind(this)
-    this.goToFragment = this.goToFragment.bind(this)
+    this.toSlide = this.toSlide.bind(this)
+    this.toNextSlide = this.toNextSlide.bind(this)
+    this.toPrevSlide = this.toPrevSlide.bind(this)
+    this.toFragment = this.toFragment.bind(this)
     this.toNextFragment = this.toNextFragment.bind(this)
-    this.toPreviousFragment = this.toPreviousFragment.bind(this)
+    this.toPrevFragment = this.toPrevFragment.bind(this)
   }
 
+  /**
+   * Public methods.
+   *
+   * These methods can be used to modify the store.
+   */
   get publicMethods() {
     return {
-      toSlide: this.goToPage,
-      toNextSlide: this.toNextPage,
-      toPrevSlide: this.toPreviousPage,
-      toFragment: this.goToFragment,
+      toSlide: this.toSlide,
+      toNextSlide: this.toNextSlide,
+      toPrevSlide: this.toPrevSlide,
+      toFragment: this.toFragment,
       toNextFragment: this.toNextFragment,
-      toPrevFragment: this.toPreviousFragment
+      toPrevFragment: this.toPrevFragment
     }
   }
 
   /**
    * @private
    */
-  goToPage(n) {
-    this.direction = n > this.page ? 1 : -1
-    this.page = n
+  toSlide(slideIndex) {
+    this.direction = slideIndex > this.slideIndex ? 1 : -1
+    this.slideIndex = slideIndex
   }
 
   /**
    * @private
    */
-  toNextPage() {
-    this.goToPage(this.page + 1)
-    this.goToFragment(0)
+  toNextSlide() {
+    this.toSlide(this.slideIndex + 1)
+    this.toFragment(0)
   }
 
   /**
    * @private
    */
-  toPreviousPage() {
-    const {length} = this.fragmentHosts[this.page - 1]
-    this.goToPage(this.page - 1)
-    this.goToFragment(Math.max(0, length - 1))
+  toPrevSlide() {
+    const {length: prevFragmentCount = 0} = this.fragmentHosts[
+      this.slideIndex - 1
+    ]
+    const prevLastFragment = Math.max(0, prevFragmentCount - 1)
+    this.toSlide(this.slideIndex - 1)
+    this.toFragment(prevLastFragment)
   }
 
   /**
    * @private
    */
-  goToFragment(n) {
-    const m = this.fragmentHosts[this.page][n]
-    this.fragment = m
-    this.fragmentCount = n
+  toFragment(fragmentIndex) {
+    const fragmentOrder = this.fragmentHosts[this.slideIndex][fragmentIndex]
+    this.fragmentOrder = fragmentOrder
+    this.fragmentIndex = fragmentIndex
   }
 
   /**
    * @private
    */
   toNextFragment() {
-    this.goToFragment(this.fragmentCount + 1)
+    this.toFragment(this.fragmentIndex + 1)
   }
 
   /**
    * @private
    */
-  toPreviousFragment() {
-    this.goToFragment(this.fragmentCount - 1)
+  toPrevFragment() {
+    this.toFragment(this.fragmentIndex - 1)
   }
 }
