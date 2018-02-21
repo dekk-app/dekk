@@ -68,7 +68,7 @@ class Slide extends Component {
       <Motion style={springStyle}>
         {({time}) => {
           const style = {
-            '--time': ~~(time * 1000) / 1000
+            '--time': time
           }
           return (
             <StyledSlide
