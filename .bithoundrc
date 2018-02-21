@@ -1,0 +1,23 @@
+{
+  "ignore": [
+    "**/node_modules/**",
+    "**/**.min.**",
+    "**/template/**",
+    "**/.github/**",
+    "**/.manual/**",
+    "**/template/**",
+    "**/lib/**",
+    "**/docs/**"
+  ],
+  "test": [
+    "**/test/**"
+  ],
+  "critics": {
+    "lint": {
+      "engine": "none"
+    },
+    "wc": {
+      "limit": 5000
+    }
+  }
+}
