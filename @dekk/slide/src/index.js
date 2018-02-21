@@ -33,7 +33,13 @@ class Slide extends Component {
       fromNext: PropTypes.bool,
       className: PropTypes.string,
       children: PropTypes.node,
-      springSettings: PropTypes.object,
+      springSettings: PropTypes.shape({
+        stiffness: PropTypes.number,
+        damping: PropTypes.number,
+        precision: PropTypes.number
+      }),
+      animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       background: PropTypes.string,
       slideIndex: PropTypes.number
     }
@@ -52,10 +58,10 @@ class Slide extends Component {
    * @private
    */
   render() {
-    const {isPrev, isNext, children, springSettings} = this.props
+    const {isPrev, isNext} = this.props
     const springStyle = {
       time: spring(isPrev || isNext ? 1 : 0, {
-        ...springSettings
+        ...this.props.springSettings
       })
     }
     return (
@@ -66,18 +72,19 @@ class Slide extends Component {
           }
           return (
             <StyledSlide
-              background={this.props.background}
-              mixin={this.props.animation}
               className={this.props.className}
+              style={style}
+              background={this.props.background}
+              mixin={this.props.mixin}
+              animation={this.props.animation}
               isCurrent={this.props.isCurrent}
               isNext={isNext}
               isPrev={isPrev}
               toPrev={this.props.toPrev}
               toNext={this.props.toNext}
               fromPrev={this.props.fromPrev}
-              fromNext={this.props.fromNext}
-              style={style}>
-              {children}
+              fromNext={this.props.fromNext}>
+              {this.props.children}
             </StyledSlide>
           )
         }}
@@ -90,48 +97,31 @@ class Slide extends Component {
  * @private
  */
 const SlideDirection = styled.div`
-  ${props => {
+  --direction: ${props => {
     if (props.fromPrev) {
-      return `
-        --direction: -1;
-      `
+      return -1
     }
-
     if (props.fromNext) {
-      return `
-        --direction: 1;
-      `
+      return 1
     }
-
     if (props.toPrev) {
-      return `
-        --direction: -1;
-      `
+      return -1
     }
     if (props.toNext) {
-      return `
-        --direction: 1;
-      `
+      return 1
     }
-
     if (props.isPrev) {
-      return `
-        --direction: -1;
-      `
+      return -1
     }
-
     if (props.isNext) {
-      return `
-        --direction: 1;
-      `
+      return 1
     }
-
     if (props.isCurrent) {
-      return `
-        --direction: 0;
-      `
+      return 0
     }
-  }} z-index: ${props => (props.isCurrent ? 1 : 0)};
+    return -1
+  }};
+  z-index: ${({isCurrent}) => (isCurrent ? 1 : 0)};
 `
 
 /**
@@ -143,16 +133,16 @@ const StyledSlide = styled(SlideDirection)`
   right: 0;
   bottom: 0;
   left: 0;
-  transform: translate3d(
-    calc(100% * var(--direction, -1) * var(--time, 1)),
-    0,
-    0
-  );
   overflow: hidden;
-  color: var(--slide-color, inherit);
-  background: ${props => props.background || 'none'};
+  color: var(--slide-color, currentColor);
+  background: ${({background}) => background || 'none'};
   background-size: cover;
-  ${props => props.mixin || ''};
+  ${({mixin}) => mixin || ''};
+  ${({animation}) =>
+    animation ||
+    `
+    transform: translate3d(calc(100% * var(--direction, -1) * var(--time, 1)), 0, 0);
+  `};
 `
 
 export default Slide
