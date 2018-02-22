@@ -14,6 +14,7 @@ import styled from 'styled-components'
  * @reactProps {?string} animation
  */
 const StyledFragment = styled.span`
+  --direction: 1;
   display: ${({display}) => display || 'inline-block'};
   ${props =>
     props.animation ||

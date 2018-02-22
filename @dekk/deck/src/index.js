@@ -51,9 +51,7 @@ export default class Deck extends Component {
    * It handles paging and fragmentOrder navigation
    * @private
    */
-  store = new Store({
-    slideIndex: 0
-  })
+  store = new Store()
 
   /**
    * @private

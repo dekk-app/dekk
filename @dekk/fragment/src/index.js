@@ -80,8 +80,11 @@ export default class Fragment extends Component {
    *   The child context.
    */
   getChildContext() {
+    const {hostedFragmentOrder = 0} = this.context
     return {
-      hostedFragmentOrder: this.props.root ? this.props.order : 0
+      hostedFragmentOrder: this.props.root
+        ? this.props.order + hostedFragmentOrder
+        : hostedFragmentOrder
     }
   }
 
@@ -94,7 +97,10 @@ export default class Fragment extends Component {
     const {order} = this.props
     const {fragmentHost, hostedFragmentOrder = 0} = this.context
     // Get the current host to allow extending it.
-    const host = this.context.store.fragmentHosts[fragmentHost] || []
+    const host =
+      this.context.store.fragmentHosts.length - 1 >= fragmentHost
+        ? this.context.store.fragmentHosts[fragmentHost]
+        : []
 
     // Handle root components. the root index is added to nested fragments
     // to allow them to be rendered before or after their parent fragment
@@ -132,10 +138,10 @@ export default class Fragment extends Component {
    */
   render() {
     const {fragmentHost, hostedFragmentOrder = 0, store} = this.context
-
-    // To ensure the correct loading we need to manually attempt to find the
-    // correct order. This only happens on slides > 2 (not initially loaded)
-    // @todo figure out the actual issue :D (the initial load should always be the same)
+    // To ensure the correct loading we need to manually attempt to
+    // find the correct order. This only happens on slides that have not
+    // initially been loaded.
+    // @todo the initial Load should handle this correctly.
     const {length: fragmentHostCount = 0} = store.fragmentHosts[fragmentHost]
     const lastFragment = Math.max(0, fragmentHostCount - 1)
     const {
@@ -143,6 +149,7 @@ export default class Fragment extends Component {
         Math.min(store.fragmentIndex, lastFragment)
       ]
     } = store
+
     // Define several flags to determine the acitve state
     // of the fragment.
     const isPrev = fragmentHost < store.slideIndex

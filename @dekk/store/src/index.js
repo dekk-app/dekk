@@ -12,6 +12,8 @@ export default class Store {
   id = uuid()
   /**
    * Index of the currently active slide
+   * Default to `0`. Is needed for the initial load to work correctly.
+   * @see {@dekk/fragments/src/index.js~Fragment#render}
    * @type {number}
    */
   @observable slideIndex = 0
@@ -46,8 +48,6 @@ export default class Store {
    *   Initially active slideIndex
    */
   constructor(props) {
-    // Allow starting at slide `n`
-    this.slideIndex = props.slideIndex
     // Bind methods
     this.toSlide = this.toSlide.bind(this)
     this.toNextSlide = this.toNextSlide.bind(this)
