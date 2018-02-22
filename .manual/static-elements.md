@@ -1,7 +1,7 @@
 # Elements
 
 To add static elements to your deck you can use the `Elements` component.
-It will render any ReactElement aside the slides. YOu might have to add
+It will render any ReactElement aside the slides. You might have to add
 additional styling to your `Deck`.
 
 
@@ -13,10 +13,11 @@ import Slide from '@dekk/slide'
 export default (
   <Deck>
     <Elements>
-      {/* load plugins here */}
+      {/* load elements here */}
     </Elements>
     <Slide> 1 </Slide>
     <Slide> 2 </Slide>
     <Slide> 3 </Slide>
   </Deck>
 )
+```
