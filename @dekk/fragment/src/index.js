@@ -87,7 +87,7 @@ export default class Fragment extends Component {
 
   /**
    * Before the fragments are mounted we need to tell the application about
-   * their exitsance and behavior.
+   * their existance and behaviour.
    * @private
    */
   componentWillMount() {
@@ -132,13 +132,25 @@ export default class Fragment extends Component {
    */
   render() {
     const {fragmentHost, hostedFragmentOrder = 0, store} = this.context
+
+    // To ensure the correct loading we need to manually attempt to find the
+    // correct order. This only happens on slides > 2 (not initially loaded)
+    // @todo figure out the actual issue :D (the initial load should always be the same)
+    const {length: fragmentHostCount = 0} = store.fragmentHosts[fragmentHost]
+    const lastFragment = Math.max(0, fragmentHostCount - 1)
+    const {
+      fragmentOrder: storedFragmentOrder = store.fragmentHosts[fragmentHost][
+        Math.min(store.fragmentIndex, lastFragment)
+      ]
+    } = store
     // Define several flags to determine the acitve state
     // of the fragment.
     const isPrev = fragmentHost < store.slideIndex
     const isNext = fragmentHost > store.slideIndex
     const fragmentOrder = this.props.order + hostedFragmentOrder
     const isZero = fragmentOrder === 0
-    const isActivated = store.fragmentOrder >= fragmentOrder
+    const isActivated =
+      (store.fragmentOrder || storedFragmentOrder) >= fragmentOrder
     const isActive = isPrev || (isNext ? isZero : isActivated)
     const springStyle = {
       time: spring(isActive ? 0 : 1, {

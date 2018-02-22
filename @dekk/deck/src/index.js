@@ -130,7 +130,8 @@ export default class Deck extends Component {
    */
   buildFragmentHosts() {
     this.slides.forEach((child, index) => {
-      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []
+      if (this.store.fragmentHosts.length - 1 < index)
+        this.store.fragmentHosts[index] = []
     })
   }
 
@@ -141,7 +142,6 @@ export default class Deck extends Component {
     const {slideIndex, fragmentIndex, fragmentOrder} = this.store
     const {length: slideCount} = this.slides
     const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]
-
     return Children.toArray(this.props.children)
       .filter(child => child.type === Plugins)
       .reduce((a, b) => a.concat(b.props.children), [])

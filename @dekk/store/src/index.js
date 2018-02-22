@@ -32,6 +32,13 @@ export default class Store {
   @observable direction = 0
 
   /**
+   * A collection of hosts for fragments.
+   * Each slide is a host.
+   * @type {Array}
+   */
+  @observable fragmentHosts = []
+
+  /**
    * @private
    * @param {Object} props
    *   The properties
@@ -41,11 +48,6 @@ export default class Store {
   constructor(props) {
     // Allow starting at slide `n`
     this.slideIndex = props.slideIndex
-    /**
-     * A collection of hosts for fragments.
-     * Each slide is a host.
-     */
-    this.fragmentHosts = []
     // Bind methods
     this.toSlide = this.toSlide.bind(this)
     this.toNextSlide = this.toNextSlide.bind(this)
@@ -103,8 +105,11 @@ export default class Store {
    * @private
    */
   toFragment(fragmentIndex) {
-    const fragmentOrder = this.fragmentHosts[this.slideIndex][fragmentIndex]
-    this.fragmentOrder = fragmentOrder
+    if (this.fragmentHosts[this.slideIndex].length - 1 >= fragmentIndex) {
+      this.fragmentOrder = this.fragmentHosts[this.slideIndex][fragmentIndex]
+    } else {
+      this.fragmentOrder = undefined
+    }
     this.fragmentIndex = fragmentIndex
   }
 
