@@ -10,6 +10,8 @@ import Paging from '@dekk/paging'
 import Listener from '@dekk/listener'
 import createMaster, {Master, Slot} from '@dekk/master'
 
+import {cube, fade, fadeSlide} from '@dekk/animation'
+
 const handleSlide = slideIndex => {
   console.log(slideIndex)
 }
@@ -49,6 +51,9 @@ const Header = styled.header`
 const dekkStyle = css`
   --header-height: 3rem;
   --footer-height: 3rem;
+  --slide-background: #333;
+  --slide-color: #fff;
+  font-family: sans-serif;
   padding-top: var(--header-height);
   padding-bottom: var(--footer-height);
 `
@@ -61,26 +66,6 @@ const MasterSlide = createMaster(
   </Master>
 )
 
-const fadeUp = css`
-  opacity: calc(1 - var(--time));
-  transform: translate3d(0, calc(var(--time) * var(--direction, 1) * 100%), 0);
-`
-
-const fadeRight = css`
-  opacity: calc(1 - var(--time));
-  transform: translate3d(calc(var(--time) * var(--direction, 1) * -100%), 0, 0);
-`
-
-const fadeLeft = css`
-  opacity: calc(1 - var(--time));
-  transform: translate3d(calc(var(--time) * var(--direction, 1) * 100%), 0, 0);
-`
-
-const fadeDown = css`
-  opacity: calc(1 - var(--time));
-  transform: translate3d(0, calc(var(--time) * var(--direction, 1) * -100%), 0);
-`
-
 const App = () => (
   <Deck mixin={dekkStyle}>
     <Plugins>
@@ -92,7 +77,7 @@ const App = () => (
       <Header> Dekk Elements </Header>
       <PageNumber />
     </Elements>
-    <MasterSlide>
+    <MasterSlide animation={cube.slideX}>
       <MasterSlide.A>
         <Header>Hello dekk</Header>
       </MasterSlide.A>
@@ -100,32 +85,65 @@ const App = () => (
     </MasterSlide>
 
     {/* SLIDES */}
-    <Slide animation={fadeDown}>
+    <Slide animation={cube.slideX}>
       <Fragment order={0}>0</Fragment>
-      <Fragment order={1} animation={fadeDown}>
+      <Fragment order={1} animation={fadeSlide.out.normal}>
         1
       </Fragment>
-      <Fragment order={2} animation={fadeRight}>
+      <Fragment order={2} animation={fadeSlide.in.normal}>
         2
       </Fragment>
-      <Fragment order={3} animation={fadeLeft}>
+      <Fragment order={3} animation={fadeSlide.in.normal}>
         3
       </Fragment>
-      <Fragment order={4} animation={fadeUp}>
+      <Fragment order={4} animation={fadeSlide.in.normal}>
         4
       </Fragment>
     </Slide>
-    <Slide>Slide 2</Slide>
-    <Slide>Slide 3</Slide>
-    <Slide>
+    <Slide animation={cube.slideX}>Slide 2</Slide>
+    <Slide animation={cube.slideX}>Slide 3</Slide>
+    <Slide animation={cube.slideX}>
+      <Fragment order={1} root>
+        a
+        <Fragment order={2} root>
+          b
+          <Fragment order={3} root>
+            c
+            <Fragment order={1}>d</Fragment>
+          </Fragment>
+        </Fragment>
+      </Fragment>
+      <Fragment order={61}>e</Fragment>
+      <Fragment order={11}>f</Fragment>
+      <Fragment order={31}>g</Fragment>
+      <Fragment order={71}>h</Fragment>
+      <Fragment order={32}>i</Fragment>
+      <Fragment order={52}>j</Fragment>
+      <Fragment order={621}>k</Fragment>
+      <Fragment order={111}>l</Fragment>
+      <Fragment order={23}>m</Fragment>
+      <Fragment order={58}>n</Fragment>
+
       <Fragment order={0}>0</Fragment>
-      <Fragment order={1}>1</Fragment>
-      <Fragment order={2}>2</Fragment>
-      <Fragment order={3}>3</Fragment>
-      <Fragment order={4}>4</Fragment>
-      <Fragment order={5}>5</Fragment>
+      <Fragment order={1} animation={fade.in}>
+        1
+      </Fragment>
+      <Fragment order={4} animation={fadeSlide.out.up}>
+        <Fragment order={2} animation={fadeSlide.in.reverse}>
+          2(4)
+        </Fragment>
+      </Fragment>
+      <Fragment order={3} animation={fadeSlide.out.down}>
+        3
+      </Fragment>
+      <Fragment order={5} animation={fadeSlide.out.reverse}>
+        5
+      </Fragment>
+      <Fragment order={6} animation={fadeSlide.out.normal}>
+        6
+      </Fragment>
     </Slide>
-    <Slide>
+    <Slide animation={cube.slideX}>
       <Fragment order={0}>0</Fragment>
       <Fragment order={1}>1</Fragment>
       <Fragment order={2}>2</Fragment>
