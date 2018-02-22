@@ -16,6 +16,14 @@ yarn add @dekk/deck
 yarn add @dekk/master
 ```
 
+### Plugins
+
+```shell
+yarn add @dekk/url
+yarn add @dekk/paging
+yarn add @dekk/listener
+```
+
 ### Text Elements
 
 ```shell
