@@ -1,8 +1,18 @@
 {
-  "coverage": "100%",
-  "expectCount": 120,
+  "coverage": "96.77%",
+  "expectCount": 124,
   "actualCount": 120,
   "files": {
+    "@dekk/animation/src/index.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        42,
+        51,
+        102
+      ]
+    },
     "@dekk/deck/src/elements.js": {
       "expectCount": 1,
       "actualCount": 1,

@@ -566,6 +566,97 @@
   {
     "__docId__": 48,
     "kind": "file",
+    "name": "@dekk/animation/src/index.js",
+    "content": "import {css} from 'styled-components'\n\nexport const slide = {\n  normal: css`\n    transform: translate3d(\n      calc(\n        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))\n      ),\n      0,\n      0\n    );\n  `,\n  reverse: css`\n    transform: translate3d(\n      calc(\n        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) * -1\n      ),\n      0,\n      0\n    );\n  `,\n  down: css`\n    transform: translate3d(\n      0,\n      calc(\n        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) * -1\n      ),\n      0\n    );\n  `,\n  up: css`\n    transform: translate3d(\n      0,\n      calc(\n        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))\n      ),\n      0\n    );\n  `\n}\n\nexport const fade = {\n  in: css`\n    opacity: calc(1 - var(--time));\n  `,\n  out: css`\n    opacity: var(--time);\n  `\n}\n\nexport const fadeSlide = {\n  in: {\n    normal: css`\n      --direction: 1;\n      --regulator: 0;\n      ${fade.in};\n      ${slide.normal};\n    `,\n    reverse: css`\n      --direction: 1;\n      --regulator: 0;\n      ${fade.in};\n      ${slide.reverse};\n    `,\n    up: css`\n      ${fade.in};\n      ${slide.up};\n    `,\n    down: css`\n      ${fade.in};\n      ${slide.down};\n    `\n  },\n  out: {\n    normal: css`\n      --direction: 1;\n      --regulator: 1;\n      ${fade.out};\n      ${slide.normal};\n    `,\n    reverse: css`\n      --direction: 1;\n      --regulator: 1;\n      ${fade.out};\n      ${slide.reverse};\n    `,\n    up: css`\n      --direction: -1;\n      --regulator: 1;\n      ${fade.out};\n      ${slide.up};\n    `,\n    down: css`\n      --direction: -1;\n      --regulator: 1;\n      ${fade.out};\n      ${slide.down};\n    `\n  }\n}\n\nexport const cube = {\n  slideX: css`\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, -50vw)\n      rotate3d(0, 1, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vw);\n  `,\n  slideY: css`\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, -50vh)\n      rotate3d(1, 0, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vh);\n  `,\n  slideInvertX: css`\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, 50vw)\n      rotate3d(0, 1, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vw);\n  `,\n  slideInvertY: css`\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, 50vh)\n      rotate3d(1, 0, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vh);\n  `\n}\n",
+    "static": true,
+    "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/animation/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "slide",
+    "memberof": "@dekk/animation/src/index.js",
+    "static": true,
+    "longname": "@dekk/animation/src/index.js~slide",
+    "access": "public",
+    "export": true,
+    "importPath": "@dekk/animation",
+    "importStyle": "{slide}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"normal\": *, \"reverse\": *, \"down\": *, \"up\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "name": "fade",
+    "memberof": "@dekk/animation/src/index.js",
+    "static": true,
+    "longname": "@dekk/animation/src/index.js~fade",
+    "access": "public",
+    "export": true,
+    "importPath": "@dekk/animation",
+    "importStyle": "{fade}",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"in\": *, \"out\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "variable",
+    "name": "fadeSlide",
+    "memberof": "@dekk/animation/src/index.js",
+    "static": true,
+    "longname": "@dekk/animation/src/index.js~fadeSlide",
+    "access": "public",
+    "export": true,
+    "importPath": "@dekk/animation",
+    "importStyle": "{fadeSlide}",
+    "description": null,
+    "lineNumber": 51,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"in\": *, \"out\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "variable",
+    "name": "cube",
+    "memberof": "@dekk/animation/src/index.js",
+    "static": true,
+    "longname": "@dekk/animation/src/index.js~cube",
+    "access": "public",
+    "export": true,
+    "importPath": "@dekk/animation",
+    "importStyle": "{cube}",
+    "description": null,
+    "lineNumber": 102,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"slideX\": *, \"slideY\": *, \"slideInvertX\": *, \"slideInvertY\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "file",
     "name": "@dekk/deck/src/elements.js",
     "content": "import PropTypes from 'prop-types'\n\n/**\n * It allows adding global/static elements to Dekk.\n * Elements render content and are usually pure functions or stateless\n * components.\n *\n * @public\n * @param {Object} props\n *   The properties\n * @param {(ReactElement|ReactElement[])} props.children\n *   One or more elements\n * @example\n * import Deck, {Elements} from '@dekk/deck'\n *\n * const Header = () => <header>Hello Dekk!</header>\n * export default (\n *   <Deck>\n *     <Elements>\n *       <Header/>\n *     </Elements>\n *   </Deck>\n * )\n */\nconst Elements = props => null\n\n/**\n * @private\n */\nElements.propTypes = {\n  children: PropTypes.oneOfType([\n    PropTypes.element,\n    PropTypes.arrayOf(PropTypes.element)\n  ])\n}\n\nexport default Elements\n",
     "static": true,
@@ -575,7 +666,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 49,
+    "__docId__": 54,
     "kind": "function",
     "name": "Elements",
     "memberof": "@dekk/deck/src/elements.js",
@@ -618,10 +709,10 @@
     "return": null
   },
   {
-    "__docId__": 50,
+    "__docId__": 55,
     "kind": "file",
     "name": "@dekk/deck/src/index.js",
-    "content": "import React, {Component, Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport {observer} from 'mobx-react'\nimport {range} from '@dekk/utils'\nimport Store from '@dekk/store'\nimport Slide from '@dekk/slide'\nimport Wrapper from './wrapper'\nimport SlidesWrapper from './slides-wrapper'\nimport Plugins from './plugins'\nimport Elements from './elements'\n\nexport {Plugins, Elements}\n\n/**\n * A wrapper around the slides. It includes a paging component to allow\n * navigating the slides and fragments.\n *\n * `<Deck/>` renders 3 slides (previous, current, next) to allow various\n * transitions.\n *\n * The internal store is handled by mobX. {@link https://github.com/mobxjs/}\n *\n * @class Deck\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(Slide|Slide[])} props.children\n * @reactProps {?String} props.mixin\n * @reactProps {?Boolean} props.slave\n *\n * @example\n * import React from 'react'\n * import Deck from '@dekk/deck'\n * import Slide from '@dekk/slide'\n *\n * const appStyles = `\n *  background: #000;\n *  color: #fff;\n * `\n * const App = ({slave}) => (\n *   <Dekk mixin={appStyles}>\n *     <Slide>1</Slide>\n *     <Slide>2</Slide>\n *     <Slide>3</Slide>\n *   </Dekk>\n * )\n */\n@observer\nexport default class Deck extends Component {\n  /**\n   * Store.\n   * It handles paging and fragmentOrder navigation\n   * @private\n   */\n  store = new Store({\n    slideIndex: 0\n  })\n\n  /**\n   * @private\n   * @return {{children: (Slide|Slide[]), mixin: ?String, slave: ?Boolean}}\n   *   Allowed propTypes for `<Deck/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])\n    }\n  }\n\n  /**\n   * Sends context to decendants.\n   * Includes the app store to allow all deck components to access the store\n   * without having to include its own logic.\n   * @private\n   * @return {{store: Object, fragmentHost: number}}\n   *   The `store` and the `fragmentHost`\n   */\n  static get childContextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {(Slide|Slide[]|Plugins|Plugins[])} props.children\n   * @param {?String} props.mixin\n   * @param {?Boolean} props.slave\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   * @return {{store: store}}\n   *   The child context.\n   */\n  getChildContext() {\n    return {\n      store: this.store\n    }\n  }\n\n  /**\n   * @private\n   */\n  componentWillMount() {\n    this.buildFragmentHosts()\n  }\n\n  /**\n   * @private\n   */\n  componentWillReceiveProps(newProps) {\n    // Rebuild fragmentHost when children change\n    // this will prevent undefined hosts while reducing the number\n    // of calls\n    if (newProps.children !== this.props.children) {\n      this.buildFragmentHosts()\n    }\n  }\n\n  /**\n   * @private\n   */\n  buildFragmentHosts() {\n    this.slides.forEach((child, index) => {\n      this.store.fragmentHosts[index] = this.store.fragmentHosts[index] || []\n    })\n  }\n\n  /**\n   * @private\n   */\n  get plugins() {\n    const {slideIndex, fragmentIndex, fragmentOrder} = this.store\n    const {length: slideCount} = this.slides\n    const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]\n\n    return Children.toArray(this.props.children)\n      .filter(child => child.type === Plugins)\n      .reduce((a, b) => a.concat(b.props.children), [])\n      .map((plugin, index) =>\n        cloneElement(plugin, {\n          key: `${plugin.type.name}_${index}`,\n          ...this.store.publicMethods,\n          slideIndex,\n          slideCount,\n          fragmentIndex,\n          fragmentCount,\n          fragmentOrder\n        })\n      )\n  }\n\n  /**\n   * @private\n   */\n  get elements() {\n    const {slideIndex, fragmentIndex, fragmentOrder} = this.store\n    const {length: slideCount} = this.slides\n    const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]\n    return Children.toArray(this.props.children)\n      .filter(child => child.type === Elements)\n      .reduce((a, b) => a.concat(b.props.children), [])\n      .map((element, index) =>\n        cloneElement(element, {\n          key: `${element.type.name}_${index}`,\n          ...this.store.publicMethods,\n          slideIndex,\n          slideCount,\n          fragmentIndex,\n          fragmentCount,\n          fragmentOrder\n        })\n      )\n  }\n\n  /**\n   * @private\n   */\n  get slots() {\n    return [Plugins, Elements]\n  }\n\n  /**\n   * @private\n   */\n  get slides() {\n    return Children.toArray(this.props.children).filter(\n      child => !this.slots.includes(child.type)\n    )\n  }\n\n  /**\n   * Get the `children` by a range of `+-1` around the current slide.\n   * It renders a maximum of 3 slides (previous, current, next)\n   * This allows various transitions between slides.\n   *\n   * @private\n   * @return {Array<Slide>} returns an array of max 3 slides\n   */\n  get visibleSlides() {\n    const {children} = this.props\n    const {slideIndex, direction, fragmentOrder, fragmentHosts} = this.store\n    return (\n      this.slides\n        // Assign the original index for the Component\n        .map((child, originalIndex) => ({child, originalIndex}))\n        // Filter by a range of `+-1`\n        // Filter first to reduce the number of clones\n        .filter((c, i) => range(i, slideIndex + 1, slideIndex - 1))\n        // Modify the remaining slides (maximum of 3)\n        .map(({child, originalIndex}) => {\n          const {length: fragmentCount = 0} = this.store.fragmentHosts[\n            originalIndex\n          ]\n          const lastFragment = Math.max(0, fragmentCount - 1)\n          // Flags to check for value\n          const isCurrent = slideIndex === originalIndex\n          const isPrev = slideIndex === originalIndex + 1\n          const isNext = slideIndex === originalIndex - 1\n          // Flags to check for directional movement\n          // Slides could obviously move anywhere but this is something\n          // we all understand\n          const movesRight = direction === 1\n          const movesLeft = direction === -1\n\n          // Clone the element to add the logic\n          return cloneElement(child, {\n            direction,\n            isPrev,\n            isNext,\n            isCurrent,\n            key: `slide_${originalIndex}`,\n            fragmentOrder: isCurrent\n              ? fragmentOrder\n              : isPrev ? lastFragment : 0,\n            slideIndex: originalIndex,\n            fromPrev: isCurrent && movesLeft,\n            fromNext: isCurrent && movesRight,\n            toPrev: isPrev && movesRight,\n            toNext: isNext && movesLeft\n          })\n        })\n    )\n  }\n\n  /**\n   * @private\n   * @return {Wrapper}\n   *   The entire Deck including paging logic inside a Wrapper\n   */\n  render() {\n    return (\n      <Wrapper mixin={this.props.mixin}>\n        {this.plugins}\n        {this.elements}\n        <SlidesWrapper>{this.visibleSlides}</SlidesWrapper>\n      </Wrapper>\n    )\n  }\n}\n",
+    "content": "import React, {Component, Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport {observer} from 'mobx-react'\nimport {range} from '@dekk/utils'\nimport Store from '@dekk/store'\nimport Slide from '@dekk/slide'\nimport Wrapper from './wrapper'\nimport SlidesWrapper from './slides-wrapper'\nimport Plugins from './plugins'\nimport Elements from './elements'\n\nexport {Plugins, Elements}\n\n/**\n * A wrapper around the slides. It includes a paging component to allow\n * navigating the slides and fragments.\n *\n * `<Deck/>` renders 3 slides (previous, current, next) to allow various\n * transitions.\n *\n * The internal store is handled by mobX. {@link https://github.com/mobxjs/}\n *\n * @class Deck\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(Slide|Slide[])} props.children\n * @reactProps {?String} props.mixin\n * @reactProps {?Boolean} props.slave\n *\n * @example\n * import React from 'react'\n * import Deck from '@dekk/deck'\n * import Slide from '@dekk/slide'\n *\n * const appStyles = `\n *  background: #000;\n *  color: #fff;\n * `\n * const App = ({slave}) => (\n *   <Dekk mixin={appStyles}>\n *     <Slide>1</Slide>\n *     <Slide>2</Slide>\n *     <Slide>3</Slide>\n *   </Dekk>\n * )\n */\n@observer\nexport default class Deck extends Component {\n  /**\n   * Store.\n   * It handles paging and fragmentOrder navigation\n   * @private\n   */\n  store = new Store()\n\n  /**\n   * @private\n   * @return {{children: (Slide|Slide[]), mixin: ?String, slave: ?Boolean}}\n   *   Allowed propTypes for `<Deck/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])\n    }\n  }\n\n  /**\n   * Sends context to decendants.\n   * Includes the app store to allow all deck components to access the store\n   * without having to include its own logic.\n   * @private\n   * @return {{store: Object, fragmentHost: number}}\n   *   The `store` and the `fragmentHost`\n   */\n  static get childContextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {(Slide|Slide[]|Plugins|Plugins[])} props.children\n   * @param {?String} props.mixin\n   * @param {?Boolean} props.slave\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   * @return {{store: store}}\n   *   The child context.\n   */\n  getChildContext() {\n    return {\n      store: this.store\n    }\n  }\n\n  /**\n   * @private\n   */\n  componentWillMount() {\n    this.buildFragmentHosts()\n  }\n\n  /**\n   * @private\n   */\n  componentWillReceiveProps(newProps) {\n    // Rebuild fragmentHost when children change\n    // this will prevent undefined hosts while reducing the number\n    // of calls\n    if (newProps.children !== this.props.children) {\n      this.buildFragmentHosts()\n    }\n  }\n\n  /**\n   * @private\n   */\n  buildFragmentHosts() {\n    this.slides.forEach((child, index) => {\n      if (this.store.fragmentHosts.length - 1 < index)\n        this.store.fragmentHosts[index] = []\n    })\n  }\n\n  /**\n   * @private\n   */\n  get plugins() {\n    const {slideIndex, fragmentIndex, fragmentOrder} = this.store\n    const {length: slideCount} = this.slides\n    const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]\n    return Children.toArray(this.props.children)\n      .filter(child => child.type === Plugins)\n      .reduce((a, b) => a.concat(b.props.children), [])\n      .map((plugin, index) =>\n        cloneElement(plugin, {\n          key: `${plugin.type.name}_${index}`,\n          ...this.store.publicMethods,\n          slideIndex,\n          slideCount,\n          fragmentIndex,\n          fragmentCount,\n          fragmentOrder\n        })\n      )\n  }\n\n  /**\n   * @private\n   */\n  get elements() {\n    const {slideIndex, fragmentIndex, fragmentOrder} = this.store\n    const {length: slideCount} = this.slides\n    const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]\n    return Children.toArray(this.props.children)\n      .filter(child => child.type === Elements)\n      .reduce((a, b) => a.concat(b.props.children), [])\n      .map((element, index) =>\n        cloneElement(element, {\n          key: `${element.type.name}_${index}`,\n          ...this.store.publicMethods,\n          slideIndex,\n          slideCount,\n          fragmentIndex,\n          fragmentCount,\n          fragmentOrder\n        })\n      )\n  }\n\n  /**\n   * @private\n   */\n  get slots() {\n    return [Plugins, Elements]\n  }\n\n  /**\n   * @private\n   */\n  get slides() {\n    return Children.toArray(this.props.children).filter(\n      child => !this.slots.includes(child.type)\n    )\n  }\n\n  /**\n   * Get the `children` by a range of `+-1` around the current slide.\n   * It renders a maximum of 3 slides (previous, current, next)\n   * This allows various transitions between slides.\n   *\n   * @private\n   * @return {Array<Slide>} returns an array of max 3 slides\n   */\n  get visibleSlides() {\n    const {children} = this.props\n    const {slideIndex, direction, fragmentOrder, fragmentHosts} = this.store\n    return (\n      this.slides\n        // Assign the original index for the Component\n        .map((child, originalIndex) => ({child, originalIndex}))\n        // Filter by a range of `+-1`\n        // Filter first to reduce the number of clones\n        .filter((c, i) => range(i, slideIndex + 1, slideIndex - 1))\n        // Modify the remaining slides (maximum of 3)\n        .map(({child, originalIndex}) => {\n          const {length: fragmentCount = 0} = this.store.fragmentHosts[\n            originalIndex\n          ]\n          const lastFragment = Math.max(0, fragmentCount - 1)\n          // Flags to check for value\n          const isCurrent = slideIndex === originalIndex\n          const isPrev = slideIndex === originalIndex + 1\n          const isNext = slideIndex === originalIndex - 1\n          // Flags to check for directional movement\n          // Slides could obviously move anywhere but this is something\n          // we all understand\n          const movesRight = direction === 1\n          const movesLeft = direction === -1\n\n          // Clone the element to add the logic\n          return cloneElement(child, {\n            direction,\n            isPrev,\n            isNext,\n            isCurrent,\n            key: `slide_${originalIndex}`,\n            fragmentOrder: isCurrent\n              ? fragmentOrder\n              : isPrev ? lastFragment : 0,\n            slideIndex: originalIndex,\n            fromPrev: isCurrent && movesLeft,\n            fromNext: isCurrent && movesRight,\n            toPrev: isPrev && movesRight,\n            toNext: isNext && movesLeft\n          })\n        })\n    )\n  }\n\n  /**\n   * @private\n   * @return {Wrapper}\n   *   The entire Deck including paging logic inside a Wrapper\n   */\n  render() {\n    return (\n      <Wrapper mixin={this.props.mixin}>\n        {this.plugins}\n        {this.elements}\n        <SlidesWrapper>{this.visibleSlides}</SlidesWrapper>\n      </Wrapper>\n    )\n  }\n}\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/deck/src/index.js",
     "access": "public",
@@ -629,7 +720,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 51,
+    "__docId__": 56,
     "kind": "class",
     "name": "Deck",
     "memberof": "@dekk/deck/src/index.js",
@@ -678,7 +769,7 @@
     ]
   },
   {
-    "__docId__": 52,
+    "__docId__": 57,
     "kind": "member",
     "name": "store",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -695,7 +786,7 @@
     }
   },
   {
-    "__docId__": 53,
+    "__docId__": 58,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -705,7 +796,7 @@
     "longname": "@dekk/deck/src/index.js~Deck.propTypes",
     "access": "private",
     "description": "",
-    "lineNumber": 63,
+    "lineNumber": 61,
     "return": {
       "nullable": null,
       "types": [
@@ -722,7 +813,7 @@
     }
   },
   {
-    "__docId__": 54,
+    "__docId__": 59,
     "kind": "get",
     "name": "childContextTypes",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -732,7 +823,7 @@
     "longname": "@dekk/deck/src/index.js~Deck.childContextTypes",
     "access": "private",
     "description": "Sends context to decendants.\nIncludes the app store to allow all deck components to access the store\nwithout having to include its own logic.",
-    "lineNumber": 78,
+    "lineNumber": 76,
     "return": {
       "nullable": null,
       "types": [
@@ -749,7 +840,7 @@
     }
   },
   {
-    "__docId__": 55,
+    "__docId__": 60,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -759,7 +850,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#constructor",
     "access": "public",
     "description": "Constructor",
-    "lineNumber": 94,
+    "lineNumber": 92,
     "params": [
       {
         "nullable": null,
@@ -807,7 +898,7 @@
     ]
   },
   {
-    "__docId__": 56,
+    "__docId__": 61,
     "kind": "method",
     "name": "getChildContext",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -817,7 +908,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#getChildContext",
     "access": "private",
     "description": "",
-    "lineNumber": 103,
+    "lineNumber": 101,
     "return": {
       "nullable": null,
       "types": [
@@ -830,7 +921,7 @@
     "params": []
   },
   {
-    "__docId__": 57,
+    "__docId__": 62,
     "kind": "method",
     "name": "componentWillMount",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -840,13 +931,13 @@
     "longname": "@dekk/deck/src/index.js~Deck#componentWillMount",
     "access": "private",
     "description": "",
-    "lineNumber": 112,
+    "lineNumber": 110,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 58,
+    "__docId__": 63,
     "kind": "method",
     "name": "componentWillReceiveProps",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -856,7 +947,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#componentWillReceiveProps",
     "access": "private",
     "description": "",
-    "lineNumber": 119,
+    "lineNumber": 117,
     "ignore": true,
     "params": [
       {
@@ -869,7 +960,7 @@
     "return": null
   },
   {
-    "__docId__": 59,
+    "__docId__": 64,
     "kind": "method",
     "name": "buildFragmentHosts",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -879,13 +970,13 @@
     "longname": "@dekk/deck/src/index.js~Deck#buildFragmentHosts",
     "access": "private",
     "description": "",
-    "lineNumber": 131,
+    "lineNumber": 129,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 60,
+    "__docId__": 65,
     "kind": "get",
     "name": "plugins",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -895,7 +986,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#plugins",
     "access": "private",
     "description": "",
-    "lineNumber": 140,
+    "lineNumber": 139,
     "ignore": true,
     "type": {
       "types": [
@@ -904,7 +995,7 @@
     }
   },
   {
-    "__docId__": 61,
+    "__docId__": 66,
     "kind": "get",
     "name": "elements",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -914,7 +1005,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#elements",
     "access": "private",
     "description": "",
-    "lineNumber": 164,
+    "lineNumber": 162,
     "ignore": true,
     "type": {
       "types": [
@@ -923,7 +1014,7 @@
     }
   },
   {
-    "__docId__": 62,
+    "__docId__": 67,
     "kind": "get",
     "name": "slots",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -933,7 +1024,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#slots",
     "access": "private",
     "description": "",
-    "lineNumber": 187,
+    "lineNumber": 185,
     "ignore": true,
     "type": {
       "types": [
@@ -942,7 +1033,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 68,
     "kind": "get",
     "name": "slides",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -952,7 +1043,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#slides",
     "access": "private",
     "description": "",
-    "lineNumber": 194,
+    "lineNumber": 192,
     "ignore": true,
     "type": {
       "types": [
@@ -961,7 +1052,7 @@
     }
   },
   {
-    "__docId__": 64,
+    "__docId__": 69,
     "kind": "get",
     "name": "visibleSlides",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -971,7 +1062,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#visibleSlides",
     "access": "private",
     "description": "Get the `children` by a range of `+-1` around the current slide.\nIt renders a maximum of 3 slides (previous, current, next)\nThis allows various transitions between slides.",
-    "lineNumber": 208,
+    "lineNumber": 206,
     "return": {
       "nullable": null,
       "types": [
@@ -988,7 +1079,7 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 70,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/deck/src/index.js~Deck",
@@ -998,7 +1089,7 @@
     "longname": "@dekk/deck/src/index.js~Deck#render",
     "access": "private",
     "description": "",
-    "lineNumber": 259,
+    "lineNumber": 257,
     "return": {
       "nullable": null,
       "types": [
@@ -1011,7 +1102,7 @@
     "params": []
   },
   {
-    "__docId__": 66,
+    "__docId__": 71,
     "kind": "file",
     "name": "@dekk/deck/src/plugins.js",
     "content": "import PropTypes from 'prop-types'\n\n/**\n * It allows adding plugins to Dekk.\n * Plugins do not render anything.\n * Plugins usually use the Component lifecycle (componentWillMount etc.)\n * to their advantage.\n *\n * @public\n * @param {Object} props\n *   The properties\n * @param {(ReactElement|ReactElement[])} props.children\n *   One or more plugins\n * @example\n * import Deck, {Plugins} from '@dekk/deck'\n * import Url from '@dekk/url'\n * import Paging from '@dekk/paging'\n *\n * export default (\n *   <Deck>\n *     <Plugins>\n *       <Url/>\n *       <Paging/>\n *     </Plugins>\n *   </Deck>\n * )\n */\nconst Plugins = props => null\n\n/**\n * @private\n */\nPlugins.propTypes = {\n  children: PropTypes.oneOfType([\n    PropTypes.element,\n    PropTypes.arrayOf(PropTypes.element)\n  ])\n}\n\nexport default Plugins\n",
@@ -1022,7 +1113,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 67,
+    "__docId__": 72,
     "kind": "function",
     "name": "Plugins",
     "memberof": "@dekk/deck/src/plugins.js",
@@ -1065,7 +1156,7 @@
     "return": null
   },
   {
-    "__docId__": 68,
+    "__docId__": 73,
     "kind": "file",
     "name": "@dekk/deck/src/slides-wrapper.js",
     "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * A wrapper around the slides.\n * This will help with the layout e.g. adding\n * padding to Deck and therefore allowing absolute posiitoned\n * static elements via the `Elements` component.\n * @private\n */\nconst SlidesWrapper = styled.div`\n  flex: 1 0 100%;\n  height: 100%;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n`\n\n/**\n * Allowed propTypes for `<SlidesWrapper/>`\n * @private\n * @param {Array<Deck.visibleSlides>} children\n * @type {Object}\n */\nSlidesWrapper.propTypes = {\n  children: PropTypes.arrayOf(PropTypes.element)\n}\n\nexport default SlidesWrapper\n",
@@ -1076,7 +1167,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 69,
+    "__docId__": 74,
     "kind": "variable",
     "name": "SlidesWrapper",
     "memberof": "@dekk/deck/src/slides-wrapper.js",
@@ -1096,7 +1187,7 @@
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 75,
     "kind": "file",
     "name": "@dekk/deck/src/wrapper.js",
     "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * Styled Wrapper Component. This component is used to wrap the slides.\n * It is private but allows modification by passing a mixin to `<Deck/>`\n * @private\n * @type {StyledComponent}\n * @property {{mixin: ?String, children: Array<Deck.slides,Deck.paging>}} props\n *   A mixin to allow extending Deck's style.\n *\n *   Required Styles are declared as `!important`\n *\n *   **The following properties are locked:**\n *\n *   * `position`\n *   * `top`\n *   * `right`\n *   * `bottom`\n *   * `left`\n *   * `overflow`\n *\n *   In rare cases when these need to be modified an `!important` declaration\n *   is required.\n *   A mixin can be any valid set of CSS rules.\n *\n *   Syntax features are as defined\n *   by styled-components {@link https://www.styled-components.com/docs}\n *\n *   @example\n *   // This private Component shoulld only be used by Decck itself\n *   // It is used as follows\n *   return (\n *     <Wrapper mixin={this.props.mixin}>\n *       {this.paging}\n *       {this.slides}\n *     </Wrapper>\n *   )\n */\nconst Wrapper = styled.div`\n  position: absolute !important;\n  top: 0 !important;\n  right: 0 !important;\n  bottom: 0 !important;\n  left: 0 !important;\n  display: flex !important;\n  box-sizing: border-box !important;\n  ${({mixin}) => mixin || ''};\n`\n\n/**\n * Display name for `<Wrapper/>`\n * @private\n * @type {String}\n */\nWrapper.displayName = 'Wapper'\n\n/**\n * Allowed propTypes for `<Wrapper/>`\n * @private\n * @param {Array<SlidesWrapper,Deck.elements,Dekk.plugins>} children\n * @param {String,Array} mixin\n * @type {Object}\n */\nWrapper.propTypes = {\n  children: PropTypes.node,\n  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])\n}\n\nexport default Wrapper\n",
@@ -1107,7 +1198,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 71,
+    "__docId__": 76,
     "kind": "variable",
     "name": "Wrapper",
     "memberof": "@dekk/deck/src/wrapper.js",
@@ -1145,10 +1236,10 @@
     "ignore": true
   },
   {
-    "__docId__": 72,
+    "__docId__": 77,
     "kind": "file",
     "name": "@dekk/fragment/src/fragment.js",
-    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * Styled version of the Fragment component\n * @see Fragment\n * @private\n * @type {StyledComponent}\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(ReactNode|ReactNode[])} children\n * @reactProps {?Boolean} active\n * @reactProps {?string} animation\n */\nconst StyledFragment = styled.span`\n  display: ${({display}) => display || 'inline-block'};\n  ${props =>\n    props.animation ||\n    `\n      visibility: ${props.active ? 'visible' : 'hidden'}\n  `};\n`\n\n/**\n * @private\n * @type {String}\n */\nStyledFragment.displayName = 'StyledFragment'\n\n/**\n * @private\n * @type {Object}\n * @prop {(ReactNode|ReactNode[])} children\n * @prop {?Boolean} active\n * @prop {?(String|Array)} animation\n */\nStyledFragment.propTypes = {\n  children: PropTypes.node,\n  active: PropTypes.bool,\n  animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string])\n}\n\nexport default StyledFragment\n",
+    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * Styled version of the Fragment component\n * @see Fragment\n * @private\n * @type {StyledComponent}\n * @reactProps {Object} props\n *   The properties\n * @reactProps {(ReactNode|ReactNode[])} children\n * @reactProps {?Boolean} active\n * @reactProps {?string} animation\n */\nconst StyledFragment = styled.span`\n  --direction: 1;\n  display: ${({display}) => display || 'inline-block'};\n  ${props =>\n    props.animation ||\n    `\n      visibility: ${props.active ? 'visible' : 'hidden'}\n  `};\n`\n\n/**\n * @private\n * @type {String}\n */\nStyledFragment.displayName = 'StyledFragment'\n\n/**\n * @private\n * @type {Object}\n * @prop {(ReactNode|ReactNode[])} children\n * @prop {?Boolean} active\n * @prop {?(String|Array)} animation\n */\nStyledFragment.propTypes = {\n  children: PropTypes.node,\n  active: PropTypes.bool,\n  animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string])\n}\n\nexport default StyledFragment\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/fragment/src/fragment.js",
     "access": "public",
@@ -1156,7 +1247,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 73,
+    "__docId__": 78,
     "kind": "variable",
     "name": "StyledFragment",
     "memberof": "@dekk/fragment/src/fragment.js",
@@ -1200,10 +1291,10 @@
     "ignore": true
   },
   {
-    "__docId__": 74,
+    "__docId__": 79,
     "kind": "file",
     "name": "@dekk/fragment/src/index.js",
-    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport {Motion, spring} from 'react-motion'\n\nimport StyledFragment from './fragment'\n\n/**\n * Class for fragment.\n * @public\n *\n * @class Fragment\n * @param {Object} props\n *   The properties\n * @param {(ReactElement|ReactElement[])} props.children\n * @param {number} props.order\n * @param {?Boolean} props.root\n * @param {Object} context\n *   The context\n */\nexport default class Fragment extends Component {\n  /**\n   * @private\n   * @return {{children: (ReactElement|ReactElement[]), animation: ?(String|Array), order: ?number}}\n   *   Allowed propTypes for `<Fragment/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      order: PropTypes.number.isRequired\n    }\n  }\n\n  /**\n   * Get contextTypes\n   * @private\n   *\n   * @return {{store: store, fragmentHost: number, hostedFragmentOrder: number}}\n   */\n  static get contextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number,\n      hostedFragmentOrder: PropTypes.number\n    }\n  }\n\n  /**\n   * Sends context to decendants. Includes the app store to allow all deck\n   * components to access the store without having to include its own logic.\n   * @private\n   *\n   * @return {{hostedFragmentOrder: number}}\n   */\n  static get childContextTypes() {\n    return {\n      hostedFragmentOrder: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object}                  props\n   *   The properties\n   * @param {(ReactNode|ReactNode[])} props.children\n   * @param {number}                  props.order\n   * @param {?Boolean}                props.root\n   * @param {Object}                  context\n   *   The context\n   */\n  constructor(props, context) {\n    super(props, context)\n  }\n\n  /**\n   * Gets the child context.\n   * @private\n   * @return {{hostedFragmentOrder: number}}\n   *   The child context.\n   */\n  getChildContext() {\n    return {\n      hostedFragmentOrder: this.props.root ? this.props.order : 0\n    }\n  }\n\n  /**\n   * Before the fragments are mounted we need to tell the application about\n   * their exitsance and behavior.\n   * @private\n   */\n  componentWillMount() {\n    const {order} = this.props\n    const {fragmentHost, hostedFragmentOrder = 0} = this.context\n    // Get the current host to allow extending it.\n    const host = this.context.store.fragmentHosts[fragmentHost] || []\n\n    // Handle root components. the root index is added to nested fragments\n    // to allow them to be rendered before or after their parent fragment\n    const fragmentOrder = order + hostedFragmentOrder\n\n    // Only add new indexes to the queue.\n    // Duplicate indexes will appear at the same time.\n    // Root components are respected by definition.\n    if (host.indexOf(fragmentOrder) < 0) {\n      host.push(fragmentOrder)\n    }\n\n    // If no fragment has been defined with `0` we need to add a position to\n    // our host\n    if (host.length && host.indexOf(0) < 0) {\n      host.push(0)\n    }\n    // Sort the fragment indexes and update the store\n    this.context.store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)\n  }\n\n  /**\n   * @private\n   * @return {number}\n   *   The number of fragment indexes (steps to next slide)\n   */\n  get length() {\n    return this.context.store.fragmentHosts[this.context.fragmentHost].length\n  }\n\n  /**\n   * @private\n   * @return {StyledFragment}\n   *   The fragment including the entire logic\n   */\n  render() {\n    const {fragmentHost, hostedFragmentOrder = 0, store} = this.context\n    // Define several flags to determine the acitve state\n    // of the fragment.\n    const isPrev = fragmentHost < store.slideIndex\n    const isNext = fragmentHost > store.slideIndex\n    const fragmentOrder = this.props.order + hostedFragmentOrder\n    const isZero = fragmentOrder === 0\n    const isActivated = store.fragmentOrder >= fragmentOrder\n    const isActive = isPrev || (isNext ? isZero : isActivated)\n    const springStyle = {\n      time: spring(isActive ? 0 : 1, {\n        ...this.props.springSettings\n      })\n    }\n    return (\n      <Motion style={springStyle}>\n        {({time}) => {\n          const style = {\n            '--time': time\n          }\n          return (\n            <StyledFragment\n              style={style}\n              active={isActive}\n              animation={this.props.animation}>\n              {this.props.children}\n            </StyledFragment>\n          )\n        }}\n      </Motion>\n    )\n  }\n}\n\n/**\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n */\nexport const FragmentRoot = props => <Fragment {...props} root />\n",
+    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport {Motion, spring} from 'react-motion'\n\nimport StyledFragment from './fragment'\n\n/**\n * Class for fragment.\n * @public\n *\n * @class Fragment\n * @param {Object} props\n *   The properties\n * @param {(ReactElement|ReactElement[])} props.children\n * @param {number} props.order\n * @param {?Boolean} props.root\n * @param {Object} context\n *   The context\n */\nexport default class Fragment extends Component {\n  /**\n   * @private\n   * @return {{children: (ReactElement|ReactElement[]), animation: ?(String|Array), order: ?number}}\n   *   Allowed propTypes for `<Fragment/>`\n   */\n  static get propTypes() {\n    return {\n      children: PropTypes.node.isRequired,\n      animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      order: PropTypes.number.isRequired\n    }\n  }\n\n  /**\n   * Get contextTypes\n   * @private\n   *\n   * @return {{store: store, fragmentHost: number, hostedFragmentOrder: number}}\n   */\n  static get contextTypes() {\n    return {\n      store: PropTypes.object.isRequired,\n      fragmentHost: PropTypes.number,\n      hostedFragmentOrder: PropTypes.number\n    }\n  }\n\n  /**\n   * Sends context to decendants. Includes the app store to allow all deck\n   * components to access the store without having to include its own logic.\n   * @private\n   *\n   * @return {{hostedFragmentOrder: number}}\n   */\n  static get childContextTypes() {\n    return {\n      hostedFragmentOrder: PropTypes.number\n    }\n  }\n\n  /**\n   * Constructor\n   * @public\n   * @param {Object}                  props\n   *   The properties\n   * @param {(ReactNode|ReactNode[])} props.children\n   * @param {number}                  props.order\n   * @param {?Boolean}                props.root\n   * @param {Object}                  context\n   *   The context\n   */\n  constructor(props, context) {\n    super(props, context)\n  }\n\n  /**\n   * Gets the child context.\n   * @private\n   * @return {{hostedFragmentOrder: number}}\n   *   The child context.\n   */\n  getChildContext() {\n    const {hostedFragmentOrder = 0} = this.context\n    return {\n      hostedFragmentOrder: this.props.root\n        ? this.props.order + hostedFragmentOrder\n        : hostedFragmentOrder\n    }\n  }\n\n  /**\n   * Before the fragments are mounted we need to tell the application about\n   * their existance and behaviour.\n   * @private\n   */\n  componentWillMount() {\n    const {order} = this.props\n    const {fragmentHost, hostedFragmentOrder = 0} = this.context\n    // Get the current host to allow extending it.\n    const host =\n      this.context.store.fragmentHosts.length - 1 >= fragmentHost\n        ? this.context.store.fragmentHosts[fragmentHost]\n        : []\n\n    // Handle root components. the root index is added to nested fragments\n    // to allow them to be rendered before or after their parent fragment\n    const fragmentOrder = order + hostedFragmentOrder\n\n    // Only add new indexes to the queue.\n    // Duplicate indexes will appear at the same time.\n    // Root components are respected by definition.\n    if (host.indexOf(fragmentOrder) < 0) {\n      host.push(fragmentOrder)\n    }\n\n    // If no fragment has been defined with `0` we need to add a position to\n    // our host\n    if (host.length && host.indexOf(0) < 0) {\n      host.push(0)\n    }\n    // Sort the fragment indexes and update the store\n    this.context.store.fragmentHosts[fragmentHost] = host.sort((a, b) => a - b)\n  }\n\n  /**\n   * @private\n   * @return {number}\n   *   The number of fragment indexes (steps to next slide)\n   */\n  get length() {\n    return this.context.store.fragmentHosts[this.context.fragmentHost].length\n  }\n\n  /**\n   * @private\n   * @return {StyledFragment}\n   *   The fragment including the entire logic\n   */\n  render() {\n    const {fragmentHost, hostedFragmentOrder = 0, store} = this.context\n    // To ensure the correct loading we need to manually attempt to\n    // find the correct order. This only happens on slides that have not\n    // initially been loaded.\n    // @todo the initial Load should handle this correctly.\n    const {length: fragmentHostCount = 0} = store.fragmentHosts[fragmentHost]\n    const lastFragment = Math.max(0, fragmentHostCount - 1)\n    const {\n      fragmentOrder: storedFragmentOrder = store.fragmentHosts[fragmentHost][\n        Math.min(store.fragmentIndex, lastFragment)\n      ]\n    } = store\n\n    // Define several flags to determine the acitve state\n    // of the fragment.\n    const isPrev = fragmentHost < store.slideIndex\n    const isNext = fragmentHost > store.slideIndex\n    const fragmentOrder = this.props.order + hostedFragmentOrder\n    const isZero = fragmentOrder === 0\n    const isActivated =\n      (store.fragmentOrder || storedFragmentOrder) >= fragmentOrder\n    const isActive = isPrev || (isNext ? isZero : isActivated)\n    const springStyle = {\n      time: spring(isActive ? 0 : 1, {\n        ...this.props.springSettings\n      })\n    }\n    return (\n      <Motion style={springStyle}>\n        {({time}) => {\n          const style = {\n            '--time': time\n          }\n          return (\n            <StyledFragment\n              style={style}\n              active={isActive}\n              animation={this.props.animation}>\n              {this.props.children}\n            </StyledFragment>\n          )\n        }}\n      </Motion>\n    )\n  }\n}\n\n/**\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n */\nexport const FragmentRoot = props => <Fragment {...props} root />\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/fragment/src/index.js",
     "access": "public",
@@ -1211,7 +1302,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 75,
+    "__docId__": 80,
     "kind": "class",
     "name": "Fragment",
     "memberof": "@dekk/fragment/src/index.js",
@@ -1288,7 +1379,7 @@
     ]
   },
   {
-    "__docId__": 76,
+    "__docId__": 81,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1315,7 +1406,7 @@
     }
   },
   {
-    "__docId__": 77,
+    "__docId__": 82,
     "kind": "get",
     "name": "contextTypes",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1342,7 +1433,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 83,
     "kind": "get",
     "name": "childContextTypes",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1369,7 +1460,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 84,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1435,7 +1526,7 @@
     ]
   },
   {
-    "__docId__": 80,
+    "__docId__": 85,
     "kind": "method",
     "name": "getChildContext",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1458,7 +1549,7 @@
     "params": []
   },
   {
-    "__docId__": 81,
+    "__docId__": 86,
     "kind": "method",
     "name": "componentWillMount",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1467,14 +1558,14 @@
     "static": false,
     "longname": "@dekk/fragment/src/index.js~Fragment#componentWillMount",
     "access": "private",
-    "description": "Before the fragments are mounted we need to tell the application about\ntheir exitsance and behavior.",
-    "lineNumber": 93,
+    "description": "Before the fragments are mounted we need to tell the application about\ntheir existance and behaviour.",
+    "lineNumber": 96,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 82,
+    "__docId__": 87,
     "kind": "get",
     "name": "length",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1484,7 +1575,7 @@
     "longname": "@dekk/fragment/src/index.js~Fragment#length",
     "access": "private",
     "description": "",
-    "lineNumber": 124,
+    "lineNumber": 130,
     "return": {
       "nullable": null,
       "types": [
@@ -1501,7 +1592,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 88,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/fragment/src/index.js~Fragment",
@@ -1511,7 +1602,7 @@
     "longname": "@dekk/fragment/src/index.js~Fragment#render",
     "access": "private",
     "description": "",
-    "lineNumber": 133,
+    "lineNumber": 139,
     "return": {
       "nullable": null,
       "types": [
@@ -1524,7 +1615,7 @@
     "params": []
   },
   {
-    "__docId__": 84,
+    "__docId__": 89,
     "kind": "function",
     "name": "FragmentRoot",
     "memberof": "@dekk/fragment/src/index.js",
@@ -1540,7 +1631,7 @@
     "see": [
       "   Fragment"
     ],
-    "lineNumber": 180,
+    "lineNumber": 199,
     "unknown": [
       {
         "tagName": "@class",
@@ -1577,7 +1668,7 @@
     ]
   },
   {
-    "__docId__": 85,
+    "__docId__": 90,
     "kind": "file",
     "name": "@dekk/image/src/img.js",
     "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * Styled img\n * @private\n * @type {StyledComponent}\n * @param {Object} props\n *   The properties\n * @param {Function} props.innerRef\n * @param {String} props.alt\n * @param {String} props.src\n * @param {?String} [props.title]\n */\nconst Img = styled.img`\n  display: none;\n`\n\n/**\n * @private\n * @return {{onLoad: Function, innerRef: Function, src: String, alt: String, title ?String)}}\n *   Allowed propTypes for `<Img/>`\n */\nImg.propTypes = {\n  onLoad: PropTypes.func,\n  innerRef: PropTypes.func,\n  src: PropTypes.string.isRequired,\n  alt: PropTypes.string.isRequired,\n  title: PropTypes.string\n}\n\nexport default Img\n",
@@ -1588,7 +1679,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 86,
+    "__docId__": 91,
     "kind": "variable",
     "name": "Img",
     "memberof": "@dekk/image/src/img.js",
@@ -1663,7 +1754,7 @@
     "ignore": true
   },
   {
-    "__docId__": 87,
+    "__docId__": 92,
     "kind": "file",
     "name": "@dekk/image/src/index.js",
     "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport Img from './img'\nimport Mask from './mask'\n\n/**\n * Class for image.\n * It loads an image as a background-image. The original image is still\n * rendered for accessibility reasons.\n * @public\n * @class Image\n * @reactProps {Object} props\n *   The properties\n * @reactProps {String} props.alt\n * @reactProps {String} props.src\n * @reactProps {?String} props.title\n */\nclass Image extends Component {\n  /**\n   * @private\n   */\n  state = {}\n  /**\n   * @private\n   * @return {{alt: String, src: String, title: ?String}}\n   *   Allowed propTypes for `<Fragment/>`\n   */\n  static get propTypes() {\n    return {\n      alt: PropTypes.string.isRequired,\n      src: PropTypes.string.isRequired,\n      title: PropTypes.string\n    }\n  }\n  /**\n   * Constructs the object.\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {String} props.alt\n   * @param {String} props.src\n   * @param {?String} [props.title]\n   */\n  constructor(props) {\n    super(props)\n    this.getImage = this.getImage.bind(this)\n    this.handleLoad = this.handleLoad.bind(this)\n  }\n\n  /**\n   * Handles the load event of the image.\n   * @private\n   */\n  handleLoad() {\n    this.setState({\n      loaded: true,\n      height: this.image.height,\n      width: this.image.width\n    })\n  }\n\n  /**\n   * Additional CSS rules for the mask\n   * @private\n   * @return {String|Array}\n   */\n  get mixin() {\n    return `\n      --height: ${this.state.height}px;\n      --width: ${this.state.width}px;\n      background-image: url(\"${this.props.src}\");\n    `\n  }\n\n  /**\n   * Assigns the image to `ref`.\n   * @private\n   * @param {ReactElement} el\n   */\n  getImage(el) {\n    /**\n     * @private\n     */\n    this.image = el\n  }\n\n  /**\n   * @private\n   * @return {Mask}\n   *   An image nested inside a mask\n   */\n  render() {\n    return (\n      <Mask mixin={this.mixin}>\n        <Img\n          innerRef={this.getImage}\n          src={this.props.src}\n          alt={this.props.alt}\n          title={this.props.title}\n          onLoad={this.handleLoad}\n        />\n      </Mask>\n    )\n  }\n}\n\nexport default Image\n",
@@ -1674,7 +1765,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 88,
+    "__docId__": 93,
     "kind": "class",
     "name": "Image",
     "memberof": "@dekk/image/src/index.js",
@@ -1714,7 +1805,7 @@
     ]
   },
   {
-    "__docId__": 89,
+    "__docId__": 94,
     "kind": "member",
     "name": "state",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1731,7 +1822,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 95,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1758,7 +1849,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 96,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1813,7 +1904,7 @@
     ]
   },
   {
-    "__docId__": 94,
+    "__docId__": 99,
     "kind": "method",
     "name": "handleLoad",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1829,7 +1920,7 @@
     "return": null
   },
   {
-    "__docId__": 95,
+    "__docId__": 100,
     "kind": "get",
     "name": "mixin",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1857,7 +1948,7 @@
     }
   },
   {
-    "__docId__": 96,
+    "__docId__": 101,
     "kind": "method",
     "name": "getImage",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1884,7 +1975,7 @@
     "return": null
   },
   {
-    "__docId__": 97,
+    "__docId__": 102,
     "kind": "member",
     "name": "image",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1901,7 +1992,7 @@
     }
   },
   {
-    "__docId__": 98,
+    "__docId__": 103,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/image/src/index.js~Image",
@@ -1924,7 +2015,7 @@
     "params": []
   },
   {
-    "__docId__": 99,
+    "__docId__": 104,
     "kind": "file",
     "name": "@dekk/image/src/mask.js",
     "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * The image mask\n * @private\n * @type {StyledComponent}\n * @param {Object} props\n *   The properties\n * @param {(Array|String)} props.mixin\n *  An additional mixin\n */\nconst Mask = styled.div`\n  ${props => props.mixin || ''} background-size: cover;\n  width: var(--width);\n  height: var(--height);\n`\n\n/**\n * @private\n * @return {{mixin: ?(String|Array), children: (ReactElement|ReactElement[])}}\n *   Allowed propTypes for `<Mask/>`\n */\nMask.propTypes = {\n  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n  children: PropTypes.instanceOf(Img)\n}\n\nexport default Mask\n",
@@ -1935,7 +2026,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 100,
+    "__docId__": 105,
     "kind": "variable",
     "name": "Mask",
     "memberof": "@dekk/image/src/mask.js",
@@ -1981,7 +2072,7 @@
     "ignore": true
   },
   {
-    "__docId__": 101,
+    "__docId__": 106,
     "kind": "file",
     "name": "@dekk/listener/src/index.js",
     "content": "import {Component} from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * @public\n */\nclass Listener extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      onSlide: PropTypes.func,\n      onFragment: PropTypes.func\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get defaultProps() {\n    return {\n      onSlide: () => null,\n      onFragment: () => null\n    }\n  }\n\n  /**\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {listenerOnSlide} props.onSlide\n   *   Callback when the slide changes\n   * @param {listenerOnFragment} props.onFragment\n   *   Callback when the fragmnet changes\n   * @param {number} props.slideCount\n   *   (Injected via Dekk)\n   * @param {number} props.slideIndex\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentCount\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentIndex\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentOrder\n   *   (Injected via Dekk)\n   * @param {function} props.toFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toSlide\n   *   (Injected via Dekk)\n   * @param {function} props.toNextFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toPrevFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toNextSlide\n   *   (Injected via Dekk)\n   * @param {function} props.toPrevSlide\n   *   (Injected via Dekk)\n   * @example\n   * import Deck, {Plugins} from '@dekk/deck'\n   * import Listener from '@dekk/listener'\n   *\n   * const handleSlide = slideIndex => {\n   *   // code\n   * }\n   *\n   * const handleFragment = (\n   *   slideIndex,\n   *   slideCount,\n   *   fragmentIndex,\n   *   fragmentOrder,\n   *   fragmentCount) => {\n   *  // code\n   * }\n   * export default (\n   *   <Deck>\n   *     <Plugins>\n   *       <Listener onSlide={handleSlide}\n   *                 onFragment={handleFragment}/>\n   *     </Plugins>\n   *   </Deck>\n   * )\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   */\n  componentWillReceiveProps({\n    slideIndex,\n    slideCount,\n    fragmentOrder,\n    fragmentIndex,\n    fragmentCount\n  }) {\n    if (\n      this.props.fragmentIndex !== fragmentIndex &&\n      typeof fragmentOrder !== 'undefined'\n    ) {\n      this.props.onFragment(\n        slideIndex,\n        slideCount,\n        fragmentIndex,\n        fragmentOrder,\n        fragmentCount\n      )\n    } else if (this.props.slideIndex !== slideIndex) {\n      this.props.onSlide(slideIndex, slideCount)\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\n/**\n * @typedef listenerOnSlide\n * @param {number} slideIndex\n *   Index of the currently active slide\n * @param {number} slideCount\n *   Total number of slides\n */\n\n/**\n * @typedef listenerOnFragment\n * @param {number} slideIndex\n *   Index of the currently active slide\n * @param {number} slideCount\n *   Total number of slides\n * @param {number} fragmentIndex\n *   Index of the currently active fragment\n * @param {number} fragmentOrder\n *   Order of the currently active fragment\n * @param {number} fragmentCount\n *   Total number of fragments in the currently active slide\n */\n\nexport default Listener\n",
@@ -1992,7 +2083,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 102,
+    "__docId__": 107,
     "kind": "class",
     "name": "Listener",
     "memberof": "@dekk/listener/src/index.js",
@@ -2010,7 +2101,7 @@
     ]
   },
   {
-    "__docId__": 103,
+    "__docId__": 108,
     "kind": "typedef",
     "name": "listenerOnSlide",
     "memberof": "@dekk/listener/src/index.js",
@@ -2049,7 +2140,7 @@
     }
   },
   {
-    "__docId__": 104,
+    "__docId__": 109,
     "kind": "typedef",
     "name": "listenerOnFragment",
     "memberof": "@dekk/listener/src/index.js",
@@ -2118,7 +2209,7 @@
     }
   },
   {
-    "__docId__": 105,
+    "__docId__": 110,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/listener/src/index.js~Listener",
@@ -2137,7 +2228,7 @@
     }
   },
   {
-    "__docId__": 106,
+    "__docId__": 111,
     "kind": "get",
     "name": "defaultProps",
     "memberof": "@dekk/listener/src/index.js~Listener",
@@ -2156,7 +2247,7 @@
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 112,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/listener/src/index.js~Listener",
@@ -2314,7 +2405,7 @@
     ]
   },
   {
-    "__docId__": 108,
+    "__docId__": 113,
     "kind": "method",
     "name": "componentWillReceiveProps",
     "memberof": "@dekk/listener/src/index.js~Listener",
@@ -2345,7 +2436,7 @@
     "return": null
   },
   {
-    "__docId__": 109,
+    "__docId__": 114,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/listener/src/index.js~Listener",
@@ -2365,7 +2456,7 @@
     }
   },
   {
-    "__docId__": 110,
+    "__docId__": 115,
     "kind": "file",
     "name": "@dekk/master/src/components.js",
     "content": "/**\n * Helper function for Slot.\n * It can be used to define Master slides\n * @see function#static-function-create\n * @public\n * @return {null}\n */\nexport const Slot = () => null\n/**\n * Helper function for Static.\n * It can be used to define Master slides\n * @see function#static-function-create\n * @public\n * @return {null}\n */\nexport const Static = () => null\n/**\n * Helper function for Master.\n * It can be used to define Master slides\n * @see function#static-function-create\n * @public\n * @return {null}\n */\nexport const Master = () => null\n",
@@ -2376,7 +2467,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 111,
+    "__docId__": 116,
     "kind": "function",
     "name": "Slot",
     "memberof": "@dekk/master/src/components.js",
@@ -2404,7 +2495,7 @@
     "params": []
   },
   {
-    "__docId__": 112,
+    "__docId__": 117,
     "kind": "function",
     "name": "Static",
     "memberof": "@dekk/master/src/components.js",
@@ -2432,7 +2523,7 @@
     "params": []
   },
   {
-    "__docId__": 113,
+    "__docId__": 118,
     "kind": "function",
     "name": "Master",
     "memberof": "@dekk/master/src/components.js",
@@ -2460,7 +2551,7 @@
     "params": []
   },
   {
-    "__docId__": 114,
+    "__docId__": 119,
     "kind": "file",
     "name": "@dekk/master/src/create.js",
     "content": "import React, {Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport Master from './master'\nimport {Slot} from './components'\n\n/**\n * # createMaster\n * This is a helper function to create master slides.\n * A master slide is an already layouted slide with predefined slots.\n *\n * To create a master a wrapping component is used. While it does not\n * matter what this component is, Dekk already provides this for you.\n * Simply use `Master` from `./components`.\n *\n * The schildren are then parsed and cheked to ensure the slides have\n * the correct content. These checks are very simple and only define\n * which children should be used.\n * To ensure further safety you can define PropTypes or other mechanisms\n * to ensure the intended usage of your master slides.\n *\n * This function returns a smart React Component which has all allowed\n * slots as statics.\n * @public\n * @param {ReactComponent} master\n *   A wrapping component (could even be just a `<div>`)\n * @return {MasterSlide}\n * @example\n * import React from 'react'\n * import createmaster, {Master, Slot} from '@dekk/master'\n * import {Title, Subtitle} from './components/headlines/'\n *\n * const CoverSlide = createMaster(\n *   <Master>\n *     <Slot name=\"Top\"\n *           only={[Title]}/>\n *     <Slot name=\"Bottom\"\n *           only={[Subtitle]}/>\n *   </Master>\n * )\n *\n * @example\n * import React from 'react'\n * import createmaster, {Master, Slot} from '@dekk/master'\n * import Image from '@dekk/Image'\n *\n * const ImageAndText = createMaster(\n *   <Master>\n *     <Slot name=\"Left\"\n *           not={[Image]}/>\n *     <Slot name=\"Right\"\n *           only={[Image]}/>\n *   </Master>\n * )\n */\nexport default function createMaster(master) {\n  const {children, className} = master.props\n\n  /**\n   * @public\n   * @type {MasterSlide}\n   */\n  const Slide = props => {\n    return (\n      <Master {...props} content={props.children}>\n        {Children.toArray(children).map((child, i) => {\n          if (child.type === Slot) {\n            return cloneElement(child, {\n              key: `master-slot__${i}`,\n              component: Slide[child.props.name]\n            })\n          }\n          return child\n        })}\n      </Master>\n    )\n  }\n\n  // Filter all non `Slot` Components (`<Static/>` is removed)\n  // then set them as statics on `Slide`\n  // Each slot creates an empty unique function which is used to\n  // validate the content.\n  Children.toArray(children)\n    .filter(child => child.type === Slot)\n    .forEach(slot => {\n      const {name} = slot.props\n      Slide[name] = props => null\n    })\n\n  /**\n   * Allowed propTypes for `<Slide/>`\n   * @private\n   * @property {ReactElement} children\n   * @property {String} className\n   */\n  Slide.propTypes = {\n    children: PropTypes.node,\n    className: PropTypes.string\n  }\n\n  return Slide\n}\n/**\n * This Component will be returned by `createMaster`.\n * It has a static method for each slot that has been added.\n * @public\n * @typedef MasterSlide\n * @type {ReactComponent}\n * @param {Object} props\n * @param {Object} props.mixin\n *   A mixin that is added to the style block\n */\n",
@@ -2471,7 +2562,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 115,
+    "__docId__": 120,
     "kind": "function",
     "name": "createMaster",
     "memberof": "@dekk/master/src/create.js",
@@ -2511,7 +2602,7 @@
     }
   },
   {
-    "__docId__": 116,
+    "__docId__": 121,
     "kind": "typedef",
     "name": "MasterSlide",
     "memberof": "@dekk/master/src/create.js",
@@ -2550,7 +2641,7 @@
     }
   },
   {
-    "__docId__": 117,
+    "__docId__": 122,
     "kind": "file",
     "name": "@dekk/master/src/index.js",
     "content": "export * from './components'\nexport {default} from './create'\n",
@@ -2561,7 +2652,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 118,
+    "__docId__": 123,
     "kind": "file",
     "name": "@dekk/master/src/master.js",
     "content": "import React, {Component, Children, cloneElement} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport Slide from '@dekk/slide'\nimport Notes from '@dekk/speaker-notes'\nimport Fragment, {FragmentRoot} from '@dekk/fragment'\nimport Warning from './warning'\nimport {Slot, Static} from './components'\n\n/**\n * Renders a component that displays a warning about an invalid\n * child component.\n * @private\n * @param {ReactComponent} child\n *   Can be any react component\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n * @returns {Warning}\n *   An invalid component warning\n */\nconst invalid = (child, index, itemProps) => (\n  <div key={`slot__${index}`} data-slot={name}>\n    <Warning\n      {...itemProps}\n      type={\n        (child.type && (child.type.displayName || child.type.name)) ||\n        `\"${child}\"`\n      }\n      invalid\n    />\n  </div>\n)\n\n/**\n * Renders a component that displays a warning about an invalid\n * child component.\n * @private\n * @param {String} name\n *   Name of the Component\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n * @returns {Warning}\n *   A missing component warning\n */\nconst missing = (name, index, itemProps) => (\n  <div key={`slot__${index}`} data-slot={name}>\n    <Warning {...itemProps} missing />\n  </div>\n)\n\n/**\n * Either renders a component defined in the `only` parameter\n * or returns a warning in case the child does not match the accepted\n * types.\n * @private\n * @param {ReactComponent[]} only\n *   A list of ReactComponents that are allowed\n * @param {ReactComponent} child\n *   The child element that is intended to be added\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n */\nconst onlyOrWarning = (only, child, index, itemProps) => {\n  // Check if child is allowed\n  if (only.includes(child.type)) {\n    return child\n  }\n  // in case the child is a fragment, check all child elements\n  if (child.type === Fragment || child.type === FragmentRoot) {\n    return cloneElement(child, {\n      children: Children.toArray(child.props.children).map(child =>\n        onlyOrWarning(only, child)\n      )\n    })\n  }\n  return invalid(child, index, itemProps)\n}\n\n/**\n * Either renders a component not defined in the `not` parameter\n * or returns a warning in case the child matches the unaccepted\n * types.\n * @private\n * @param {ReactComponent[]} not\n *   A list of ReactComponents that are not allowed\n * @param {ReactComponent} child\n *   The child element that is intended to be added\n * @param {number} index\n *   Used to generate the key property\n * @param {Object} itemProps\n *   The original props of the parent\n */\nconst notOrWarning = (not, child, index, itemProps) => {\n  if (child.type === Fragment || child.type === FragmentRoot) {\n    return cloneElement(child, {\n      children: Children.toArray(child.props.children).map(child =>\n        notOrWarning(only, child)\n      )\n    })\n  }\n  if (not.includes(child.type)) {\n    return invalid(child, index, itemProps)\n  }\n  return child\n}\n\n/**\n * This component is hte heart of Dekk/master.\n * It will filter different content types and evaluate based on the\n * configuration.\n *\n * Invalid or missing slots are marked with a visual error to allow\n * creating slides on very strict guidelines.\n *\n * **A master can have different use cases:**\n *\n * * resrict layout of slides\n * * render static components by default\n * * predefine a layout/styles\n * * provide an easy API/usage\n *\n * This class should not be used. It is used inside `createMaster`\n * @see {createMaster}\n *\n * @private\n * @param {Object} props\n *   The properties\n * @param {ReactElement,ReactElement[]} props.children\n *   The slots injected by the slide creator (developer/user)\n * @param {ReactElement,ReactElement[]} props.content\n *   The children injected by the createMaster function (internal/private)\n */\nclass Master extends Component {\n  /**\n   * All `Slot` instances\n   * @private\n   */\n  get slots() {\n    return Children.toArray(this.props.children).filter(\n      child => child.type === Slot\n    )\n  }\n\n  /**\n   * All `Static` instances\n   * @private\n   */\n  get statics() {\n    return Children.toArray(this.props.children).filter(\n      child => child.type === Static\n    )\n  }\n\n  /**\n   * Helper slots are filtered from the children.\n   * These slots are allowed and will be ignored.\n   * state setters, notes etc should be added here\n   * @private\n   */\n  get helperSlots() {\n    return [Notes]\n  }\n\n  /**\n   * Filtered children of the component.\n   * Excludes helperSlots\n   * @private\n   */\n  get content() {\n    return Children.toArray(this.props.content).filter(\n      child => !this.helperSlots.includes(child.type)\n    )\n  }\n\n  /**\n   * Fill all static slots.\n   * Adds a wrapping element with a data-attribute.\n   */\n  get filledStatics() {\n    return this.statics.map((item, i) => (\n      <div key={`static__${i}`} data-static={item.props.name}>\n        {item.props.children}\n      </div>\n    ))\n  }\n\n  /**\n   * Fill all slots.\n   * Checks validity and injects a warning in case of an error\n   * @private\n   */\n  get filledSlots() {\n    return (\n      this.slots\n        .map((item, i) => {\n          const {only, not, required, component, name} = item.props\n          // Get the index of the component inside slot\n          const index = this.content.map(child => child.type).indexOf(component)\n\n          // If no component present either return null\n          // or a warning if the slot requires a child.\n          if (index < 0) {\n            return required ? missing(name, i, item.props) : null\n          }\n          const children = Children.toArray(\n            this.content[index].props.children\n          ).map(\n            (child, idx) =>\n              // Check for `only` and `not` options\n              // If neither is defined simply return the child\n              only\n                ? onlyOrWarning(only, child, idx, item.props)\n                : not ? notOrWarning(not, child, idx, item.props) : child\n          )\n          // If no children exist in a required slot\n          // render a warning about missing content\n          if (required && children.length === 0) {\n            return missing(name, i, item.props)\n          }\n\n          // Return the components wrapped in a slot.\n          return (\n            <div key={`item__${i}`} data-slot={item.props.name}>\n              {children}\n            </div>\n          )\n        })\n        // filter to only return valid content\n        .filter(x => Boolean(x))\n    )\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    /**\n     * Return a slide with the entire content.\n     */\n    return (\n      <Slide {...this.props}>\n        {this.filledStatics}\n        {this.filledSlots}\n      </Slide>\n    )\n  }\n}\n\n/**\n * Allowed propTypes for `<Master/>`\n * @private\n * @property {Slot,Static} children\n * @property {ReactElement,ReactElement[]} content\n */\nMaster.propTypes = {\n  children: (props, propName, componentName) => {\n    /**\n     * An error might be caused and is therefore returned .\n     */\n    const error = new Error(\n      `\"Master\" only accepts children of type \"Slot\" or \"Static\"`\n    )\n    const hasErrors = Boolean(\n      Children.toArray(props[propName])\n        .map(child => {\n          if (![Static, Slot].includes(child.type)) {\n            return error\n          }\n          return child\n        })\n        .filter(x => x === error).length\n    )\n    return hasErrors ? error : null\n  },\n  content: PropTypes.node\n}\n\nexport default Master\n",
@@ -2572,7 +2663,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 119,
+    "__docId__": 124,
     "kind": "function",
     "name": "invalid",
     "memberof": "@dekk/master/src/master.js",
@@ -2635,7 +2726,7 @@
     "ignore": true
   },
   {
-    "__docId__": 120,
+    "__docId__": 125,
     "kind": "function",
     "name": "missing",
     "memberof": "@dekk/master/src/master.js",
@@ -2698,7 +2789,7 @@
     "ignore": true
   },
   {
-    "__docId__": 121,
+    "__docId__": 126,
     "kind": "function",
     "name": "onlyOrWarning",
     "memberof": "@dekk/master/src/master.js",
@@ -2762,7 +2853,7 @@
     }
   },
   {
-    "__docId__": 122,
+    "__docId__": 127,
     "kind": "function",
     "name": "notOrWarning",
     "memberof": "@dekk/master/src/master.js",
@@ -2826,7 +2917,7 @@
     }
   },
   {
-    "__docId__": 123,
+    "__docId__": 128,
     "kind": "class",
     "name": "Master",
     "memberof": "@dekk/master/src/master.js",
@@ -2880,7 +2971,7 @@
     "ignore": true
   },
   {
-    "__docId__": 124,
+    "__docId__": 129,
     "kind": "get",
     "name": "slots",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2899,7 +2990,7 @@
     }
   },
   {
-    "__docId__": 125,
+    "__docId__": 130,
     "kind": "get",
     "name": "statics",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2918,7 +3009,7 @@
     }
   },
   {
-    "__docId__": 126,
+    "__docId__": 131,
     "kind": "get",
     "name": "helperSlots",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2937,7 +3028,7 @@
     }
   },
   {
-    "__docId__": 127,
+    "__docId__": 132,
     "kind": "get",
     "name": "content",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2956,7 +3047,7 @@
     }
   },
   {
-    "__docId__": 128,
+    "__docId__": 133,
     "kind": "get",
     "name": "filledStatics",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2974,7 +3065,7 @@
     }
   },
   {
-    "__docId__": 129,
+    "__docId__": 134,
     "kind": "get",
     "name": "filledSlots",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -2993,7 +3084,7 @@
     }
   },
   {
-    "__docId__": 130,
+    "__docId__": 135,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/master/src/master.js~Master",
@@ -3013,7 +3104,7 @@
     }
   },
   {
-    "__docId__": 131,
+    "__docId__": 136,
     "kind": "file",
     "name": "@dekk/master/src/warning.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * Renders a warning containing useful information about the error that\n * caused the warning.\n * In general, it tells you what is wrong and what the correct usage\n * would look like. This is typically a text telling you that while\n * you used component \"A\" only component \"B\" or \"C\" are allowed.\n *\n * @private\n * @param {props} props\n *   The properties\n * @param {RectElement[]} props.not\n *   A list of components that are \"not\" allowed\n * @param {RectElement[]} props.only\n *   A list of \"only\" those components that are allowed\n * @param {Boolean} props.invalid\n *   Set this parameter if the warning is about invalid content\n * @param {Boolean} props.missing\n *   Set this parameter if the warning is about missing content\n * @param {String} props.type\n *   The type that was used and caused this warning\n */\nconst Warning = props => {\n  const {not, only, invalid, missing, type} = props\n  // Prepare a couple of messages that might be returned\n  const onlyMessage = only ? (\n    <div>\n      <strong>Allowed components:</strong>\n      <ul>\n        {only.map((component, i) => (\n          <li key={`warning_item__${i}`}>\n            {component.displayName || component.name}\n          </li>\n        ))}\n      </ul>\n    </div>\n  ) : null\n\n  const notMessage = not ? (\n    <div>\n      <strong>Forbidden components:</strong>\n      <ul>\n        {not.map((component, i) => (\n          <li key={`warning_item__${i}`}>\n            {component.displayName || component.name}\n          </li>\n        ))}\n      </ul>\n    </div>\n  ) : null\n\n  const message = missing ? (\n    <div>\n      <strong>Error: Required slot</strong>\n      {notMessage}\n      {onlyMessage}\n    </div>\n  ) : invalid ? (\n    <div>\n      <strong>Error: Invalid component</strong>\n      <p>Tried to use {type}</p>\n      {notMessage}\n      {onlyMessage}\n    </div>\n  ) : null\n  return <div>{message}</div>\n}\n\n/**\n * Allowed propTypes for `<Warning/>`\n * @private\n * @property {?ReactElement[]} not\n * @property {?ReactElement[]} only\n * @property {String} type\n * @property {?Boolean} invalid\n * @property {?Boolean} missing\n */\nWarning.propTypes = {\n  not: PropTypes.array,\n  only: PropTypes.array,\n  type: PropTypes.string,\n  invalid: PropTypes.bool,\n  missing: PropTypes.bool\n}\n\nexport default Warning\n",
@@ -3024,7 +3115,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 132,
+    "__docId__": 137,
     "kind": "function",
     "name": "Warning",
     "memberof": "@dekk/master/src/warning.js",
@@ -3108,7 +3199,7 @@
     }
   },
   {
-    "__docId__": 133,
+    "__docId__": 138,
     "kind": "file",
     "name": "@dekk/paging/src/index.js",
     "content": "import {Component} from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * This component does not render any content but adds paging via key\n * commands.\n *\n * If a slide has fragments this component will split the slide into\n * different steps.\n * @public\n */\nclass Paging extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      trigger: PropTypes.oneOf(['keyup', 'keydown']),\n      toNextFragment: PropTypes.func,\n      toPrevFragment: PropTypes.func,\n      toFragment: PropTypes.func,\n      toNextSlide: PropTypes.func,\n      toPrevSlide: PropTypes.func,\n      toSlide: PropTypes.func,\n      slideCount: PropTypes.number,\n      slideIndex: PropTypes.number,\n      fragmentCount: PropTypes.number,\n      fragmentIndex: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get defaultProps() {\n    return {\n      trigger: 'keydown'\n    }\n  }\n\n  /**\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {String} [props.trigger='keyup']\n   *   The event that triggers paging\n   * @param {number} props.slideCount\n   *   (Injected via Dekk)\n   * @param {number} props.slideIndex\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentCount\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentIndex\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentOrder\n   *   (Injected via Dekk)\n   * @param {function} props.toFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toSlide\n   *   (Injected via Dekk)\n   * @param {function} props.toNextFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toPrevFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toNextSlide\n   *   (Injected via Dekk)\n   * @param {function} props.toPrevSlide\n   *   (Injected via Dekk)\n   * @example\n   * import Deck, {Plugins} from '@dekk/deck'\n   * import Paging from '@dekk/paging'\n   *\n   * export default (\n   *   <Deck>\n   *     <Plugins>\n   *       <Paging/>\n   *     </Plugins>\n   *   </Deck>\n   * )\n   */\n  constructor(props) {\n    super(props)\n    this.goTo = this.goTo.bind(this)\n  }\n\n  /**\n   * Listen to events before we mount the component\n   * @private\n   */\n  componentWillMount() {\n    window.addEventListener(this.props.trigger, this.goTo)\n  }\n\n  /**\n   * Unlisten to events before we unmount the component\n   * @private\n   */\n  componentWillUnmount() {\n    window.removeEventListener(this.props.trigger, this.goTo)\n  }\n\n  /**\n   * Method to navigate to fragments or slides.\n   * Uses left and right arrow buttons to navigate\n   * @private\n   * @param  {Object} e\n   *   The event\n   * @param {number} e.which\n   *   The keyCode that has been triggered by the event\n   */\n  goTo({which}) {\n    const {\n      slideCount,\n      slideIndex,\n      fragmentIndex,\n      fragmentCount,\n      toNextSlide,\n      toPrevSlide,\n      toNextFragment,\n      toPrevFragment\n    } = this.props\n\n    const hasFragments = Boolean(fragmentCount)\n\n    const lastFragment = Math.max(0, fragmentCount - 1)\n\n    const previousFragment = Math.max(0, fragmentIndex - 1)\n    const nextFragment = Math.min(lastFragment, fragmentIndex + 1)\n\n    const lastSlide = Math.max(0, slideCount - 1)\n    const previousSlide = Math.max(0, slideIndex - 1)\n    const nextSlide = Math.min(lastSlide, slideIndex + 1)\n\n    const handleNext = () => {\n      if (hasFragments && nextFragment > fragmentIndex) {\n        toNextFragment()\n      } else if (nextSlide !== slideIndex) {\n        toNextSlide()\n      }\n    }\n\n    const handlePrev = () => {\n      if (hasFragments && previousFragment < fragmentIndex) {\n        toPrevFragment()\n      } else if (previousSlide !== slideIndex) {\n        toPrevSlide()\n      }\n    }\n\n    // Switch between left and right arrow buttons\n    switch (which) {\n      case 39:\n        handleNext()\n        break\n      case 37:\n        handlePrev()\n        break\n      default:\n        break\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\nexport default Paging\n",
@@ -3119,7 +3210,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 134,
+    "__docId__": 139,
     "kind": "class",
     "name": "Paging",
     "memberof": "@dekk/paging/src/index.js",
@@ -3137,7 +3228,7 @@
     ]
   },
   {
-    "__docId__": 135,
+    "__docId__": 140,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3156,7 +3247,7 @@
     }
   },
   {
-    "__docId__": 136,
+    "__docId__": 141,
     "kind": "get",
     "name": "defaultProps",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3175,7 +3266,7 @@
     }
   },
   {
-    "__docId__": 137,
+    "__docId__": 142,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3325,7 +3416,7 @@
     ]
   },
   {
-    "__docId__": 139,
+    "__docId__": 144,
     "kind": "method",
     "name": "componentWillMount",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3341,7 +3432,7 @@
     "return": null
   },
   {
-    "__docId__": 140,
+    "__docId__": 145,
     "kind": "method",
     "name": "componentWillUnmount",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3357,7 +3448,7 @@
     "return": null
   },
   {
-    "__docId__": 141,
+    "__docId__": 146,
     "kind": "method",
     "name": "goTo",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3394,7 +3485,7 @@
     "return": null
   },
   {
-    "__docId__": 142,
+    "__docId__": 147,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/paging/src/index.js~Paging",
@@ -3414,10 +3505,10 @@
     }
   },
   {
-    "__docId__": 143,
+    "__docId__": 148,
     "kind": "file",
     "name": "@dekk/slide/src/index.js",
-    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport {Motion, spring} from 'react-motion'\n\n/**\n * A single slide.\n * Renders a slide inside a `react-motion` wrapper.\n * Assigns css-variables to allow various transitions\n *\n */\nclass Slide extends Component {\n  /**\n   * @private\n   */\n  static get childContextTypes() {\n    return {\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      isCurrent: PropTypes.bool,\n      isPrev: PropTypes.bool,\n      isNext: PropTypes.bool,\n      toPrev: PropTypes.bool,\n      fromPrev: PropTypes.bool,\n      toNext: PropTypes.bool,\n      fromNext: PropTypes.bool,\n      className: PropTypes.string,\n      children: PropTypes.node,\n      springSettings: PropTypes.shape({\n        stiffness: PropTypes.number,\n        damping: PropTypes.number,\n        precision: PropTypes.number\n      }),\n      animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      background: PropTypes.string,\n      slideIndex: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  getChildContext() {\n    return {\n      fragmentHost: this.props.slideIndex\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    const {isPrev, isNext} = this.props\n    const springStyle = {\n      time: spring(isPrev || isNext ? 1 : 0, {\n        ...this.props.springSettings\n      })\n    }\n    return (\n      <Motion style={springStyle}>\n        {({time}) => {\n          const style = {\n            '--time': time\n          }\n          return (\n            <StyledSlide\n              className={this.props.className}\n              style={style}\n              background={this.props.background}\n              mixin={this.props.mixin}\n              animation={this.props.animation}\n              isCurrent={this.props.isCurrent}\n              isNext={isNext}\n              isPrev={isPrev}\n              toPrev={this.props.toPrev}\n              toNext={this.props.toNext}\n              fromPrev={this.props.fromPrev}\n              fromNext={this.props.fromNext}>\n              {this.props.children}\n            </StyledSlide>\n          )\n        }}\n      </Motion>\n    )\n  }\n}\n\n/**\n * @private\n */\nconst SlideDirection = styled.div`\n  --direction: ${props => {\n    if (props.fromPrev) {\n      return -1\n    }\n    if (props.fromNext) {\n      return 1\n    }\n    if (props.toPrev) {\n      return -1\n    }\n    if (props.toNext) {\n      return 1\n    }\n    if (props.isPrev) {\n      return -1\n    }\n    if (props.isNext) {\n      return 1\n    }\n    if (props.isCurrent) {\n      return 0\n    }\n    return -1\n  }};\n  z-index: ${({isCurrent}) => (isCurrent ? 1 : 0)};\n`\n\n/**\n * @private\n */\nconst StyledSlide = styled(SlideDirection)`\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  overflow: hidden;\n  color: var(--slide-color, currentColor);\n  background: ${({background}) => background || 'none'};\n  background-size: cover;\n  ${({mixin}) => mixin || ''};\n  ${({animation}) =>\n    animation ||\n    `\n    transform: translate3d(calc(100% * var(--direction, -1) * var(--time, 1)), 0, 0);\n  `};\n`\n\nexport default Slide\n",
+    "content": "import React, {Component} from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport {Motion, spring} from 'react-motion'\nimport {slide} from '@dekk/animation'\n\n/**\n * A single slide.\n * Renders a slide inside a `react-motion` wrapper.\n * Assigns css-variables to allow various transitions\n *\n */\nclass Slide extends Component {\n  /**\n   * @private\n   */\n  static get childContextTypes() {\n    return {\n      fragmentHost: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      isCurrent: PropTypes.bool,\n      isPrev: PropTypes.bool,\n      isNext: PropTypes.bool,\n      toPrev: PropTypes.bool,\n      fromPrev: PropTypes.bool,\n      toNext: PropTypes.bool,\n      fromNext: PropTypes.bool,\n      className: PropTypes.string,\n      children: PropTypes.node,\n      springSettings: PropTypes.shape({\n        stiffness: PropTypes.number,\n        damping: PropTypes.number,\n        precision: PropTypes.number\n      }),\n      animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),\n      background: PropTypes.string,\n      slideIndex: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  getChildContext() {\n    return {\n      fragmentHost: this.props.slideIndex\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    const {isPrev, isNext} = this.props\n    const springStyle = {\n      time: spring(isPrev || isNext ? 1 : 0, {\n        ...this.props.springSettings\n      })\n    }\n    return (\n      <Motion style={springStyle}>\n        {({time}) => {\n          const style = {\n            '--time': time\n          }\n          return (\n            <StyledSlide\n              className={this.props.className}\n              style={style}\n              background={this.props.background}\n              mixin={this.props.mixin}\n              animation={this.props.animation}\n              isCurrent={this.props.isCurrent}\n              isNext={isNext}\n              isPrev={isPrev}\n              toPrev={this.props.toPrev}\n              toNext={this.props.toNext}\n              fromPrev={this.props.fromPrev}\n              fromNext={this.props.fromNext}>\n              {this.props.children}\n            </StyledSlide>\n          )\n        }}\n      </Motion>\n    )\n  }\n}\n\n/**\n * @private\n */\nconst SlideDirection = styled.div`\n  --direction: ${props => {\n    if (props.fromPrev) {\n      return -1\n    }\n    if (props.fromNext) {\n      return 1\n    }\n    if (props.toPrev) {\n      return -1\n    }\n    if (props.toNext) {\n      return 1\n    }\n    if (props.isPrev) {\n      return -1\n    }\n    if (props.isNext) {\n      return 1\n    }\n    if (props.isCurrent) {\n      return 0\n    }\n    return -1\n  }};\n  z-index: ${({isCurrent}) => (isCurrent ? 1 : 0)};\n`\n\n/**\n * @private\n */\nconst StyledSlide = styled(SlideDirection)`\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  overflow: hidden;\n  color: var(--slide-color, currentColor);\n  background: ${({background}) =>\n    background || 'var(--slide-background, none)'};\n  background-size: cover;\n  ${({mixin}) => mixin || ''};\n  ${({animation}) => animation || slide.normal};\n`\n\nexport default Slide\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/slide/src/index.js",
     "access": "public",
@@ -3425,7 +3516,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 144,
+    "__docId__": 149,
     "kind": "variable",
     "name": "SlideDirection",
     "memberof": "@dekk/slide/src/index.js",
@@ -3436,7 +3527,7 @@
     "importPath": "@dekk/slide",
     "importStyle": null,
     "description": "",
-    "lineNumber": 99,
+    "lineNumber": 100,
     "ignore": true,
     "type": {
       "types": [
@@ -3445,7 +3536,7 @@
     }
   },
   {
-    "__docId__": 145,
+    "__docId__": 150,
     "kind": "variable",
     "name": "StyledSlide",
     "memberof": "@dekk/slide/src/index.js",
@@ -3456,7 +3547,7 @@
     "importPath": "@dekk/slide",
     "importStyle": null,
     "description": "",
-    "lineNumber": 130,
+    "lineNumber": 131,
     "ignore": true,
     "type": {
       "types": [
@@ -3465,7 +3556,7 @@
     }
   },
   {
-    "__docId__": 146,
+    "__docId__": 151,
     "kind": "class",
     "name": "Slide",
     "memberof": "@dekk/slide/src/index.js",
@@ -3476,14 +3567,14 @@
     "importPath": "@dekk/slide",
     "importStyle": "Slide",
     "description": "A single slide.\nRenders a slide inside a `react-motion` wrapper.\nAssigns css-variables to allow various transitions",
-    "lineNumber": 12,
+    "lineNumber": 13,
     "interface": false,
     "extends": [
       "react~Component"
     ]
   },
   {
-    "__docId__": 147,
+    "__docId__": 152,
     "kind": "get",
     "name": "childContextTypes",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -3493,7 +3584,7 @@
     "longname": "@dekk/slide/src/index.js~Slide.childContextTypes",
     "access": "private",
     "description": "",
-    "lineNumber": 16,
+    "lineNumber": 17,
     "ignore": true,
     "type": {
       "types": [
@@ -3502,7 +3593,7 @@
     }
   },
   {
-    "__docId__": 148,
+    "__docId__": 153,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -3512,7 +3603,7 @@
     "longname": "@dekk/slide/src/index.js~Slide.propTypes",
     "access": "private",
     "description": "",
-    "lineNumber": 25,
+    "lineNumber": 26,
     "ignore": true,
     "type": {
       "types": [
@@ -3521,7 +3612,7 @@
     }
   },
   {
-    "__docId__": 149,
+    "__docId__": 154,
     "kind": "method",
     "name": "getChildContext",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -3531,7 +3622,7 @@
     "longname": "@dekk/slide/src/index.js~Slide#getChildContext",
     "access": "private",
     "description": "",
-    "lineNumber": 51,
+    "lineNumber": 52,
     "ignore": true,
     "params": [],
     "return": {
@@ -3541,7 +3632,7 @@
     }
   },
   {
-    "__docId__": 150,
+    "__docId__": 155,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/slide/src/index.js~Slide",
@@ -3551,7 +3642,7 @@
     "longname": "@dekk/slide/src/index.js~Slide#render",
     "access": "private",
     "description": "",
-    "lineNumber": 60,
+    "lineNumber": 61,
     "ignore": true,
     "params": [],
     "return": {
@@ -3561,7 +3652,7 @@
     }
   },
   {
-    "__docId__": 151,
+    "__docId__": 156,
     "kind": "file",
     "name": "@dekk/speaker-notes/src/index.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Notes = styled.aside``\n\n/**\n * @private\n */\nNotes.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\nexport default Notes\n",
@@ -3572,7 +3663,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 152,
+    "__docId__": 157,
     "kind": "variable",
     "name": "Notes",
     "memberof": "@dekk/speaker-notes/src/index.js",
@@ -3591,10 +3682,10 @@
     }
   },
   {
-    "__docId__": 153,
+    "__docId__": 158,
     "kind": "file",
     "name": "@dekk/store/src/index.js",
-    "content": "import uuid from 'uuid/v4'\nimport {observable} from 'mobx'\n\n/**\n * @private\n */\nexport default class Store {\n  /**\n   * Store Id\n   * @type {String}\n   */\n  id = uuid()\n  /**\n   * Index of the currently active slide\n   * @type {number}\n   */\n  @observable slideIndex = 0\n  /**\n   * Order of the currently active fragment\n   * @type {number}\n   */\n  @observable fragmentOrder = 0\n  /**\n   * Index of the currently active fragment\n   * @type {number}\n   */\n  @observable fragmentIndex = 0\n  /**\n   * Direction of the slide movement (either -1, 0 or 1)\n   * @type {number}\n   */\n  @observable direction = 0\n\n  /**\n   * @private\n   * @param {Object} props\n   *   The properties\n   * @param {number} props.slideIndex\n   *   Initially active slideIndex\n   */\n  constructor(props) {\n    // Allow starting at slide `n`\n    this.slideIndex = props.slideIndex\n    /**\n     * A collection of hosts for fragments.\n     * Each slide is a host.\n     */\n    this.fragmentHosts = []\n    // Bind methods\n    this.toSlide = this.toSlide.bind(this)\n    this.toNextSlide = this.toNextSlide.bind(this)\n    this.toPrevSlide = this.toPrevSlide.bind(this)\n    this.toFragment = this.toFragment.bind(this)\n    this.toNextFragment = this.toNextFragment.bind(this)\n    this.toPrevFragment = this.toPrevFragment.bind(this)\n  }\n\n  /**\n   * Public methods.\n   *\n   * These methods can be used to modify the store.\n   */\n  get publicMethods() {\n    return {\n      toSlide: this.toSlide,\n      toNextSlide: this.toNextSlide,\n      toPrevSlide: this.toPrevSlide,\n      toFragment: this.toFragment,\n      toNextFragment: this.toNextFragment,\n      toPrevFragment: this.toPrevFragment\n    }\n  }\n\n  /**\n   * @private\n   */\n  toSlide(slideIndex) {\n    this.direction = slideIndex > this.slideIndex ? 1 : -1\n    this.slideIndex = slideIndex\n  }\n\n  /**\n   * @private\n   */\n  toNextSlide() {\n    this.toSlide(this.slideIndex + 1)\n    this.toFragment(0)\n  }\n\n  /**\n   * @private\n   */\n  toPrevSlide() {\n    const {length: prevFragmentCount = 0} = this.fragmentHosts[\n      this.slideIndex - 1\n    ]\n    const prevLastFragment = Math.max(0, prevFragmentCount - 1)\n    this.toSlide(this.slideIndex - 1)\n    this.toFragment(prevLastFragment)\n  }\n\n  /**\n   * @private\n   */\n  toFragment(fragmentIndex) {\n    const fragmentOrder = this.fragmentHosts[this.slideIndex][fragmentIndex]\n    this.fragmentOrder = fragmentOrder\n    this.fragmentIndex = fragmentIndex\n  }\n\n  /**\n   * @private\n   */\n  toNextFragment() {\n    this.toFragment(this.fragmentIndex + 1)\n  }\n\n  /**\n   * @private\n   */\n  toPrevFragment() {\n    this.toFragment(this.fragmentIndex - 1)\n  }\n}\n",
+    "content": "import uuid from 'uuid/v4'\nimport {observable} from 'mobx'\n\n/**\n * @private\n */\nexport default class Store {\n  /**\n   * Store Id\n   * @type {String}\n   */\n  id = uuid()\n  /**\n   * Index of the currently active slide\n   * Default to `0`. Is needed for the initial load to work correctly.\n   * @see {@dekk/fragments/src/index.js~Fragment#render}\n   * @type {number}\n   */\n  @observable slideIndex = 0\n  /**\n   * Order of the currently active fragment\n   * @type {number}\n   */\n  @observable fragmentOrder = 0\n  /**\n   * Index of the currently active fragment\n   * @type {number}\n   */\n  @observable fragmentIndex = 0\n  /**\n   * Direction of the slide movement (either -1, 0 or 1)\n   * @type {number}\n   */\n  @observable direction = 0\n\n  /**\n   * A collection of hosts for fragments.\n   * Each slide is a host.\n   * @type {Array}\n   */\n  @observable fragmentHosts = []\n\n  /**\n   * @private\n   * @param {Object} props\n   *   The properties\n   * @param {number} props.slideIndex\n   *   Initially active slideIndex\n   */\n  constructor(props) {\n    // Bind methods\n    this.toSlide = this.toSlide.bind(this)\n    this.toNextSlide = this.toNextSlide.bind(this)\n    this.toPrevSlide = this.toPrevSlide.bind(this)\n    this.toFragment = this.toFragment.bind(this)\n    this.toNextFragment = this.toNextFragment.bind(this)\n    this.toPrevFragment = this.toPrevFragment.bind(this)\n  }\n\n  /**\n   * Public methods.\n   *\n   * These methods can be used to modify the store.\n   */\n  get publicMethods() {\n    return {\n      toSlide: this.toSlide,\n      toNextSlide: this.toNextSlide,\n      toPrevSlide: this.toPrevSlide,\n      toFragment: this.toFragment,\n      toNextFragment: this.toNextFragment,\n      toPrevFragment: this.toPrevFragment\n    }\n  }\n\n  /**\n   * @private\n   */\n  toSlide(slideIndex) {\n    this.direction = slideIndex > this.slideIndex ? 1 : -1\n    this.slideIndex = slideIndex\n  }\n\n  /**\n   * @private\n   */\n  toNextSlide() {\n    this.toSlide(this.slideIndex + 1)\n    this.toFragment(0)\n  }\n\n  /**\n   * @private\n   */\n  toPrevSlide() {\n    const {length: prevFragmentCount = 0} = this.fragmentHosts[\n      this.slideIndex - 1\n    ]\n    const prevLastFragment = Math.max(0, prevFragmentCount - 1)\n    this.toSlide(this.slideIndex - 1)\n    this.toFragment(prevLastFragment)\n  }\n\n  /**\n   * @private\n   */\n  toFragment(fragmentIndex) {\n    if (this.fragmentHosts[this.slideIndex].length - 1 >= fragmentIndex) {\n      this.fragmentOrder = this.fragmentHosts[this.slideIndex][fragmentIndex]\n    } else {\n      this.fragmentOrder = undefined\n    }\n    this.fragmentIndex = fragmentIndex\n  }\n\n  /**\n   * @private\n   */\n  toNextFragment() {\n    this.toFragment(this.fragmentIndex + 1)\n  }\n\n  /**\n   * @private\n   */\n  toPrevFragment() {\n    this.toFragment(this.fragmentIndex - 1)\n  }\n}\n",
     "static": true,
     "longname": "/Users/greada/Documents/workspace/s2/dekk/@dekk/store/src/index.js",
     "access": "public",
@@ -3602,7 +3693,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 154,
+    "__docId__": 159,
     "kind": "class",
     "name": "Store",
     "memberof": "@dekk/store/src/index.js",
@@ -3618,7 +3709,7 @@
     "ignore": true
   },
   {
-    "__docId__": 155,
+    "__docId__": 160,
     "kind": "member",
     "name": "id",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3637,15 +3728,18 @@
     }
   },
   {
-    "__docId__": 156,
+    "__docId__": 161,
     "kind": "member",
     "name": "slideIndex",
     "memberof": "@dekk/store/src/index.js~Store",
     "static": false,
     "longname": "@dekk/store/src/index.js~Store#slideIndex",
     "access": "public",
-    "description": "Index of the currently active slide",
-    "lineNumber": 17,
+    "description": "Index of the currently active slide\nDefault to `0`. Is needed for the initial load to work correctly.",
+    "see": [
+      "{@dekk/fragments/src/index.js~Fragment#render}"
+    ],
+    "lineNumber": 19,
     "type": {
       "nullable": null,
       "types": [
@@ -3662,7 +3756,7 @@
     ]
   },
   {
-    "__docId__": 157,
+    "__docId__": 162,
     "kind": "member",
     "name": "fragmentOrder",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3670,7 +3764,7 @@
     "longname": "@dekk/store/src/index.js~Store#fragmentOrder",
     "access": "public",
     "description": "Order of the currently active fragment",
-    "lineNumber": 22,
+    "lineNumber": 24,
     "type": {
       "nullable": null,
       "types": [
@@ -3687,7 +3781,7 @@
     ]
   },
   {
-    "__docId__": 158,
+    "__docId__": 163,
     "kind": "member",
     "name": "fragmentIndex",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3695,7 +3789,7 @@
     "longname": "@dekk/store/src/index.js~Store#fragmentIndex",
     "access": "public",
     "description": "Index of the currently active fragment",
-    "lineNumber": 27,
+    "lineNumber": 29,
     "type": {
       "nullable": null,
       "types": [
@@ -3712,7 +3806,7 @@
     ]
   },
   {
-    "__docId__": 159,
+    "__docId__": 164,
     "kind": "member",
     "name": "direction",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3720,7 +3814,7 @@
     "longname": "@dekk/store/src/index.js~Store#direction",
     "access": "public",
     "description": "Direction of the slide movement (either -1, 0 or 1)",
-    "lineNumber": 32,
+    "lineNumber": 34,
     "type": {
       "nullable": null,
       "types": [
@@ -3737,7 +3831,32 @@
     ]
   },
   {
-    "__docId__": 160,
+    "__docId__": 165,
+    "kind": "member",
+    "name": "fragmentHosts",
+    "memberof": "@dekk/store/src/index.js~Store",
+    "static": false,
+    "longname": "@dekk/store/src/index.js~Store#fragmentHosts",
+    "access": "public",
+    "description": "A collection of hosts for fragments.\nEach slide is a host.",
+    "lineNumber": 41,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "decorators": [
+      {
+        "name": "observable",
+        "arguments": null
+      }
+    ]
+  },
+  {
+    "__docId__": 166,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3747,7 +3866,7 @@
     "longname": "@dekk/store/src/index.js~Store#constructor",
     "access": "private",
     "description": "",
-    "lineNumber": 41,
+    "lineNumber": 50,
     "params": [
       {
         "nullable": null,
@@ -3773,23 +3892,7 @@
     "ignore": true
   },
   {
-    "__docId__": 162,
-    "kind": "member",
-    "name": "fragmentHosts",
-    "memberof": "@dekk/store/src/index.js~Store",
-    "static": false,
-    "longname": "@dekk/store/src/index.js~Store#fragmentHosts",
-    "access": "public",
-    "description": "A collection of hosts for fragments.\nEach slide is a host.",
-    "lineNumber": 48,
-    "type": {
-      "types": [
-        "*[]"
-      ]
-    }
-  },
-  {
-    "__docId__": 169,
+    "__docId__": 173,
     "kind": "get",
     "name": "publicMethods",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3799,7 +3902,7 @@
     "longname": "@dekk/store/src/index.js~Store#publicMethods",
     "access": "public",
     "description": "Public methods.\n\nThese methods can be used to modify the store.",
-    "lineNumber": 63,
+    "lineNumber": 65,
     "type": {
       "types": [
         "{\"toSlide\": *, \"toNextSlide\": *, \"toPrevSlide\": *, \"toFragment\": *, \"toNextFragment\": *, \"toPrevFragment\": *}"
@@ -3807,7 +3910,7 @@
     }
   },
   {
-    "__docId__": 170,
+    "__docId__": 174,
     "kind": "method",
     "name": "toSlide",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3817,7 +3920,7 @@
     "longname": "@dekk/store/src/index.js~Store#toSlide",
     "access": "private",
     "description": "",
-    "lineNumber": 77,
+    "lineNumber": 79,
     "ignore": true,
     "params": [
       {
@@ -3830,7 +3933,7 @@
     "return": null
   },
   {
-    "__docId__": 173,
+    "__docId__": 177,
     "kind": "method",
     "name": "toNextSlide",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3840,13 +3943,13 @@
     "longname": "@dekk/store/src/index.js~Store#toNextSlide",
     "access": "private",
     "description": "",
-    "lineNumber": 85,
+    "lineNumber": 87,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 174,
+    "__docId__": 178,
     "kind": "method",
     "name": "toPrevSlide",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3856,13 +3959,13 @@
     "longname": "@dekk/store/src/index.js~Store#toPrevSlide",
     "access": "private",
     "description": "",
-    "lineNumber": 93,
+    "lineNumber": 95,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 175,
+    "__docId__": 179,
     "kind": "method",
     "name": "toFragment",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3872,7 +3975,7 @@
     "longname": "@dekk/store/src/index.js~Store#toFragment",
     "access": "private",
     "description": "",
-    "lineNumber": 105,
+    "lineNumber": 107,
     "ignore": true,
     "params": [
       {
@@ -3885,7 +3988,7 @@
     "return": null
   },
   {
-    "__docId__": 178,
+    "__docId__": 183,
     "kind": "method",
     "name": "toNextFragment",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3895,13 +3998,13 @@
     "longname": "@dekk/store/src/index.js~Store#toNextFragment",
     "access": "private",
     "description": "",
-    "lineNumber": 114,
+    "lineNumber": 119,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 179,
+    "__docId__": 184,
     "kind": "method",
     "name": "toPrevFragment",
     "memberof": "@dekk/store/src/index.js~Store",
@@ -3911,13 +4014,13 @@
     "longname": "@dekk/store/src/index.js~Store#toPrevFragment",
     "access": "private",
     "description": "",
-    "lineNumber": 121,
+    "lineNumber": 126,
     "ignore": true,
     "params": [],
     "return": null
   },
   {
-    "__docId__": 180,
+    "__docId__": 185,
     "kind": "file",
     "name": "@dekk/text/src/bold.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Bold = styled.strong`\n  font-weight: bold;\n  ${props =>\n    props.highlight ? 'color: var(--highlight-color, inherit);' : ''};\n`\n\n/**\n * @private\n */\nBold.propTypes = {\n  className: PropTypes.string,\n  highlight: PropTypes.bool,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nBold.displayName = 'Bold'\n\nexport default Bold\n",
@@ -3928,7 +4031,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 181,
+    "__docId__": 186,
     "kind": "variable",
     "name": "Bold",
     "memberof": "@dekk/text/src/bold.js",
@@ -3947,7 +4050,7 @@
     }
   },
   {
-    "__docId__": 182,
+    "__docId__": 187,
     "kind": "file",
     "name": "@dekk/text/src/center.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Center = styled.div`\n  text-align: center;\n`\n\n/**\n * @private\n */\nCenter.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nCenter.displayName = 'Center'\n\nexport default Center\n",
@@ -3958,7 +4061,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 183,
+    "__docId__": 188,
     "kind": "variable",
     "name": "Center",
     "memberof": "@dekk/text/src/center.js",
@@ -3977,7 +4080,7 @@
     }
   },
   {
-    "__docId__": 184,
+    "__docId__": 189,
     "kind": "file",
     "name": "@dekk/text/src/code.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport SyntaxHighlighter from 'react-syntax-highlighter'\nimport * as colorSchemes from 'react-syntax-highlighter/styles/hljs'\n\n/**\n * @private\n */\nconst RawCode = props => {\n  return (\n    <SyntaxHighlighter\n      className={props.className}\n      language={props.language}\n      style={props.style}>\n      {props.children}\n    </SyntaxHighlighter>\n  )\n}\n\n/**\n * @bublic\n */\nconst Code = styled(RawCode)`\n  font-size: var(--code-font-size, 1em);\n`\n\n/**\n * @private\n */\nCode.propTypes = {\n  style: PropTypes.object,\n  language: PropTypes.string,\n  className: PropTypes.string,\n  className: PropTypes.string,\n  children: PropTypes.string\n}\n\n/**\n * @private\n */\nCode.displayName = 'Code'\n\nexport {colorSchemes}\nexport default Code\n",
@@ -3988,7 +4091,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 185,
+    "__docId__": 190,
     "kind": "function",
     "name": "RawCode",
     "memberof": "@dekk/text/src/code.js",
@@ -4018,7 +4121,7 @@
     }
   },
   {
-    "__docId__": 186,
+    "__docId__": 191,
     "kind": "variable",
     "name": "Code",
     "memberof": "@dekk/text/src/code.js",
@@ -4043,7 +4146,7 @@
     }
   },
   {
-    "__docId__": 187,
+    "__docId__": 192,
     "kind": "file",
     "name": "@dekk/text/src/index.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nexport {default as Title} from './title'\nexport {default as Subtitle} from './subtitle'\nexport {default as Code, colorSchemes} from './code'\nexport {default as Quote} from './quote'\nexport {default as Center} from './center'\nexport {default as Bold} from './bold'\nexport {default as Uppercase} from './uppercase'\n\n/**\n * @public\n */\nconst Text = styled.p`\n  padding: 0;\n`\n/**\n * @private\n */\nText.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nText.displayName = 'Text'\n\nexport default Text\n",
@@ -4054,7 +4157,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 188,
+    "__docId__": 193,
     "kind": "variable",
     "name": "Text",
     "memberof": "@dekk/text/src/index.js",
@@ -4073,7 +4176,7 @@
     }
   },
   {
-    "__docId__": 189,
+    "__docId__": 194,
     "kind": "file",
     "name": "@dekk/text/src/quote.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Quote = props => (\n  <Figure>\n    <BlockQuote className={quote} cite={props.cite}>\n      {props.children}\n    </BlockQuote>\n    <figcaption>{props.author}</figcaption>\n  </Figure>\n)\n\n/**\n * @private\n */\nconst BlockQuote = styled.blockquote`\n  margin: 0;\n`\n\n/**\n * @private\n */\nconst Figure = styled.figure`\n  margin: 0;\n`\n\n/**\n * @private\n */\nQuote.propTypes = {\n  cite: PropTypes.string,\n  author: PropTypes.node,\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nQuote.displayName = 'Quote'\n\nexport default Quote\n",
@@ -4084,7 +4187,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 190,
+    "__docId__": 195,
     "kind": "variable",
     "name": "BlockQuote",
     "memberof": "@dekk/text/src/quote.js",
@@ -4104,7 +4207,7 @@
     }
   },
   {
-    "__docId__": 191,
+    "__docId__": 196,
     "kind": "variable",
     "name": "Figure",
     "memberof": "@dekk/text/src/quote.js",
@@ -4124,7 +4227,7 @@
     }
   },
   {
-    "__docId__": 192,
+    "__docId__": 197,
     "kind": "function",
     "name": "Quote",
     "memberof": "@dekk/text/src/quote.js",
@@ -4149,7 +4252,7 @@
     "return": null
   },
   {
-    "__docId__": 193,
+    "__docId__": 198,
     "kind": "file",
     "name": "@dekk/text/src/subtitle.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Subtitle = styled.h2`\n  margin: 0;\n  font-size: var(--subtitle-font-size, 2em);\n  text-align: center;\n`\n\n/**\n * @private\n */\nSubtitle.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nSubtitle.displayName = 'Subtitle'\n\nexport default Subtitle\n",
@@ -4160,7 +4263,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 194,
+    "__docId__": 199,
     "kind": "variable",
     "name": "Subtitle",
     "memberof": "@dekk/text/src/subtitle.js",
@@ -4179,7 +4282,7 @@
     }
   },
   {
-    "__docId__": 195,
+    "__docId__": 200,
     "kind": "file",
     "name": "@dekk/text/src/title.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Title = styled.h1`\n  margin: 0;\n  font-size: var(--title-font-size, 4em);\n  text-align: center;\n`\n\n/**\n * @private\n */\nTitle.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nTitle.displayName = 'Title'\n\nexport default Title\n",
@@ -4190,7 +4293,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 196,
+    "__docId__": 201,
     "kind": "variable",
     "name": "Title",
     "memberof": "@dekk/text/src/title.js",
@@ -4209,7 +4312,7 @@
     }
   },
   {
-    "__docId__": 197,
+    "__docId__": 202,
     "kind": "file",
     "name": "@dekk/text/src/uppercase.js",
     "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\n/**\n * @public\n */\nconst Uppercase = styled.span`\n  text-transform: uppercase;\n`\n\n/**\n * @private\n */\nUppercase.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n}\n\n/**\n * @private\n */\nUppercase.displayName = 'Uppercase'\n\nexport default Uppercase\n",
@@ -4220,7 +4323,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 198,
+    "__docId__": 203,
     "kind": "variable",
     "name": "Uppercase",
     "memberof": "@dekk/text/src/uppercase.js",
@@ -4239,7 +4342,7 @@
     }
   },
   {
-    "__docId__": 199,
+    "__docId__": 204,
     "kind": "file",
     "name": "@dekk/url/src/index.js",
     "content": "import {Component} from 'react'\nimport PropTypes from 'prop-types'\n\n/**\n * @private\n */\nexport const writeHash = (slideIndex = 0, fragmentIndex = 0) => {\n  window.location.hash = `#!/${slideIndex}/${fragmentIndex}/`\n}\n\n/**\n * @private\n */\nexport const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {\n  const oldQuery = window.location.search\n    .split(/[\\?&]/)\n    .filter(x => x !== '' && !x.match(/(page|fragment)/))\n    .join('&')\n  history.pushState(\n    {page: slideIndex, fragment: fragmentIndex},\n    `page ${slideIndex}, fragment ${fragmentIndex}`,\n    `?page=${slideIndex}&fragment=${fragmentIndex}${\n      oldQuery ? `&${oldQuery}` : ''\n    }`\n  )\n}\n\n/**\n * @public\n */\nclass Url extends Component {\n  /**\n   * @private\n   */\n  static get propTypes() {\n    return {\n      type: PropTypes.oneOf(['hash', 'query']),\n      slideIndex: PropTypes.number,\n      fragmentIndex: PropTypes.number\n    }\n  }\n\n  /**\n   * @private\n   */\n  static get defaultProps() {\n    return {\n      type: 'hash',\n      slideIndex: 0,\n      fragmentIndex: 0\n    }\n  }\n\n  /**\n   * @public\n   * @param {Object} props\n   *   The properties\n   * @param {String} [props.type='hash']\n   *   Either `hash` or `query` to enable hash(bang) or search query URLs\n   * @param {number} props.slideIndex\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentCount\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentIndex\n   *   (Injected via Dekk)\n   * @param {number} props.fragmentOrder\n   *   (Injected via Dekk)\n   * @param {function} props.toFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toSlide\n   *   (Injected via Dekk)\n   * @param {function} props.toNextFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toPrevFragment\n   *   (Injected via Dekk)\n   * @param {function} props.toNextSlide\n   *   (Injected via Dekk)\n   * @param {function} props.toPrevSlide\n   *   (Injected via Dekk)\n   * @example\n   * import Deck, {Plugins} from '@dekk/deck'\n   * import Url from '@dekk/url'\n   *\n   * export default (\n   *   <Deck>\n   *     <Plugins>\n   *       <Url/>\n   *     </Plugins>\n   *   </Deck>\n   * )\n   */\n  constructor(props) {\n    super(props)\n  }\n\n  /**\n   * @private\n   */\n  componentDidMount() {\n    this[this.props.type](window.location.href)\n  }\n\n  /**\n   * @private\n   */\n  hash(url) {\n    const {hash = ''} = new URL(url)\n    const [, slideIndex = 0, fragmentIndex = 0] = hash.split('/')\n    this.toSlide(slideIndex)\n    this.toFragment(fragmentIndex)\n  }\n\n  /**\n   * @private\n   */\n  query(url) {\n    const {search = ''} = new URL(url)\n    const parts = search.split(/[\\?&]/).filter(Boolean)\n    const {page: slideIndex = 0, fragment: fragmentIndex = 0} = parts.reduce(\n      (a, b) => {\n        const [key, value] = b.split('=')\n        return {...a, [key]: value}\n      },\n      {}\n    )\n    this.toSlide(slideIndex)\n    this.toFragment(fragmentIndex)\n  }\n\n  /**\n   * @private\n   */\n  toFragment(fragmentIndex) {\n    this.props.toFragment(parseInt(fragmentIndex, 10))\n  }\n\n  /**\n   * @private\n   */\n  toSlide(slideIndex) {\n    this.props.toSlide(parseInt(slideIndex, 10))\n  }\n\n  /**\n   * @private\n   */\n  componentWillReceiveProps({slideIndex, fragmentIndex}) {\n    switch (this.props.type) {\n      case 'hash':\n        writeHash(slideIndex, fragmentIndex)\n        break\n      case 'query':\n        writeQuery(slideIndex, fragmentIndex)\n        break\n      default:\n        break\n    }\n  }\n\n  /**\n   * @private\n   */\n  render() {\n    return null\n  }\n}\n\nexport default Url\n",
@@ -4250,7 +4353,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 200,
+    "__docId__": 205,
     "kind": "function",
     "name": "writeHash",
     "memberof": "@dekk/url/src/index.js",
@@ -4288,7 +4391,7 @@
     "return": null
   },
   {
-    "__docId__": 201,
+    "__docId__": 206,
     "kind": "function",
     "name": "writeQuery",
     "memberof": "@dekk/url/src/index.js",
@@ -4335,7 +4438,7 @@
     "return": null
   },
   {
-    "__docId__": 202,
+    "__docId__": 207,
     "kind": "class",
     "name": "Url",
     "memberof": "@dekk/url/src/index.js",
@@ -4353,7 +4456,7 @@
     ]
   },
   {
-    "__docId__": 203,
+    "__docId__": 208,
     "kind": "get",
     "name": "propTypes",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4372,7 +4475,7 @@
     }
   },
   {
-    "__docId__": 204,
+    "__docId__": 209,
     "kind": "get",
     "name": "defaultProps",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4391,7 +4494,7 @@
     }
   },
   {
-    "__docId__": 205,
+    "__docId__": 210,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4531,7 +4634,7 @@
     ]
   },
   {
-    "__docId__": 206,
+    "__docId__": 211,
     "kind": "method",
     "name": "componentDidMount",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4547,7 +4650,7 @@
     "return": null
   },
   {
-    "__docId__": 207,
+    "__docId__": 212,
     "kind": "method",
     "name": "hash",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4570,7 +4673,7 @@
     "return": null
   },
   {
-    "__docId__": 208,
+    "__docId__": 213,
     "kind": "method",
     "name": "query",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4593,7 +4696,7 @@
     "return": null
   },
   {
-    "__docId__": 209,
+    "__docId__": 214,
     "kind": "method",
     "name": "toFragment",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4616,7 +4719,7 @@
     "return": null
   },
   {
-    "__docId__": 210,
+    "__docId__": 215,
     "kind": "method",
     "name": "toSlide",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4639,7 +4742,7 @@
     "return": null
   },
   {
-    "__docId__": 211,
+    "__docId__": 216,
     "kind": "method",
     "name": "componentWillReceiveProps",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4667,7 +4770,7 @@
     "return": null
   },
   {
-    "__docId__": 212,
+    "__docId__": 217,
     "kind": "method",
     "name": "render",
     "memberof": "@dekk/url/src/index.js~Url",
@@ -4687,7 +4790,7 @@
     }
   },
   {
-    "__docId__": 213,
+    "__docId__": 218,
     "kind": "file",
     "name": "@dekk/utils/src/index.js",
     "content": "export * from './range'\n",
@@ -4698,7 +4801,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 214,
+    "__docId__": 219,
     "kind": "file",
     "name": "@dekk/utils/src/range.js",
     "content": "/**\n * @private\n */\nexport const range = (n, max, min = 0) => n >= min && n <= max\n",
@@ -4709,7 +4812,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 215,
+    "__docId__": 220,
     "kind": "function",
     "name": "range",
     "memberof": "@dekk/utils/src/range.js",
@@ -4759,7 +4862,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"dekk\",\n  \"version\": \"1.0.0-0\",\n  \"private\": true,\n  \"description\": \"A presentation tool written in react.js\",\n  \"license\": \"MIT\",\n  \"author\": \"Gregor Adams <greg@pixelass.com>\",\n  \"repository\": \"git@github.com:sinnerschrader/dekk.git\",\n  \"scripts\": {\n    \"babel\": \"lerna run babel\",\n    \"babel:watch\": \"lerna run babel:watch --parallel\",\n    \"bootstrap\": \"lerna bootstrap\",\n    \"build\": \"cross-env NODE_ENV=production webpack\",\n    \"clean\": \"lerna clean\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"develop\": \"npm-run-all --parallel babel:watch watch\",\n    \"docgen\": \"esdoc\",\n    \"docs\": \"open docs/api/index.html\",\n    \"format:js\": \"lerna run format:js\",\n    \"test\": \"lerna run test\",\n    \"watch\": \"webpack-dev-server\",\n    \"prepush\": \"yarn test\",\n    \"prepublish\": \"yarn babel\",\n    \"publish\": \"lerna publish --conventional-commits\",\n    \"publish:preview\": \"yarn babel && lerna publish --cd-version=prerelease --conventional-commits\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.0.2\",\n    \"@commitlint/config-conventional\": \"^6.0.2\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-styled-components\": \"^1.5.0\",\n    \"babel-plugin-transform-class-properties\": \"^6.24.1\",\n    \"babel-plugin-transform-decorators-legacy\": \"^1.3.4\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-preset-stage-2\": \"^6.24.1\",\n    \"cross-env\": \"^5.1.3\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-brand-plugin\": \"^1.0.0\",\n    \"esdoc-custom-theme\": \"^1.3.4\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-importpath-plugin\": \"^1.0.1\",\n    \"esdoc-inject-style-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-lint-plugin\": \"1.0.1\",\n    \"esdoc-publish-html-plugin\": \"^1.1.0\",\n    \"esdoc-react-plugin\": \"^1.0.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"favicons-webpack-plugin\": \"^0.0.7\",\n    \"html-webpack-harddisk-plugin\": \"^0.1.0\",\n    \"html-webpack-plugin\": \"^2.30.1\",\n    \"husky\": \"^0.14.3\",\n    \"lerna\": \"^2.5.1\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"react\": \"^16.2.0\",\n    \"react-dom\": \"^16.2.0\",\n    \"styled-components\": \"^3.0.2\",\n    \"webpack\": \"^3.10.0\",\n    \"webpack-dev-server\": \"^2.11.1\"\n  },\n  \"workspaces\": [\n    \"@dekk/*\"\n  ]\n}\n",
+    "content": "{\n  \"name\": \"dekk\",\n  \"version\": \"1.0.0-0\",\n  \"private\": true,\n  \"description\": \"A presentation tool written in react.js\",\n  \"license\": \"MIT\",\n  \"author\": \"Gregor Adams <greg@pixelass.com>\",\n  \"repository\": \"git@github.com:sinnerschrader/dekk.git\",\n  \"scripts\": {\n    \"babel\": \"lerna run babel\",\n    \"babel:watch\": \"lerna run babel:watch --parallel\",\n    \"bootstrap\": \"lerna bootstrap\",\n    \"build\": \"cross-env NODE_ENV=production webpack\",\n    \"clean\": \"lerna clean\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"develop\": \"npm-run-all --parallel babel:watch watch\",\n    \"docgen\": \"esdoc\",\n    \"docs\": \"open docs/api/index.html\",\n    \"format:js\": \"lerna run format:js\",\n    \"test\": \"lerna run test\",\n    \"watch\": \"webpack-dev-server\",\n    \"prepush\": \"yarn test\",\n    \"prepublish\": \"yarn babel\",\n    \"publish\": \"lerna publish --conventional-commits\",\n    \"publish:preview\": \"yarn babel && lerna publish --cd-version=prerelease --conventional-commits\",\n    \"upgrade:all\": \"lerna exec --ncu -a\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.0.2\",\n    \"@commitlint/config-conventional\": \"^6.0.2\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-styled-components\": \"^1.5.0\",\n    \"babel-plugin-transform-class-properties\": \"^6.24.1\",\n    \"babel-plugin-transform-decorators-legacy\": \"^1.3.4\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-preset-stage-2\": \"^6.24.1\",\n    \"cross-env\": \"^5.1.3\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-brand-plugin\": \"^1.0.0\",\n    \"esdoc-custom-theme\": \"^1.3.4\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-importpath-plugin\": \"^1.0.1\",\n    \"esdoc-inject-style-plugin\": \"^1.0.0\",\n    \"esdoc-jsx-plugin\": \"^1.0.0\",\n    \"esdoc-lint-plugin\": \"1.0.1\",\n    \"esdoc-publish-html-plugin\": \"^1.1.0\",\n    \"esdoc-react-plugin\": \"^1.0.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"favicons-webpack-plugin\": \"^0.0.7\",\n    \"html-webpack-harddisk-plugin\": \"^0.1.0\",\n    \"html-webpack-plugin\": \"^2.30.1\",\n    \"husky\": \"^0.14.3\",\n    \"lerna\": \"^2.5.1\",\n    \"npm-check-updates\": \"^2.14.0\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"react\": \"^16.2.0\",\n    \"react-dom\": \"^16.2.0\",\n    \"styled-components\": \"^3.0.2\",\n    \"webpack\": \"^3.10.0\",\n    \"webpack-dev-server\": \"^2.11.1\"\n  },\n  \"workspaces\": [\n    \"@dekk/*\"\n  ]\n}\n",
     "longname": "/Users/greada/Documents/workspace/s2/dekk/package.json",
     "name": "package.json",
     "static": true,
@@ -4817,7 +4920,7 @@
     "kind": "manual",
     "longname": "/Users/greada/Documents/workspace/s2/dekk/.manual/plugins.md",
     "name": "./.manual/plugins.md",
-    "content": "# Plugins\n\nTo configure your Deck you can use the Plugins component. This allows you\nto choose the type of URLs Dekk writes or add listeners as well as enable\npaging\n\n\n```jsx\nimport React from 'react'\nimport Deck, {Plugins} from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nexport default (\n  <Deck>\n    <Plugins>\n      {/* load plugins here */}\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Adding listeners\n\n* handleSlide: function\n* handleFragment: function\n \n```jsx\nimport React from 'react'\nimport Deck, {Plugins} from '@dekk/deck'\nimport Slide from '@dekk/slide'\nimport Listener from '@dekk/listener'\n\nconst handleSlide = (slideIndex, slideCount) => {\n  // code\n}\nconst handleFragment = (slideIndex, slideCount, fragmentIndex, fragmentOrder, fragmentCOunt) => {\n  // code\n} \n\nexport default (\n  <Deck>\n    <Plugins>\n      <Listener onSlide={handleSlide}\n                onFragment={handleFragment}/>\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Adding URLs\n\n* type: string: `hash|query`\n  * default: `hash`\n \n\n```jsx\nimport React from 'react'\nimport Deck, {Config} from '@dekk/deck'\nimport Slide from '@dekk/slide'\nimport Url from '@dekk/url'\n\nexport default (\n  <Deck>\n    <Plugins>\n      <Url type=\"query\"/>\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Enable paging\n\n* trigger: string: `keyup|keydown`\n  * default: `keyup`\n\n```jsx\nimport React from 'react'\nimport Deck, {Config} from '@dekk/deck'\nimport Slide from '@dekk/slide'\nimport Paging from '@dekk/paging'\n\nexport default (\n  <Deck>\n    <Plugins>\n      <Paging trigger=\"keydown\"/>\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n",
+    "content": "# Plugins\n\nTo configure your Deck you can use the Plugins component. This allows you\nto choose the type of URLs Dekk writes or add listeners as well as enable\npaging\n\n\n```jsx\nimport React from 'react'\nimport Deck, {Plugins} from '@dekk/deck'\nimport Slide from '@dekk/slide'\n\nexport default (\n  <Deck>\n    <Plugins>\n      {/* load plugins here */}\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Adding listeners\n\n* handleSlide: function\n* handleFragment: function\n \n```jsx\nimport React from 'react'\nimport Deck, {Plugins} from '@dekk/deck'\nimport Slide from '@dekk/slide'\nimport Listener from '@dekk/listener'\n\nconst handleSlide = (slideIndex, slideCount) => {\n  // code\n}\nconst handleFragment = (slideIndex, slideCount, fragmentIndex, fragmentOrder, fragmentCOunt) => {\n  // code\n} \n\nexport default (\n  <Deck>\n    <Plugins>\n      <Listener onSlide={handleSlide}\n                onFragment={handleFragment}/>\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Adding URLs\n\n* type: string: `hash|query`\n  * default: `hash`\n \n\n```jsx\nimport React from 'react'\nimport Deck, {Plugins} from '@dekk/deck'\nimport Slide from '@dekk/slide'\nimport Url from '@dekk/url'\n\nexport default (\n  <Deck>\n    <Plugins>\n      <Url type=\"query\"/>\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n## Enable paging\n\n* trigger: string: `keyup|keydown`\n  * default: `keyup`\n\n```jsx\nimport React from 'react'\nimport Deck, {Plugins} from '@dekk/deck'\nimport Slide from '@dekk/slide'\nimport Paging from '@dekk/paging'\n\nexport default (\n  <Deck>\n    <Plugins>\n      <Paging trigger=\"keydown\"/>\n    </Plugins>\n    <Slide> 1 </Slide>\n    <Slide> 2 </Slide>\n    <Slide> 3 </Slide>\n  </Deck>\n)\n```\n\n",
     "static": true,
     "access": "public"
   },

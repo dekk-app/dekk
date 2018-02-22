@@ -138,6 +138,30 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@dekk/animation~cube",
+    "variable/index.html#static-variable-cube",
+    "<span>cube</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "variable"
+  ],
+  [
+    "@dekk/animation~fade",
+    "variable/index.html#static-variable-fade",
+    "<span>fade</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "variable"
+  ],
+  [
+    "@dekk/animation~fadeslide",
+    "variable/index.html#static-variable-fadeSlide",
+    "<span>fadeSlide</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "variable"
+  ],
+  [
+    "@dekk/animation~slide",
+    "variable/index.html#static-variable-slide",
+    "<span>slide</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "variable"
+  ],
+  [
     "@dekk/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "@dekk/.external-ecmascript.js~Array",
@@ -418,6 +442,12 @@ window.esdocSearchIndex = [
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
     "@dekk/.external-ecmascript.js~undefined",
     "external"
+  ],
+  [
+    "@dekk/animation/src/index.js",
+    "file/@dekk/animation/src/index.js.html",
+    "@dekk/animation/src/index.js",
+    "file"
   ],
   [
     "@dekk/deck/src/elements.js",
