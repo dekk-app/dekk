@@ -3,14 +3,18 @@ import {css} from 'styled-components'
 export const slide = {
   normal: css`
     transform: translate3d(
-      calc(100% * var(--direction, -1) * var(--time, 1)),
+      calc(
+        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))
+      ),
       0,
       0
     );
   `,
   reverse: css`
     transform: translate3d(
-      calc(100% * var(--direction, -1) * var(--time, 1) * -1),
+      calc(
+        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) * -1
+      ),
       0,
       0
     );
@@ -18,14 +22,18 @@ export const slide = {
   down: css`
     transform: translate3d(
       0,
-      calc(100% * var(--direction, -1) * var(--time, 1) * -1),
+      calc(
+        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) * -1
+      ),
       0
     );
   `,
   up: css`
     transform: translate3d(
       0,
-      calc(100% * var(--direction, -1) * var(--time, 1)),
+      calc(
+        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))
+      ),
       0
     );
   `
@@ -43,10 +51,14 @@ export const fade = {
 export const fadeSlide = {
   in: {
     normal: css`
+      --direction: 1;
+      --regulator: 0;
       ${fade.in};
       ${slide.normal};
     `,
     reverse: css`
+      --direction: 1;
+      --regulator: 0;
       ${fade.in};
       ${slide.reverse};
     `,
@@ -61,18 +73,26 @@ export const fadeSlide = {
   },
   out: {
     normal: css`
+      --direction: 1;
+      --regulator: 1;
       ${fade.out};
       ${slide.normal};
     `,
     reverse: css`
+      --direction: 1;
+      --regulator: 1;
       ${fade.out};
       ${slide.reverse};
     `,
     up: css`
+      --direction: -1;
+      --regulator: 1;
       ${fade.out};
       ${slide.up};
     `,
     down: css`
+      --direction: -1;
+      --regulator: 1;
       ${fade.out};
       ${slide.down};
     `
