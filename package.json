@@ -17,6 +17,7 @@
     "docgen": "esdoc",
     "docs": "open docs/api/index.html",
     "format:js": "lerna run format:js",
+    "lint": "lerna run lint --concurrency",
     "test": "lerna run test",
     "watch": "webpack-dev-server",
     "prepush": "yarn test",

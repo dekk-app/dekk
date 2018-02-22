@@ -8,12 +8,16 @@
     "babel": "cross-env NODE_ENV=production babel src --out-dir lib --copy-files",
     "babel:watch": "babel src --out-dir lib --copy-files -w -s",
     "format:js": "prettier --write src/**/*.js",
-    "test": "ava"
+    "lint": "xo 'src/**/*.js'",
+    "test": "ava",
+    "posttest": "yarn lint"
   },
   "devDependencies": {
+    "@dekk/paging": "^1.0.0-5",
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-env": "^1.6.1",
@@ -22,10 +26,19 @@
     "babel-register": "^6.26.0",
     "cross-env": "^5.1.3",
     "prettier": "^1.10.2",
+    "prop-types": "^15.6.0",
     "xo": "^0.20.3"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "xo": {
+    "prettier": true,
+    "parser": "babel-eslint",
+    "rules": {
+      "no-unused-vars": 0,
+      "no-useless-constructor": 0
+    }
   },
   "ava": {
     "files": [
