@@ -61,7 +61,7 @@ export default (
 
 ```jsx
 import React from 'react'
-import Deck, {Config} from '@dekk/deck'
+import Deck, {Plugins} from '@dekk/deck'
 import Slide from '@dekk/slide'
 import Url from '@dekk/url'
 
@@ -84,7 +84,7 @@ export default (
 
 ```jsx
 import React from 'react'
-import Deck, {Config} from '@dekk/deck'
+import Deck, {Plugins} from '@dekk/deck'
 import Slide from '@dekk/slide'
 import Paging from '@dekk/paging'
 
