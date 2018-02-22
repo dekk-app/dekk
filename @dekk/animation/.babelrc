@@ -1,0 +1,7 @@
+{
+  "presets": ["stage-2", "env"],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}

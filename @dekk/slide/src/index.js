@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Motion, spring} from 'react-motion'
+import {slide} from '@dekk/animation'
 
 /**
  * A single slide.
@@ -135,14 +136,11 @@ const StyledSlide = styled(SlideDirection)`
   left: 0;
   overflow: hidden;
   color: var(--slide-color, currentColor);
-  background: ${({background}) => background || 'none'};
+  background: ${({background}) =>
+    background || 'var(--slide-background, none)'};
   background-size: cover;
   ${({mixin}) => mixin || ''};
-  ${({animation}) =>
-    animation ||
-    `
-    transform: translate3d(calc(100% * var(--direction, -1) * var(--time, 1)), 0, 0);
-  `};
+  ${({animation}) => animation || slide.normal};
 `
 
 export default Slide
