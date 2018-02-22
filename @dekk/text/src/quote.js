@@ -7,7 +7,7 @@ import styled from 'styled-components'
  */
 const Quote = props => (
   <Figure>
-    <BlockQuote className={quote} cite={props.cite}>
+    <BlockQuote className={props.quote} cite={props.cite}>
       {props.children}
     </BlockQuote>
     <figcaption>{props.author}</figcaption>

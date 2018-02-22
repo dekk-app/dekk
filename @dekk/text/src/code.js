@@ -32,7 +32,6 @@ Code.propTypes = {
   style: PropTypes.object,
   language: PropTypes.string,
   className: PropTypes.string,
-  className: PropTypes.string,
   children: PropTypes.string
 }
 

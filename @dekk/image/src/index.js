@@ -21,6 +21,7 @@ class Image extends Component {
    * @private
    */
   state = {}
+
   /**
    * @private
    * @return {{alt: String, src: String, title: ?String}}
@@ -33,6 +34,7 @@ class Image extends Component {
       title: PropTypes.string
     }
   }
+
   /**
    * Constructs the object.
    * @public

@@ -10,6 +10,7 @@ export default class Store {
    * @type {String}
    */
   id = uuid()
+
   /**
    * Index of the currently active slide
    * Default to `0`. Is needed for the initial load to work correctly.
@@ -17,16 +18,19 @@ export default class Store {
    * @type {number}
    */
   @observable slideIndex = 0
+
   /**
    * Order of the currently active fragment
    * @type {number}
    */
   @observable fragmentOrder = 0
+
   /**
    * Index of the currently active fragment
    * @type {number}
    */
   @observable fragmentIndex = 0
+
   /**
    * Direction of the slide movement (either -1, 0 or 1)
    * @type {number}

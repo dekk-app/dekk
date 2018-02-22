@@ -1,3 +1,5 @@
+/* global window history URL */
+
 import {Component} from 'react'
 import PropTypes from 'prop-types'
 
@@ -13,7 +15,7 @@ export const writeHash = (slideIndex = 0, fragmentIndex = 0) => {
  */
 export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {
   const oldQuery = window.location.search
-    .split(/[\?&]/)
+    .split(/[?&]/)
     .filter(x => x !== '' && !x.match(/(page|fragment)/))
     .join('&')
   history.pushState(
@@ -115,7 +117,7 @@ class Url extends Component {
    */
   query(url) {
     const {search = ''} = new URL(url)
-    const parts = search.split(/[\?&]/).filter(Boolean)
+    const parts = search.split(/[?&]/).filter(Boolean)
     const {page: slideIndex = 0, fragment: fragmentIndex = 0} = parts.reduce(
       (a, b) => {
         const [key, value] = b.split('=')

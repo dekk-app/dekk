@@ -21,7 +21,7 @@ import {Slot, Static} from './components'
  *   An invalid component warning
  */
 const invalid = (child, index, itemProps) => (
-  <div key={`slot__${index}`} data-slot={name}>
+  <div key={`slot__${index}`} data-slot={itemProps.name}>
     <Warning
       {...itemProps}
       type={
@@ -38,7 +38,7 @@ const invalid = (child, index, itemProps) => (
  * child component.
  * @private
  * @param {String} name
- *   Name of the Component
+ *   Name of the Slot
  * @param {number} index
  *   Used to generate the key property
  * @param {Object} itemProps
@@ -71,7 +71,7 @@ const onlyOrWarning = (only, child, index, itemProps) => {
   if (only.includes(child.type)) {
     return child
   }
-  // in case the child is a fragment, check all child elements
+  // In case the child is a fragment, check all child elements
   if (child.type === Fragment || child.type === FragmentRoot) {
     return cloneElement(child, {
       children: Children.toArray(child.props.children).map(child =>
@@ -100,7 +100,7 @@ const notOrWarning = (not, child, index, itemProps) => {
   if (child.type === Fragment || child.type === FragmentRoot) {
     return cloneElement(child, {
       children: Children.toArray(child.props.children).map(child =>
-        notOrWarning(only, child)
+        notOrWarning(not, child)
       )
     })
   }
@@ -231,7 +231,7 @@ class Master extends Component {
             </div>
           )
         })
-        // filter to only return valid content
+        // Filter to only return valid content
         .filter(x => Boolean(x))
     )
   }

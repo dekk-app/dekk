@@ -212,6 +212,8 @@ export default class Deck extends Component {
         .map((child, originalIndex) => ({child, originalIndex}))
         // Filter by a range of `+-1`
         // Filter first to reduce the number of clones
+        // This will not allow us to get all fragments on init but
+        // improves performance
         .filter((c, i) => range(i, slideIndex + 1, slideIndex - 1))
         // Modify the remaining slides (maximum of 3)
         .map(({child, originalIndex}) => {

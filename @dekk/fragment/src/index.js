@@ -115,7 +115,7 @@ export default class Fragment extends Component {
 
     // If no fragment has been defined with `0` we need to add a position to
     // our host
-    if (host.length && host.indexOf(0) < 0) {
+    if (host.length > 0 && host.indexOf(0) < 0) {
       host.push(0)
     }
     // Sort the fragment indexes and update the store
