@@ -137,81 +137,116 @@ const notOrWarning = (not, child, index, itemProps) => {
  *   The children injected by the createMaster function (internal/private)
  */
 class Master extends Component {
-  render() {
-    const {children, content} = this.props
-    // All `Slot` instances
-    const slots = Children.toArray(children).filter(
+  /**
+   * All `Slot` instances
+   * @private
+   */
+  get slots() {
+    return Children.toArray(this.props.children).filter(
       child => child.type === Slot
     )
+  }
 
-    // All `Static` instances
-    const statics = Children.toArray(children).filter(
+  /**
+   * All `Static` instances
+   * @private
+   */
+  get statics() {
+    return Children.toArray(this.props.children).filter(
       child => child.type === Static
     )
+  }
 
-    // Helper slots are filtered from the children.
-    // These slots are allowed and will be ignored.
-    // state setters, notes etc should be added here
-    const helperSlots = [Notes]
+  /**
+   * Helper slots are filtered from the children.
+   * These slots are allowed and will be ignored.
+   * state setters, notes etc should be added here
+   * @private
+   */
+  get helperSlots() {
+    return [Notes]
+  }
 
-    // Filtered children of the component.
-    // Excludes helperSlots
-    const onlyContent = Children.toArray(content).filter(
-      child => !helperSlots.includes(child.type)
+  /**
+   * Filtered children of the component.
+   * Excludes helperSlots
+   * @private
+   */
+  get content() {
+    return Children.toArray(this.props.content).filter(
+      child => !this.helperSlots.includes(child.type)
     )
+  }
 
-    // Fill all static stols.
-    // Adds a wrapping element with a data-attribute.
-    const filledStatics = statics.map((item, i) => (
+  /**
+   * Fill all static slots.
+   * Adds a wrapping element with a data-attribute.
+   */
+  get filledStatics() {
+    return this.statics.map((item, i) => (
       <div key={`static__${i}`} data-static={item.props.name}>
         {item.props.children}
       </div>
     ))
+  }
 
-    const filledSlots = slots
-      .map((item, i) => {
-        const {only, not, required, component, name} = item.props
-        // Get the index of the component inside slot
-        const index = onlyContent.map(child => child.type).indexOf(component)
+  /**
+   * Fill all slots.
+   * Checks validity and injects a warning in case of an error
+   * @private
+   */
+  get filledSlots() {
+    return (
+      this.slots
+        .map((item, i) => {
+          const {only, not, required, component, name} = item.props
+          // Get the index of the component inside slot
+          const index = this.content.map(child => child.type).indexOf(component)
 
-        // If no component present either return null
-        // or a warning if the slot requires a child.
-        if (index < 0) {
-          return required ? missing(name, i, item.props) : null
-        }
-        const children = Children.toArray(
-          onlyContent[index].props.children
-        ).map(
-          (child, idx) =>
-            // Check for `only` and `not` options
-            // If neither is defined simply return the child
-            only
-              ? onlyOrWarning(only, child, idx, item.props)
-              : not ? notOrWarning(not, child, idx, item.props) : child
-        )
-        // If no children exist in a required slot
-        // render a warning about missing content
-        if (required && children.length === 0) {
-          return missing(name, i, item.props)
-        }
+          // If no component present either return null
+          // or a warning if the slot requires a child.
+          if (index < 0) {
+            return required ? missing(name, i, item.props) : null
+          }
+          const children = Children.toArray(
+            this.content[index].props.children
+          ).map(
+            (child, idx) =>
+              // Check for `only` and `not` options
+              // If neither is defined simply return the child
+              only
+                ? onlyOrWarning(only, child, idx, item.props)
+                : not ? notOrWarning(not, child, idx, item.props) : child
+          )
+          // If no children exist in a required slot
+          // render a warning about missing content
+          if (required && children.length === 0) {
+            return missing(name, i, item.props)
+          }
 
-        // Return the components wrapped in a slot.
-        return (
-          <div key={`item__${i}`} data-slot={item.props.name}>
-            {children}
-          </div>
-        )
-      })
-      // filter to only return valid content
-      .filter(x => Boolean(x))
+          // Return the components wrapped in a slot.
+          return (
+            <div key={`item__${i}`} data-slot={item.props.name}>
+              {children}
+            </div>
+          )
+        })
+        // filter to only return valid content
+        .filter(x => Boolean(x))
+    )
+  }
 
+  /**
+   * @private
+   */
+  render() {
     /**
      * Return a slide with the entire content.
      */
     return (
       <Slide {...this.props}>
-        {filledStatics}
-        {filledSlots}
+        {this.filledStatics}
+        {this.filledSlots}
       </Slide>
     )
   }

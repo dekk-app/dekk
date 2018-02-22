@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
+import Img from './img'
+import Mask from './mask'
 
 /**
  * Class for image.
@@ -38,7 +40,7 @@ class Image extends Component {
    *   The properties
    * @param {String} props.alt
    * @param {String} props.src
-   * @param {?String} props.title
+   * @param {?String} [props.title]
    */
   constructor(props) {
     super(props)
@@ -64,7 +66,7 @@ class Image extends Component {
    * @return {String|Array}
    */
   get mixin() {
-    return css`
+    return `
       --height: ${this.state.height}px;
       --width: ${this.state.width}px;
       background-image: url("${this.props.src}");
@@ -92,7 +94,7 @@ class Image extends Component {
     return (
       <Mask mixin={this.mixin}>
         <Img
-          ref={this.getImage}
+          innerRef={this.getImage}
           src={this.props.src}
           alt={this.props.alt}
           title={this.props.title}
@@ -101,50 +103,6 @@ class Image extends Component {
       </Mask>
     )
   }
-}
-
-/**
- * The image mask
- * @private
- * @type {StyledComponent}
- */
-const Mask = styled.div`
-  ${props => props.mixin || ''} background-size: cover;
-  width: var(--width);
-  height: var(--height);
-`
-
-/**
- * @private
- * @return {{mixin: ?(String|Array), children: (ReactElement|ReactElement[])}}
- *   Allowed propTypes for `<Mask/>`
- */
-Mask.propTypes = {
-  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-  children: PropTypes.instanceOf(Img)
-}
-
-/**
- * Styled img
- * @private
- * @type {StyledComponent}
- */
-const Img = styled.img`
-  ${props => (props.loaded ? 'display: none;' : '')};
-`
-
-/**
- * @private
- * @return {{loaded: Boolean, onLoad: Function, ref: Function, src: String, alt: String, title ?String)}}
- *   Allowed propTypes for `<Img/>`
- */
-Img.propTypes = {
-  loaded: PropTypes.boolean,
-  onLoad: PropTypes.func,
-  ref: PropTypes.func,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  title: PropTypes.string
 }
 
 export default Image

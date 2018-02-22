@@ -131,13 +131,12 @@ export default class Fragment extends Component {
    *   The fragment including the entire logic
    */
   render() {
-    const {order, children, animation} = this.props
     const {fragmentHost, hostedFragmentOrder = 0, store} = this.context
     // Define several flags to determine the acitve state
     // of the fragment.
     const isPrev = fragmentHost < store.slideIndex
     const isNext = fragmentHost > store.slideIndex
-    const fragmentOrder = order + hostedFragmentOrder
+    const fragmentOrder = this.props.order + hostedFragmentOrder
     const isZero = fragmentOrder === 0
     const isActivated = store.fragmentOrder >= fragmentOrder
     const isActive = isPrev || (isNext ? isZero : isActivated)
@@ -156,8 +155,8 @@ export default class Fragment extends Component {
             <StyledFragment
               style={style}
               active={isActive}
-              animation={animation}>
-              {children}
+              animation={this.props.animation}>
+              {this.props.children}
             </StyledFragment>
           )
         }}

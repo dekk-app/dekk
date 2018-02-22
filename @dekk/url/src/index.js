@@ -58,25 +58,36 @@ class Url extends Component {
    * @param {String} [props.type='hash']
    *   Either `hash` or `query` to enable hash(bang) or search query URLs
    * @param {number} props.slideIndex
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {number} props.fragmentCount
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {number} props.fragmentIndex
-   *   (private: Injected via Dekk)
-   * @param {number} props.fragmnetOrder
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentOrder
+   *   (Injected via Dekk)
    * @param {function} props.toFragment
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {function} props.toSlide
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {function} props.toNextFragment
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {function} props.toPrevFragment
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {function} props.toNextSlide
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
    * @param {function} props.toPrevSlide
-   *   (private: Injected via Dekk)
+   *   (Injected via Dekk)
+   * @example
+   * import Deck, {Plugins} from '@dekk/deck'
+   * import Url from '@dekk/url'
+   *
+   * export default (
+   *   <Deck>
+   *     <Plugins>
+   *       <Url/>
+   *     </Plugins>
+   *   </Deck>
+   * )
    */
   constructor(props) {
     super(props)

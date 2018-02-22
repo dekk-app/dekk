@@ -67,22 +67,4 @@ Wrapper.propTypes = {
   mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
 }
 
-export const SlidesWrapper = styled.div`
-  flex: 1 0 100%;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-`
-
-/**
- * Allowed propTypes for `<SlidesWrapper/>`
- * @private
- * @param {Array<Deck.visibleSlides>} children
- * @type {Object}
- */
-SlidesWrapper.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element)
-}
-
 export default Wrapper

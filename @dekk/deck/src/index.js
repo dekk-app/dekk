@@ -4,23 +4,12 @@ import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
 import Slide from '@dekk/slide'
-import Wrapper, {SlidesWrapper} from './wrapper'
+import Wrapper from './wrapper'
+import SlidesWrapper from './slides-wrapper'
+import Plugins from './plugins'
+import Elements from './elements'
 
-export const Plugins = () => null
-Plugins.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ])
-}
-
-export const Elements = () => null
-Elements.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ])
-}
+export {Plugins, Elements}
 
 /**
  * A wrapper around the slides. It includes a paging component to allow
@@ -63,8 +52,7 @@ export default class Deck extends Component {
    * @private
    */
   store = new Store({
-    slideIndex: 0,
-    fragmentHosts: []
+    slideIndex: 0
   })
 
   /**
@@ -180,9 +168,9 @@ export default class Deck extends Component {
     return Children.toArray(this.props.children)
       .filter(child => child.type === Elements)
       .reduce((a, b) => a.concat(b.props.children), [])
-      .map((plugin, index) =>
-        cloneElement(plugin, {
-          key: `${plugin.type.name}_${index}`,
+      .map((element, index) =>
+        cloneElement(element, {
+          key: `${element.type.name}_${index}`,
           ...this.store.publicMethods,
           slideIndex,
           slideCount,
@@ -196,7 +184,7 @@ export default class Deck extends Component {
   /**
    * @private
    */
-  get helperSlots() {
+  get slots() {
     return [Plugins, Elements]
   }
 
@@ -205,7 +193,7 @@ export default class Deck extends Component {
    */
   get slides() {
     return Children.toArray(this.props.children).filter(
-      child => !this.helperSlots.includes(child.type)
+      child => !this.slots.includes(child.type)
     )
   }
 

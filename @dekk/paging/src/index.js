@@ -5,17 +5,9 @@ import PropTypes from 'prop-types'
  * This component does not render any content but adds paging via key
  * commands.
  *
- * If a pageIndex has fragments this component will split the pageIndex into
+ * If a slide has fragments this component will split the slide into
  * different steps.
- * Without this components fragments won't work. They are rendered as
- * normal elements but never get activated.
- *
- * This is a private component which is used by Dekk internally.
- *
- * Due to the importance of this component it is not possible do
- * modify or access any parts. If you need acces to data you can always
- * use the store provided by Dekk.
- * @private
+ * @public
  */
 class Paging extends Component {
   /**
@@ -47,10 +39,10 @@ class Paging extends Component {
   }
 
   /**
-   * @private
+   * @public
    * @param {Object} props
    *   The properties
-   * @param {String} props.trigger
+   * @param {String} [props.trigger='keyup']
    *   The event that triggers paging
    * @param {number} props.slideCount
    *   (Injected via Dekk)
@@ -60,7 +52,7 @@ class Paging extends Component {
    *   (Injected via Dekk)
    * @param {number} props.fragmentIndex
    *   (Injected via Dekk)
-   * @param {number} props.fragmnetOrder
+   * @param {number} props.fragmentOrder
    *   (Injected via Dekk)
    * @param {function} props.toFragment
    *   (Injected via Dekk)
@@ -74,6 +66,17 @@ class Paging extends Component {
    *   (Injected via Dekk)
    * @param {function} props.toPrevSlide
    *   (Injected via Dekk)
+   * @example
+   * import Deck, {Plugins} from '@dekk/deck'
+   * import Paging from '@dekk/paging'
+   *
+   * export default (
+   *   <Deck>
+   *     <Plugins>
+   *       <Paging/>
+   *     </Plugins>
+   *   </Deck>
+   * )
    */
   constructor(props) {
     super(props)
@@ -97,7 +100,7 @@ class Paging extends Component {
   }
 
   /**
-   * Method to navigate to fragments or slideCount.
+   * Method to navigate to fragments or slides.
    * Uses left and right arrow buttons to navigate
    * @private
    * @param  {Object} e
