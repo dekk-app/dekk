@@ -18,16 +18,16 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@dekk/deck~config",
-    "function/index.html#static-function-Config",
-    "<span>Config</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
-    "function"
-  ],
-  [
     "@dekk/deck~deck",
     "class/@dekk/deck/src/index.js~Deck.html",
     "<span>Deck</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
     "class"
+  ],
+  [
+    "@dekk/deck~elements",
+    "function/index.html#static-function-Elements",
+    "<span>Elements</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "function"
   ],
   [
     "@dekk/fragment~fragment",
@@ -64,6 +64,18 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-Notes",
     "<span>Notes</span> <span class=\"search-result-import-path\">@dekk/speaker-notes</span>",
     "variable"
+  ],
+  [
+    "@dekk/paging~paging",
+    "class/@dekk/paging/src/index.js~Paging.html",
+    "<span>Paging</span> <span class=\"search-result-import-path\">@dekk/paging</span>",
+    "class"
+  ],
+  [
+    "@dekk/deck~plugins",
+    "function/index.html#static-function-Plugins",
+    "<span>Plugins</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "function"
   ],
   [
     "@dekk/text~quote",
@@ -112,6 +124,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-Uppercase",
     "<span>Uppercase</span> <span class=\"search-result-import-path\">@dekk/text</span>",
     "variable"
+  ],
+  [
+    "@dekk/url~url",
+    "class/@dekk/url/src/index.js~Url.html",
+    "<span>Url</span> <span class=\"search-result-import-path\">@dekk/url</span>",
+    "class"
   ],
   [
     "@dekk/master~createmaster",
@@ -402,16 +420,16 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "@dekk/deck/src/elements.js",
+    "file/@dekk/deck/src/elements.js.html",
+    "@dekk/deck/src/elements.js",
+    "file"
+  ],
+  [
     "@dekk/deck/src/index.js",
     "file/@dekk/deck/src/index.js.html",
     "@dekk/deck/src/index.js",
     "file"
-  ],
-  [
-    "@dekk/deck/src/index.js~deck#config",
-    "class/@dekk/deck/src/index.js~Deck.html#instance-get-config",
-    "@dekk/deck/src/index.js~Deck#config",
-    "member"
   ],
   [
     "@dekk/deck/src/index.js~deck#constructor",
@@ -420,10 +438,16 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "@dekk/deck/src/index.js~deck#slides",
-    "class/@dekk/deck/src/index.js~Deck.html#instance-get-slides",
-    "@dekk/deck/src/index.js~Deck#slides",
-    "member"
+    "@dekk/deck/src/plugins.js",
+    "file/@dekk/deck/src/plugins.js.html",
+    "@dekk/deck/src/plugins.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/slides-wrapper.js",
+    "file/@dekk/deck/src/slides-wrapper.js.html",
+    "@dekk/deck/src/slides-wrapper.js",
+    "file"
   ],
   [
     "@dekk/deck/src/wrapper.js",
@@ -450,6 +474,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "@dekk/image/src/img.js",
+    "file/@dekk/image/src/img.js.html",
+    "@dekk/image/src/img.js",
+    "file"
+  ],
+  [
     "@dekk/image/src/index.js",
     "file/@dekk/image/src/index.js.html",
     "@dekk/image/src/index.js",
@@ -462,10 +492,34 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "@dekk/image/src/mask.js",
+    "file/@dekk/image/src/mask.js.html",
+    "@dekk/image/src/mask.js",
+    "file"
+  ],
+  [
     "@dekk/listener/src/index.js",
     "file/@dekk/listener/src/index.js.html",
     "@dekk/listener/src/index.js",
     "file"
+  ],
+  [
+    "@dekk/listener/src/index.js~listener#constructor",
+    "class/@dekk/listener/src/index.js~Listener.html#instance-constructor-constructor",
+    "@dekk/listener/src/index.js~Listener#constructor",
+    "method"
+  ],
+  [
+    "@dekk/listener/src/index.js~listeneronfragment",
+    "typedef/index.html#static-typedef-listenerOnFragment",
+    "@dekk/listener/src/index.js~listenerOnFragment",
+    "typedef"
+  ],
+  [
+    "@dekk/listener/src/index.js~listeneronslide",
+    "typedef/index.html#static-typedef-listenerOnSlide",
+    "@dekk/listener/src/index.js~listenerOnSlide",
+    "typedef"
   ],
   [
     "@dekk/master/src/components.js",
@@ -508,6 +562,12 @@ window.esdocSearchIndex = [
     "file/@dekk/paging/src/index.js.html",
     "@dekk/paging/src/index.js",
     "file"
+  ],
+  [
+    "@dekk/paging/src/index.js~paging#constructor",
+    "class/@dekk/paging/src/index.js~Paging.html#instance-constructor-constructor",
+    "@dekk/paging/src/index.js~Paging#constructor",
+    "method"
   ],
   [
     "@dekk/slide/src/index.js",
@@ -582,15 +642,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/url/src/index.js~url#constructor",
+    "class/@dekk/url/src/index.js~Url.html#instance-constructor-constructor",
+    "@dekk/url/src/index.js~Url#constructor",
+    "method"
+  ],
+  [
     "@dekk/utils/src/index.js",
     "file/@dekk/utils/src/index.js.html",
     "@dekk/utils/src/index.js",
-    "file"
-  ],
-  [
-    "@dekk/utils/src/query-params.js",
-    "file/@dekk/utils/src/query-params.js.html",
-    "@dekk/utils/src/query-params.js",
     "file"
   ],
   [

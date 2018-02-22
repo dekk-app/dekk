@@ -137,88 +137,116 @@ const notOrWarning = (not, child, index, itemProps) =&gt; {
  *   The children injected by the createMaster function (internal/private)
  */
 class Master extends Component {
-  render() {
-    const {children, content} = this.props
-    // All `Slot` instances
-    const slots = Children.toArray(children).filter(
+  /**
+   * All `Slot` instances
+   * @private
+   */
+  get slots() {
+    return Children.toArray(this.props.children).filter(
       child =&gt; child.type === Slot
     )
+  }
 
-    // All `Static` instances
-    const statics = Children.toArray(children).filter(
+  /**
+   * All `Static` instances
+   * @private
+   */
+  get statics() {
+    return Children.toArray(this.props.children).filter(
       child =&gt; child.type === Static
     )
+  }
 
-    // Helper slots are filtered from the children.
-    // These slots are allowed and will be ignored.
-    // state setters, notes etc should be added here
-    const helperSlots = [Notes]
+  /**
+   * Helper slots are filtered from the children.
+   * These slots are allowed and will be ignored.
+   * state setters, notes etc should be added here
+   * @private
+   */
+  get helperSlots() {
+    return [Notes]
+  }
 
-    // Filtered children of the component.
-    // Excludes helperSlots
-    const onlyContent = Children.toArray(content).filter(
-      child =&gt; !helperSlots.includes(child.type)
+  /**
+   * Filtered children of the component.
+   * Excludes helperSlots
+   * @private
+   */
+  get content() {
+    return Children.toArray(this.props.content).filter(
+      child =&gt; !this.helperSlots.includes(child.type)
     )
+  }
 
-    // Fill all static stols.
-    // Adds a wrapping element with a data-attribute.
-    const filledStatics = statics.map((item, i) =&gt; (
+  /**
+   * Fill all static slots.
+   * Adds a wrapping element with a data-attribute.
+   */
+  get filledStatics() {
+    return this.statics.map((item, i) =&gt; (
       &lt;div key={`static__${i}`} data-static={item.props.name}&gt;
         {item.props.children}
       &lt;/div&gt;
     ))
+  }
 
-    const filledSlots = slots
-      .map((item, i) =&gt; {
-        const {only, not, required, component, name} = item.props
-        // Get the index of the component inside slot
-        const index = onlyContent.map(child =&gt; child.type).indexOf(component)
-        /**
-         * @deprecated
-         * @todo Is this still needed?
-         * Please describe this and add an example.
-         */
-        //const Element = item.props.as || &apos;div&apos;
+  /**
+   * Fill all slots.
+   * Checks validity and injects a warning in case of an error
+   * @private
+   */
+  get filledSlots() {
+    return (
+      this.slots
+        .map((item, i) =&gt; {
+          const {only, not, required, component, name} = item.props
+          // Get the index of the component inside slot
+          const index = this.content.map(child =&gt; child.type).indexOf(component)
 
-        // if no component present either return null
-        // or a warning if the slot requires a child.
-        if (index &lt; 0) {
-          return required ? missing(name, i, item.props) : null
-        }
-        const children = Children.toArray(
-          onlyContent[index].props.children
-        ).map(
-          (child, idx) =&gt;
-            // Check for `only` and `not` options
-            // If neither is defined simply return the child
-            only
-              ? onlyOrWarning(only, child, idx, item.props)
-              : not ? notOrWarning(only, child, idx, item.props) : child
-        )
-        // If no children exist in a required slot
-        // render a warning about missing content
-        if (required &amp;&amp; children.length === 0) {
-          return missing(name, i, item.props)
-        }
+          // If no component present either return null
+          // or a warning if the slot requires a child.
+          if (index &lt; 0) {
+            return required ? missing(name, i, item.props) : null
+          }
+          const children = Children.toArray(
+            this.content[index].props.children
+          ).map(
+            (child, idx) =&gt;
+              // Check for `only` and `not` options
+              // If neither is defined simply return the child
+              only
+                ? onlyOrWarning(only, child, idx, item.props)
+                : not ? notOrWarning(not, child, idx, item.props) : child
+          )
+          // If no children exist in a required slot
+          // render a warning about missing content
+          if (required &amp;&amp; children.length === 0) {
+            return missing(name, i, item.props)
+          }
 
-        // Return the components wrapped in a slot.
-        return (
-          &lt;div key={`item__${i}`} data-slot={item.props.name}&gt;
-            {children}
-          &lt;/div&gt;
-        )
-      })
-      // filter to only return valid content
-      .filter(x =&gt; Boolean(x))
+          // Return the components wrapped in a slot.
+          return (
+            &lt;div key={`item__${i}`} data-slot={item.props.name}&gt;
+              {children}
+            &lt;/div&gt;
+          )
+        })
+        // filter to only return valid content
+        .filter(x =&gt; Boolean(x))
+    )
+  }
 
+  /**
+   * @private
+   */
+  render() {
     /**
      * Return a slide with the entire content.
-     * @todo add notes to allow rendering them in hte presenter view
      */
     return (
       &lt;Slide {...this.props}&gt;
-        {filledStatics}
-        {filledSlots}
+        {this.filledStatics}
+        {this.filledSlots}
       &lt;/Slide&gt;
     )
   }
@@ -234,34 +262,41 @@ Master.propTypes = {
   children: (props, propName, componentName) =&gt; {
     /**
      * An error might be caused and is therefore returned .
-     * @todo find a more functional way of doing this.
      */
-    let error
-    const prop = props[propName]
-    Children.forEach(prop, child =&gt; {
-      if ([Static, Slot].indexOf(child.type) &lt; 0) {
-        error = new Error(
-          `&quot;Master&quot; only accepts children of type &quot;Slot&quot; or &quot;Static&quot;`
-        )
-      }
-    })
-    return error
+    const error = new Error(
+      `&quot;Master&quot; only accepts children of type &quot;Slot&quot; or &quot;Static&quot;`
+    )
+    const hasErrors = Boolean(
+      Children.toArray(props[propName])
+        .map(child =&gt; {
+          if (![Static, Slot].includes(child.type)) {
+            return error
+          }
+          return child
+        })
+        .filter(x =&gt; x === error).length
+    )
+    return hasErrors ? error : null
   },
   content: PropTypes.node
 }
 
 export default Master
 </code></pre></div><footer class="main-footer"><img alt="esdoc logo" class="esdoc-logo" src="image/esdoc-logo-mini.png"> <span>Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span></a></span></footer></main><aside class="sidebar initial js_sidebarLeft sidebar-left" data-ice="nav"><nav class="nav"><ul class="nav-list"><li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#deck-src">deck/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/deck/src/index.js~Deck.html">Deck</a></span></span></div></li>
-<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Config">Config</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Elements">Elements</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Plugins">Plugins</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#fragment-src">fragment/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/fragment/src/index.js~Fragment.html">Fragment</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-FragmentRoot">FragmentRoot</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#image-src">image/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/image/src/index.js~Image.html">Image</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#listener-src">listener/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/listener/src/index.js~Listener.html">Listener</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-typedef" data-ice="kind">T</span> <span class="name _" data-ice="name"><span><a href="typedef/index.html#static-typedef-listenerOnFragment">listenerOnFragment</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-typedef" data-ice="kind">T</span> <span class="name _" data-ice="name"><span><a href="typedef/index.html#static-typedef-listenerOnSlide">listenerOnSlide</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#master-src">master/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Master">Master</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Slot">Slot</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Static">Static</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-createMaster">createMaster</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-typedef" data-ice="kind">T</span> <span class="name _" data-ice="name"><span><a href="typedef/index.html#static-typedef-MasterSlide">MasterSlide</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#paging-src">paging/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/paging/src/index.js~Paging.html">Paging</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#slide-src">slide/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/slide/src/index.js~Slide.html">Slide</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#speaker-notes-src">speaker-notes/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Notes">Notes</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#text-src">text/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Quote">Quote</a></span></span></div></li>
@@ -272,4 +307,5 @@ export default Master
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Subtitle">Subtitle</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Title">Title</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Uppercase">Uppercase</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#url-src">url/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/url/src/index.js~Url.html">Url</a></span></span></div></li>
 </ul></nav></aside><aside class="sidebar closed js_sidebarRight sidebar-right"><nav class="nav fonts-nav"><ul class="nav-list js_fontOptions"><li class="nav-item"><span class="headline nav-link">Main fonts</span></li></ul></nav><nav class="nav colorschemes-nav"><ul class="nav-list js_colorschemeOptions"><li class="nav-item"><span class="headline nav-link">Syntax themes</span></li></ul></nav></aside><script src="script/8698e01e754a73dfd842.js"></script></body></html>

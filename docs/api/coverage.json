@@ -1,17 +1,27 @@
 {
-  "coverage": "85.84%",
-  "expectCount": 106,
-  "actualCount": 91,
+  "coverage": "100%",
+  "expectCount": 120,
+  "actualCount": 120,
   "files": {
+    "@dekk/deck/src/elements.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "@dekk/deck/src/index.js": {
-      "expectCount": 14,
-      "actualCount": 10,
-      "undocumentLines": [
-        12,
-        57,
-        119,
-        126
-      ]
+      "expectCount": 15,
+      "actualCount": 15,
+      "undocumentLines": []
+    },
+    "@dekk/deck/src/plugins.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "@dekk/deck/src/slides-wrapper.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "@dekk/deck/src/wrapper.js": {
       "expectCount": 1,
@@ -28,19 +38,25 @@
       "actualCount": 10,
       "undocumentLines": []
     },
+    "@dekk/image/src/img.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "@dekk/image/src/index.js": {
-      "expectCount": 11,
-      "actualCount": 10,
-      "undocumentLines": [
-        132
-      ]
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
+    },
+    "@dekk/image/src/mask.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "@dekk/listener/src/index.js": {
       "expectCount": 6,
-      "actualCount": 5,
-      "undocumentLines": [
-        4
-      ]
+      "actualCount": 6,
+      "undocumentLines": []
     },
     "@dekk/master/src/components.js": {
       "expectCount": 3,
@@ -53,11 +69,9 @@
       "undocumentLines": []
     },
     "@dekk/master/src/master.js": {
-      "expectCount": 6,
-      "actualCount": 5,
-      "undocumentLines": [
-        140
-      ]
+      "expectCount": 12,
+      "actualCount": 12,
+      "undocumentLines": []
     },
     "@dekk/master/src/warning.js": {
       "expectCount": 1,
@@ -81,17 +95,8 @@
     },
     "@dekk/store/src/index.js": {
       "expectCount": 15,
-      "actualCount": 7,
-      "undocumentLines": [
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        15,
-        16
-      ]
+      "actualCount": 15,
+      "undocumentLines": []
     },
     "@dekk/text/src/bold.js": {
       "expectCount": 1,
@@ -134,13 +139,8 @@
       "undocumentLines": []
     },
     "@dekk/url/src/index.js": {
-      "expectCount": 8,
-      "actualCount": 8,
-      "undocumentLines": []
-    },
-    "@dekk/utils/src/query-params.js": {
-      "expectCount": 1,
-      "actualCount": 1,
+      "expectCount": 13,
+      "actualCount": 13,
       "undocumentLines": []
     },
     "@dekk/utils/src/range.js": {

@@ -4,12 +4,29 @@ import PropTypes from &apos;prop-types&apos;
 /**
  * @private
  */
-export const writeHash = (page = 0, fragment = 0) =&gt; {
-  window.location.hash = `#!/${page}/${fragment}/`
+export const writeHash = (slideIndex = 0, fragmentIndex = 0) =&gt; {
+  window.location.hash = `#!/${slideIndex}/${fragmentIndex}/`
 }
 
 /**
  * @private
+ */
+export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = &apos;&apos;) =&gt; {
+  const oldQuery = window.location.search
+    .split(/[\?&amp;]/)
+    .filter(x =&gt; x !== &apos;&apos; &amp;&amp; !x.match(/(page|fragment)/))
+    .join(&apos;&amp;&apos;)
+  history.pushState(
+    {page: slideIndex, fragment: fragmentIndex},
+    `page ${slideIndex}, fragment ${fragmentIndex}`,
+    `?page=${slideIndex}&amp;fragment=${fragmentIndex}${
+      oldQuery ? `&amp;${oldQuery}` : &apos;&apos;
+    }`
+  )
+}
+
+/**
+ * @public
  */
 class Url extends Component {
   /**
@@ -17,50 +34,127 @@ class Url extends Component {
    */
   static get propTypes() {
     return {
-      type: PropTypes.oneOf([&apos;hash&apos;, &apos;query&apos;, &apos;route&apos;]),
-      page: PropTypes.number,
-      fragmentCount: PropTypes.number
+      type: PropTypes.oneOf([&apos;hash&apos;, &apos;query&apos;]),
+      slideIndex: PropTypes.number,
+      fragmentIndex: PropTypes.number
     }
   }
 
   /**
    * @private
    */
-  static get contextTypes() {
+  static get defaultProps() {
     return {
-      store: PropTypes.object.isRequired
+      type: &apos;hash&apos;,
+      slideIndex: 0,
+      fragmentIndex: 0
     }
   }
 
   /**
-   * @private
+   * @public
    * @param {Object} props
    *   The properties
-   * @param {Object} context
-   *   The context
-   * @param {Object} context.store
-   *   The mobx store passed through via context
+   * @param {String} [props.type=&apos;hash&apos;]
+   *   Either `hash` or `query` to enable hash(bang) or search query URLs
+   * @param {number} props.slideIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentCount
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentIndex
+   *   (Injected via Dekk)
+   * @param {number} props.fragmentOrder
+   *   (Injected via Dekk)
+   * @param {function} props.toFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toNextFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevFragment
+   *   (Injected via Dekk)
+   * @param {function} props.toNextSlide
+   *   (Injected via Dekk)
+   * @param {function} props.toPrevSlide
+   *   (Injected via Dekk)
+   * @example
+   * import Deck, {Plugins} from &apos;@dekk/deck&apos;
+   * import Url from &apos;@dekk/url&apos;
+   *
+   * export default (
+   *   &lt;Deck&gt;
+   *     &lt;Plugins&gt;
+   *       &lt;Url/&gt;
+   *     &lt;/Plugins&gt;
+   *   &lt;/Deck&gt;
+   * )
    */
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
   }
 
   /**
    * @private
-   * @todo implement route and query
    */
   componentDidMount() {
-    const {hash = &apos;&apos;} = new URL(window.location.href)
-    const [, page = 0, fragment = 0] = hash.split(&apos;/&apos;)
-    this.context.store.goToPage(parseInt(page, 10))
-    this.context.store.goToFragment(parseInt(fragment, 10))
+    this[this.props.type](window.location.href)
   }
 
   /**
    * @private
    */
-  componentWillReceiveProps({page, fragmentCount}) {
-    writeHash(page, fragmentCount)
+  hash(url) {
+    const {hash = &apos;&apos;} = new URL(url)
+    const [, slideIndex = 0, fragmentIndex = 0] = hash.split(&apos;/&apos;)
+    this.toSlide(slideIndex)
+    this.toFragment(fragmentIndex)
+  }
+
+  /**
+   * @private
+   */
+  query(url) {
+    const {search = &apos;&apos;} = new URL(url)
+    const parts = search.split(/[\?&amp;]/).filter(Boolean)
+    const {page: slideIndex = 0, fragment: fragmentIndex = 0} = parts.reduce(
+      (a, b) =&gt; {
+        const [key, value] = b.split(&apos;=&apos;)
+        return {...a, [key]: value}
+      },
+      {}
+    )
+    this.toSlide(slideIndex)
+    this.toFragment(fragmentIndex)
+  }
+
+  /**
+   * @private
+   */
+  toFragment(fragmentIndex) {
+    this.props.toFragment(parseInt(fragmentIndex, 10))
+  }
+
+  /**
+   * @private
+   */
+  toSlide(slideIndex) {
+    this.props.toSlide(parseInt(slideIndex, 10))
+  }
+
+  /**
+   * @private
+   */
+  componentWillReceiveProps({slideIndex, fragmentIndex}) {
+    switch (this.props.type) {
+      case &apos;hash&apos;:
+        writeHash(slideIndex, fragmentIndex)
+        break
+      case &apos;query&apos;:
+        writeQuery(slideIndex, fragmentIndex)
+        break
+      default:
+        break
+    }
   }
 
   /**
@@ -73,16 +167,20 @@ class Url extends Component {
 
 export default Url
 </code></pre></div><footer class="main-footer"><img alt="esdoc logo" class="esdoc-logo" src="image/esdoc-logo-mini.png"> <span>Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span></a></span></footer></main><aside class="sidebar initial js_sidebarLeft sidebar-left" data-ice="nav"><nav class="nav"><ul class="nav-list"><li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#deck-src">deck/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/deck/src/index.js~Deck.html">Deck</a></span></span></div></li>
-<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Config">Config</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Elements">Elements</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Plugins">Plugins</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#fragment-src">fragment/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/fragment/src/index.js~Fragment.html">Fragment</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-FragmentRoot">FragmentRoot</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#image-src">image/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/image/src/index.js~Image.html">Image</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#listener-src">listener/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/listener/src/index.js~Listener.html">Listener</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-typedef" data-ice="kind">T</span> <span class="name _" data-ice="name"><span><a href="typedef/index.html#static-typedef-listenerOnFragment">listenerOnFragment</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-typedef" data-ice="kind">T</span> <span class="name _" data-ice="name"><span><a href="typedef/index.html#static-typedef-listenerOnSlide">listenerOnSlide</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#master-src">master/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Master">Master</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Slot">Slot</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Static">Static</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-createMaster">createMaster</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-typedef" data-ice="kind">T</span> <span class="name _" data-ice="name"><span><a href="typedef/index.html#static-typedef-MasterSlide">MasterSlide</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#paging-src">paging/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/paging/src/index.js~Paging.html">Paging</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#slide-src">slide/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/slide/src/index.js~Slide.html">Slide</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#speaker-notes-src">speaker-notes/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Notes">Notes</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#text-src">text/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-function" data-ice="kind">F</span> <span class="name _" data-ice="name"><span><a href="function/index.html#static-function-Quote">Quote</a></span></span></div></li>
@@ -93,4 +191,5 @@ export default Url
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Subtitle">Subtitle</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Title">Title</a></span></span></div></li>
 <li class="nav-item js_navItem _" data-ice="doc"><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-variable" data-ice="kind">V</span> <span class="name _" data-ice="name"><span><a href="variable/index.html#static-variable-Uppercase">Uppercase</a></span></span></div></li>
+<li class="nav-item js_navItem _" data-ice="doc"><a class="nav-link js_dirPath _" data-ice="dirPath" href="identifiers.html#url-src">url/src</a><div class="hidden fake-nav-link js_fakeLink _"><span class="kind _kind-class" data-ice="kind">C</span> <span class="name _" data-ice="name"><span><a href="class/@dekk/url/src/index.js~Url.html">Url</a></span></span></div></li>
 </ul></nav></aside><aside class="sidebar closed js_sidebarRight sidebar-right"><nav class="nav fonts-nav"><ul class="nav-list js_fontOptions"><li class="nav-item"><span class="headline nav-link">Main fonts</span></li></ul></nav><nav class="nav colorschemes-nav"><ul class="nav-list js_colorschemeOptions"><li class="nav-item"><span class="headline nav-link">Syntax themes</span></li></ul></nav></aside><script src="script/8698e01e754a73dfd842.js"></script></body></html>
