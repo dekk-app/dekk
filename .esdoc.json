@@ -68,7 +68,7 @@
           "enable": true
         },
         "unexportedIdentifier": {
-          "enable": false
+          "enable": true
         },
         "manual": {
           "index": "./.manual/index.md",
