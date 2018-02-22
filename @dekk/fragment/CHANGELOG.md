@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-5"></a>
+# [1.0.0-5](https://github.com/sinnerschrader/dekk/compare/v1.0.0-4...v1.0.0-5) (2018-02-22)
+
+
+### Bug Fixes
+
+* **fragment:** reverse timeline ([e0582e6](https://github.com/sinnerschrader/dekk/commit/e0582e6))
+
+
+### Features
+
+* **fragment:** timeline based animations ([bbf407c](https://github.com/sinnerschrader/dekk/commit/bbf407c)), closes [#18](https://github.com/sinnerschrader/dekk/issues/18)
+
+
+
+
 <a name="0.1.0-beta.5cbe4f15"></a>
 # 0.1.0-beta.5cbe4f15 (2018-02-17)
 

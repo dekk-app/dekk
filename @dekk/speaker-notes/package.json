@@ -1,6 +1,6 @@
 {
   "name": "@dekk/speaker-notes",
-  "version": "1.0.0-0",
+  "version": "1.0.0-5",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "main": "lib/index.js",

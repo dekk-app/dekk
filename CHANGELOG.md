@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-5"></a>
+# [1.0.0-5](https://github.com/sinnerschrader/dekk/compare/v1.0.0-4...v1.0.0-5) (2018-02-22)
+
+
+### Bug Fixes
+
+* **fragment:** reverse timeline ([e0582e6](https://github.com/sinnerschrader/dekk/commit/e0582e6))
+* **master:** warning for "not" property causes error ([60957fd](https://github.com/sinnerschrader/dekk/commit/60957fd))
+
+
+### Features
+
+* **deck:** deck elements (aside plugins) ([fe24ab3](https://github.com/sinnerschrader/dekk/commit/fe24ab3)), closes [#15](https://github.com/sinnerschrader/dekk/issues/15)
+* **fragment:** timeline based animations ([bbf407c](https://github.com/sinnerschrader/dekk/commit/bbf407c)), closes [#18](https://github.com/sinnerschrader/dekk/issues/18)
+* **plugins:** remove config and allow plugin elements ([#12](https://github.com/sinnerschrader/dekk/issues/12)) ([ac4b543](https://github.com/sinnerschrader/dekk/commit/ac4b543))
+* **slide:** allow mixins and animations aside ([f960365](https://github.com/sinnerschrader/dekk/commit/f960365))
+
+
+
+
 <a name="1.0.0-4"></a>
 # [1.0.0-4](https://github.com/sinnerschrader/dekk/compare/v1.0.0-3...v1.0.0-4) (2018-02-18)
 

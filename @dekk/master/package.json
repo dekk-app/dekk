@@ -1,6 +1,6 @@
 {
   "name": "@dekk/master",
-  "version": "1.0.0-0",
+  "version": "1.0.0-5",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "main": "lib/index.js",
@@ -11,9 +11,9 @@
     "test": "ava"
   },
   "dependencies": {
-    "@dekk/fragment": "^1.0.0-0",
-    "@dekk/slide": "^1.0.0-0",
-    "@dekk/speaker-notes": "^1.0.0-0",
+    "@dekk/fragment": "^1.0.0-5",
+    "@dekk/slide": "^1.0.0-5",
+    "@dekk/speaker-notes": "^1.0.0-5",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "styled-components": "^3.0.2"

@@ -1,6 +1,6 @@
 {
   "name": "@dekk/store",
-  "version": "1.0.0-2",
+  "version": "1.0.0-5",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "main": "lib/index.js",
