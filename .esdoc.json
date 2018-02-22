@@ -81,7 +81,6 @@
             "./.manual/masters.md",
             "./.manual/plugins.md",
             "./.manual/static-elements.md",
-            "./.manual/fragments.md",
             "./CHANGELOG.md"
           ]
         }
