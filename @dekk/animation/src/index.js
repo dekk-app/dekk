@@ -4,7 +4,7 @@ export const slide = {
   normal: css`
     transform: translate3d(
       calc(
-        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))
+        -100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))
       ),
       0,
       0
@@ -13,7 +13,8 @@ export const slide = {
   reverse: css`
     transform: translate3d(
       calc(
-        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) * -1
+        -100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) *
+          -1
       ),
       0,
       0
@@ -23,7 +24,8 @@ export const slide = {
     transform: translate3d(
       0,
       calc(
-        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) * -1
+        -100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1)) *
+          -1
       ),
       0
     );
@@ -32,7 +34,7 @@ export const slide = {
     transform: translate3d(
       0,
       calc(
-        100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))
+        -100% * var(--direction, -1) * (var(--regulator, 0) - var(--time, 1))
       ),
       0
     );

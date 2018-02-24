@@ -27,6 +27,28 @@ export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {
   )
 }
 
+export const search = {
+  parse(url) {
+    const {search = ''} = new URL(url)
+    const parts = search.split(/[?&]/).filter(Boolean)
+    return parts.reduce((a, b) => {
+      const [key, value] = b.split('=')
+      return {
+        ...a,
+        [key]: value === 'false' ? false : isNaN(value) ? value : Number(value)
+      }
+    }, {})
+  },
+  write(data) {
+    const oldQuery = search.parse(window.location.href)
+    const newQuery = {...oldQuery, ...data}
+    const queryString = Object.entries(newQuery)
+      .map(([k, v]) => `${k}=${v}`)
+      .join('&')
+    history.pushState(newQuery, 'searchQuery', `?${queryString}`)
+  }
+}
+
 /**
  * @public
  */

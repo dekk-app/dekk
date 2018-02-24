@@ -15,11 +15,11 @@ import styled from 'styled-components'
  */
 const StyledFragment = styled.span`
   --direction: 1;
-  display: ${({display}) => display || 'inline-block'};
+  display: ${({displayAs}) => displayAs || 'inline-block'};
   ${props =>
     props.animation ||
     `
-      visibility: ${props.active ? 'visible' : 'hidden'}
+      visibility: ${props.isActive ? 'visible' : 'hidden'}
   `};
 `
 

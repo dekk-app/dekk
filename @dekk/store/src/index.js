@@ -45,6 +45,13 @@ export default class Store {
   @observable fragmentHosts = []
 
   /**
+   * A collection of hosts for fragments.
+   * Each slide is a host.
+   * @type {Array}
+   */
+  @observable notes = [...new Array(512)].map((x, i) => null)
+
+  /**
    * @private
    * @param {Object} props
    *   The properties

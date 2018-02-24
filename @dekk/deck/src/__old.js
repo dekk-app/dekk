@@ -298,7 +298,8 @@ export class SpeakerDeck extends Deck {
     isPlaying
   }
 
-  get shownSlides() {
+  // overwrite the visible slides
+  get visibleSlides() {
     const {slideIndex, direction, fragmentOrder, fragmentIndex} = this.store
 
     // Get the current fragmentHost
@@ -311,10 +312,16 @@ export class SpeakerDeck extends Deck {
 
     // We need a maximum of 2 slides `[current, next]`
     const filteredSlides = this.slides.filter((c, i) =>
-      range(i, slideIndex + 1, slideIndex)
+      range(i, slideIndex + 1, slideIndex - 1)
     )
 
-    const [currentSlide, nextSlide = lastSlide] = filteredSlides
+    const prevSlide = filteredSlides.length > 2 ? filteredSlides[0] : null
+    const currentSlide =
+      filteredSlides.length > 2 ? filteredSlides[1] : filteredSlides[0]
+    const nextSlide =
+      filteredSlides.length > 2
+        ? filteredSlides[2]
+        : filteredSlides[1] || lastSlide
 
     // Build properties for all slides
     const props = {
@@ -349,8 +356,27 @@ export class SpeakerDeck extends Deck {
       key: 'nextView'
     })
 
+    const preloadNextView = hasFragments
+      ? cloneElement(nextSlide, {
+          slideIndex: slideIndex + 1,
+          fragmentOrder: 0,
+          key: 'preloadNextView'
+        })
+      : null
+
+    const preloadPrevView = prevSlide
+      ? cloneElement(prevSlide, {
+          slideIndex: slideIndex - 1,
+          fragmentOrder: this.store.fragmentHosts[
+            Math.max(0, slideIndex - 1)
+          ].reverse()[0],
+          isPrev: true,
+          key: 'preloadPrevtView'
+        })
+      : null
+
     // only return 2 slides
-    return [currentView, nextView]
+    return [currentView, nextView, preloadNextView, preloadPrevView]
   }
 
   get presenterSection() {
@@ -451,7 +477,7 @@ export class SpeakerDeck extends Deck {
    *   The entire Deck including paging logic inside a Wrapper
    */
   render() {
-    const [view, preview] = this.shownSlides
+    const [view, preview, preloadNext, preloadPrev] = this.visibleSlides
     return (
       <Wrapper
         mixin={css`
@@ -468,14 +494,10 @@ export class SpeakerDeck extends Deck {
               {this.store.slideIndex + 1} / {this.slides.length}
             </PageNumber>
             <FragmentNumber>
-              {this.store.fragmentIndex +
-                (this.store.fragmentHosts[this.store.slideIndex].length > 0
-                  ? 1
-                  : 0)}{' '}
-              /{' '}
+              {this.store.fragmentIndex} /{' '}
               {Math.max(
                 0,
-                this.store.fragmentHosts[this.store.slideIndex].length
+                this.store.fragmentHosts[this.store.slideIndex].length - 1
               )}
             </FragmentNumber>
             <StyledControl1>Controls 1</StyledControl1>
@@ -487,7 +509,10 @@ export class SpeakerDeck extends Deck {
               />
             </StyledControl2>
           </StyledControls>
-          <StyledPreload>{this.visibleSlides}</StyledPreload>
+          <StyledPreload>
+            {preloadPrev}
+            {preloadNext}
+          </StyledPreload>
           <StyledView>{view}</StyledView>
           <StyledPreview>{preview}</StyledPreview>
           <StyledNotes>
@@ -756,15 +781,13 @@ const dateHelpers = {
 class Countdown extends Component {
   constructor(props) {
     super(props)
-    const now = this.now.getTime()
-    const then = now + this.props.end * dateHelpers.m
     this.state = {
       days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
-      start: now,
-      waiting: this.props.isRunning ? 0 : now,
+      start: this.now.getTime(),
+      waiting: this.props.isRunning ? 0 : this.now.getTime(),
       waited: 0
     }
     this.run = this.run.bind(this)
@@ -803,20 +826,15 @@ class Countdown extends Component {
   }
 
   componentWillMount() {
-    const now = this.now.getTime()
-    const then = this.state.waited + this.props.end * dateHelpers.m
     this.setState({
-      start: now,
-      days: Math.abs(~~(then / dateHelpers.d)),
-      hours: Math.abs(~~(then / dateHelpers.h) % 24),
-      minutes: Math.abs(~~(then / dateHelpers.m) % 60),
-      seconds: Math.abs(~~(then / dateHelpers.s) % 60)
+      start: this.now.getTime(),
+      minutes: this.props.end
     })
     if (this.props.isRunning) {
       this.run()
     } else {
       this.setState({
-        waiting: now
+        waiting: this.now.getTime()
       })
     }
   }

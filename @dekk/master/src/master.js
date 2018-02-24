@@ -179,6 +179,16 @@ class Master extends Component {
   }
 
   /**
+   * Filtered notes of the slide.
+   * @private
+   */
+  get notes() {
+    return Children.toArray(this.props.content).filter(
+      child => child.type === Notes
+    )
+  }
+
+  /**
    * Fill all static slots.
    * Adds a wrapping element with a data-attribute.
    */
@@ -247,6 +257,7 @@ class Master extends Component {
       <Slide {...this.props}>
         {this.filledStatics}
         {this.filledSlots}
+        {this.notes}
       </Slide>
     )
   }
