@@ -17,6 +17,7 @@ class Slide extends Component {
    */
   static get childContextTypes() {
     return {
+      isPreview: PropTypes.bool,
       fragmentOrder: PropTypes.number,
       fragmentHost: PropTypes.number
     }
@@ -65,6 +66,7 @@ class Slide extends Component {
    */
   getChildContext() {
     return {
+      isPreview: this.props.isPreview,
       fragmentHost: this.props.slideIndex,
       fragmentOrder: this.props.fragmentOrder || 0
     }

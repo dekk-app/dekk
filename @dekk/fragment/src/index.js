@@ -40,6 +40,7 @@ export default class Fragment extends Component {
   static get contextTypes() {
     return {
       store: PropTypes.object.isRequired,
+      isPreview: PropTypes.bool,
       fragmentOrder: PropTypes.number,
       fragmentHost: PropTypes.number,
       hostedFragmentOrder: PropTypes.number
@@ -142,6 +143,7 @@ export default class Fragment extends Component {
       store,
       fragmentHost,
       fragmentOrder,
+      isPreview,
       hostedFragmentOrder = 0
     } = this.context
     // To ensure the correct loading we need to manually attempt to
@@ -166,7 +168,7 @@ export default class Fragment extends Component {
     const isZero = totalFragmentOrder === 0
     const isActivated =
       (fragmentOrder || storedFragmentOrder) >= totalFragmentOrder
-    const isActive = isPrev || (isNext ? isZero : isActivated)
+    const isActive = isPreview || isPrev || (isNext ? isZero : isActivated)
     const springStyle = {
       time: spring(isActive ? 0 : 1, {
         ...this.props.springSettings

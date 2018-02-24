@@ -127,3 +127,16 @@ export const cube = {
       translate3d(0, 0, -50vh);
   `
 }
+
+export const flip = {
+  x: css`
+    backface-visibility: hidden;
+    transform: perspective(200vw)
+      rotate3d(0, 1, 0, calc(180deg * var(--direction, -1) * var(--time, 1)));
+  `,
+  y: css`
+    backface-visibility: hidden;
+    transform: perspective(200vh)
+      rotate3d(1, 0, 0, calc(180deg * var(--direction, -1) * var(--time, 1)));
+  `
+}

@@ -311,10 +311,14 @@ export class SpeakerDeck extends Deck {
 
     // We need a maximum of 2 slides `[current, next]`
     const filteredSlides = this.slides.filter((c, i) =>
-      range(i, slideIndex + 1, slideIndex)
+      range(i, slideIndex + 2, slideIndex)
     )
 
-    const [currentSlide, nextSlide = lastSlide] = filteredSlides
+    const [
+      currentSlide,
+      nextSlide = lastSlide,
+      realNextSlide = lastSlide
+    ] = filteredSlides
 
     // Build properties for all slides
     const props = {
@@ -331,6 +335,11 @@ export class SpeakerDeck extends Deck {
         isNext: true,
         slideIndex: hasFragments ? slideIndex : slideIndex + 1,
         fragmentOrder: hasFragments ? fragmentHost[fragmentIndex + 1] : 0
+      },
+      realNext: {
+        isNext: true,
+        slideIndex: hasFragments ? slideIndex + 1 : slideIndex + 2,
+        isPreview: true
       }
     }
 
@@ -349,8 +358,17 @@ export class SpeakerDeck extends Deck {
       key: 'nextView'
     })
 
+    const realNextView = cloneElement(
+      hasFragments ? nextSlide : realNextSlide,
+      {
+        ...props.shared,
+        ...props.realNext,
+        key: 'realNextView'
+      }
+    )
+
     // only return 2 slides
-    return [currentView, nextView]
+    return [currentView, nextView, realNextView]
   }
 
   get presenterSection() {
@@ -451,7 +469,7 @@ export class SpeakerDeck extends Deck {
    *   The entire Deck including paging logic inside a Wrapper
    */
   render() {
-    const [view, preview] = this.shownSlides
+    const [view, preview, nextView] = this.shownSlides
     return (
       <Wrapper
         mixin={css`
@@ -490,6 +508,7 @@ export class SpeakerDeck extends Deck {
           <StyledPreload>{this.visibleSlides}</StyledPreload>
           <StyledView>{view}</StyledView>
           <StyledPreview>{preview}</StyledPreview>
+          <StyledNextview layout={this.state.layout}>{nextView}</StyledNextview>
           <StyledNotes>
             <NoteProvider notes={this.store.notes[this.store.slideIndex]} />
           </StyledNotes>
@@ -603,6 +622,18 @@ const StyledPreview = styled.div`
   overflow: hidden;
 `
 
+const StyledNextview = styled.div`
+  ${({layout}) => (layout !== 0 ? 'display: none' : '')};
+  --scale: var(--nextview-scale);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  grid-area: Nextview;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  overflow: hidden;
+`
+
 const StyledNotes = styled.div`
   position: relative;
   height: 100%;
@@ -667,8 +698,34 @@ const StyledControl2 = styled.div`
 
 const layouts = [
   css`
-    --view-scale: 0.66;
-    --preview-scale: 0.33;
+    --view-scale: calc(1 / 6 * 4);
+    --preview-scale: calc(1 / 6 * 2);
+    --nextview-scale: calc(1 / 6 * 2);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      'Preview Preview Controls Controls Nextview Nextview'
+      'Preview Preview Controls Controls Nextview Nextview'
+      'View View View View Notes Notes'
+      'View View View View Notes Notes'
+      'View View View View Notes Notes'
+      'View View View View Notes Notes';
+  `,
+  css`
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
+    --nextview-scale: calc(1 / 3);
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      'View Preview'
+      'View Controls'
+      'Notes Notes';
+  `,
+  css`
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
+    --nextview-scale: calc(1 / 3);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
@@ -677,43 +734,23 @@ const layouts = [
       'Notes Notes';
   `,
   css`
-    --view-scale: 0.66;
-    --preview-scale: 0.33;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-      'View Preview'
-      'View Controls'
-      'Notes Notes';
-  `,
-  css`
-    --view-scale: 0.5;
-    --preview-scale: 0.5;
-    grid-template-rows: 2fr 5fr 3fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'Controls Controls'
-      'View Preview'
-      'Notes Notes';
-  `,
-  css`
-    --view-scale: 0.33;
-    --preview-scale: 0.66;
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
-      'View Preview'
-      'Controls Preview'
+      'Preview View'
+      'Controls View'
       'Notes Notes';
   `,
   css`
-    --view-scale: 0.33;
-    --preview-scale: 0.66;
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
-      'Controls Preview'
-      'View Preview'
+      'Controls View'
+      'Preview View'
       'Notes Notes';
   `
 ]
