@@ -298,8 +298,7 @@ export class SpeakerDeck extends Deck {
     isPlaying
   }
 
-  // overwrite the visible slides
-  get visibleSlides() {
+  get shownSlides() {
     const {slideIndex, direction, fragmentOrder, fragmentIndex} = this.store
 
     // Get the current fragmentHost
@@ -312,16 +311,14 @@ export class SpeakerDeck extends Deck {
 
     // We need a maximum of 2 slides `[current, next]`
     const filteredSlides = this.slides.filter((c, i) =>
-      range(i, slideIndex + 1, slideIndex - 1)
+      range(i, slideIndex + 2, slideIndex)
     )
 
-    const prevSlide = filteredSlides.length > 2 ? filteredSlides[0] : null
-    const currentSlide =
-      filteredSlides.length > 2 ? filteredSlides[1] : filteredSlides[0]
-    const nextSlide =
-      filteredSlides.length > 2
-        ? filteredSlides[2]
-        : filteredSlides[1] || lastSlide
+    const [
+      currentSlide,
+      nextSlide = lastSlide,
+      realNextSlide = lastSlide
+    ] = filteredSlides
 
     // Build properties for all slides
     const props = {
@@ -338,6 +335,11 @@ export class SpeakerDeck extends Deck {
         isNext: true,
         slideIndex: hasFragments ? slideIndex : slideIndex + 1,
         fragmentOrder: hasFragments ? fragmentHost[fragmentIndex + 1] : 0
+      },
+      realNext: {
+        isNext: true,
+        slideIndex: hasFragments ? slideIndex + 1 : slideIndex + 2,
+        isPreview: true
       }
     }
 
@@ -356,27 +358,17 @@ export class SpeakerDeck extends Deck {
       key: 'nextView'
     })
 
-    const preloadNextView = hasFragments
-      ? cloneElement(nextSlide, {
-          slideIndex: slideIndex + 1,
-          fragmentOrder: 0,
-          key: 'preloadNextView'
-        })
-      : null
-
-    const preloadPrevView = prevSlide
-      ? cloneElement(prevSlide, {
-          slideIndex: slideIndex - 1,
-          fragmentOrder: this.store.fragmentHosts[
-            Math.max(0, slideIndex - 1)
-          ].reverse()[0],
-          isPrev: true,
-          key: 'preloadPrevtView'
-        })
-      : null
+    const realNextView = cloneElement(
+      hasFragments ? nextSlide : realNextSlide,
+      {
+        ...props.shared,
+        ...props.realNext,
+        key: 'realNextView'
+      }
+    )
 
     // only return 2 slides
-    return [currentView, nextView, preloadNextView, preloadPrevView]
+    return [currentView, nextView, realNextView]
   }
 
   get presenterSection() {
@@ -477,7 +469,7 @@ export class SpeakerDeck extends Deck {
    *   The entire Deck including paging logic inside a Wrapper
    */
   render() {
-    const [view, preview, preloadNext, preloadPrev] = this.visibleSlides
+    const [view, preview, nextView] = this.shownSlides
     return (
       <Wrapper
         mixin={css`
@@ -494,10 +486,14 @@ export class SpeakerDeck extends Deck {
               {this.store.slideIndex + 1} / {this.slides.length}
             </PageNumber>
             <FragmentNumber>
-              {this.store.fragmentIndex} /{' '}
+              {this.store.fragmentIndex +
+                (this.store.fragmentHosts[this.store.slideIndex].length > 0
+                  ? 1
+                  : 0)}{' '}
+              /{' '}
               {Math.max(
                 0,
-                this.store.fragmentHosts[this.store.slideIndex].length - 1
+                this.store.fragmentHosts[this.store.slideIndex].length
               )}
             </FragmentNumber>
             <StyledControl1>Controls 1</StyledControl1>
@@ -509,12 +505,10 @@ export class SpeakerDeck extends Deck {
               />
             </StyledControl2>
           </StyledControls>
-          <StyledPreload>
-            {preloadPrev}
-            {preloadNext}
-          </StyledPreload>
+          <StyledPreload>{this.visibleSlides}</StyledPreload>
           <StyledView>{view}</StyledView>
           <StyledPreview>{preview}</StyledPreview>
+          <StyledNextview layout={this.state.layout}>{nextView}</StyledNextview>
           <StyledNotes>
             <NoteProvider notes={this.store.notes[this.store.slideIndex]} />
           </StyledNotes>
@@ -628,6 +622,18 @@ const StyledPreview = styled.div`
   overflow: hidden;
 `
 
+const StyledNextview = styled.div`
+  ${({layout}) => (layout !== 0 ? 'display: none' : '')};
+  --scale: var(--nextview-scale);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  grid-area: Nextview;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  overflow: hidden;
+`
+
 const StyledNotes = styled.div`
   position: relative;
   height: 100%;
@@ -692,8 +698,34 @@ const StyledControl2 = styled.div`
 
 const layouts = [
   css`
-    --view-scale: 0.66;
-    --preview-scale: 0.33;
+    --view-scale: calc(1 / 6 * 4);
+    --preview-scale: calc(1 / 6 * 2);
+    --nextview-scale: calc(1 / 6 * 2);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      'Preview Preview Controls Controls Nextview Nextview'
+      'Preview Preview Controls Controls Nextview Nextview'
+      'View View View View Notes Notes'
+      'View View View View Notes Notes'
+      'View View View View Notes Notes'
+      'View View View View Notes Notes';
+  `,
+  css`
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
+    --nextview-scale: calc(1 / 3);
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      'View Preview'
+      'View Controls'
+      'Notes Notes';
+  `,
+  css`
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
+    --nextview-scale: calc(1 / 3);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
@@ -702,43 +734,23 @@ const layouts = [
       'Notes Notes';
   `,
   css`
-    --view-scale: 0.66;
-    --preview-scale: 0.33;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-      'View Preview'
-      'View Controls'
-      'Notes Notes';
-  `,
-  css`
-    --view-scale: 0.5;
-    --preview-scale: 0.5;
-    grid-template-rows: 2fr 5fr 3fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'Controls Controls'
-      'View Preview'
-      'Notes Notes';
-  `,
-  css`
-    --view-scale: 0.33;
-    --preview-scale: 0.66;
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
-      'View Preview'
-      'Controls Preview'
+      'Preview View'
+      'Controls View'
       'Notes Notes';
   `,
   css`
-    --view-scale: 0.33;
-    --preview-scale: 0.66;
+    --view-scale: calc(1 / 3 * 2);
+    --preview-scale: calc(1 / 3);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
-      'Controls Preview'
-      'View Preview'
+      'Controls View'
+      'Preview View'
       'Notes Notes';
   `
 ]
@@ -781,13 +793,15 @@ const dateHelpers = {
 class Countdown extends Component {
   constructor(props) {
     super(props)
+    const now = this.now.getTime()
+    const then = now + this.props.end * dateHelpers.m
     this.state = {
       days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
-      start: this.now.getTime(),
-      waiting: this.props.isRunning ? 0 : this.now.getTime(),
+      start: now,
+      waiting: this.props.isRunning ? 0 : now,
       waited: 0
     }
     this.run = this.run.bind(this)
@@ -826,15 +840,20 @@ class Countdown extends Component {
   }
 
   componentWillMount() {
+    const now = this.now.getTime()
+    const then = this.state.waited + this.props.end * dateHelpers.m
     this.setState({
-      start: this.now.getTime(),
-      minutes: this.props.end
+      start: now,
+      days: Math.abs(~~(then / dateHelpers.d)),
+      hours: Math.abs(~~(then / dateHelpers.h) % 24),
+      minutes: Math.abs(~~(then / dateHelpers.m) % 60),
+      seconds: Math.abs(~~(then / dateHelpers.s) % 60)
     })
     if (this.props.isRunning) {
       this.run()
     } else {
       this.setState({
-        waiting: this.now.getTime()
+        waiting: now
       })
     }
   }

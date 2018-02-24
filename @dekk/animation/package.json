@@ -8,7 +8,9 @@
     "babel": "cross-env NODE_ENV=production babel src --out-dir lib --copy-files",
     "babel:watch": "babel src --out-dir lib --copy-files -w -s",
     "format:js": "prettier --write src/**/*.js",
-    "test": "ava"
+    "lint": "xo 'src/**/*.js'",
+    "test": "ava",
+    "posttest": "yarn lint"
   },
   "devDependencies": {
     "ava": "^0.25.0",
@@ -27,6 +29,14 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "xo": {
+    "prettier": true,
+    "parser": "babel-eslint",
+    "rules": {
+      "no-unused-vars": 0,
+      "no-useless-constructor": 0
+    }
   },
   "ava": {
     "files": [
