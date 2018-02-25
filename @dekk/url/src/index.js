@@ -11,22 +11,8 @@ export const writeHash = (slideIndex = 0, fragmentIndex = 0) => {
 }
 
 /**
- * @private
+ * @public
  */
-export const writeQuery = (slideIndex = 0, fragmentIndex = 0, old = '') => {
-  const oldQuery = window.location.search
-    .split(/[?&]/)
-    .filter(x => x !== '' && !x.match(/(page|fragment)/))
-    .join('&')
-  history.pushState(
-    {page: slideIndex, fragment: fragmentIndex},
-    `page ${slideIndex}, fragment ${fragmentIndex}`,
-    `?page=${slideIndex}&fragment=${fragmentIndex}${
-      oldQuery ? `&${oldQuery}` : ''
-    }`
-  )
-}
-
 export const search = {
   parse(url) {
     const {search = ''} = new URL(url)
@@ -51,6 +37,41 @@ export const search = {
 
 /**
  * @public
+ * @param {Object} props
+ *   The properties
+ * @param {String} [props.type='hash']
+ *   Either `hash` or `query` to enable hash(bang) or search query URLs
+ * @param {number} props.slideIndex
+ *   (Injected via Dekk)
+ * @param {number} props.fragmentCount
+ *   (Injected via Dekk)
+ * @param {number} props.fragmentIndex
+ *   (Injected via Dekk)
+ * @param {number} props.fragmentOrder
+ *   (Injected via Dekk)
+ * @param {function} props.toFragment
+ *   (Injected via Dekk)
+ * @param {function} props.toSlide
+ *   (Injected via Dekk)
+ * @param {function} props.toNextFragment
+ *   (Injected via Dekk)
+ * @param {function} props.toPrevFragment
+ *   (Injected via Dekk)
+ * @param {function} props.toNextSlide
+ *   (Injected via Dekk)
+ * @param {function} props.toPrevSlide
+ *   (Injected via Dekk)
+ * @example
+ * import Deck, {Plugins} from '@dekk/deck'
+ * import Url from '@dekk/url'
+ *
+ * export default (
+ *   <Deck>
+ *     <Plugins>
+ *       <Url/>
+ *     </Plugins>
+ *   </Deck>
+ * )
  */
 class Url extends Component {
   /**
@@ -60,7 +81,9 @@ class Url extends Component {
     return {
       type: PropTypes.oneOf(['hash', 'query']),
       slideIndex: PropTypes.number,
-      fragmentIndex: PropTypes.number
+      fragmentIndex: PropTypes.number,
+      toFragment: PropTypes.func,
+      toSlide: PropTypes.func
     }
   }
 
@@ -71,50 +94,10 @@ class Url extends Component {
     return {
       type: 'hash',
       slideIndex: 0,
-      fragmentIndex: 0
+      fragmentIndex: 0,
+      toFragment: () => null,
+      toSlide: () => null
     }
-  }
-
-  /**
-   * @public
-   * @param {Object} props
-   *   The properties
-   * @param {String} [props.type='hash']
-   *   Either `hash` or `query` to enable hash(bang) or search query URLs
-   * @param {number} props.slideIndex
-   *   (Injected via Dekk)
-   * @param {number} props.fragmentCount
-   *   (Injected via Dekk)
-   * @param {number} props.fragmentIndex
-   *   (Injected via Dekk)
-   * @param {number} props.fragmentOrder
-   *   (Injected via Dekk)
-   * @param {function} props.toFragment
-   *   (Injected via Dekk)
-   * @param {function} props.toSlide
-   *   (Injected via Dekk)
-   * @param {function} props.toNextFragment
-   *   (Injected via Dekk)
-   * @param {function} props.toPrevFragment
-   *   (Injected via Dekk)
-   * @param {function} props.toNextSlide
-   *   (Injected via Dekk)
-   * @param {function} props.toPrevSlide
-   *   (Injected via Dekk)
-   * @example
-   * import Deck, {Plugins} from '@dekk/deck'
-   * import Url from '@dekk/url'
-   *
-   * export default (
-   *   <Deck>
-   *     <Plugins>
-   *       <Url/>
-   *     </Plugins>
-   *   </Deck>
-   * )
-   */
-  constructor(props) {
-    super(props)
   }
 
   /**
@@ -174,7 +157,7 @@ class Url extends Component {
         writeHash(slideIndex, fragmentIndex)
         break
       case 'query':
-        writeQuery(slideIndex, fragmentIndex)
+        search.write({page: slideIndex, fragment: fragmentIndex})
         break
       default:
         break

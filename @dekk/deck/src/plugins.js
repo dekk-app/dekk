@@ -25,7 +25,7 @@ import PropTypes from 'prop-types'
  *   </Deck>
  * )
  */
-const Plugins = props => null
+const Plugins = () => null
 
 /**
  * @private

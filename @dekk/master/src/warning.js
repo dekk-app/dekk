@@ -85,4 +85,12 @@ Warning.propTypes = {
   missing: PropTypes.bool
 }
 
+Warning.defaultProps = {
+  not: undefined,
+  only: undefined,
+  type: undefined,
+  invalid: undefined,
+  missing: undefined
+}
+
 export default Warning

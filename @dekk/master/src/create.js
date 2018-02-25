@@ -53,7 +53,7 @@ import {Slot} from './components'
  * )
  */
 export default function createMaster(master) {
-  const {children, className} = master.props
+  const {children} = master.props
 
   /**
    * @public
@@ -83,18 +83,16 @@ export default function createMaster(master) {
     .filter(child => child.type === Slot)
     .forEach(slot => {
       const {name} = slot.props
-      Slide[name] = props => null
+      Slide[name] = () => null
     })
 
   /**
    * Allowed propTypes for `<Slide/>`
    * @private
    * @property {ReactElement} children
-   * @property {String} className
    */
   Slide.propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string
+    children: PropTypes.node.isRequired
   }
 
   return Slide

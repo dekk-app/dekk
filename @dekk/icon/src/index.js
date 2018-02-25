@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -21,5 +21,17 @@ export const StyledIcon = styled.span`
 const Icon = ({children, icon, size = '1em'}) => (
   <StyledIcon size={size}>{children || icon}</StyledIcon>
 )
+
+Icon.propTypes = {
+  children: PropTypes.node,
+  icon: PropTypes.node,
+  size: PropTypes.string
+}
+
+Icon.defaultProps = {
+  children: null,
+  icon: null,
+  size: '1em'
+}
 
 export default Icon

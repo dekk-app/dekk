@@ -19,6 +19,25 @@ const RawCode = props => {
 }
 
 /**
+ * @private
+ */
+RawCode.propTypes = {
+  style: PropTypes.object,
+  language: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.string.isRequired
+}
+
+/**
+ * @private
+ */
+RawCode.defaultProps = {
+  style: {},
+  language: '',
+  className: ''
+}
+
+/**
  * @bublic
  */
 const Code = styled(RawCode)`
@@ -32,7 +51,7 @@ Code.propTypes = {
   style: PropTypes.object,
   language: PropTypes.string,
   className: PropTypes.string,
-  children: PropTypes.string
+  children: PropTypes.string.isRequired
 }
 
 /**

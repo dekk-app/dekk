@@ -40,3 +40,11 @@ export const Nextview = styled.div`
   border-radius: 3px;
   overflow: hidden;
 `
+
+Nextview.propTypes = {
+  layout: PropTypes.number
+}
+
+Nextview.defaultProps = {
+  layout: 0
+}

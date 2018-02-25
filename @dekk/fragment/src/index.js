@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Motion, spring} from 'react-motion'
+import {Motion, spring, presets} from 'react-motion'
 
 import StyledFragment from './fragment'
 
@@ -27,7 +27,23 @@ export default class Fragment extends Component {
     return {
       children: PropTypes.node.isRequired,
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-      order: PropTypes.number.isRequired
+      root: PropTypes.bool,
+      order: PropTypes.number.isRequired,
+      displayAs: PropTypes.string,
+      springSettings: PropTypes.shape({
+        stiffness: PropTypes.number,
+        damping: PropTypes.number,
+        precision: PropTypes.number
+      })
+    }
+  }
+
+  static get defaultProps() {
+    return {
+      animation: '',
+      displayAs: undefined,
+      root: false,
+      springSettings: presets.stiff
     }
   }
 
@@ -58,21 +74,6 @@ export default class Fragment extends Component {
     return {
       hostedFragmentOrder: PropTypes.number
     }
-  }
-
-  /**
-   * Constructor
-   * @public
-   * @param {Object}                  props
-   *   The properties
-   * @param {(ReactNode|ReactNode[])} props.children
-   * @param {number}                  props.order
-   * @param {?Boolean}                props.root
-   * @param {Object}                  context
-   *   The context
-   */
-  constructor(props, context) {
-    super(props, context)
   }
 
   /**

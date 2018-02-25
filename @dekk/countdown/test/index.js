@@ -1,3 +1,3 @@
 import test from 'ava'
 
-test('url', t => t.pass())
+test('countdown', t => t.pass())

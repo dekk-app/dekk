@@ -1,4 +1,3 @@
-import React from 'react'
 import action from './action'
 import alert from './alert'
 import av from './av'
@@ -15,7 +14,25 @@ import notification from './notification'
 import social from './social'
 import toggle from './toggle'
 
-const icons = {
+export default {
+  action,
+  alert,
+  av,
+  communication,
+  content,
+  device,
+  editor,
+  file,
+  hardware,
+  image,
+  maps,
+  navigation,
+  notification,
+  social,
+  toggle
+}
+
+export {
   action,
   alert,
   av,

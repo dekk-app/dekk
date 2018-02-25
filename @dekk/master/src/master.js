@@ -1,6 +1,5 @@
 import React, {Component, Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import Slide from '@dekk/slide'
 import Notes from '@dekk/speaker-notes'
 import Fragment, {FragmentRoot} from '@dekk/fragment'
@@ -270,7 +269,7 @@ class Master extends Component {
  * @property {ReactElement,ReactElement[]} content
  */
 Master.propTypes = {
-  children: (props, propName, componentName) => {
+  children: (props, propName) => {
     /**
      * An error might be caused and is therefore returned .
      */
@@ -290,6 +289,11 @@ Master.propTypes = {
     return hasErrors ? error : null
   },
   content: PropTypes.node
+}
+
+Master.defaultProps = {
+  children: '',
+  content: ''
 }
 
 export default Master

@@ -17,6 +17,9 @@ import Notes from '@dekk/speaker-notes'
  * @param {Boolean} props.fromPrev
  * @param {Boolean} props.toNext
  * @param {Boolean} props.fromNext
+ * @param {Boolean} props.isPreview
+ * @param {Boolean} props.present
+ * @param {number} props.fragmentOrder
  * @param {String} props.className
  * @param {(ReactElement|ReactElement[])} props.children
  * @param {Object} props.springSettings
@@ -24,6 +27,8 @@ import Notes from '@dekk/speaker-notes'
  * @param {number} props.springSettings.damping
  * @param {number} props.springSettings.precision
  * @param {(Array|String)} props.animation
+ * @param {(Array|String)} props.animationIn
+ * @param {(Array|String)} props.animationOut
  * @param {(Array|String)} props.mixin
  * @param {String} props.background
  * @param {number} props.slideIndex
@@ -52,17 +57,48 @@ class Slide extends Component {
       fromPrev: PropTypes.bool,
       toNext: PropTypes.bool,
       fromNext: PropTypes.bool,
+      isPreview: PropTypes.bool,
+      present: PropTypes.bool,
+      fragmentOrder: PropTypes.number,
       className: PropTypes.string,
-      children: PropTypes.node,
+      children: PropTypes.node.isRequired,
       springSettings: PropTypes.shape({
         stiffness: PropTypes.number,
         damping: PropTypes.number,
         precision: PropTypes.number
       }),
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+      animationIn: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+      animationOut: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       background: PropTypes.string,
       slideIndex: PropTypes.number
+    }
+  }
+
+  /**
+   * @private
+   */
+  static get defaultProps() {
+    return {
+      isCurrent: false,
+      isPrev: false,
+      isNext: false,
+      toPrev: false,
+      fromPrev: false,
+      toNext: false,
+      fromNext: false,
+      isPreview: false,
+      present: false,
+      fragmentOrder: 0,
+      className: '',
+      springSettings: presets.stiff,
+      animation: '',
+      animationIn: '',
+      animationOut: '',
+      mixin: '',
+      background: '',
+      slideIndex: -1
     }
   }
 
@@ -76,23 +112,6 @@ class Slide extends Component {
     return {
       store: PropTypes.object.isRequired
     }
-  }
-
-  /**
-   * @public
-   * @param {Object} props
-   * @param {String} props.className
-   * @param {(ReactElement|ReactElement[])} props.children
-   * @param {Object} props.springSettings
-   * @param {number} props.springSettings.stiffness
-   * @param {number} props.springSettings.damping
-   * @param {number} props.springSettings.precision
-   * @param {(Array|String)} props.animation
-   * @param {(Array|String)} props.mixin
-   * @param {String} props.background
-   */
-  constructor(props, context) {
-    super(props)
   }
 
   /**
@@ -191,7 +210,6 @@ class Slide extends Component {
 
     const springStyle = {
       time: spring(isPrev || isNext ? 1 : 0, {
-        ...presets.stiff,
         ...this.props.springSettings
       })
     }

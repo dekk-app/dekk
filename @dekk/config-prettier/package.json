@@ -1,0 +1,13 @@
+{
+  "name": "@dekk/config-prettier",
+  "version": "1.0.0-5",
+  "license": "MIT",
+  "author": "Gregor Adams <greg@pixelass.com>",
+  "files": [
+    ".prettierrc.js"
+  ],
+  "main": ".prettierrc.js",
+  "publishConfig": {
+    "access": "public"
+  }
+}

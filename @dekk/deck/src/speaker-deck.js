@@ -1,6 +1,5 @@
 /* global window */
-import React, {Component, cloneElement} from 'react'
-import PropTypes from 'prop-types'
+import React, {cloneElement} from 'react'
 import {css} from 'styled-components'
 import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
@@ -69,7 +68,7 @@ export default class SpeakerDeck extends Deck {
   }
 
   get speakerSlides() {
-    const {slideIndex, direction, fragmentOrder, fragmentIndex} = this.store
+    const {slideIndex, fragmentOrder, fragmentIndex} = this.store
 
     // Get the current fragmentHost
     // and create a boolean flag to check for fragments
@@ -127,28 +126,34 @@ export default class SpeakerDeck extends Deck {
   }
 
   switchLayout() {
-    const layout = (this.state.layout + 1) % layouts.length
-    this.setState({layout})
-    search.write({layout})
+    this.setState(prevState => {
+      const layout = (prevState.layout + 1) % layouts.length
+      search.write({layout})
+      return {layout}
+    })
   }
 
   switchTheme() {
-    const theme = this.state.theme === 'dark' ? 'light' : 'dark'
-    this.setState({theme})
-    search.write({theme})
+    this.setState(prevState => {
+      const theme = prevState.theme === 'dark' ? 'light' : 'dark'
+      search.write({theme})
+      return {theme}
+    })
   }
 
   togglePlaying() {
-    const isPlaying = !this.state.isPlaying
-    this.setState({isPlaying})
-    search.write({playing: isPlaying})
+    this.setState(prevState => {
+      const isPlaying = !prevState.isPlaying
+      search.write({playing: isPlaying})
+      return {isPlaying}
+    })
   }
 
   get layoutToggle() {
     return (
       <LayoutToggle
         key="LayoutToggle"
-        onClick={this.switchLayout.bind(this)}
+        onClick={this.switchLayout}
         theme={this.state.theme}
       />
     )
@@ -158,7 +163,7 @@ export default class SpeakerDeck extends Deck {
     return (
       <ThemeToggle
         key="ThemeToggle"
-        onClick={this.switchTheme.bind(this)}
+        onClick={this.switchTheme}
         theme={this.state.theme}
         isDark={this.state.theme === 'dark'}
       />
@@ -169,7 +174,7 @@ export default class SpeakerDeck extends Deck {
     return (
       <PlayButton
         key="PlayButton"
-        onClick={this.togglePlaying.bind(this)}
+        onClick={this.togglePlaying}
         theme={this.state.theme}
         isPlaying={this.state.isPlaying}
       />
@@ -230,7 +235,9 @@ export default class SpeakerDeck extends Deck {
           <Preview>{preview}</Preview>
           <Nextview layout={this.state.layout}>{nextView}</Nextview>
           <Notes>
-            <NoteProvider notes={this.store.notes[this.store.slideIndex]} />
+            <NoteProvider>
+              {this.store.notes[this.store.slideIndex]}
+            </NoteProvider>
           </Notes>
         </SpeakerWrapper>
       </Wrapper>

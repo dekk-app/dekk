@@ -1,14 +1,8 @@
-import React, {Component, Children, cloneElement} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
 import Icon from '@dekk/icon'
 import image from '@dekk/icon/lib/image'
-
-const SVG = ({d}) => (
-  <svg viewBox="0 0 24 24">
-    <path fill="currentcolor" d={d} />
-  </svg>
-)
 
 const Controls = styled.div`
   position: relative;
@@ -84,6 +78,14 @@ export const ThemeToggle = props => {
   )
 }
 
+ThemeToggle.propTypes = {
+  isDark: PropTypes.bool
+}
+
+ThemeToggle.defaultProps = {
+  isDark: false
+}
+
 const StyledPlayButton = styled.button`
   grid-area: PlayButton;
   ${toggleStyle};
@@ -96,6 +98,14 @@ export const PlayButton = props => {
       <Icon icon={icon} />
     </StyledPlayButton>
   )
+}
+
+PlayButton.propTypes = {
+  isPlaying: PropTypes.bool
+}
+
+PlayButton.defaultProps = {
+  isPlaying: false
 }
 
 export const ControlA = styled.div`

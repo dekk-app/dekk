@@ -14,7 +14,7 @@ export default {
   'access-time': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".9"
+        fillOpacity=".9"
         d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
       />
     </svg>
@@ -39,7 +39,7 @@ export default {
     <svg viewBox="0 0 24 24">
       <path d="M7 17v3.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V17H7z" />
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V17h10V5.33z"
       />
     </svg>
@@ -47,7 +47,7 @@ export default {
   'battery-30': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V15h10V5.33z"
       />
       <path d="M7 15v5.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V15H7z" />
@@ -56,7 +56,7 @@ export default {
   'battery-50': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V13h10V5.33z"
       />
       <path d="M7 13v7.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V13H7z" />
@@ -65,7 +65,7 @@ export default {
   'battery-60': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V11h10V5.33z"
       />
       <path d="M7 11v9.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V11H7z" />
@@ -74,7 +74,7 @@ export default {
   'battery-80': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V9h10V5.33z"
       />
       <path d="M7 9v11.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V9H7z" />
@@ -83,7 +83,7 @@ export default {
   'battery-90': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V8h10V5.33z"
       />
       <path d="M7 8v12.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V8H7z" />
@@ -98,7 +98,7 @@ export default {
     <svg viewBox="0 0 24 24">
       <path d="M11 20v-3H7v3.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V17h-4.4L11 20z" />
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V17h4v-2.5H9L13 7v5.5h2L12.6 17H17V5.33C17 4.6 16.4 4 15.67 4z"
       />
     </svg>
@@ -106,7 +106,7 @@ export default {
   'battery-charging_30': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v9.17h2L13 7v5.5h2l-1.07 2H17V5.33C17 4.6 16.4 4 15.67 4z"
       />
       <path d="M11 20v-5.5H7v6.17C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V14.5h-3.07L11 20z" />
@@ -116,7 +116,7 @@ export default {
     <svg viewBox="0 0 24 24">
       <path d="M14.47 13.5L11 20v-5.5H9l.53-1H7v7.17C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V13.5h-2.53z" />
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v8.17h2.53L13 7v5.5h2l-.53 1H17V5.33C17 4.6 16.4 4 15.67 4z"
       />
     </svg>
@@ -124,7 +124,7 @@ export default {
   'battery-charging_60': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V11h3.87L13 7v4h4V5.33C17 4.6 16.4 4 15.67 4z"
       />
       <path d="M13 12.5h2L11 20v-5.5H9l1.87-3.5H7v9.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V11h-4v1.5z" />
@@ -133,7 +133,7 @@ export default {
   'battery-charging_80': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V9h4.93L13 7v2h4V5.33C17 4.6 16.4 4 15.67 4z"
       />
       <path d="M13 12.5h2L11 20v-5.5H9L11.93 9H7v11.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V9h-4v3.5z" />
@@ -142,7 +142,7 @@ export default {
   'battery-charging_90': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V8h5.47L13 7v1h4V5.33C17 4.6 16.4 4 15.67 4z"
       />
       <path d="M13 12.5h2L11 20v-5.5H9L12.47 8H7v12.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V8h-4v4.5z" />
@@ -260,14 +260,14 @@ export default {
   ),
   'network-cell': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M2 22h20V2z" />
+      <path fillOpacity=".3" d="M2 22h20V2z" />
       <path d="M17 7L2 22h15z" />
     </svg>
   ),
   'network-wifi': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"
       />
       <path d="M3.53 10.95l8.46 10.54.01.01.01-.01 8.46-10.54C20.04 10.62 16.81 8 12 8c-4.81 0-8.04 2.62-8.47 2.95z" />
@@ -320,24 +320,24 @@ export default {
   ),
   'signal-cellular_0_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M2 22h20V2z" />
+      <path fillOpacity=".3" d="M2 22h20V2z" />
     </svg>
   ),
   'signal-cellular_1_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M2 22h20V2z" />
+      <path fillOpacity=".3" d="M2 22h20V2z" />
       <path d="M12 12L2 22h10z" />
     </svg>
   ),
   'signal-cellular_2_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M2 22h20V2z" />
+      <path fillOpacity=".3" d="M2 22h20V2z" />
       <path d="M14 10L2 22h12z" />
     </svg>
   ),
   'signal-cellular_3_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M2 22h20V2z" />
+      <path fillOpacity=".3" d="M2 22h20V2z" />
       <path d="M17 7L2 22h15z" />
     </svg>
   ),
@@ -348,25 +348,25 @@ export default {
   ),
   'signal-cellular_connected_no_internet_0_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M22 8V2L2 22h16V8z" />
+      <path fillOpacity=".3" d="M22 8V2L2 22h16V8z" />
       <path d="M20 22h2v-2h-2v2zm0-12v8h2v-8h-2z" />
     </svg>
   ),
   'signal-cellular_connected_no_internet_1_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M22 8V2L2 22h16V8z" />
+      <path fillOpacity=".3" d="M22 8V2L2 22h16V8z" />
       <path d="M20 10v8h2v-8h-2zm-8 12V12L2 22h10zm8 0h2v-2h-2v2z" />
     </svg>
   ),
   'signal-cellular_connected_no_internet_2_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M22 8V2L2 22h16V8z" />
+      <path fillOpacity=".3" d="M22 8V2L2 22h16V8z" />
       <path d="M14 22V10L2 22h12zm6-12v8h2v-8h-2zm0 12h2v-2h-2v2z" />
     </svg>
   ),
   'signal-cellular_connected_no_internet_3_bar': (
     <svg viewBox="0 0 24 24">
-      <path fill-opacity=".3" d="M22 8V2L2 22h16V8z" />
+      <path fillOpacity=".3" d="M22 8V2L2 22h16V8z" />
       <path d="M17 22V7L2 22h15zm3-12v8h2v-8h-2zm0 12h2v-2h-2v2z" />
     </svg>
   ),
@@ -393,7 +393,7 @@ export default {
   'signal-wifi_0_bar': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"
       />
     </svg>
@@ -401,7 +401,7 @@ export default {
   'signal-wifi_1_bar': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"
       />
       <path d="M6.67 14.86L12 21.49v.01l.01-.01 5.33-6.63C17.06 14.65 15.03 13 12 13s-5.06 1.65-5.33 1.86z" />
@@ -410,7 +410,7 @@ export default {
   'signal-wifi_2_bar': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"
       />
       <path d="M4.79 12.52l7.2 8.98H12l.01-.01 7.2-8.98C18.85 12.24 16.1 10 12 10s-6.85 2.24-7.21 2.52z" />
@@ -419,7 +419,7 @@ export default {
   'signal-wifi_3_bar': (
     <svg viewBox="0 0 24 24">
       <path
-        fill-opacity=".3"
+        fillOpacity=".3"
         d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"
       />
       <path d="M3.53 10.95l8.46 10.54.01.01.01-.01 8.46-10.54C20.04 10.62 16.81 8 12 8c-4.81 0-8.04 2.62-8.47 2.95z" />

@@ -1,12 +1,22 @@
-import React, {Component, Children, cloneElement} from 'react'
+import React, {Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 
-const NoteProvider = ({notes}) => (
+const NoteProvider = ({children}) => (
   <div>
-    {Children.toArray(notes).map((note, i) => cloneElement(note, {key: i}))}
+    {Children.toArray(children).map((child, i) =>
+      cloneElement(child, {key: i})
+    )}
   </div>
 )
+
+NoteProvider.propTypes = {
+  children: PropTypes.node
+}
+
+NoteProvider.defaultProps = {
+  children: null
+}
 
 export default NoteProvider
 

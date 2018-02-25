@@ -49,7 +49,7 @@ export default class Store {
    * Each slide is a host.
    * @type {Array}
    */
-  @observable notes = [...new Array(512)].map((x, i) => null)
+  @observable notes = [...new Array(512)].map(() => null)
 
   /**
    * @private
@@ -58,7 +58,7 @@ export default class Store {
    * @param {number} props.slideIndex
    *   Initially active slideIndex
    */
-  constructor(props) {
+  constructor() {
     // Bind methods
     this.toSlide = this.toSlide.bind(this)
     this.toNextSlide = this.toNextSlide.bind(this)

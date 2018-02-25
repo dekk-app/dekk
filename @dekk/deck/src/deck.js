@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
-import Slide from '@dekk/slide'
 import Wrapper from './wrapper'
 import SlidesWrapper from './slides-wrapper'
 import Plugins from './plugins'
@@ -63,6 +62,12 @@ export default class Deck extends Component {
     }
   }
 
+  static get defaultProps() {
+    return {
+      mixin: ''
+    }
+  }
+
   /**
    * Sends context to decendants.
    * Includes the app store to allow all deck components to access the store
@@ -76,19 +81,6 @@ export default class Deck extends Component {
       store: PropTypes.object.isRequired,
       fragmentHost: PropTypes.number
     }
-  }
-
-  /**
-   * Constructor
-   * @public
-   * @param {Object} props
-   *   The properties
-   * @param {(Slide|Slide[]|Plugins|Plugins[])} props.children
-   * @param {?String} props.mixin
-   * @param {?Boolean} props.slave
-   */
-  constructor(props) {
-    super(props)
   }
 
   /**
@@ -204,7 +196,6 @@ export default class Deck extends Component {
    * @return {Array<Slide>} returns an array of max 3 slides
    */
   get visibleSlides() {
-    const {children} = this.props
     const {slideIndex, direction, fragmentOrder, fragmentHosts} = this.store
     return (
       this.slides
@@ -217,9 +208,7 @@ export default class Deck extends Component {
         .filter((c, i) => range(i, slideIndex + 1, slideIndex - 1))
         // Modify the remaining slides (maximum of 3)
         .map(({child, originalIndex}) => {
-          const {length: fragmentCount = 0} = this.store.fragmentHosts[
-            originalIndex
-          ]
+          const {length: fragmentCount = 0} = fragmentHosts[originalIndex]
           const lastFragment = Math.max(0, fragmentCount - 1)
           // Flags to check for value
           const isCurrent = slideIndex === originalIndex

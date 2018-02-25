@@ -1,8 +1,8 @@
 /* global window */
-import React, {Component} from 'react'
+import {Component} from 'react'
 import PropTypes from 'prop-types'
 
-const leadingZero = n => (n < 10 ? `0${n}` : n)
+export {default as renderCountdown} from './render-countdown'
 
 const dateHelpers = {
   s: 1000,
@@ -11,36 +11,36 @@ const dateHelpers = {
   d: 86400000
 }
 
-export const renderCountdown = (
-  {days, hours, minutes, seconds},
-  done,
-  timerWarning
-) => {
-  const props = {}
-  if (!days && !hours && minutes * 60 + seconds < timerWarning) {
-    props['data-warning'] = ''
-  }
-  return (
-    <div {...props}>
-      {leadingZero(hours)}:{leadingZero(minutes)}:{leadingZero(seconds)}
-    </div>
-  )
-}
-
 export default class Countdown extends Component {
+  static get propTypes() {
+    return {
+      isRunning: PropTypes.bool,
+      timerWarning: PropTypes.number,
+      end: PropTypes.number.isRequired,
+      render: PropTypes.func.isRequired
+    }
+  }
+
+  static get defaultProps() {
+    return {
+      isRunning: false,
+      timerWarning: 0
+    }
+  }
+
+  state = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    start: this.now.getTime(),
+    waiting: this.props.isRunning ? 0 : this.now.getTime(),
+    waited: 0
+  }
+
   constructor(props) {
     super(props)
-    const now = this.now.getTime()
-    const then = now + this.props.end * dateHelpers.m
-    this.state = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-      start: now,
-      waiting: this.props.isRunning ? 0 : now,
-      waited: 0
-    }
+
     this.run = this.run.bind(this)
     this.stop = this.stop.bind(this)
   }
@@ -102,9 +102,10 @@ export default class Countdown extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.isRunning && !this.props.isRunning) {
-      this.setState({
-        waited: this.state.waited + (this.now.getTime() - this.state.waiting)
-      })
+      const {waiting} = this.state
+      this.setState(prevState => ({
+        waited: prevState.waited + (this.now.getTime() - waiting)
+      }))
       this.run(true)
     } else if (!newProps.isRunning && this.props.isRunning) {
       this.setState({
