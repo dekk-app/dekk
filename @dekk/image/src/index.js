@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import Img from './img'
 import Mask from './mask'
 
@@ -21,6 +20,7 @@ class Image extends Component {
    * @private
    */
   state = {}
+
   /**
    * @private
    * @return {{alt: String, src: String, title: ?String}}
@@ -33,6 +33,16 @@ class Image extends Component {
       title: PropTypes.string
     }
   }
+
+  /**
+   * @private
+   */
+  static get defaultProps() {
+    return {
+      title: ''
+    }
+  }
+
   /**
    * Constructs the object.
    * @public
@@ -54,7 +64,6 @@ class Image extends Component {
    */
   handleLoad() {
     this.setState({
-      loaded: true,
       height: this.image.height,
       width: this.image.width
     })

@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": 2,
+    "react/no-array-index-key": 0
+  },
+  "extends": [
+    "xo-react"
+  ]
+}

@@ -3,6 +3,58 @@ import PropTypes from 'prop-types'
 
 /**
  * @public
+ * @param {Object} props
+ *   The properties
+ * @param {listenerOnSlide} props.onSlide
+ *   Callback when the slide changes
+ * @param {listenerOnFragment} props.onFragment
+ *   Callback when the fragmnet changes
+ * @param {number} props.slideCount
+ *   (Injected via Dekk)
+ * @param {number} props.slideIndex
+ *   (Injected via Dekk)
+ * @param {number} props.fragmentCount
+ *   (Injected via Dekk)
+ * @param {number} props.fragmentIndex
+ *   (Injected via Dekk)
+ * @param {number} props.fragmentOrder
+ *   (Injected via Dekk)
+ * @param {function} props.toFragment
+ *   (Injected via Dekk)
+ * @param {function} props.toSlide
+ *   (Injected via Dekk)
+ * @param {function} props.toNextFragment
+ *   (Injected via Dekk)
+ * @param {function} props.toPrevFragment
+ *   (Injected via Dekk)
+ * @param {function} props.toNextSlide
+ *   (Injected via Dekk)
+ * @param {function} props.toPrevSlide
+ *   (Injected via Dekk)
+ * @example
+ * import Deck, {Plugins} from '@dekk/deck'
+ * import Listener from '@dekk/listener'
+ *
+ * const handleSlide = slideIndex => {
+ *   // code
+ * }
+ *
+ * const handleFragment = (
+ *   slideIndex,
+ *   slideCount,
+ *   fragmentIndex,
+ *   fragmentOrder,
+ *   fragmentCount) => {
+ *  // code
+ * }
+ * export default (
+ *   <Deck>
+ *     <Plugins>
+ *       <Listener onSlide={handleSlide}
+ *                 onFragment={handleFragment}/>
+ *     </Plugins>
+ *   </Deck>
+ * )
  */
 class Listener extends Component {
   /**
@@ -10,6 +62,11 @@ class Listener extends Component {
    */
   static get propTypes() {
     return {
+      slideIndex: PropTypes.number,
+      slideCount: PropTypes.number,
+      fragmentOrder: PropTypes.number,
+      fragmentIndex: PropTypes.number,
+      fragmentCount: PropTypes.number,
       onSlide: PropTypes.func,
       onFragment: PropTypes.func
     }
@@ -20,68 +77,14 @@ class Listener extends Component {
    */
   static get defaultProps() {
     return {
+      slideIndex: 0,
+      slideCount: 0,
+      fragmentOrder: 0,
+      fragmentIndex: 0,
+      fragmentCount: 0,
       onSlide: () => null,
       onFragment: () => null
     }
-  }
-
-  /**
-   * @public
-   * @param {Object} props
-   *   The properties
-   * @param {listenerOnSlide} props.onSlide
-   *   Callback when the slide changes
-   * @param {listenerOnFragment} props.onFragment
-   *   Callback when the fragmnet changes
-   * @param {number} props.slideCount
-   *   (Injected via Dekk)
-   * @param {number} props.slideIndex
-   *   (Injected via Dekk)
-   * @param {number} props.fragmentCount
-   *   (Injected via Dekk)
-   * @param {number} props.fragmentIndex
-   *   (Injected via Dekk)
-   * @param {number} props.fragmentOrder
-   *   (Injected via Dekk)
-   * @param {function} props.toFragment
-   *   (Injected via Dekk)
-   * @param {function} props.toSlide
-   *   (Injected via Dekk)
-   * @param {function} props.toNextFragment
-   *   (Injected via Dekk)
-   * @param {function} props.toPrevFragment
-   *   (Injected via Dekk)
-   * @param {function} props.toNextSlide
-   *   (Injected via Dekk)
-   * @param {function} props.toPrevSlide
-   *   (Injected via Dekk)
-   * @example
-   * import Deck, {Plugins} from '@dekk/deck'
-   * import Listener from '@dekk/listener'
-   *
-   * const handleSlide = slideIndex => {
-   *   // code
-   * }
-   *
-   * const handleFragment = (
-   *   slideIndex,
-   *   slideCount,
-   *   fragmentIndex,
-   *   fragmentOrder,
-   *   fragmentCount) => {
-   *  // code
-   * }
-   * export default (
-   *   <Deck>
-   *     <Plugins>
-   *       <Listener onSlide={handleSlide}
-   *                 onFragment={handleFragment}/>
-   *     </Plugins>
-   *   </Deck>
-   * )
-   */
-  constructor(props) {
-    super(props)
   }
 
   /**

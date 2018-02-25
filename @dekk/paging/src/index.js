@@ -1,3 +1,4 @@
+/* global window */
 import {Component} from 'react'
 import PropTypes from 'prop-types'
 
@@ -18,10 +19,8 @@ class Paging extends Component {
       trigger: PropTypes.oneOf(['keyup', 'keydown']),
       toNextFragment: PropTypes.func,
       toPrevFragment: PropTypes.func,
-      toFragment: PropTypes.func,
       toNextSlide: PropTypes.func,
       toPrevSlide: PropTypes.func,
-      toSlide: PropTypes.func,
       slideCount: PropTypes.number,
       slideIndex: PropTypes.number,
       fragmentCount: PropTypes.number,
@@ -34,7 +33,15 @@ class Paging extends Component {
    */
   static get defaultProps() {
     return {
-      trigger: 'keydown'
+      trigger: 'keydown',
+      toNextFragment: () => null,
+      toPrevFragment: () => null,
+      toNextSlide: () => null,
+      toPrevSlide: () => null,
+      slideCount: 0,
+      slideIndex: 0,
+      fragmentCount: 0,
+      fragmentIndex: 0
     }
   }
 

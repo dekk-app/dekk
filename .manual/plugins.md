@@ -36,7 +36,7 @@ import Listener from '@dekk/listener'
 const handleSlide = (slideIndex, slideCount) => {
   // code
 }
-const handleFragment = (slideIndex, slideCount, fragmentIndex, fragmentOrder, fragmentCOunt) => {
+const handleFragment = (slideIndex, slideCount, fragmentIndex, fragmentOrder, fragmentCount) => {
   // code
 } 
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Motion, spring} from 'react-motion'
+import {Motion, spring, presets} from 'react-motion'
 
 import StyledFragment from './fragment'
 
@@ -27,7 +27,26 @@ export default class Fragment extends Component {
     return {
       children: PropTypes.node.isRequired,
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-      order: PropTypes.number.isRequired
+      root: PropTypes.bool,
+      order: PropTypes.number.isRequired,
+      displayAs: PropTypes.string,
+      springSettings: PropTypes.shape({
+        stiffness: PropTypes.number,
+        damping: PropTypes.number,
+        precision: PropTypes.number
+      })
+    }
+  }
+
+  /**
+   * @private
+   */
+  static get defaultProps() {
+    return {
+      animation: '',
+      displayAs: undefined,
+      root: false,
+      springSettings: presets.stiff
     }
   }
 
@@ -40,6 +59,8 @@ export default class Fragment extends Component {
   static get contextTypes() {
     return {
       store: PropTypes.object.isRequired,
+      isPreview: PropTypes.bool,
+      fragmentOrder: PropTypes.number,
       fragmentHost: PropTypes.number,
       hostedFragmentOrder: PropTypes.number
     }
@@ -56,21 +77,6 @@ export default class Fragment extends Component {
     return {
       hostedFragmentOrder: PropTypes.number
     }
-  }
-
-  /**
-   * Constructor
-   * @public
-   * @param {Object}                  props
-   *   The properties
-   * @param {(ReactNode|ReactNode[])} props.children
-   * @param {number}                  props.order
-   * @param {?Boolean}                props.root
-   * @param {Object}                  context
-   *   The context
-   */
-  constructor(props, context) {
-    super(props, context)
   }
 
   /**
@@ -115,7 +121,7 @@ export default class Fragment extends Component {
 
     // If no fragment has been defined with `0` we need to add a position to
     // our host
-    if (host.length && host.indexOf(0) < 0) {
+    if (host.length > 0 && host.indexOf(0) < 0) {
       host.push(0)
     }
     // Sort the fragment indexes and update the store
@@ -137,28 +143,36 @@ export default class Fragment extends Component {
    *   The fragment including the entire logic
    */
   render() {
-    const {fragmentHost, hostedFragmentOrder = 0, store} = this.context
+    const {
+      store,
+      fragmentHost,
+      fragmentOrder,
+      isPreview,
+      hostedFragmentOrder = 0
+    } = this.context
     // To ensure the correct loading we need to manually attempt to
     // find the correct order. This only happens on slides that have not
     // initially been loaded.
-    // @todo the initial Load should handle this correctly.
     const {length: fragmentHostCount = 0} = store.fragmentHosts[fragmentHost]
     const lastFragment = Math.max(0, fragmentHostCount - 1)
     const {
-      fragmentOrder: storedFragmentOrder = store.fragmentHosts[fragmentHost][
-        Math.min(store.fragmentIndex, lastFragment)
-      ]
+      fragmentOrder: storedFragmentOrder = store.fragmentHosts[fragmentHost]
+        .length === 0
+        ? 0
+        : store.fragmentHosts[fragmentHost][
+            Math.min(store.fragmentIndex, lastFragment)
+          ]
     } = store
 
     // Define several flags to determine the acitve state
     // of the fragment.
     const isPrev = fragmentHost < store.slideIndex
     const isNext = fragmentHost > store.slideIndex
-    const fragmentOrder = this.props.order + hostedFragmentOrder
-    const isZero = fragmentOrder === 0
+    const totalFragmentOrder = this.props.order + hostedFragmentOrder
+    const isZero = totalFragmentOrder === 0
     const isActivated =
-      (store.fragmentOrder || storedFragmentOrder) >= fragmentOrder
-    const isActive = isPrev || (isNext ? isZero : isActivated)
+      (fragmentOrder || storedFragmentOrder) >= totalFragmentOrder
+    const isActive = isPreview || isPrev || (isNext ? isZero : isActivated)
     const springStyle = {
       time: spring(isActive ? 0 : 1, {
         ...this.props.springSettings
@@ -168,12 +182,13 @@ export default class Fragment extends Component {
       <Motion style={springStyle}>
         {({time}) => {
           const style = {
-            '--time': time
+            '--time': isActive ? time : 1
           }
           return (
             <StyledFragment
               style={style}
-              active={isActive}
+              isActive={isActive}
+              displayAs={this.props.displayAs}
               animation={this.props.animation}>
               {this.props.children}
             </StyledFragment>

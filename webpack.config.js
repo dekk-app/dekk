@@ -29,7 +29,7 @@ module.exports = {
     contentBase: DOCS,
     compress: false,
     historyApiFallback: true,
-    hot: false
+    hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -41,7 +41,7 @@ module.exports = {
         collapseWhitespace: true,
         html5: true,
         minifyCSS: true,
-        quoteCharacter: "\"",
+        quoteCharacter: '"',
         removeComments: true,
         removeRedundantAttributes: true,
         removeScriptTypeAttributes: true,
@@ -49,7 +49,6 @@ module.exports = {
         sortClassName: true,
         sortAttributes: true,
         useShortDoctype: true
-
       }
     }),
     new HtmlWebpackHarddiskPlugin({

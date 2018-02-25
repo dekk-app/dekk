@@ -7,7 +7,7 @@ import styled from 'styled-components'
  */
 const Quote = props => (
   <Figure>
-    <BlockQuote className={quote} cite={props.cite}>
+    <BlockQuote className={props.className} cite={props.cite}>
       {props.children}
     </BlockQuote>
     <figcaption>{props.author}</figcaption>
@@ -32,10 +32,19 @@ const Figure = styled.figure`
  * @private
  */
 Quote.propTypes = {
+  author: PropTypes.string,
   cite: PropTypes.string,
-  author: PropTypes.node,
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
+}
+
+/**
+ * @private
+ */
+Quote.defaultProps = {
+  author: '',
+  cite: '',
+  className: ''
 }
 
 /**

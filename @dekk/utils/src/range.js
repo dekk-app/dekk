@@ -1,4 +1,6 @@
 /**
  * @private
  */
-export const range = (n, max, min = 0) => n >= min && n <= max
+export default function range(n, max, min = 0) {
+  return n >= min && n <= max
+}

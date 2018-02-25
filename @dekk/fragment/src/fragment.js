@@ -1,4 +1,3 @@
-import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -15,11 +14,11 @@ import styled from 'styled-components'
  */
 const StyledFragment = styled.span`
   --direction: 1;
-  display: ${({display}) => display || 'inline-block'};
+  display: ${({displayAs}) => displayAs || 'inline-block'};
   ${props =>
     props.animation ||
     `
-      visibility: ${props.active ? 'visible' : 'hidden'}
+      visibility: ${props.isActive ? 'visible' : 'hidden'}
   `};
 `
 
