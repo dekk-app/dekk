@@ -13,8 +13,8 @@ import Img from './img'
  */
 const Mask = styled.div`
   ${props => props.mixin || ''} background-size: cover;
-  width: var(--width);
-  height: var(--height);
+  width: var(--image-width, var(--width));
+  height: var(--image-height, var(--height));
 `
 
 /**
@@ -24,7 +24,7 @@ const Mask = styled.div`
  */
 Mask.propTypes = {
   mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-  children: PropTypes.instanceOf(Img)
+  children: PropTypes.element
 }
 
 export default Mask
