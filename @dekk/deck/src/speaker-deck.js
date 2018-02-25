@@ -78,12 +78,10 @@ const nOf = (n, {length}) =>
 
 /**
  * A wrapper around the slides.
- * `<Deck/>` renders 3 slides (previous, current, next) to allow various
- * transitions.
+ * `<SpeakerDeck/>` displays the slides in various layouts
  *
- * The internal store is handled by mobX. {@link https://github.com/mobxjs/}
  *
- * @class Deck
+ * @class DeSpeakerDeckck
  * @param {Object} props
  *   The properties
  * @param {(Slide|Slide[])} props.children
