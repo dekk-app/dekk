@@ -4,7 +4,7 @@
   "includes": ["\\.js$"],
   "package": "./package.json",
   "index": "./README.md",
-  "excludes": ["lib", "node_modules", "test", "webpack.*.*js$"],
+  "excludes": ["lib", "node_modules", "test", "webpack.*.*js$", ".prettierrc.js"],
   "plugins": [
     {
       "name": "esdoc-ecmascript-proposal-plugin",
