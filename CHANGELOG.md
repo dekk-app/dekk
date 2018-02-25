@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-6"></a>
+# [1.0.0-6](https://github.com/sinnerschrader/dekk/compare/v1.0.0-5...v1.0.0-6) (2018-02-25)
+
+
+### Bug Fixes
+
+* **animations:** fix animation directions/resolution ([6fa40ae](https://github.com/sinnerschrader/dekk/commit/6fa40ae))
+* **fragment:** handle loading correctly (deep roots) ([ab1cfc5](https://github.com/sinnerschrader/dekk/commit/ab1cfc5))
+* **fragments:** fragments were not loading correctly ([207bcc0](https://github.com/sinnerschrader/dekk/commit/207bcc0))
+
+
+### Features
+
+* **animation:** added common animations ([4360b04](https://github.com/sinnerschrader/dekk/commit/4360b04))
+
+
+
+
 <a name="1.0.0-5"></a>
 # [1.0.0-5](https://github.com/sinnerschrader/dekk/compare/v1.0.0-4...v1.0.0-5) (2018-02-22)
 
