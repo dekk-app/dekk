@@ -48,4 +48,5 @@ export const Notes = styled.div`
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
   border-radius: 3px;
   overflow: hidden;
+  font-size: 2rem;
 `
