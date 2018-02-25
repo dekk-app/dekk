@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@dekk/animation": "^1.0.0-5",
+    "@dekk/speaker-notes": "^1.0.0-5",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-motion": "^0.5.2",

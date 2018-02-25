@@ -1,3 +1,4 @@
+/* global window */
 import React, {Component, cloneElement} from 'react'
 import PropTypes from 'prop-types'
 import {css} from 'styled-components'
@@ -59,6 +60,7 @@ const {layout = 0, theme = 'light', playing: isPlaying} = search.parse(
 @observer
 export default class SpeakerDeck extends Deck {
   state = {layout, theme, isPlaying}
+
   constructor(props, context) {
     super(props, context)
     this.switchLayout = this.switchLayout.bind(this)
@@ -86,11 +88,11 @@ export default class SpeakerDeck extends Deck {
     ] = filteredSlides
 
     const currentView = cloneElement(currentSlide, {
+      fragmentOrder,
+      slideIndex,
       direction: 0,
       present: true,
       isCurrent: true,
-      fragmentOrder: fragmentOrder,
-      slideIndex: slideIndex,
       key: 'currentView'
     })
 
@@ -120,7 +122,7 @@ export default class SpeakerDeck extends Deck {
       }
     )
 
-    // only return 3 slides
+    // Only return 3 slides
     return [currentView, nextView, realNextView]
   }
 

@@ -8,6 +8,7 @@ import Slide from '@dekk/slide'
 import {search} from '@dekk/url'
 import Wrapper from './wrapper'
 import SlidesWrapper from './slides-wrapper'
+
 export {default as Plugins} from './plugins'
 export {default as Elements} from './elements'
 export {default as SpeakerDeck} from './speaker-deck'

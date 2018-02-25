@@ -30,7 +30,7 @@ export const Preview = styled.div`
 `
 
 export const Nextview = styled.div`
-  ${({layout}) => (layout !== 0 ? 'display: none' : '')};
+  ${({layout}) => (layout === 0 ? '' : 'display: none')};
   --scale: var(--nextview-scale);
   position: relative;
   height: 100%;

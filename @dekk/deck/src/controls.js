@@ -90,7 +90,7 @@ const StyledPlayButton = styled.button`
 `
 
 export const PlayButton = props => {
-  const icon = props.isPlaying ? image['timer-off'] : image['timer']
+  const icon = props.isPlaying ? image['timer-off'] : image.timer
   return (
     <StyledPlayButton {...props}>
       <Icon icon={icon} />

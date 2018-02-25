@@ -1,3 +1,4 @@
+/* global window */
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
@@ -11,10 +12,7 @@ const dateHelpers = {
 }
 
 export const renderCountdown = (
-  days,
-  hours,
-  minutes,
-  seconds,
+  {days, hours, minutes, seconds},
   done,
   timerWarning
 ) => {
@@ -46,12 +44,15 @@ export default class Countdown extends Component {
     this.run = this.run.bind(this)
     this.stop = this.stop.bind(this)
   }
+
   get now() {
     return new Date()
   }
+
   get then() {
     return this.state.start + this.state.waited + this.props.end * dateHelpers.m
   }
+
   run(force = false) {
     const now = this.now
     const then = this.then
@@ -69,13 +70,14 @@ export default class Countdown extends Component {
         minutes,
         seconds
       })
-      requestAnimationFrame(this.run)
+      window.requestAnimationFrame(this.run)
     } else {
       this.stop()
     }
   }
+
   stop() {
-    cancelAnimationFrame(this.run)
+    window.cancelAnimationFrame(this.run)
   }
 
   componentWillMount() {
@@ -88,6 +90,7 @@ export default class Countdown extends Component {
       minutes: Math.abs(~~(then / dateHelpers.m) % 60),
       seconds: Math.abs(~~(then / dateHelpers.s) % 60)
     })
+
     if (this.props.isRunning) {
       this.run()
     } else {
@@ -114,13 +117,16 @@ export default class Countdown extends Component {
   componentWillUnmount() {
     this.stop()
   }
+
   render() {
     const {days, hours, minutes, seconds, done} = this.state
     return this.props.render(
-      days,
-      hours,
-      minutes,
-      seconds,
+      {
+        days,
+        hours,
+        minutes,
+        seconds
+      },
       done,
       this.props.timerWarning
     )

@@ -9,7 +9,7 @@ import layouts from './layouts'
  * static elements via the `Elements` component.
  * @private
  */
-export const SpeakerWrapper = styled.div`
+const SpeakerWrapper = styled.div`
   flex: 1 0 100%;
   height: 100%;
   width: 100%;

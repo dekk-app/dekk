@@ -136,11 +136,11 @@ class Slide extends Component {
   }
 
   /**
-   * get notes from Items
+   * Get notes from Items
    * @private
    */
   getNotes(items) {
-    return Children.toArray(items).filter(child => child.type == Notes)
+    return Children.toArray(items).filter(child => child.type === Notes)
   }
 
   setNotes(notes, slideIndex) {
@@ -235,7 +235,8 @@ const SlideDirection = styled.div`
 const switchAnimation = props => {
   if (props.direction === 1 && props.animationIn) {
     return props.animationIn
-  } else if (props.direction === -1 && props.animationOut) {
+  }
+  if (props.direction === -1 && props.animationOut) {
     return props.animationOut
   }
   return props.animation || slide.normal
