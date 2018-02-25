@@ -1,1 +1,1 @@
-module.exports = require('@dekk/config-prettier')
+module.exports = require('../../config/prettier')
