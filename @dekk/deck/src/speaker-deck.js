@@ -4,8 +4,9 @@ import {css} from 'styled-components'
 import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
 import Slide from '@dekk/slide'
+import {Title} from '@dekk/text'
 import {search} from '@dekk/url'
-import Countdown, {renderCountdown} from '@dekk/countdown'
+import Timer, {renderCountdown} from '@dekk/countdown'
 
 import Wrapper from './wrapper'
 import SpeakerWrapper from './speaker-wrapper'
@@ -17,7 +18,9 @@ import Controls, {
   ControlB,
   LayoutToggle,
   ThemeToggle,
-  PlayButton
+  PlayButton,
+  Countdown,
+  Label
 } from './controls'
 
 import View, {Preload, Nextview, Preview} from './views'
@@ -35,6 +38,12 @@ const emptyStyle = css`
   justify-content: center;
 `
 
+const endOfPresentation = (
+  <Slide mixin={emptyStyle}>
+    <Title>End of presentation</Title>
+  </Slide>
+)
+
 const presenterStyles = css`
   background: ${({theme}) => (theme === 'dark' ? '#111' : '#eee')};
   color: ${({theme}) => (theme === 'dark' ? '#fff' : '#000')};
@@ -43,7 +52,9 @@ const presenterStyles = css`
 const nOf = (n, {length}) =>
   `${n + (length > 0 ? 1 : 0)} / ${Math.max(0, length)}`
 
-const {layout, theme, playing: isPlaying} = search.parse(window.location.href)
+const {layout = 0, theme = 'light', playing: isPlaying} = search.parse(
+  window.location.href
+)
 
 @observer
 export default class SpeakerDeck extends Deck {
@@ -70,8 +81,8 @@ export default class SpeakerDeck extends Deck {
 
     const [
       currentSlide,
-      nextSlide = <Slide mixin={emptyStyle}>End of presentation</Slide>,
-      realNextSlide = <Slide mixin={emptyStyle} />
+      nextSlide = endOfPresentation,
+      realNextSlide = endOfPresentation
     ] = filteredSlides
 
     const currentView = cloneElement(currentSlide, {
@@ -147,6 +158,7 @@ export default class SpeakerDeck extends Deck {
         key="ThemeToggle"
         onClick={this.switchTheme.bind(this)}
         theme={this.state.theme}
+        isDark={this.state.theme === 'dark'}
       />
     )
   }
@@ -177,7 +189,7 @@ export default class SpeakerDeck extends Deck {
       ${this.props.mixin};
       ${presenterStyles};
     `
-    const pageNof = nOf(this.store.slideIndex, this.slides)
+    const slideNof = nOf(this.store.slideIndex, this.slides)
     const fragmentNof = nOf(
       this.store.fragmentIndex,
       this.store.fragmentHosts[this.store.slideIndex]
@@ -185,6 +197,7 @@ export default class SpeakerDeck extends Deck {
     const countdown = {
       isRunning: this.state.isPlaying,
       end: this.props.timer,
+      timerWarning: this.props.timerWarning || 0,
       render: renderCountdown
     }
     return (
@@ -195,11 +208,20 @@ export default class SpeakerDeck extends Deck {
         <SpeakerWrapper layout={this.state.layout}>
           <Controls layout={this.state.layout}>
             {this.toggles}
-            <PageNumber>{pageNof}</PageNumber>
-            <FragmentNumber>{fragmentNof}</FragmentNumber>
+            <PageNumber theme={this.state.theme}>
+              <Label>Slide</Label>
+              {slideNof}
+            </PageNumber>
+            <FragmentNumber theme={this.state.theme}>
+              <Label>Fragment</Label>
+              {fragmentNof}
+            </FragmentNumber>
             <ControlA />
             <ControlB>
-              <Countdown {...countdown} />
+              <Label>Time remaining</Label>
+              <Countdown>
+                <Timer {...countdown} />
+              </Countdown>
             </ControlB>
           </Controls>
           <View>{view}</View>

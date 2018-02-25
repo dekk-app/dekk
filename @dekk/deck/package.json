@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@dekk/countdown": "^1.0.0-5",
+    "@dekk/icon": "^1.0.0-5",
     "@dekk/slide": "^1.0.0-5",
     "@dekk/store": "^1.0.0-5",
     "@dekk/utils": "^1.0.0-5",

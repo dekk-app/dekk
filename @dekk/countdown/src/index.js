@@ -10,11 +10,24 @@ const dateHelpers = {
   d: 86400000
 }
 
-export const renderCountdown = (days, hours, minutes, seconds, done) => (
-  <div>
-    {leadingZero(hours)}:{leadingZero(minutes)}:{leadingZero(seconds)}
-  </div>
-)
+export const renderCountdown = (
+  days,
+  hours,
+  minutes,
+  seconds,
+  done,
+  timerWarning
+) => {
+  const props = {}
+  if (!days && !hours && minutes * 60 + seconds < timerWarning) {
+    props['data-warning'] = ''
+  }
+  return (
+    <div {...props}>
+      {leadingZero(hours)}:{leadingZero(minutes)}:{leadingZero(seconds)}
+    </div>
+  )
+}
 
 export default class Countdown extends Component {
   constructor(props) {
@@ -103,6 +116,13 @@ export default class Countdown extends Component {
   }
   render() {
     const {days, hours, minutes, seconds, done} = this.state
-    return this.props.render(days, hours, minutes, seconds, done)
+    return this.props.render(
+      days,
+      hours,
+      minutes,
+      seconds,
+      done,
+      this.props.timerWarning
+    )
   }
 }
