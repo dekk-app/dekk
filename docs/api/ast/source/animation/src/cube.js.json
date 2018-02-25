@@ -1,0 +1,2320 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 1448,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 47,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 1448,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 47,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "ImportDeclaration",
+        "start": 0,
+        "end": 37,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 37
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportSpecifier",
+            "start": 8,
+            "end": 11,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 8
+              },
+              "end": {
+                "line": 1,
+                "column": 11
+              }
+            },
+            "imported": {
+              "type": "Identifier",
+              "start": 8,
+              "end": 11,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 8
+                },
+                "end": {
+                  "line": 1,
+                  "column": 11
+                },
+                "identifierName": "css"
+              },
+              "name": "css"
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 8,
+              "end": 11,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 8
+                },
+                "end": {
+                  "line": 1,
+                  "column": 11
+                },
+                "identifierName": "css"
+              },
+              "name": "css"
+            }
+          }
+        ],
+        "source": {
+          "type": "StringLiteral",
+          "start": 18,
+          "end": 37,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 18
+            },
+            "end": {
+              "line": 1,
+              "column": 37
+            }
+          },
+          "extra": {
+            "rawValue": "styled-components",
+            "raw": "'styled-components'"
+          },
+          "value": "styled-components",
+          "leadingComments": null,
+          "trailingComments": null
+        },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * A sliding fade transition.\n * These transitions are intended to be used for slides.\n * They are based on viewport-units and therefore only look good on\n * full viewport coverage.\n *\n * @public\n * @property {Array} slideX\n *   Cube rotation on the x axis\n * @property {Array} slideY\n *   Cube rotation on the y axis\n * @property {Array} slideInvertX\n *   Inverted cube rotation on the x axis\n * @property {Array} slideInvertY\n *   Inverted cube rotation on the y axis\n ",
+            "start": 39,
+            "end": 516,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 18,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Identifier",
+        "start": 517,
+        "end": 1426,
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 0
+          },
+          "end": {
+            "line": 44,
+            "column": 1
+          }
+        },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 523,
+            "end": 1426,
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 6
+              },
+              "end": {
+                "line": 44,
+                "column": 1
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 523,
+              "end": 527,
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 6
+                },
+                "end": {
+                  "line": 19,
+                  "column": 10
+                },
+                "identifierName": "cube"
+              },
+              "name": "cube",
+              "leadingComments": null
+            },
+            "init": {
+              "type": "ObjectExpression",
+              "start": 530,
+              "end": 1426,
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 13
+                },
+                "end": {
+                  "line": 44,
+                  "column": 1
+                }
+              },
+              "properties": [
+                {
+                  "type": "ObjectProperty",
+                  "start": 534,
+                  "end": 750,
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 3
+                    }
+                  },
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "key": {
+                    "type": "Identifier",
+                    "start": 534,
+                    "end": 540,
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 8
+                      },
+                      "identifierName": "slideX"
+                    },
+                    "name": "slideX"
+                  },
+                  "value": {
+                    "type": "TaggedTemplateExpression",
+                    "start": 542,
+                    "end": 750,
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 3
+                      }
+                    },
+                    "tag": {
+                      "type": "Identifier",
+                      "start": 542,
+                      "end": 545,
+                      "loc": {
+                        "start": {
+                          "line": 20,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 20,
+                          "column": 13
+                        },
+                        "identifierName": "css"
+                      },
+                      "name": "css"
+                    },
+                    "quasi": {
+                      "type": "TemplateLiteral",
+                      "start": 545,
+                      "end": 750,
+                      "loc": {
+                        "start": {
+                          "line": 20,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 3
+                        }
+                      },
+                      "expressions": [],
+                      "quasis": [
+                        {
+                          "type": "TemplateElement",
+                          "start": 546,
+                          "end": 749,
+                          "loc": {
+                            "start": {
+                              "line": 20,
+                              "column": 14
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 2
+                            }
+                          },
+                          "value": {
+                            "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, -50vw)\n      rotate3d(0, 1, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vw);\n  ",
+                            "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, -50vw)\n      rotate3d(0, 1, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vw);\n  "
+                          },
+                          "tail": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "ObjectProperty",
+                  "start": 754,
+                  "end": 970,
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 3
+                    }
+                  },
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "key": {
+                    "type": "Identifier",
+                    "start": 754,
+                    "end": 760,
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 8
+                      },
+                      "identifierName": "slideY"
+                    },
+                    "name": "slideY"
+                  },
+                  "value": {
+                    "type": "TaggedTemplateExpression",
+                    "start": 762,
+                    "end": 970,
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 31,
+                        "column": 3
+                      }
+                    },
+                    "tag": {
+                      "type": "Identifier",
+                      "start": 762,
+                      "end": 765,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 13
+                        },
+                        "identifierName": "css"
+                      },
+                      "name": "css"
+                    },
+                    "quasi": {
+                      "type": "TemplateLiteral",
+                      "start": 765,
+                      "end": 970,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 31,
+                          "column": 3
+                        }
+                      },
+                      "expressions": [],
+                      "quasis": [
+                        {
+                          "type": "TemplateElement",
+                          "start": 766,
+                          "end": 969,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 14
+                            },
+                            "end": {
+                              "line": 31,
+                              "column": 2
+                            }
+                          },
+                          "value": {
+                            "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, -50vh)\n      rotate3d(1, 0, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vh);\n  ",
+                            "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, -50vh)\n      rotate3d(1, 0, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vh);\n  "
+                          },
+                          "tail": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "ObjectProperty",
+                  "start": 974,
+                  "end": 1197,
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 37,
+                      "column": 3
+                    }
+                  },
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "key": {
+                    "type": "Identifier",
+                    "start": 974,
+                    "end": 986,
+                    "loc": {
+                      "start": {
+                        "line": 32,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 32,
+                        "column": 14
+                      },
+                      "identifierName": "slideInvertX"
+                    },
+                    "name": "slideInvertX"
+                  },
+                  "value": {
+                    "type": "TaggedTemplateExpression",
+                    "start": 988,
+                    "end": 1197,
+                    "loc": {
+                      "start": {
+                        "line": 32,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 3
+                      }
+                    },
+                    "tag": {
+                      "type": "Identifier",
+                      "start": 988,
+                      "end": 991,
+                      "loc": {
+                        "start": {
+                          "line": 32,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 19
+                        },
+                        "identifierName": "css"
+                      },
+                      "name": "css"
+                    },
+                    "quasi": {
+                      "type": "TemplateLiteral",
+                      "start": 991,
+                      "end": 1197,
+                      "loc": {
+                        "start": {
+                          "line": 32,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 37,
+                          "column": 3
+                        }
+                      },
+                      "expressions": [],
+                      "quasis": [
+                        {
+                          "type": "TemplateElement",
+                          "start": 992,
+                          "end": 1196,
+                          "loc": {
+                            "start": {
+                              "line": 32,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 2
+                            }
+                          },
+                          "value": {
+                            "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, 50vw)\n      rotate3d(0, 1, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vw);\n  ",
+                            "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, 50vw)\n      rotate3d(0, 1, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vw);\n  "
+                          },
+                          "tail": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "ObjectProperty",
+                  "start": 1201,
+                  "end": 1424,
+                  "loc": {
+                    "start": {
+                      "line": 38,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 43,
+                      "column": 3
+                    }
+                  },
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "key": {
+                    "type": "Identifier",
+                    "start": 1201,
+                    "end": 1213,
+                    "loc": {
+                      "start": {
+                        "line": 38,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 38,
+                        "column": 14
+                      },
+                      "identifierName": "slideInvertY"
+                    },
+                    "name": "slideInvertY"
+                  },
+                  "value": {
+                    "type": "TaggedTemplateExpression",
+                    "start": 1215,
+                    "end": 1424,
+                    "loc": {
+                      "start": {
+                        "line": 38,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 43,
+                        "column": 3
+                      }
+                    },
+                    "tag": {
+                      "type": "Identifier",
+                      "start": 1215,
+                      "end": 1218,
+                      "loc": {
+                        "start": {
+                          "line": 38,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 38,
+                          "column": 19
+                        },
+                        "identifierName": "css"
+                      },
+                      "name": "css"
+                    },
+                    "quasi": {
+                      "type": "TemplateLiteral",
+                      "start": 1218,
+                      "end": 1424,
+                      "loc": {
+                        "start": {
+                          "line": 38,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 43,
+                          "column": 3
+                        }
+                      },
+                      "expressions": [],
+                      "quasis": [
+                        {
+                          "type": "TemplateElement",
+                          "start": 1219,
+                          "end": 1423,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 43,
+                              "column": 2
+                            }
+                          },
+                          "value": {
+                            "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, 50vh)\n      rotate3d(1, 0, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vh);\n  ",
+                            "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, 50vh)\n      rotate3d(1, 0, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vh);\n  "
+                          },
+                          "tail": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "leadingComments": null
+          }
+        ],
+        "kind": "const",
+        "leadingComments": [],
+        "name": "_",
+        "trailingComments": []
+      },
+      {
+        "type": "Identifier",
+        "start": 1428,
+        "end": 1447,
+        "loc": {
+          "start": {
+            "line": 46,
+            "column": 0
+          },
+          "end": {
+            "line": 46,
+            "column": 19
+          }
+        },
+        "declaration": {
+          "type": "Identifier",
+          "start": 1443,
+          "end": 1447,
+          "loc": {
+            "start": {
+              "line": 46,
+              "column": 15
+            },
+            "end": {
+              "line": 46,
+              "column": 19
+            },
+            "identifierName": "cube"
+          },
+          "name": "cube"
+        },
+        "name": "_",
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      {
+        "type": "ExportDefaultDeclaration",
+        "start": 1428,
+        "end": 1447,
+        "loc": {
+          "start": {
+            "line": 46,
+            "column": 0
+          },
+          "end": {
+            "line": 46,
+            "column": 19
+          }
+        },
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 517,
+          "end": 1426,
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 0
+            },
+            "end": {
+              "line": 44,
+              "column": 1
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 523,
+              "end": 1426,
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 6
+                },
+                "end": {
+                  "line": 44,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 523,
+                "end": 527,
+                "loc": {
+                  "start": {
+                    "line": 19,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 10
+                  },
+                  "identifierName": "cube"
+                },
+                "name": "cube",
+                "leadingComments": null
+              },
+              "init": {
+                "type": "ObjectExpression",
+                "start": 530,
+                "end": 1426,
+                "loc": {
+                  "start": {
+                    "line": 19,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 44,
+                    "column": 1
+                  }
+                },
+                "properties": [
+                  {
+                    "type": "ObjectProperty",
+                    "start": 534,
+                    "end": 750,
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 3
+                      }
+                    },
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 534,
+                      "end": 540,
+                      "loc": {
+                        "start": {
+                          "line": 20,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 20,
+                          "column": 8
+                        },
+                        "identifierName": "slideX"
+                      },
+                      "name": "slideX"
+                    },
+                    "value": {
+                      "type": "TaggedTemplateExpression",
+                      "start": 542,
+                      "end": 750,
+                      "loc": {
+                        "start": {
+                          "line": 20,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 3
+                        }
+                      },
+                      "tag": {
+                        "type": "Identifier",
+                        "start": 542,
+                        "end": 545,
+                        "loc": {
+                          "start": {
+                            "line": 20,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 20,
+                            "column": 13
+                          },
+                          "identifierName": "css"
+                        },
+                        "name": "css"
+                      },
+                      "quasi": {
+                        "type": "TemplateLiteral",
+                        "start": 545,
+                        "end": 750,
+                        "loc": {
+                          "start": {
+                            "line": 20,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 3
+                          }
+                        },
+                        "expressions": [],
+                        "quasis": [
+                          {
+                            "type": "TemplateElement",
+                            "start": 546,
+                            "end": 749,
+                            "loc": {
+                              "start": {
+                                "line": 20,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 2
+                              }
+                            },
+                            "value": {
+                              "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, -50vw)\n      rotate3d(0, 1, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vw);\n  ",
+                              "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, -50vw)\n      rotate3d(0, 1, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vw);\n  "
+                            },
+                            "tail": true
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "ObjectProperty",
+                    "start": 754,
+                    "end": 970,
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 31,
+                        "column": 3
+                      }
+                    },
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 754,
+                      "end": 760,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 8
+                        },
+                        "identifierName": "slideY"
+                      },
+                      "name": "slideY"
+                    },
+                    "value": {
+                      "type": "TaggedTemplateExpression",
+                      "start": 762,
+                      "end": 970,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 31,
+                          "column": 3
+                        }
+                      },
+                      "tag": {
+                        "type": "Identifier",
+                        "start": 762,
+                        "end": 765,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 13
+                          },
+                          "identifierName": "css"
+                        },
+                        "name": "css"
+                      },
+                      "quasi": {
+                        "type": "TemplateLiteral",
+                        "start": 765,
+                        "end": 970,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 31,
+                            "column": 3
+                          }
+                        },
+                        "expressions": [],
+                        "quasis": [
+                          {
+                            "type": "TemplateElement",
+                            "start": 766,
+                            "end": 969,
+                            "loc": {
+                              "start": {
+                                "line": 26,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 31,
+                                "column": 2
+                              }
+                            },
+                            "value": {
+                              "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, -50vh)\n      rotate3d(1, 0, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vh);\n  ",
+                              "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, -50vh)\n      rotate3d(1, 0, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vh);\n  "
+                            },
+                            "tail": true
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "ObjectProperty",
+                    "start": 974,
+                    "end": 1197,
+                    "loc": {
+                      "start": {
+                        "line": 32,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 3
+                      }
+                    },
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 974,
+                      "end": 986,
+                      "loc": {
+                        "start": {
+                          "line": 32,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 14
+                        },
+                        "identifierName": "slideInvertX"
+                      },
+                      "name": "slideInvertX"
+                    },
+                    "value": {
+                      "type": "TaggedTemplateExpression",
+                      "start": 988,
+                      "end": 1197,
+                      "loc": {
+                        "start": {
+                          "line": 32,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 37,
+                          "column": 3
+                        }
+                      },
+                      "tag": {
+                        "type": "Identifier",
+                        "start": 988,
+                        "end": 991,
+                        "loc": {
+                          "start": {
+                            "line": 32,
+                            "column": 16
+                          },
+                          "end": {
+                            "line": 32,
+                            "column": 19
+                          },
+                          "identifierName": "css"
+                        },
+                        "name": "css"
+                      },
+                      "quasi": {
+                        "type": "TemplateLiteral",
+                        "start": 991,
+                        "end": 1197,
+                        "loc": {
+                          "start": {
+                            "line": 32,
+                            "column": 19
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 3
+                          }
+                        },
+                        "expressions": [],
+                        "quasis": [
+                          {
+                            "type": "TemplateElement",
+                            "start": 992,
+                            "end": 1196,
+                            "loc": {
+                              "start": {
+                                "line": 32,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 2
+                              }
+                            },
+                            "value": {
+                              "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, 50vw)\n      rotate3d(0, 1, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vw);\n  ",
+                              "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, 50vw)\n      rotate3d(0, 1, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vw);\n  "
+                            },
+                            "tail": true
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "ObjectProperty",
+                    "start": 1201,
+                    "end": 1424,
+                    "loc": {
+                      "start": {
+                        "line": 38,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 43,
+                        "column": 3
+                      }
+                    },
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 1201,
+                      "end": 1213,
+                      "loc": {
+                        "start": {
+                          "line": 38,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 38,
+                          "column": 14
+                        },
+                        "identifierName": "slideInvertY"
+                      },
+                      "name": "slideInvertY"
+                    },
+                    "value": {
+                      "type": "TaggedTemplateExpression",
+                      "start": 1215,
+                      "end": 1424,
+                      "loc": {
+                        "start": {
+                          "line": 38,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 43,
+                          "column": 3
+                        }
+                      },
+                      "tag": {
+                        "type": "Identifier",
+                        "start": 1215,
+                        "end": 1218,
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 16
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 19
+                          },
+                          "identifierName": "css"
+                        },
+                        "name": "css"
+                      },
+                      "quasi": {
+                        "type": "TemplateLiteral",
+                        "start": 1218,
+                        "end": 1424,
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 19
+                          },
+                          "end": {
+                            "line": 43,
+                            "column": 3
+                          }
+                        },
+                        "expressions": [],
+                        "quasis": [
+                          {
+                            "type": "TemplateElement",
+                            "start": 1219,
+                            "end": 1423,
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 43,
+                                "column": 2
+                              }
+                            },
+                            "value": {
+                              "raw": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, 50vh)\n      rotate3d(1, 0, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vh);\n  ",
+                              "cooked": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, 50vh)\n      rotate3d(1, 0, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vh);\n  "
+                            },
+                            "tail": true
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "leadingComments": null
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * A sliding fade transition.\n * These transitions are intended to be used for slides.\n * They are based on viewport-units and therefore only look good on\n * full viewport coverage.\n *\n * @public\n * @property {Array} slideX\n *   Cube rotation on the x axis\n * @property {Array} slideY\n *   Cube rotation on the y axis\n * @property {Array} slideInvertX\n *   Inverted cube rotation on the x axis\n * @property {Array} slideInvertY\n *   Inverted cube rotation on the y axis\n ",
+              "start": 39,
+              "end": 516,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 0
+                },
+                "end": {
+                  "line": 18,
+                  "column": 3
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        }
+      }
+    ],
+    "directives": []
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A sliding fade transition.\n * These transitions are intended to be used for slides.\n * They are based on viewport-units and therefore only look good on\n * full viewport coverage.\n *\n * @public\n * @property {Array} slideX\n *   Cube rotation on the x axis\n * @property {Array} slideY\n *   Cube rotation on the y axis\n * @property {Array} slideInvertX\n *   Inverted cube rotation on the x axis\n * @property {Array} slideInvertY\n *   Inverted cube rotation on the y axis\n ",
+      "start": 39,
+      "end": 516,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 0,
+      "end": 6,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 7,
+      "end": 8,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 7
+        },
+        "end": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "css",
+      "start": 8,
+      "end": 11,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 8
+        },
+        "end": {
+          "line": 1,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 11,
+      "end": 12,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 11
+        },
+        "end": {
+          "line": 1,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 13,
+      "end": 17,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 13
+        },
+        "end": {
+          "line": 1,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "styled-components",
+      "start": 18,
+      "end": 37,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 18
+        },
+        "end": {
+          "line": 1,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A sliding fade transition.\n * These transitions are intended to be used for slides.\n * They are based on viewport-units and therefore only look good on\n * full viewport coverage.\n *\n * @public\n * @property {Array} slideX\n *   Cube rotation on the x axis\n * @property {Array} slideY\n *   Cube rotation on the y axis\n * @property {Array} slideInvertX\n *   Inverted cube rotation on the x axis\n * @property {Array} slideInvertY\n *   Inverted cube rotation on the y axis\n ",
+      "start": 39,
+      "end": 516,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 517,
+      "end": 522,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "cube",
+      "start": 523,
+      "end": 527,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 6
+        },
+        "end": {
+          "line": 19,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 528,
+      "end": 529,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 11
+        },
+        "end": {
+          "line": 19,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 530,
+      "end": 531,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 13
+        },
+        "end": {
+          "line": 19,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "slideX",
+      "start": 534,
+      "end": 540,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 20,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 540,
+      "end": 541,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 8
+        },
+        "end": {
+          "line": 20,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "css",
+      "start": 542,
+      "end": 545,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 10
+        },
+        "end": {
+          "line": 20,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 545,
+      "end": 546,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 13
+        },
+        "end": {
+          "line": 20,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, -50vw)\n      rotate3d(0, 1, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vw);\n  ",
+      "start": 546,
+      "end": 749,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 14
+        },
+        "end": {
+          "line": 25,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 749,
+      "end": 750,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 2
+        },
+        "end": {
+          "line": 25,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 750,
+      "end": 751,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 3
+        },
+        "end": {
+          "line": 25,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "slideY",
+      "start": 754,
+      "end": 760,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 2
+        },
+        "end": {
+          "line": 26,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 760,
+      "end": 761,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 8
+        },
+        "end": {
+          "line": 26,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "css",
+      "start": 762,
+      "end": 765,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 10
+        },
+        "end": {
+          "line": 26,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 765,
+      "end": 766,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 13
+        },
+        "end": {
+          "line": 26,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, -50vh)\n      rotate3d(1, 0, 0, calc(90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, 50vh);\n  ",
+      "start": 766,
+      "end": 969,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 14
+        },
+        "end": {
+          "line": 31,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 969,
+      "end": 970,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 31,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 970,
+      "end": 971,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 3
+        },
+        "end": {
+          "line": 31,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "slideInvertX",
+      "start": 974,
+      "end": 986,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 32,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 986,
+      "end": 987,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 14
+        },
+        "end": {
+          "line": 32,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "css",
+      "start": 988,
+      "end": 991,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 16
+        },
+        "end": {
+          "line": 32,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 991,
+      "end": 992,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 19
+        },
+        "end": {
+          "line": 32,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n    backface-visibility: hidden;\n    transform: perspective(200vw) translate3d(0, 0, 50vw)\n      rotate3d(0, 1, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vw);\n  ",
+      "start": 992,
+      "end": 1196,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 20
+        },
+        "end": {
+          "line": 37,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1196,
+      "end": 1197,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 2
+        },
+        "end": {
+          "line": 37,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1197,
+      "end": 1198,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 3
+        },
+        "end": {
+          "line": 37,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "slideInvertY",
+      "start": 1201,
+      "end": 1213,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 2
+        },
+        "end": {
+          "line": 38,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1213,
+      "end": 1214,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 14
+        },
+        "end": {
+          "line": 38,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "css",
+      "start": 1215,
+      "end": 1218,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 16
+        },
+        "end": {
+          "line": 38,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1218,
+      "end": 1219,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 19
+        },
+        "end": {
+          "line": 38,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n    backface-visibility: hidden;\n    transform: perspective(200vh) translate3d(0, 0, 50vh)\n      rotate3d(1, 0, 0, calc(-90deg * var(--direction, -1) * var(--time, 1)))\n      translate3d(0, 0, -50vh);\n  ",
+      "start": 1219,
+      "end": 1423,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 20
+        },
+        "end": {
+          "line": 43,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1423,
+      "end": 1424,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 2
+        },
+        "end": {
+          "line": 43,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1425,
+      "end": 1426,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 0
+        },
+        "end": {
+          "line": 44,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 1428,
+      "end": 1434,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "default",
+        "keyword": "default",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "default",
+      "start": 1435,
+      "end": 1442,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 7
+        },
+        "end": {
+          "line": 46,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "cube",
+      "start": 1443,
+      "end": 1447,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 15
+        },
+        "end": {
+          "line": 46,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1448,
+      "end": 1448,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 0
+        },
+        "end": {
+          "line": 47,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

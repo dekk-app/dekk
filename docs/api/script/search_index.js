@@ -18,8 +18,14 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@dekk/countdown~countdown",
+    "class/@dekk/countdown/src/index.js~Countdown.html",
+    "<span>Countdown</span> <span class=\"search-result-import-path\">@dekk/countdown</span>",
+    "class"
+  ],
+  [
     "@dekk/deck~deck",
-    "class/@dekk/deck/src/index.js~Deck.html",
+    "class/@dekk/deck/src/deck.js~Deck.html",
     "<span>Deck</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
     "class"
   ],
@@ -42,6 +48,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@dekk/icon~icon",
+    "function/index.html#static-function-Icon",
+    "<span>Icon</span> <span class=\"search-result-import-path\">@dekk/icon</span>",
+    "function"
+  ],
+  [
     "@dekk/image~image",
     "class/@dekk/image/src/index.js~Image.html",
     "<span>Image</span> <span class=\"search-result-import-path\">@dekk/image</span>",
@@ -61,9 +73,9 @@ window.esdocSearchIndex = [
   ],
   [
     "@dekk/speaker-notes~notes",
-    "variable/index.html#static-variable-Notes",
+    "function/index.html#static-function-Notes",
     "<span>Notes</span> <span class=\"search-result-import-path\">@dekk/speaker-notes</span>",
-    "variable"
+    "function"
   ],
   [
     "@dekk/paging~paging",
@@ -94,6 +106,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-Slot",
     "<span>Slot</span> <span class=\"search-result-import-path\">@dekk/master</span>",
     "function"
+  ],
+  [
+    "@dekk/deck~speakerdeck",
+    "class/@dekk/deck/src/speaker-deck.js~SpeakerDeck.html",
+    "<span>SpeakerDeck</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "class"
   ],
   [
     "@dekk/master~static",
@@ -153,6 +171,24 @@ window.esdocSearchIndex = [
     "@dekk/animation~fadeslide",
     "variable/index.html#static-variable-fadeSlide",
     "<span>fadeSlide</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "variable"
+  ],
+  [
+    "@dekk/animation~flip",
+    "variable/index.html#static-variable-flip",
+    "<span>flip</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "variable"
+  ],
+  [
+    "@dekk/countdown~rendersimplecountdown",
+    "function/index.html#static-function-renderSimpleCountdown",
+    "<span>renderSimpleCountdown</span> <span class=\"search-result-import-path\">@dekk/countdown</span>",
+    "function"
+  ],
+  [
+    "@dekk/url~search",
+    "variable/index.html#static-variable-search",
+    "<span>search</span> <span class=\"search-result-import-path\">@dekk/url</span>",
     "variable"
   ],
   [
@@ -444,9 +480,81 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "@dekk/animation/src/cube.js",
+    "file/@dekk/animation/src/cube.js.html",
+    "@dekk/animation/src/cube.js",
+    "file"
+  ],
+  [
+    "@dekk/animation/src/fade-slide.js",
+    "file/@dekk/animation/src/fade-slide.js.html",
+    "@dekk/animation/src/fade-slide.js",
+    "file"
+  ],
+  [
+    "@dekk/animation/src/fade.js",
+    "file/@dekk/animation/src/fade.js.html",
+    "@dekk/animation/src/fade.js",
+    "file"
+  ],
+  [
+    "@dekk/animation/src/flip.js",
+    "file/@dekk/animation/src/flip.js.html",
+    "@dekk/animation/src/flip.js",
+    "file"
+  ],
+  [
     "@dekk/animation/src/index.js",
     "file/@dekk/animation/src/index.js.html",
     "@dekk/animation/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/animation/src/slide.js",
+    "file/@dekk/animation/src/slide.js.html",
+    "@dekk/animation/src/slide.js",
+    "file"
+  ],
+  [
+    "@dekk/countdown/src/date-helpers.js",
+    "file/@dekk/countdown/src/date-helpers.js.html",
+    "@dekk/countdown/src/date-helpers.js",
+    "file"
+  ],
+  [
+    "@dekk/countdown/src/index.js",
+    "file/@dekk/countdown/src/index.js.html",
+    "@dekk/countdown/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/countdown/src/index.js~countdown#constructor",
+    "class/@dekk/countdown/src/index.js~Countdown.html#instance-constructor-constructor",
+    "@dekk/countdown/src/index.js~Countdown#constructor",
+    "method"
+  ],
+  [
+    "@dekk/countdown/src/index.js~rendercountdown",
+    "typedef/index.html#static-typedef-renderCountdown",
+    "@dekk/countdown/src/index.js~renderCountdown",
+    "typedef"
+  ],
+  [
+    "@dekk/countdown/src/render-countdown.js",
+    "file/@dekk/countdown/src/render-countdown.js.html",
+    "@dekk/countdown/src/render-countdown.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/controls.js",
+    "file/@dekk/deck/src/controls.js.html",
+    "@dekk/deck/src/controls.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/deck.js",
+    "file/@dekk/deck/src/deck.js.html",
+    "@dekk/deck/src/deck.js",
     "file"
   ],
   [
@@ -462,10 +570,16 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "@dekk/deck/src/index.js~deck#constructor",
-    "class/@dekk/deck/src/index.js~Deck.html#instance-constructor-constructor",
-    "@dekk/deck/src/index.js~Deck#constructor",
-    "method"
+    "@dekk/deck/src/layouts.js",
+    "file/@dekk/deck/src/layouts.js.html",
+    "@dekk/deck/src/layouts.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/notes.js",
+    "file/@dekk/deck/src/notes.js.html",
+    "@dekk/deck/src/notes.js",
+    "file"
   ],
   [
     "@dekk/deck/src/plugins.js",
@@ -477,6 +591,30 @@ window.esdocSearchIndex = [
     "@dekk/deck/src/slides-wrapper.js",
     "file/@dekk/deck/src/slides-wrapper.js.html",
     "@dekk/deck/src/slides-wrapper.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/speaker-deck.js",
+    "file/@dekk/deck/src/speaker-deck.js.html",
+    "@dekk/deck/src/speaker-deck.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/speaker-deck.js~speakerdeck#constructor",
+    "class/@dekk/deck/src/speaker-deck.js~SpeakerDeck.html#instance-constructor-constructor",
+    "@dekk/deck/src/speaker-deck.js~SpeakerDeck#constructor",
+    "method"
+  ],
+  [
+    "@dekk/deck/src/speaker-wrapper.js",
+    "file/@dekk/deck/src/speaker-wrapper.js.html",
+    "@dekk/deck/src/speaker-wrapper.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/src/views.js",
+    "file/@dekk/deck/src/views.js.html",
+    "@dekk/deck/src/views.js",
     "file"
   ],
   [
@@ -498,10 +636,106 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "@dekk/fragment/src/index.js~fragment#constructor",
-    "class/@dekk/fragment/src/index.js~Fragment.html#instance-constructor-constructor",
-    "@dekk/fragment/src/index.js~Fragment#constructor",
-    "method"
+    "@dekk/icon/src/action.js",
+    "file/@dekk/icon/src/action.js.html",
+    "@dekk/icon/src/action.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/alert.js",
+    "file/@dekk/icon/src/alert.js.html",
+    "@dekk/icon/src/alert.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/av.js",
+    "file/@dekk/icon/src/av.js.html",
+    "@dekk/icon/src/av.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/communication.js",
+    "file/@dekk/icon/src/communication.js.html",
+    "@dekk/icon/src/communication.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/content.js",
+    "file/@dekk/icon/src/content.js.html",
+    "@dekk/icon/src/content.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/device.js",
+    "file/@dekk/icon/src/device.js.html",
+    "@dekk/icon/src/device.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/editor.js",
+    "file/@dekk/icon/src/editor.js.html",
+    "@dekk/icon/src/editor.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/file.js",
+    "file/@dekk/icon/src/file.js.html",
+    "@dekk/icon/src/file.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/hardware.js",
+    "file/@dekk/icon/src/hardware.js.html",
+    "@dekk/icon/src/hardware.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/icons.js",
+    "file/@dekk/icon/src/icons.js.html",
+    "@dekk/icon/src/icons.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/image.js",
+    "file/@dekk/icon/src/image.js.html",
+    "@dekk/icon/src/image.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/index.js",
+    "file/@dekk/icon/src/index.js.html",
+    "@dekk/icon/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/maps.js",
+    "file/@dekk/icon/src/maps.js.html",
+    "@dekk/icon/src/maps.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/navigation.js",
+    "file/@dekk/icon/src/navigation.js.html",
+    "@dekk/icon/src/navigation.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/notification.js",
+    "file/@dekk/icon/src/notification.js.html",
+    "@dekk/icon/src/notification.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/social.js",
+    "file/@dekk/icon/src/social.js.html",
+    "@dekk/icon/src/social.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/src/toggle.js",
+    "file/@dekk/icon/src/toggle.js.html",
+    "@dekk/icon/src/toggle.js",
+    "file"
   ],
   [
     "@dekk/image/src/img.js",
@@ -532,12 +766,6 @@ window.esdocSearchIndex = [
     "file/@dekk/listener/src/index.js.html",
     "@dekk/listener/src/index.js",
     "file"
-  ],
-  [
-    "@dekk/listener/src/index.js~listener#constructor",
-    "class/@dekk/listener/src/index.js~Listener.html#instance-constructor-constructor",
-    "@dekk/listener/src/index.js~Listener#constructor",
-    "method"
   ],
   [
     "@dekk/listener/src/index.js~listeneronfragment",
@@ -670,12 +898,6 @@ window.esdocSearchIndex = [
     "file/@dekk/url/src/index.js.html",
     "@dekk/url/src/index.js",
     "file"
-  ],
-  [
-    "@dekk/url/src/index.js~url#constructor",
-    "class/@dekk/url/src/index.js~Url.html#instance-constructor-constructor",
-    "@dekk/url/src/index.js~Url#constructor",
-    "method"
   ],
   [
     "@dekk/utils/src/index.js",
