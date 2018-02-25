@@ -9,32 +9,25 @@ import Plugins from './plugins'
 import Elements from './elements'
 
 /**
- * A wrapper around the slides. It includes a paging component to allow
- * navigating the slides and fragments.
- *
+ * A wrapper around the slides.
  * `<Deck/>` renders 3 slides (previous, current, next) to allow various
  * transitions.
  *
  * The internal store is handled by mobX. {@link https://github.com/mobxjs/}
  *
  * @class Deck
- * @reactProps {Object} props
+ * @param {Object} props
  *   The properties
- * @reactProps {(Slide|Slide[])} props.children
- * @reactProps {?String} props.mixin
- * @reactProps {?Boolean} props.slave
+ * @param {(Slide|Slide[])} props.children
+ * @param {?String} props.mixin
  *
  * @example
  * import React from 'react'
  * import Deck from '@dekk/deck'
  * import Slide from '@dekk/slide'
  *
- * const appStyles = `
- *  background: #000;
- *  color: #fff;
- * `
- * const App = ({slave}) => (
- *   <Dekk mixin={appStyles}>
+ * const App = () => (
+ *   <Dekk>
  *     <Slide>1</Slide>
  *     <Slide>2</Slide>
  *     <Slide>3</Slide>
@@ -62,6 +55,9 @@ export default class Deck extends Component {
     }
   }
 
+  /**
+   * @private
+   */
   static get defaultProps() {
     return {
       mixin: ''
@@ -243,7 +239,7 @@ export default class Deck extends Component {
   /**
    * @private
    * @return {Wrapper}
-   *   The entire Deck including paging logic inside a Wrapper
+   *   The entire Deck inside a Wrapper
    */
   render() {
     return (

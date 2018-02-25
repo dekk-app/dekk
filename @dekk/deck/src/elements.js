@@ -22,7 +22,7 @@ import PropTypes from 'prop-types'
  *   </Deck>
  * )
  */
-const Elements = () => null
+const Elements = props => props.children
 
 /**
  * @private

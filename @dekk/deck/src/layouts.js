@@ -1,5 +1,9 @@
 import {css} from 'styled-components'
 
+/**
+ * A collection of layouts for the speaker-deck
+ * @private
+ */
 const layouts = [
   css`
     --view-scale: calc(1 / 6 * 4);

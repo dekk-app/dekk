@@ -19,6 +19,13 @@ const RawCode = props => {
 }
 
 /**
+ * @public
+ */
+const Code = styled(RawCode)`
+  font-size: var(--code-font-size, 1em);
+`
+
+/**
  * @private
  */
 RawCode.propTypes = {
@@ -36,13 +43,6 @@ RawCode.defaultProps = {
   language: '',
   className: ''
 }
-
-/**
- * @bublic
- */
-const Code = styled(RawCode)`
-  font-size: var(--code-font-size, 1em);
-`
 
 /**
  * @private

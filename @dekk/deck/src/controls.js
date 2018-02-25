@@ -4,6 +4,9 @@ import styled, {css} from 'styled-components'
 import Icon from '@dekk/icon'
 import image from '@dekk/icon/lib/image'
 
+/**
+ * @private
+ */
 const Controls = styled.div`
   position: relative;
   height: 100%;
@@ -21,6 +24,9 @@ const Controls = styled.div`
 `
 export default Controls
 
+/**
+ * @private
+ */
 const toggleStyle = css`
   background: ${({theme}) => (theme === 'dark' ? '#222' : '#ddd')};
   color: ${({theme}) => (theme === 'dark' ? '#ddd' : '#222')};
@@ -53,61 +59,42 @@ const toggleStyle = css`
   }
 `
 
+/**
+ * @private
+ */
 const StyledLayoutToggle = styled.button`
   grid-area: LayoutToggle;
   ${toggleStyle};
 `
 
+/**
+ * @private
+ */
 export const LayoutToggle = props => (
   <StyledLayoutToggle {...props}>
     <Icon icon={image['view-compact']} />
   </StyledLayoutToggle>
 )
 
+/**
+ * @private
+ */
 const StyledThemeToggle = styled.button`
   grid-area: ThemeToggle;
   ${toggleStyle};
 `
 
-export const ThemeToggle = props => {
-  const icon = props.isDark ? image['wb-sunny'] : image['brightness-2']
-  return (
-    <StyledThemeToggle {...props}>
-      <Icon icon={icon} />
-    </StyledThemeToggle>
-  )
-}
-
-ThemeToggle.propTypes = {
-  isDark: PropTypes.bool
-}
-
-ThemeToggle.defaultProps = {
-  isDark: false
-}
-
+/**
+ * @private
+ */
 const StyledPlayButton = styled.button`
   grid-area: PlayButton;
   ${toggleStyle};
 `
 
-export const PlayButton = props => {
-  const icon = props.isPlaying ? image['timer-off'] : image.timer
-  return (
-    <StyledPlayButton {...props}>
-      <Icon icon={icon} />
-    </StyledPlayButton>
-  )
-}
-
-PlayButton.propTypes = {
-  isPlaying: PropTypes.bool
-}
-
-PlayButton.defaultProps = {
-  isPlaying: false
-}
-
+/**
+ * @private
+ */
 export const ControlA = styled.div`
   grid-area: ControlA;
   position: relative;
@@ -117,6 +104,9 @@ export const ControlA = styled.div`
   box-sizing: border-box;
 `
 
+/**
+ * @private
+ */
 export const ControlB = styled.div`
   grid-area: ControlB;
   position: relative;
@@ -130,6 +120,9 @@ export const ControlB = styled.div`
   justify-content: flex-end;
 `
 
+/**
+ * @private
+ */
 export const PageNumber = styled.div`
   position: relative;
   height: 100%;
@@ -141,6 +134,9 @@ export const PageNumber = styled.div`
   box-shadow: 0 -1px 0 0 ${({theme}) => (theme === 'dark' ? '#222' : '#ddd')} inset;
 `
 
+/**
+ * @private
+ */
 export const FragmentNumber = styled.div`
   position: relative;
   height: 100%;
@@ -152,6 +148,9 @@ export const FragmentNumber = styled.div`
   box-shadow: 0 -1px 0 0 ${({theme}) => (theme === 'dark' ? '#222' : '#ddd')} inset;
 `
 
+/**
+ * @private
+ */
 export const Label = styled.span`
   display: inline-block;
   text-align: right;
@@ -160,6 +159,9 @@ export const Label = styled.span`
   min-width: max-content;
 `
 
+/**
+ * @private
+ */
 export const Countdown = styled.div`
   font-size: 2rem;
 
@@ -167,3 +169,55 @@ export const Countdown = styled.div`
     color: #a00;
   }
 `
+
+/**
+ * @private
+ */
+export const PlayButton = props => {
+  const icon = props.isPlaying ? image['timer-off'] : image.timer
+  return (
+    <StyledPlayButton {...props}>
+      <Icon icon={icon} />
+    </StyledPlayButton>
+  )
+}
+
+/**
+ * @private
+ */
+export const ThemeToggle = props => {
+  const icon = props.isDark ? image['wb-sunny'] : image['brightness-2']
+  return (
+    <StyledThemeToggle {...props}>
+      <Icon icon={icon} />
+    </StyledThemeToggle>
+  )
+}
+
+/**
+ * @private
+ */
+PlayButton.propTypes = {
+  isPlaying: PropTypes.bool
+}
+
+/**
+ * @private
+ */
+PlayButton.defaultProps = {
+  isPlaying: false
+}
+
+/**
+ * @private
+ */
+ThemeToggle.propTypes = {
+  isDark: PropTypes.bool
+}
+
+/**
+ * @private
+ */
+ThemeToggle.defaultProps = {
+  isDark: false
+}

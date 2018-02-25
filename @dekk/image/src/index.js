@@ -34,6 +34,9 @@ class Image extends Component {
     }
   }
 
+  /**
+   * @private
+   */
   static get defaultProps() {
     return {
       title: ''

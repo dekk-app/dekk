@@ -162,16 +162,27 @@ class Slide extends Component {
     return Children.toArray(items).filter(child => child.type === Notes)
   }
 
+  /**
+   * @private
+   * @param {(ReactElement|ReactElement[])} notes
+   * @param {number} slideIndex
+   */
   setNotes(notes, slideIndex) {
     this.context.store.notes.splice(slideIndex, 1, notes)
   }
 
+  /**
+   * @private
+   */
   componentWillMount() {
     if (this.props.isCurrent) {
       this.setNotes(this.notes, this.props.slideIndex)
     }
   }
 
+  /**
+   * @private
+   */
   componentWillReceiveProps(newProps) {
     if (newProps.isCurrent && newProps.slideIndex !== this.props.slideIndex) {
       this.setNotes(this.getNotes(newProps.children), newProps.slideIndex)
@@ -208,6 +219,7 @@ class Slide extends Component {
       return -1
     })()
 
+    // Switch spring direction
     const springStyle = {
       time: spring(isPrev || isNext ? 1 : 0, {
         ...this.props.springSettings

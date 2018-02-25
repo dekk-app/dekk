@@ -38,6 +38,9 @@ export default class Fragment extends Component {
     }
   }
 
+  /**
+   * @private
+   */
   static get defaultProps() {
     return {
       animation: '',

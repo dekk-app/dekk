@@ -28,6 +28,11 @@ import View, {Preload, Nextview, Preview} from './views'
 import NoteProvider, {Notes} from './notes'
 import layouts from './layouts'
 
+/**
+ * Styles for empty slides.
+ * This is used for preview & next-view if no more slides exist.
+ * @private
+ */
 const emptyStyle = css`
   background: #000;
   color: #fff;
@@ -38,35 +43,102 @@ const emptyStyle = css`
   justify-content: center;
 `
 
+/**
+ * End of presentation slide.
+ * This is used for preview & next-view if no more slides exist.
+ * @private
+ */
 const endOfPresentation = (
   <Slide mixin={emptyStyle}>
     <Title>End of presentation</Title>
   </Slide>
 )
 
+/**
+ * Styles for the speaker-dek.
+ * handles dark and light theme.
+ * @private
+ */
 const presenterStyles = css`
   background: ${({theme}) => (theme === 'dark' ? '#111' : '#eee')};
   color: ${({theme}) => (theme === 'dark' ? '#fff' : '#000')};
 `
 
+/**
+ * Displays ` n / m` strings.
+ *
+ * @private
+ * @param {number} n
+ * @param {Array} arr
+ * @param {number} arr.length
+ * @return {String}
+ */
 const nOf = (n, {length}) =>
   `${n + (length > 0 ? 1 : 0)} / ${Math.max(0, length)}`
 
-const {layout = 0, theme = 'light', playing: isPlaying} = search.parse(
-  window.location.href
-)
-
+/**
+ * A wrapper around the slides.
+ * `<Deck/>` renders 3 slides (previous, current, next) to allow various
+ * transitions.
+ *
+ * The internal store is handled by mobX. {@link https://github.com/mobxjs/}
+ *
+ * @class Deck
+ * @param {Object} props
+ *   The properties
+ * @param {(Slide|Slide[])} props.children
+ * @param {?String} props.mixin
+ *
+ * @example
+ * import React from 'react'
+ * import {SpeakerDeck} from '@dekk/deck'
+ * import Slide from '@dekk/slide'
+ *
+ * const App = () => (
+ *   <SpeakerDeck>
+ *     <Slide>1</Slide>
+ *     <Slide>2</Slide>
+ *     <Slide>3</Slide>
+ *   </SpeakerDeck>
+ * )
+ */
 @observer
 export default class SpeakerDeck extends Deck {
-  state = {layout, theme, isPlaying}
+  /**
+   * @param {Object} props
+   *   The properties
+   * @param {(Slide|Slide[])} props.children
+   * @param {?String} props.mixin
+   */
+  constructor(props) {
+    super(props)
 
-  constructor(props, context) {
-    super(props, context)
+    /**
+     * Data from url
+     * @private
+     */
+    const {layout = 0, theme = 'light', playing: isPlaying} = search.parse(
+      window.location.href
+    )
+
+    /**
+     * @private
+     * @property {number} layout
+     * @property {String} theme
+     * @property {Boolean} isPlaying
+     */
+    this.state = {layout, theme, isPlaying}
+
     this.switchLayout = this.switchLayout.bind(this)
     this.switchTheme = this.switchTheme.bind(this)
     this.togglePlaying = this.togglePlaying.bind(this)
   }
 
+  /**
+   * Setup slides fr the seaker.
+   * Fills the slides with modified properties to show future states
+   * @private
+   */
   get speakerSlides() {
     const {slideIndex, fragmentOrder, fragmentIndex} = this.store
 
@@ -125,6 +197,10 @@ export default class SpeakerDeck extends Deck {
     return [currentView, nextView, realNextView]
   }
 
+  /**
+   * Switches the layout
+   * @private
+   */
   switchLayout() {
     this.setState(prevState => {
       const layout = (prevState.layout + 1) % layouts.length
@@ -133,6 +209,10 @@ export default class SpeakerDeck extends Deck {
     })
   }
 
+  /**
+   * Switches the theme
+   * @private
+   */
   switchTheme() {
     this.setState(prevState => {
       const theme = prevState.theme === 'dark' ? 'light' : 'dark'
@@ -141,6 +221,10 @@ export default class SpeakerDeck extends Deck {
     })
   }
 
+  /**
+   * Toggles play/pause of the timer
+   * @private
+   */
   togglePlaying() {
     this.setState(prevState => {
       const isPlaying = !prevState.isPlaying
@@ -149,6 +233,10 @@ export default class SpeakerDeck extends Deck {
     })
   }
 
+  /**
+   * A button for the layout toggle
+   * @private
+   */
   get layoutToggle() {
     return (
       <LayoutToggle
@@ -159,6 +247,10 @@ export default class SpeakerDeck extends Deck {
     )
   }
 
+  /**
+   * A button for the theme toggle
+   * @private
+   */
   get themeToggle() {
     return (
       <ThemeToggle
@@ -170,6 +262,10 @@ export default class SpeakerDeck extends Deck {
     )
   }
 
+  /**
+   * A button for the countdown timer
+   * @private
+   */
   get playButton() {
     return (
       <PlayButton
@@ -181,6 +277,10 @@ export default class SpeakerDeck extends Deck {
     )
   }
 
+  /**
+   * A collection of toggles
+   * @private
+   */
   get toggles() {
     return [this.playButton, this.themeToggle, this.layoutToggle]
   }
@@ -188,7 +288,7 @@ export default class SpeakerDeck extends Deck {
   /**
    * @private
    * @return {Wrapper}
-   *   The entire Deck including paging logic inside a Wrapper
+   *   The entire Deck inside a Wrapper
    */
   render() {
     const [view, preview, nextView] = this.speakerSlides
