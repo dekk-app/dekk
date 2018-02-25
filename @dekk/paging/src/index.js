@@ -33,7 +33,7 @@ class Paging extends Component {
    */
   static get defaultProps() {
     return {
-      trigger: 'keydown',
+      trigger: 'keyup',
       toNextFragment: () => null,
       toPrevFragment: () => null,
       toNextSlide: () => null,
