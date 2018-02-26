@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 192,
-  "actualCount": 192,
+  "expectCount": 203,
+  "actualCount": 203,
   "files": {
     "@dekk/animation/src/cube.js": {
       "expectCount": 1,
@@ -43,11 +43,6 @@
       "actualCount": 2,
       "undocumentLines": []
     },
-    "@dekk/deck/src/controls.js": {
-      "expectCount": 14,
-      "actualCount": 14,
-      "undocumentLines": []
-    },
     "@dekk/deck/src/deck.js": {
       "expectCount": 15,
       "actualCount": 15,
@@ -58,16 +53,6 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "@dekk/deck/src/layouts.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
-    },
-    "@dekk/deck/src/notes.js": {
-      "expectCount": 2,
-      "actualCount": 2,
-      "undocumentLines": []
-    },
     "@dekk/deck/src/plugins.js": {
       "expectCount": 1,
       "actualCount": 1,
@@ -76,21 +61,6 @@
     "@dekk/deck/src/slides-wrapper.js": {
       "expectCount": 1,
       "actualCount": 1,
-      "undocumentLines": []
-    },
-    "@dekk/deck/src/speaker-deck.js": {
-      "expectCount": 16,
-      "actualCount": 16,
-      "undocumentLines": []
-    },
-    "@dekk/deck/src/speaker-wrapper.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
-    },
-    "@dekk/deck/src/views.js": {
-      "expectCount": 4,
-      "actualCount": 4,
       "undocumentLines": []
     },
     "@dekk/deck/src/wrapper.js": {
@@ -119,8 +89,8 @@
       "undocumentLines": []
     },
     "@dekk/image/src/index.js": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 11,
+      "actualCount": 11,
       "undocumentLines": []
     },
     "@dekk/image/src/mask.js": {
@@ -139,8 +109,8 @@
       "undocumentLines": []
     },
     "@dekk/master/src/create.js": {
-      "expectCount": 1,
-      "actualCount": 1,
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
     "@dekk/master/src/master.js": {
@@ -153,6 +123,16 @@
       "actualCount": 1,
       "undocumentLines": []
     },
+    "@dekk/master-slides/src/index.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "@dekk/master-slides/src/layouts.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
     "@dekk/paging/src/index.js": {
       "expectCount": 8,
       "actualCount": 8,
@@ -161,6 +141,36 @@
     "@dekk/slide/src/index.js": {
       "expectCount": 17,
       "actualCount": 17,
+      "undocumentLines": []
+    },
+    "@dekk/speaker-deck/src/controls.js": {
+      "expectCount": 14,
+      "actualCount": 14,
+      "undocumentLines": []
+    },
+    "@dekk/speaker-deck/src/layouts.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "@dekk/speaker-deck/src/notes.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "@dekk/speaker-deck/src/speaker-deck.js": {
+      "expectCount": 16,
+      "actualCount": 16,
+      "undocumentLines": []
+    },
+    "@dekk/speaker-deck/src/speaker-wrapper.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "@dekk/speaker-deck/src/views.js": {
+      "expectCount": 4,
+      "actualCount": 4,
       "undocumentLines": []
     },
     "@dekk/speaker-notes/src/index.js": {

@@ -12,9 +12,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@dekk/master-slides~chapter",
+    "variable/index.html#static-variable-Chapter",
+    "<span>Chapter</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "variable"
+  ],
+  [
     "@dekk/text~code",
     "variable/index.html#static-variable-Code",
     "<span>Code</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "variable"
+  ],
+  [
+    "@dekk/master-slides~collage",
+    "variable/index.html#static-variable-Collage",
+    "<span>Collage</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
     "variable"
   ],
   [
@@ -22,6 +34,12 @@ window.esdocSearchIndex = [
     "class/@dekk/countdown/src/index.js~Countdown.html",
     "<span>Countdown</span> <span class=\"search-result-import-path\">@dekk/countdown</span>",
     "class"
+  ],
+  [
+    "@dekk/master-slides~cover",
+    "variable/index.html#static-variable-Cover",
+    "<span>Cover</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "variable"
   ],
   [
     "@dekk/deck~deck",
@@ -36,6 +54,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@dekk/image~fitimage",
+    "variable/index.html#static-variable-FitImage",
+    "<span>FitImage</span> <span class=\"search-result-import-path\">@dekk/image</span>",
+    "variable"
+  ],
+  [
     "@dekk/fragment~fragment",
     "class/@dekk/fragment/src/index.js~Fragment.html",
     "<span>Fragment</span> <span class=\"search-result-import-path\">@dekk/fragment</span>",
@@ -48,21 +72,39 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@dekk/master-slides~grid",
+    "variable/index.html#static-variable-Grid",
+    "<span>Grid</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "variable"
+  ],
+  [
+    "@dekk/master-slides~half",
+    "variable/index.html#static-variable-Half",
+    "<span>Half</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "variable"
+  ],
+  [
     "@dekk/icon~icon",
     "function/index.html#static-function-Icon",
     "<span>Icon</span> <span class=\"search-result-import-path\">@dekk/icon</span>",
     "function"
   ],
   [
-    "@dekk/image~image",
-    "class/@dekk/image/src/index.js~Image.html",
-    "<span>Image</span> <span class=\"search-result-import-path\">@dekk/image</span>",
-    "class"
+    "@dekk/master-slides~imagegrid",
+    "variable/index.html#static-variable-ImageGrid",
+    "<span>ImageGrid</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "variable"
   ],
   [
     "@dekk/listener~listener",
     "class/@dekk/listener/src/index.js~Listener.html",
     "<span>Listener</span> <span class=\"search-result-import-path\">@dekk/listener</span>",
+    "class"
+  ],
+  [
+    "@dekk/image~maskedimage",
+    "class/@dekk/image/src/index.js~MaskedImage.html",
+    "<span>MaskedImage</span> <span class=\"search-result-import-path\">@dekk/image</span>",
     "class"
   ],
   [
@@ -108,9 +150,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@dekk/deck~speakerdeck",
-    "class/@dekk/deck/src/speaker-deck.js~SpeakerDeck.html",
-    "<span>SpeakerDeck</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "@dekk/speaker-deck~speakerdeck",
+    "class/@dekk/speaker-deck/src/speaker-deck.js~SpeakerDeck.html",
+    "<span>SpeakerDeck</span> <span class=\"search-result-import-path\">@dekk/speaker-deck</span>",
     "class"
   ],
   [
@@ -153,6 +195,12 @@ window.esdocSearchIndex = [
     "@dekk/master~createmaster",
     "function/index.html#static-function-createMaster",
     "<span>createMaster</span> <span class=\"search-result-import-path\">@dekk/master</span>",
+    "function"
+  ],
+  [
+    "@dekk/master~createstyledmaster",
+    "function/index.html#static-function-createStyledMaster",
+    "<span>createStyledMaster</span> <span class=\"search-result-import-path\">@dekk/master</span>",
     "function"
   ],
   [
@@ -546,12 +594,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "@dekk/deck/src/controls.js",
-    "file/@dekk/deck/src/controls.js.html",
-    "@dekk/deck/src/controls.js",
-    "file"
-  ],
-  [
     "@dekk/deck/src/deck.js",
     "file/@dekk/deck/src/deck.js.html",
     "@dekk/deck/src/deck.js",
@@ -570,18 +612,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "@dekk/deck/src/layouts.js",
-    "file/@dekk/deck/src/layouts.js.html",
-    "@dekk/deck/src/layouts.js",
-    "file"
-  ],
-  [
-    "@dekk/deck/src/notes.js",
-    "file/@dekk/deck/src/notes.js.html",
-    "@dekk/deck/src/notes.js",
-    "file"
-  ],
-  [
     "@dekk/deck/src/plugins.js",
     "file/@dekk/deck/src/plugins.js.html",
     "@dekk/deck/src/plugins.js",
@@ -591,30 +621,6 @@ window.esdocSearchIndex = [
     "@dekk/deck/src/slides-wrapper.js",
     "file/@dekk/deck/src/slides-wrapper.js.html",
     "@dekk/deck/src/slides-wrapper.js",
-    "file"
-  ],
-  [
-    "@dekk/deck/src/speaker-deck.js",
-    "file/@dekk/deck/src/speaker-deck.js.html",
-    "@dekk/deck/src/speaker-deck.js",
-    "file"
-  ],
-  [
-    "@dekk/deck/src/speaker-deck.js~speakerdeck#constructor",
-    "class/@dekk/deck/src/speaker-deck.js~SpeakerDeck.html#instance-constructor-constructor",
-    "@dekk/deck/src/speaker-deck.js~SpeakerDeck#constructor",
-    "method"
-  ],
-  [
-    "@dekk/deck/src/speaker-wrapper.js",
-    "file/@dekk/deck/src/speaker-wrapper.js.html",
-    "@dekk/deck/src/speaker-wrapper.js",
-    "file"
-  ],
-  [
-    "@dekk/deck/src/views.js",
-    "file/@dekk/deck/src/views.js.html",
-    "@dekk/deck/src/views.js",
     "file"
   ],
   [
@@ -750,9 +756,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "@dekk/image/src/index.js~image#constructor",
-    "class/@dekk/image/src/index.js~Image.html#instance-constructor-constructor",
-    "@dekk/image/src/index.js~Image#constructor",
+    "@dekk/image/src/index.js~maskedimage#constructor",
+    "class/@dekk/image/src/index.js~MaskedImage.html#instance-constructor-constructor",
+    "@dekk/image/src/index.js~MaskedImage#constructor",
     "method"
   ],
   [
@@ -780,6 +786,18 @@ window.esdocSearchIndex = [
     "typedef"
   ],
   [
+    "@dekk/master-slides/src/index.js",
+    "file/@dekk/master-slides/src/index.js.html",
+    "@dekk/master-slides/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/master-slides/src/layouts.js",
+    "file/@dekk/master-slides/src/layouts.js.html",
+    "@dekk/master-slides/src/layouts.js",
+    "file"
+  ],
+  [
     "@dekk/master/src/components.js",
     "file/@dekk/master/src/components.js.html",
     "@dekk/master/src/components.js",
@@ -795,6 +813,24 @@ window.esdocSearchIndex = [
     "@dekk/master/src/create.js~masterslide",
     "typedef/index.html#static-typedef-MasterSlide",
     "@dekk/master/src/create.js~MasterSlide",
+    "typedef"
+  ],
+  [
+    "@dekk/master/src/create.js~mastertemplate",
+    "typedef/index.html#static-typedef-MasterTemplate",
+    "@dekk/master/src/create.js~MasterTemplate",
+    "typedef"
+  ],
+  [
+    "@dekk/master/src/create.js~styledlayout",
+    "typedef/index.html#static-typedef-StyledLayout",
+    "@dekk/master/src/create.js~StyledLayout",
+    "typedef"
+  ],
+  [
+    "@dekk/master/src/create.js~styledlayout",
+    "typedef/index.html#static-typedef-StyledLayout",
+    "@dekk/master/src/create.js~StyledLayout",
     "typedef"
   ],
   [
@@ -831,6 +867,54 @@ window.esdocSearchIndex = [
     "@dekk/slide/src/index.js",
     "file/@dekk/slide/src/index.js.html",
     "@dekk/slide/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/controls.js",
+    "file/@dekk/speaker-deck/src/controls.js.html",
+    "@dekk/speaker-deck/src/controls.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/index.js",
+    "file/@dekk/speaker-deck/src/index.js.html",
+    "@dekk/speaker-deck/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/layouts.js",
+    "file/@dekk/speaker-deck/src/layouts.js.html",
+    "@dekk/speaker-deck/src/layouts.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/notes.js",
+    "file/@dekk/speaker-deck/src/notes.js.html",
+    "@dekk/speaker-deck/src/notes.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/speaker-deck.js",
+    "file/@dekk/speaker-deck/src/speaker-deck.js.html",
+    "@dekk/speaker-deck/src/speaker-deck.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/speaker-deck.js~speakerdeck#constructor",
+    "class/@dekk/speaker-deck/src/speaker-deck.js~SpeakerDeck.html#instance-constructor-constructor",
+    "@dekk/speaker-deck/src/speaker-deck.js~SpeakerDeck#constructor",
+    "method"
+  ],
+  [
+    "@dekk/speaker-deck/src/speaker-wrapper.js",
+    "file/@dekk/speaker-deck/src/speaker-wrapper.js.html",
+    "@dekk/speaker-deck/src/speaker-wrapper.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/src/views.js",
+    "file/@dekk/speaker-deck/src/views.js.html",
+    "@dekk/speaker-deck/src/views.js",
     "file"
   ],
   [

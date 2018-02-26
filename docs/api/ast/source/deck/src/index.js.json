@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 177,
+  "end": 168,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 177,
+    "end": 168,
     "loc": {
       "start": {
         "line": 1,
@@ -205,7 +205,7 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 92,
-        "end": 145,
+        "end": 136,
         "loc": {
           "start": {
             "line": 3,
@@ -213,7 +213,7 @@
           },
           "end": {
             "line": 3,
-            "column": 53
+            "column": 44
           }
         },
         "declaration": null,
@@ -221,7 +221,7 @@
           {
             "type": "ExportSpecifier",
             "start": 100,
-            "end": 122,
+            "end": 118,
             "loc": {
               "start": {
                 "line": 3,
@@ -229,7 +229,7 @@
               },
               "end": {
                 "line": 3,
-                "column": 30
+                "column": 26
               }
             },
             "local": {
@@ -252,7 +252,7 @@
             "exported": {
               "type": "Identifier",
               "start": 111,
-              "end": 122,
+              "end": 118,
               "loc": {
                 "start": {
                   "line": 3,
@@ -260,39 +260,39 @@
                 },
                 "end": {
                   "line": 3,
-                  "column": 30
+                  "column": 26
                 },
-                "identifierName": "SpeakerDeck"
+                "identifierName": "Wrapper"
               },
-              "name": "SpeakerDeck"
+              "name": "Wrapper"
             }
           }
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 129,
-          "end": 145,
+          "start": 125,
+          "end": 136,
           "loc": {
             "start": {
               "line": 3,
-              "column": 37
+              "column": 33
             },
             "end": {
               "line": 3,
-              "column": 53
+              "column": 44
             }
           },
           "extra": {
-            "rawValue": "./speaker-deck",
-            "raw": "'./speaker-deck'"
+            "rawValue": "./wrapper",
+            "raw": "'./wrapper'"
           },
-          "value": "./speaker-deck"
+          "value": "./wrapper"
         }
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 146,
-        "end": 176,
+        "start": 137,
+        "end": 167,
         "loc": {
           "start": {
             "line": 4,
@@ -307,8 +307,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 154,
-            "end": 161,
+            "start": 145,
+            "end": 152,
             "loc": {
               "start": {
                 "line": 4,
@@ -321,8 +321,8 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 154,
-              "end": 161,
+              "start": 145,
+              "end": 152,
               "loc": {
                 "start": {
                   "line": 4,
@@ -338,8 +338,8 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 154,
-              "end": 161,
+              "start": 145,
+              "end": 152,
               "loc": {
                 "start": {
                   "line": 4,
@@ -357,8 +357,8 @@
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 168,
-          "end": 176,
+          "start": 159,
+          "end": 167,
           "loc": {
             "start": {
               "line": 4,
@@ -922,9 +922,9 @@
         "postfix": false,
         "binop": null
       },
-      "value": "SpeakerDeck",
+      "value": "Wrapper",
       "start": 111,
-      "end": 122,
+      "end": 118,
       "loc": {
         "start": {
           "line": 3,
@@ -932,7 +932,7 @@
         },
         "end": {
           "line": 3,
-          "column": 30
+          "column": 26
         }
       }
     },
@@ -948,16 +948,16 @@
         "postfix": false,
         "binop": null
       },
-      "start": 122,
-      "end": 123,
+      "start": 118,
+      "end": 119,
       "loc": {
         "start": {
           "line": 3,
-          "column": 30
+          "column": 26
         },
         "end": {
           "line": 3,
-          "column": 31
+          "column": 27
         }
       }
     },
@@ -974,16 +974,16 @@
         "binop": null
       },
       "value": "from",
-      "start": 124,
-      "end": 128,
+      "start": 120,
+      "end": 124,
       "loc": {
         "start": {
           "line": 3,
-          "column": 32
+          "column": 28
         },
         "end": {
           "line": 3,
-          "column": 36
+          "column": 32
         }
       }
     },
@@ -1000,17 +1000,17 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./speaker-deck",
-      "start": 129,
-      "end": 145,
+      "value": "./wrapper",
+      "start": 125,
+      "end": 136,
       "loc": {
         "start": {
           "line": 3,
-          "column": 37
+          "column": 33
         },
         "end": {
           "line": 3,
-          "column": 53
+          "column": 44
         }
       }
     },
@@ -1029,8 +1029,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 146,
-      "end": 152,
+      "start": 137,
+      "end": 143,
       "loc": {
         "start": {
           "line": 4,
@@ -1054,8 +1054,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 153,
-      "end": 154,
+      "start": 144,
+      "end": 145,
       "loc": {
         "start": {
           "line": 4,
@@ -1082,8 +1082,8 @@
         "updateContext": null
       },
       "value": "default",
-      "start": 154,
-      "end": 161,
+      "start": 145,
+      "end": 152,
       "loc": {
         "start": {
           "line": 4,
@@ -1107,8 +1107,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 161,
-      "end": 162,
+      "start": 152,
+      "end": 153,
       "loc": {
         "start": {
           "line": 4,
@@ -1133,8 +1133,8 @@
         "binop": null
       },
       "value": "from",
-      "start": 163,
-      "end": 167,
+      "start": 154,
+      "end": 158,
       "loc": {
         "start": {
           "line": 4,
@@ -1160,8 +1160,8 @@
         "updateContext": null
       },
       "value": "./deck",
-      "start": 168,
-      "end": 176,
+      "start": 159,
+      "end": 167,
       "loc": {
         "start": {
           "line": 4,
@@ -1186,8 +1186,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 177,
-      "end": 177,
+      "start": 168,
+      "end": 168,
       "loc": {
         "start": {
           "line": 5,

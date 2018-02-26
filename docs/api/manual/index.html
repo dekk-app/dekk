@@ -5,17 +5,70 @@
 <li><a href="https://github.com/mobxjs/mobx-react">mobx-react</a></li>
 <li><a href="https://github.com/styled-components/styled-components">styled-components</a></li>
 </ul>
-</div><div class="manual-cards"><div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Installation</h1><p>Dekk is a monorepo and all of its packages can be found under the namespace <a href="https://www.npmjs.com/org/dekk">@dekk</a></p><h2>Available packages</h2><h3>Deck (root)</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/deck</code>
+</div><div class="manual-cards"><div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Installation</h1><p>Dekk is a monorepo and all of its packages can be found under the namespace <a href="https://www.npmjs.com/org/dekk">@dekk</a></p><h2>Available packages</h2><p>Dekk is available under the npm namespace <a href="https://www.npmjs.com/org/dekk">@dekk</a>
+and offers several packages.</p><p>You can find all public packages and their provided exports below.</p><h3>Deck (root)</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/deck</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import Deck, {Plugins, Elements} from &apos;@dekk/dekk&apos;</code>
+</code></pre><h3>SpeakerDeck (root)</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/speaker-deck</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import SpeakerDeck from &apos;@dekk/speaker-dekk&apos;</code>
 </code></pre><h3>Master Slides</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/master</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import createMster, {
+  Master,
+  Slot,
+  Static,
+  createStyledMaster
+} from &apos;@dekk/master&apos;</code>
 </code></pre><h3>Plugins</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/url
 yarn add @dekk/paging
 yarn add @dekk/listener</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import Paging from &apos;@dekk/paging&apos;
+import Listener from &apos;@dekk/listener&apos;
+import Url, {search} from &apos;@dekk/url&apos;</code>
 </code></pre><h3>Text Elements</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/text</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import Text, {
+  Bold,
+  Center,
+  Code,
+  Quote,
+  Subtitle,
+  Title,
+  Uppercase
+} from &apos;@dekk/text&apos;</code>
 </code></pre><h3>Image Elements</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/image</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import MaskedImage, {FitImage} from &apos;@dekk/image&apos;</code>
 </code></pre><h3>Fragments</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/fragment</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import Fragment, {FragmentRoot} from &apos;@dekk/fragment&apos;</code>
 </code></pre><h3>Speaker notes</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/speaker-notes</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import Notes from &apos;@dekk/speaker-notes&apos;</code>
+</code></pre><h3>Tools</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/countdown</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import Countdown from &apos;@dekk/countdown&apos;</code>
+</code></pre><h3>Icons</h3><pre><code class="lang-jsx"><code class="source-code prettyprint">import Icon from &apos;@dekk/icon&apos;
+// SVG icons
+import action from &apos;@dekk/icon/lib/action&apos;
+import alert from &apos;@dekk/icon/lib/alert&apos;
+import av from &apos;@dekk/icon/lib/av&apos;
+import communication from &apos;@dekk/icon/lib/communication&apos;
+import content from &apos;@dekk/icon/lib/content&apos;
+import device from &apos;@dekk/icon/lib/device&apos;
+import file from &apos;@dekk/icon/lib/file&apos;
+import hardware from &apos;@dekk/icon/lib/hardware&apos;
+import image from &apos;@dekk/icon/lib/image&apos;
+import maps from &apos;@dekk/icon/lib/maps&apos;
+import navigation from &apos;@dekk/icon/lib/navigation&apos;
+import notification from &apos;@dekk/icon/lib/notification&apos;
+import social from &apos;@dekk/icon/lib/social&apos;
+import toggle from &apos;@dekk/icon/lib/toggle&apos;
+// or 
+// @warn this is a huge file. Use single imports instead
+import * from &apos;@dekk/icon/lib/icons&apos;</code>
 </code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/installation.html"></a></div>
-<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Creating a Deck</h1><p>To create a Deck you need two core packages, &quot;Deck&quot; and &quot;Slide&quot;.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Creating a Deck</h1><p>To create a Deck you need two core packages, <code>Deck</code> and <code>Slide</code>.
+A Deck can contain several Components aside <code>Slide</code>. Take a look at
+<a href="./manual/plugins.html"><code>Plugins</code></a> and <a href="./manual/static-elements.html"><code>Elements</code></a>
+to understand how these can be used in your
+<code>Deck</code></p><p>Decks and Slides only provide the render logic and handle an internal
+state. Without plugins you won&apos;t be able to navigate through the Deck.
+This allows a very unique kind of configauration.
+Read more <a href="./manual/plugins.html">here</a></p><p><strong>deck.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
 import Deck from &apos;@dekk/deck&apos;
 import Slide from &apos;@dekk/slide&apos;
 
@@ -26,176 +79,30 @@ export default (
     &lt;Slide&gt; 3 &lt;/Slide&gt;
   &lt;/Deck&gt;
 )</code>
-</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/usage.html"></a></div>
-<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Fragments</h1><p>A slide can have multiple fragments which are activated before the next slide.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Fragment from &apos;@dekk/fragment&apos;
-
-export default (
-  &lt;Slide&gt;
-    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
-    &lt;Fragment order={2}&gt; 2 &lt;/Fragment&gt;
-    &lt;Fragment order={3}&gt; 3 &lt;/Fragment&gt;
-  &lt;/Slide&gt;
-)</code>
-</code></pre><h2>Fragment order</h2><p>Each fragment order adds a step to the slide, while multiple fragments can appear at once.
-The order is used to sort the fragments. </p><blockquote>
-<p>Pro Tip: You can create blocks of 20 to make changes easier.</p>
-</blockquote><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Fragment from &apos;@dekk/fragment&apos;
-
-export default (
-  &lt;Slide&gt;
-    &lt;Fragment order={21}&gt; 2 &lt;/Fragment&gt;
-    &lt;Fragment order={22}&gt; 3 &lt;/Fragment&gt;
-    &lt;Fragment order={23}&gt; 4 &lt;/Fragment&gt;
-    &lt;Fragment order={24}&gt; 5 &lt;/Fragment&gt;
-    {/* It&apos;s easy to extend this list */)}
-    &lt;Fragment order={41}&gt; 6 &lt;/Fragment&gt;
-    {/* Items can appear at the same time */)}
-    &lt;Fragment order={42}&gt; 7 &lt;/Fragment&gt;
-    &lt;Fragment order={42}&gt; 7 &lt;/Fragment&gt;
-    {/* This is the first fragment */)}
-    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
-    {/* This fragment is already active */)}
-    &lt;Fragment order={0}&gt; 0 &lt;/Fragment&gt;
-  &lt;/Slide&gt;
-)</code>
-</code></pre><h2>Nested Fragments</h2><p>Fragments can be nested in each other.</p><blockquote>
-<p>Pro Tip: A nested fragment can be activated before its parent.
-This allows very complex behavior</p>
-</blockquote><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Fragment from &apos;@dekk/fragment&apos;
-
-export default (
-  &lt;Slide&gt;
-    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
-    {/* The next 2 fragments are activated in order 2, 3 (parent, child) */}
-    &lt;Fragment order={2}&gt; 2
-      &lt;Fragment order={3}&gt; 3 &lt;/Fragment&gt;
-    &lt;/Fragment&gt;
-    {/* The next 2 fragments are activated in order 4, 5 (child, parent) */}
-    &lt;Fragment order={5}&gt; 5
-      &lt;Fragment order={4}&gt; 4 &lt;/Fragment&gt;
-    &lt;/Fragment&gt;
-  &lt;/Slide&gt;
-)</code>
-</code></pre><h2>Fragment root</h2><p>You can use fragment roots to ensure that parent fragments are activated before their children.</p><p><strong>How does it behave under the hood?</strong>  </p><p>In a fragment root with the order <code>4</code>, a nested fragment with the
-order <code>5</code> is now handled as <code>9</code> (<code>5 + 4</code>)</p><p><strong>Resulting order</strong></p><pre><code><code class="source-code prettyprint">1       1 -&gt; 1
-5 &#x2578;&#x2578;&#x2513;   5 -&gt; 2
-6   &#x257B;   6 -&gt; 3
-1 + 5 = 6 -&gt; 3
-7   &#x2579;   7 -&gt; 4
-4 + 5 = 9 -&gt; 5</code>
-</code></pre><p><strong>Code</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Fragment from &apos;@dekk/fragment&apos;
-
-export default (
-  &lt;Slide&gt;
-    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
-    {/* The next 2 fragments are activated in order 6, 7 (child, parent)
-      * The parent is activated at the same time as the first child of the next
-      * fragment block (5 + 1 = 6) is activated.
-      * The parent and child are activated before the last child of the next
-      * fragment block (5 + 4 = 9) is activated.
-      */}
-    &lt;Fragment order={7}&gt; 7
-      &lt;Fragment order={6}&gt; 6 &lt;/Fragment&gt;
-    &lt;/Fragment&gt;
-    {/* The next 2 fragments are activated in order 5, 1, 4 (parent, child, child) */}
-    &lt;Fragment order={5} root&gt; 5
-      &lt;Fragment order={1}&gt; 1 + 5 = 6 &lt;/Fragment&gt;
-      {/* This fragment is last in the list */}
-      &lt;Fragment order={4}&gt; 4 + 5 = 9 &lt;/Fragment&gt;
-    &lt;/Fragment&gt;
-  &lt;/Slide&gt;
-)</code>
-</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/fragments.html"></a></div>
-<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Master slides</h1><p>This section will guide you through the options and explain how master slides work.</p><h2>Creating master slides</h2><p>To create a Slide with the same layout and style you can define a Master slide.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import createMaster, {Master, Slot} from &apos;@dekk/master&apos;
-
-export default createMaster(
-  &lt;Master&gt;
-    &lt;Slot name=&apos;Content&apos;/&gt;
-  &lt;/Master&gt;
-)</code>
-</code></pre><h2>Adding Slots</h2><p>If you want different sections in your slide you can simply add more slots.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import createMaster, {Master, Slot} from &apos;@dekk/master&apos;
-
-export default createMaster(
-  &lt;Master&gt;
-    &lt;Slot name=&apos;Left&apos;/&gt;
-    &lt;Slot name=&apos;Right&apos;/&gt;
-  &lt;/Master&gt;
-)</code>
-</code></pre><h2>Content types</h2><p>A slot can be configured to only allow certain components.
-Components can be allowed or forbidden.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import createMaster, {Master, Slot} from &apos;@dekk/master&apos;
-import Image from &apos;@dekk/image&apos;
-
-export default createMaster(
-  &lt;Master&gt;
-    &lt;Slot name=&apos;Left&apos; only={[Image]}/&gt;
-    &lt;Slot name=&apos;Right&apos; not={[Image]}/&gt;
-  &lt;/Master&gt;
-)</code>
-</code></pre><h2>Static Slots</h2><p>In some cases you might want a slot to always appear without having to add it to every slide.
-You can add static slots to allow this feature.</p><p>Usecases:</p><ul>
-<li>Header / Footer</li>
-<li>Navigation elements / Page number</li>
+</code></pre><p><strong>speaker-deck.js</strong></p><p>There is a speaker/presenter version of Dekk with some extra features.
+SpeakerDeck expects a timer to be set. You can also specify a warning time.</p><ul>
+<li>timer: number<ul>
+<li>time in minutes (30 minutes = 30)</li>
+</ul>
+</li>
+<li>timerWarning: number<ul>
+<li>time in seconds (5 minutes = 5 * 60 || 300)</li>
+</ul>
+</li>
 </ul><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import createMaster, {Master, Static, Slot} from &apos;@dekk/master&apos;
-import Image from &apos;@dekk/image&apos;
+import SpeakerDeck from &apos;@dekk/speaker-deck&apos;
+import Slide from &apos;@dekk/slide&apos;
 
-import Footer from &apos;./path/to/custom/footer.js&apos;
-
-export default createMaster(
-  &lt;Master&gt;
-    &lt;Static name=&quot;Footer&quot;&gt;&lt;Footer/&gt;&lt;/Static&gt;
-    &lt;Slot name=&apos;Content&apos;/&gt;
-  &lt;/Master&gt;
+export default (
+  &lt;SpeakerDeck
+    timer={30}
+    timerWarning={5 * 60}&gt;
+    &lt;Slide&gt; 1 &lt;/Slide&gt;
+    &lt;Slide&gt; 2 &lt;/Slide&gt;
+    &lt;Slide&gt; 3 &lt;/Slide&gt;
+  &lt;/SpeakerDeck&gt;
 )</code>
-</code></pre><h2>Adding Styles</h2><p>Dekk uses styled-components under the hood.
-It is recommended to follow this concept to style your slides.</p><p>The example below uses css-grid to create a custom layout.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import createMaster, {Master, Static, Slot} from &apos;@dekk/master&apos;
-import Image from &apos;@dekk/image&apos;
-import styled from &apos;styled-components&apos;
-
-import Footer from &apos;./path/to/custom/footer.js&apos;
-
-const MasterSlide = createMaster(
-  &lt;Master&gt;
-    &lt;Static name=&quot;Footer&quot;&gt;&lt;Footer/&gt;&lt;/Static&gt;
-    &lt;Slot name=&apos;Content&apos;/&gt;
-  &lt;/Master&gt;
-)
-
-export default MasterSlide
-
-export const Slide = styled(MasterSlide)`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: calc(100% - 2rem) 2rem;
-  grid-template-areas:
-    &quot;Content&quot;
-    &quot;Footer&quot;;
-
-  [data-slot],
-  [data-static] {
-    height: 100%;
-    width: 100%;
-  }
-  [data-static=&quot;Footer&quot;] {
-    grid-area: Footer;
-  }
-  [data-slot=&quot;Content&quot;] {
-    grid-area: Content;
-  }
-`</code>
-</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/masters.html"></a></div>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/usage.html"></a></div>
 <div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Plugins</h1><p>To configure your Deck you can use the Plugins component. This allows you
 to choose the type of URLs Dekk writes or add listeners as well as enable
 paging</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
@@ -296,6 +203,515 @@ export default (
   &lt;/Deck&gt;
 )</code>
 </code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/static-elements.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Text elements</h1><p>Dekk provides some basic text elements.</p><h2>Text</h2><p>A simple Text wrapper.</p><h2>Title</h2><p>An h1 title.
+This component is required
+for <code>@dekk/master-slides~Cover</code>
+and <code>@dekk/master-slides~Chapter</code></p><h2>Subtitle</h2><p>An h2 title.
+This component is required
+for <code>@dekk/master-slides~Cover</code>
+and <code>@dekk/master-slides~Chapter</code></p><h2>Uppercase</h2><p>Uppercases the text</p><h2>Bold</h2><p>Boldens the text</p><h2>Center</h2><p>Centers the text</p><h2>Code</h2><p>A syntax highlighter</p><p>See <a href="https://github.com/conorhastings/react-syntax-highlighter">github</a>
+or <a href="https://www.npmjs.com/package/react-syntax-highlighter">npm</a>
+for more information and a full documentation.</p><p>Dekk simply passes all properties to <code>ReactSyntaxHighlighter</code></p></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/text-elements.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Image elements</h1><p>Dekk provides some basic iamge elements.</p><h2>MaskedImage</h2><p>A simple image mask. This component renders a mask with a 
+<code>background-image</code>. The image is scaled to its original size.</p><p>You can provide 4 css variables to modify the appearance.</p><p><strong>Default CSS version</strong></p><pre><code class="lang-css"><code class="source-code prettyprint">.small-square {
+  --width: 300px;
+  --height: 300px;
+}
+
+.top-right {
+  --background-position: top right;
+}
+
+.zoom-2 {
+  --background-size: 200% auto;
+}</code>
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import MaskedImage from &apos;@dekk/image&apos;
+
+export default (
+  &lt;MaskedImage
+    className=&quot;small-square top-right zoom-2&quot;
+    src=&quot;path/to/an/image.jpg&quot;
+    alt=&quot;this is required &#x267F;&#xFE0F;&quot;
+    title=&quot;titles are optional&quot;
+  /&gt;
+)</code>
+</code></pre><p><strong>Styled components version</strong></p><blockquote>
+<p>Wrapping an image inside a styled commponent makes them invalid
+if they were defined in master slots.
+There is no good way to allow or disallow this but maybe the 
+future brings a solution to this issue.<br>To use these components you have to use masters without
+<code>not</code> or <code>only</code> restrictions, create your own master-slides or work
+with default slides.</p>
+</blockquote><p>Styled components makes it easy to make several presets that can
+be used or shared. </p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import styled, {css} from &apos;styled-components&apos;
+import MaskedImage from &apos;@dekk/image&apos;
+
+export const smallSquare = css`
+  --width: 300px;
+  --height: 300px;
+`
+
+export const topRight = css`
+  --background-position: top right;
+`
+
+export const zoom2 = css`
+  --background-size: 200% auto;
+`
+export 
+const SmallImage = styled(MaskedImage)`
+  ${smallSquare};
+`
+
+export const ZoomImage = styled(MaskedImage)`
+  ${zoom2};
+  ${topRight};  
+`</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/images.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Fragments</h1><p>A slide can have multiple fragments which are activated before the next slide.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Fragment from &apos;@dekk/fragment&apos;
+
+export default (
+  &lt;Slide&gt;
+    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
+    &lt;Fragment order={2}&gt; 2 &lt;/Fragment&gt;
+    &lt;Fragment order={3}&gt; 3 &lt;/Fragment&gt;
+  &lt;/Slide&gt;
+)</code>
+</code></pre><h2>Fragment order</h2><p>Each fragment order adds a step to the slide, while multiple fragments can appear at once.
+The order is used to sort the fragments. </p><blockquote>
+<p>Pro Tip: You can create blocks of 20 to make changes easier.</p>
+</blockquote><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Fragment from &apos;@dekk/fragment&apos;
+
+export default (
+  &lt;Slide&gt;
+    &lt;Fragment order={21}&gt; 2 &lt;/Fragment&gt;
+    &lt;Fragment order={22}&gt; 3 &lt;/Fragment&gt;
+    &lt;Fragment order={23}&gt; 4 &lt;/Fragment&gt;
+    &lt;Fragment order={24}&gt; 5 &lt;/Fragment&gt;
+    {/* It&apos;s easy to extend this list */)}
+    &lt;Fragment order={41}&gt; 6 &lt;/Fragment&gt;
+    {/* Items can appear at the same time */)}
+    &lt;Fragment order={42}&gt; 7 &lt;/Fragment&gt;
+    &lt;Fragment order={42}&gt; 7 &lt;/Fragment&gt;
+    {/* This is the first fragment */)}
+    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
+    {/* This fragment is already active */)}
+    &lt;Fragment order={0}&gt; 0 &lt;/Fragment&gt;
+  &lt;/Slide&gt;
+)</code>
+</code></pre><h2>Nested Fragments</h2><p>Fragments can be nested in each other.</p><blockquote>
+<p>Pro Tip: A nested fragment can be activated before its parent.
+This allows very complex behavior</p>
+</blockquote><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Fragment from &apos;@dekk/fragment&apos;
+
+export default (
+  &lt;Slide&gt;
+    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
+    {/* The next 2 fragments are activated in order 2, 3 (parent, child) */}
+    &lt;Fragment order={2}&gt; 2
+      &lt;Fragment order={3}&gt; 3 &lt;/Fragment&gt;
+    &lt;/Fragment&gt;
+    {/* The next 2 fragments are activated in order 4, 5 (child, parent) */}
+    &lt;Fragment order={5}&gt; 5
+      &lt;Fragment order={4}&gt; 4 &lt;/Fragment&gt;
+    &lt;/Fragment&gt;
+  &lt;/Slide&gt;
+)</code>
+</code></pre><h2>Fragment root</h2><p>You can use fragment roots to ensure that parent fragments are activated before their children.</p><p><strong>How does it behave under the hood?</strong>  </p><p>In a fragment root with the order <code>4</code>, a nested fragment with the
+order <code>5</code> is now handled as <code>9</code> (<code>5 + 4</code>)</p><p><strong>Resulting order</strong></p><pre><code><code class="source-code prettyprint">1       1 -&gt; 1
+5 &#x2578;&#x2578;&#x2513;   5 -&gt; 2
+6   &#x257B;   6 -&gt; 3
+1 + 5 = 6 -&gt; 3
+7   &#x2579;   7 -&gt; 4
+4 + 5 = 9 -&gt; 5</code>
+</code></pre><p><strong>Code</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Fragment from &apos;@dekk/fragment&apos;
+
+export default (
+  &lt;Slide&gt;
+    &lt;Fragment order={1}&gt; 1 &lt;/Fragment&gt;
+    {/* The next 2 fragments are activated in order 6, 7 (child, parent)
+      * The parent is activated at the same time as the first child of the next
+      * fragment block (5 + 1 = 6) is activated.
+      * The parent and child are activated before the last child of the next
+      * fragment block (5 + 4 = 9) is activated.
+      */}
+    &lt;Fragment order={7}&gt; 7
+      &lt;Fragment order={6}&gt; 6 &lt;/Fragment&gt;
+    &lt;/Fragment&gt;
+    {/* The next 2 fragments are activated in order 5, 1, 4 (parent, child, child) */}
+    &lt;Fragment order={5} root&gt; 5
+      &lt;Fragment order={1}&gt; 1 + 5 = 6 &lt;/Fragment&gt;
+      {/* This fragment is last in the list */}
+      &lt;Fragment order={4}&gt; 4 + 5 = 9 &lt;/Fragment&gt;
+    &lt;/Fragment&gt;
+  &lt;/Slide&gt;
+)</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/fragments.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Master slides</h1><p>Dekk privides a collection of very simple master layouts.</p><h2>Usage</h2><p>There are several ways to use these masters.</p><p>The default usage could look something like this:</p><p><strong> deck.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Cover from &apos;@dekk/master-slides&apos;
+import {Title, Subtitle} from &apos;@dekk/text&apos;
+
+export default () =&gt; (
+  &lt;Deck&gt;
+    &lt;Cover.Slide&gt;
+      &lt;Cover.A&gt;
+        &lt;Title&gt;Welcome Dekk!&lt;/Title&gt;
+      &lt;/Cover.A&gt;
+      &lt;Cover.B&gt;
+        &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
+      &lt;/Cover.B&gt;
+    &lt;/Cover.Slide&gt;
+  &lt;/Deck&gt;
+)</code>
+</code></pre><p>It is recommended to have one module/file per slide so you could
+deconstruct the import.</p><p><strong> cover-deconstructed.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import uuid from &apos;uuid/v4&apos;
+import {
+  Slide,
+  A,
+  B
+} from &apos;@dekk/master-slides&apos;
+import {Title, Subtitle} from &apos;@dekk/text&apos;
+
+export default (
+  &lt;Slide key={uuid()}&gt;
+    &lt;A&gt;
+      &lt;Title&gt;Welcome Dekk!&lt;/Title&gt;
+    &lt;/A&gt;
+    &lt;B&gt;
+      &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
+    &lt;/B&gt;
+  &lt;/Slide&gt;
+)</code>
+</code></pre><p>Too add some naming sugar, you can rename your deconstructed Components.</p><p><strong> cover-named-deconstructed.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import uuid from &apos;uuid/v4&apos;
+import {
+  Slide as Cover,
+  A as Top,
+  B as Bottom
+} from &apos;@dekk/master-slides&apos;
+import {Title, Subtitle} from &apos;@dekk/text&apos;
+
+export default (
+  &lt;Cover key={uuid()}&gt;
+    &lt;Top&gt;
+      &lt;Title&gt;Welcome Dekk!&lt;/Title&gt;
+    &lt;/Top&gt;
+    &lt;Bottom&gt;
+      &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
+    &lt;/Bottom&gt;
+  &lt;/Cover&gt;
+)</code>
+</code></pre><h2>Available Layouts</h2><p>Dekk currently offers the following master layouts: </p><h3>Cover</h3><ul>
+<li>A: only <code>Title</code><ul>
+<li>center/bottom</li>
+</ul>
+</li>
+<li>B: only <code>Subtitle</code><ul>
+<li>center/top</li>
+</ul>
+</li>
+</ul><pre><code><code class="source-code prettyprint">&#x250F;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2513;
+&#x2503;               &#x2503;
+&#x2503;       A       &#x2503;
+&#x2523;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x252B;
+&#x2503;       B       &#x2503;
+&#x2503;               &#x2503;
+&#x2517;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x251B;</code>
+</code></pre><h3>Chapter</h3><ul>
+<li>A: only <code>Title</code><ul>
+<li>center/bottom</li>
+</ul>
+</li>
+<li>B: only <code>Subtitle</code> or <code>Text</code><ul>
+<li>center/top</li>
+</ul>
+</li>
+</ul><pre><code><code class="source-code prettyprint">&#x250F;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2513;
+&#x2503;               &#x2503;
+&#x2503;       A       &#x2503;
+&#x2523;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x252B;
+&#x2503;       B       &#x2503;
+&#x2503;               &#x2503;
+&#x2517;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x251B;</code>
+</code></pre><h3>Half</h3><ul>
+<li>A: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>B: not <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+</ul><pre><code><code class="source-code prettyprint">&#x250F;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2533;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2513;
+&#x2503; A     &#x2503; B     &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2517;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x253B;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x251B;</code>
+</code></pre><h3>Collage</h3><ul>
+<li>A: not <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>B: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>C: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+</ul><pre><code><code class="source-code prettyprint">&#x250F;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2533;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2513;
+&#x2503; B     &#x2503; A     &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2523;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x252B;       &#x2503;
+&#x2503; C     &#x2503;       &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2517;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x253B;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x251B;</code>
+</code></pre><h3>Grid</h3><ul>
+<li>A: any<ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>B: any<ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>C: any<ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>D: any<ul>
+<li>left/top</li>
+</ul>
+</li>
+</ul><pre><code><code class="source-code prettyprint">&#x250F;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2533;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2513;
+&#x2503; A     &#x2503; B     &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2523;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x254B;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x252B;
+&#x2503; C     &#x2503; D     &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2517;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x253B;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x251B;</code>
+</code></pre><h3>ImageGrid</h3><ul>
+<li>A: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>B: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>C: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+<li>D: only <code>FitImage</code><ul>
+<li>left/top</li>
+</ul>
+</li>
+</ul><pre><code><code class="source-code prettyprint">&#x250F;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2533;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2513;
+&#x2503; A     &#x2503; B     &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2523;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x254B;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x252B;
+&#x2503; C     &#x2503; D     &#x2503;
+&#x2503;       &#x2503;       &#x2503;
+&#x2517;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x253B;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x2501;&#x251B;</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/master-slides.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Master slides</h1><p>This section will guide you through the options and explain how master slides work.</p><h2>Creating master slides</h2><p>To create a Slide with the same layout and style you can define a Master slide.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import createMaster, {Master, Slot} from &apos;@dekk/master&apos;
+
+export default createMaster(
+  &lt;Master&gt;
+    &lt;Slot name=&apos;Content&apos;/&gt;
+  &lt;/Master&gt;
+)</code>
+</code></pre><h2>Adding slots</h2><p>If you want different sections in your slide you can simply add more slots.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import createMaster, {Master, Slot} from &apos;@dekk/master&apos;
+
+export default createMaster(
+  &lt;Master&gt;
+    &lt;Slot name=&apos;Left&apos;/&gt;
+    &lt;Slot name=&apos;Right&apos;/&gt;
+  &lt;/Master&gt;
+)</code>
+</code></pre><h2>Content types</h2><p>A slot can be configured to only allow certain components.
+Components can be allowed or forbidden.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import createMaster, {Master, Slot} from &apos;@dekk/master&apos;
+import Image from &apos;@dekk/image&apos;
+
+export default createMaster(
+  &lt;Master&gt;
+    &lt;Slot name=&apos;Left&apos; only={[Image]}/&gt;
+    &lt;Slot name=&apos;Right&apos; not={[Image]}/&gt;
+  &lt;/Master&gt;
+)</code>
+</code></pre><h2>Static slots</h2><p>In some cases you might want a slot to always appear without having to add it to every slide.
+You can add static slots to allow this feature.</p><p>Usecases:</p><ul>
+<li>Header / Footer</li>
+<li>Navigation elements / Page number</li>
+</ul><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import createMaster, {Master, Static, Slot} from &apos;@dekk/master&apos;
+import Image from &apos;@dekk/image&apos;
+
+import Footer from &apos;./path/to/custom/footer.js&apos;
+
+export default createMaster(
+  &lt;Master&gt;
+    &lt;Static name=&quot;Footer&quot;&gt;&lt;Footer/&gt;&lt;/Static&gt;
+    &lt;Slot name=&apos;Content&apos;/&gt;
+  &lt;/Master&gt;
+)</code>
+</code></pre><h2>Adding styles</h2><p>Dekk uses styled-components under the hood.
+It is recommended to follow this concept to style your slides.</p><p>The example below uses css-grid to create a custom layout.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import createMaster, {Master, Static, Slot} from &apos;@dekk/master&apos;
+import Image from &apos;@dekk/image&apos;
+import styled from &apos;styled-components&apos;
+
+import Footer from &apos;./path/to/custom/footer.js&apos;
+
+const MasterSlide = createMaster(
+  &lt;Master&gt;
+    &lt;Static name=&quot;Footer&quot;&gt;&lt;Footer/&gt;&lt;/Static&gt;
+    &lt;Slot name=&apos;Content&apos;/&gt;
+  &lt;/Master&gt;
+)
+
+export default MasterSlide
+
+export const Slide = styled(MasterSlide)`
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: calc(100% - 2rem) 2rem;
+  grid-template-areas:
+    &quot;Content&quot;
+    &quot;Footer&quot;;
+
+  [data-slot],
+  [data-static] {
+    height: 100%;
+    width: 100%;
+  }
+  [data-static=&quot;Footer&quot;] {
+    grid-area: Footer;
+  }
+  [data-slot=&quot;Content&quot;] {
+    grid-area: Content;
+  }
+`</code>
+</code></pre><h2>Styled master slides</h2><p>Dekk provides a styled component wrapper for master slides.</p><p>This allows an easier approach at creating master slides.
+This is especially helpful when you have worked with styled-components before.</p><p><strong>master.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import {Master, Static, createStyledMaster} from &apos;@dekk/master&apos;
+exort default createStyledMaster(
+  &lt;Master&gt;
+    &lt;Slot name=&quot;A&quot;/&gt;
+    &lt;Slot name=&quot;B&quot;/&gt;
+  &lt;/Master&gt;
+)`
+  display: grid;
+  grid-template-areas: &quot;A&quot; &quot;B&quot;;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  [data-slot=&quot;A&quot;] {
+    grid-area: A;
+  }
+  [data-slot=&quot;B&quot;] {
+    grid-area: B;
+  }
+`</code>
+</code></pre><p><strong>deck.js</strong></p><p><code>Layout</code> is a master slide without styling.</p><p>It provides statics for <code>Slide</code> and all slots that have been defined 
+e.g. <code>{Slot, A, B}</code> or <code>{Slot, Top, Bottom}</code> depending on the names you
+assigned.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Deck from &apos;@dekk/deck&apos;
+import Layout from &apos;./path/to/my/master.js&apos;
+
+export default () =&gt; (
+  &lt;Deck&gt;
+    {/* unstyled master */}
+    &lt;Layout&gt;
+      &lt;Layout.A&gt;Slot A&lt;/Layout.A&gt;
+      &lt;Layout.B&gt;Slot B&lt;/Layout.B&gt;
+    &lt;/Layout&gt;
+    {/* styled master */}
+    &lt;Layout.Slide&gt;
+      &lt;Layout.A&gt;Slot A&lt;/Layout.A&gt;
+      &lt;Layout.B&gt;Slot B&lt;/Layout.B&gt;
+    &lt;/Layout.Slide&gt;
+  &lt;/Deck&gt;
+)</code>
+</code></pre><p>or even </p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Deck from &apos;@dekk/deck&apos;
+import {Slide, A, B} from &apos;./path/to/my/master.js&apos;
+
+export default () =&gt; (
+  &lt;Deck&gt;
+    &lt;Slide&gt;
+      &lt;A&gt;Slot A&lt;/A&gt;
+      &lt;B&gt;Slot B&lt;/B&gt;
+    &lt;/Slide&gt;
+  &lt;/Deck&gt;
+)</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/masters.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Timer</h1><p>Dekk provides a simple countdoen timer.</p><p>You can use it but it is mainly intended as a tool for
+<code>@dekk/speaker-deck</code>.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React, {Component} from &apos;react&apos;
+import Countdown from &apos;@dekk/countdown&apos;
+
+class Timer extends Component {
+  state: {
+    isPlaing: false
+  }
+
+  /**
+   * Toggle the label text
+   */
+  get label() {
+      return this.state.isPlaying ? &apos;pause&apos; : &apos;start&apos;
+  }
+
+  /**
+   * toggle the state
+   */
+  handleClick() {
+    this.setState(prevState =&gt; ({
+        isPlaying: !prevState.isPlaying
+    }))
+  }
+
+  render() {
+    &lt;div&gt;
+      &lt;button onClick={this.handleClick}&gt;
+        {this.label}
+      &lt;/button&gt;
+      &lt;Countdown
+        {...this.props} 
+        isPlaying={this.state.isPlaying}/&gt;
+    &lt;/div&gt;
+  }
+}</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/timer.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Icons</h1><p>Dekk provides a collection of material design icons.</p><p>The usage is very basic.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import Icon from &apos;@dekk/icon&apos;
+import {person, people} from &apos;@dekk/icon/lib/social&apos;
+
+export const PersonIcon = ({size = &apos;1em&apos;}) =&gt; (
+  &lt;Icon size={size} icon={person}/&gt;
+)
+
+export const PeopleIcon = ({size = &apos;1em&apos;}) =&gt; (
+  &lt;Icon size={size} icon={people}/&gt;
+)</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/icons.html"></a></div>
 <div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>0.1.0-beta.5cbe4f15 (2018-02-17)</h1><h3>Bug Fixes</h3><ul>
 <li>fixes issues after refactor (<a href="https://github.com/sinnerschrader/dekk/commit/1e061ea">1e061ea</a>)</li>
 <li>fixes random issues (<a href="https://github.com/sinnerschrader/dekk/commit/6ac2fb2">6ac2fb2</a>)</li>
@@ -309,26 +725,17 @@ export default (
 </div></div></div><footer class="main-footer"><img alt="esdoc logo" class="esdoc-logo" src="image/esdoc-logo-mini.png"> <span>Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span></a></span></footer></main><aside class="sidebar initial js_sidebarLeft sidebar-left" data-ice="nav"><nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html" class="nav-link _" data-ice="link">Installation</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#available-packages" class="nav-link _" data-ice="link">Available packages</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#deck--root-" class="nav-link _" data-ice="link">Deck (root)</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#speakerdeck--root-" class="nav-link _" data-ice="link">SpeakerDeck (root)</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#master-slides" class="nav-link _" data-ice="link">Master Slides</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#plugins" class="nav-link _" data-ice="link">Plugins</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#text-elements" class="nav-link _" data-ice="link">Text Elements</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#image-elements" class="nav-link _" data-ice="link">Image Elements</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#fragments" class="nav-link _" data-ice="link">Fragments</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#speaker-notes" class="nav-link _" data-ice="link">Speaker notes</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#tools" class="nav-link _" data-ice="link">Tools</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#icons" class="nav-link _" data-ice="link">Icons</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/usage.html"><a href="manual/usage.html" class="nav-link _" data-ice="link">Creating a Deck</a></li>
-</ul></nav>
-<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html" class="nav-link _" data-ice="link">Fragments</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#fragment-order" class="nav-link _" data-ice="link">Fragment order</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#nested-fragments" class="nav-link _" data-ice="link">Nested Fragments</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#fragment-root" class="nav-link _" data-ice="link">Fragment root</a></li>
-</ul></nav>
-<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html" class="nav-link _" data-ice="link">Master slides</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#creating-master-slides" class="nav-link _" data-ice="link">Creating master slides</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#adding-slots" class="nav-link _" data-ice="link">Adding Slots</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#content-types" class="nav-link _" data-ice="link">Content types</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#static-slots" class="nav-link _" data-ice="link">Static Slots</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#adding-styles" class="nav-link _" data-ice="link">Adding Styles</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html" class="nav-link _" data-ice="link">Plugins</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#adding-listeners" class="nav-link _" data-ice="link">Adding listeners</a></li>
@@ -337,7 +744,49 @@ export default (
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/static-elements.html"><a href="manual/static-elements.html" class="nav-link _" data-ice="link">Elements</a></li>
 </ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html" class="nav-link _" data-ice="link">Text elements</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#text" class="nav-link _" data-ice="link">Text</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#title" class="nav-link _" data-ice="link">Title</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#subtitle" class="nav-link _" data-ice="link">Subtitle</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#uppercase" class="nav-link _" data-ice="link">Uppercase</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#bold" class="nav-link _" data-ice="link">Bold</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#center" class="nav-link _" data-ice="link">Center</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/text-elements.html"><a href="manual/text-elements.html#code" class="nav-link _" data-ice="link">Code</a></li>
+</ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/images.html"><a href="manual/images.html" class="nav-link _" data-ice="link">Image elements</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/images.html"><a href="manual/images.html#maskedimage" class="nav-link _" data-ice="link">MaskedImage</a></li>
+</ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html" class="nav-link _" data-ice="link">Fragments</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#fragment-order" class="nav-link _" data-ice="link">Fragment order</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#nested-fragments" class="nav-link _" data-ice="link">Nested Fragments</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#fragment-root" class="nav-link _" data-ice="link">Fragment root</a></li>
+</ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html" class="nav-link _" data-ice="link">Master slides</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#usage" class="nav-link _" data-ice="link">Usage</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#available-layouts" class="nav-link _" data-ice="link">Available Layouts</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#cover" class="nav-link _" data-ice="link">Cover</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#chapter" class="nav-link _" data-ice="link">Chapter</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#half" class="nav-link _" data-ice="link">Half</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#collage" class="nav-link _" data-ice="link">Collage</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#grid" class="nav-link _" data-ice="link">Grid</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/master-slides.html"><a href="manual/master-slides.html#imagegrid" class="nav-link _" data-ice="link">ImageGrid</a></li>
+</ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html" class="nav-link _" data-ice="link">Master slides</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#creating-master-slides" class="nav-link _" data-ice="link">Creating master slides</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#adding-slots" class="nav-link _" data-ice="link">Adding slots</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#content-types" class="nav-link _" data-ice="link">Content types</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#static-slots" class="nav-link _" data-ice="link">Static slots</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#adding-styles" class="nav-link _" data-ice="link">Adding styles</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/masters.html"><a href="manual/masters.html#styled-master-slides" class="nav-link _" data-ice="link">Styled master slides</a></li>
+</ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/timer.html"><a href="manual/timer.html" class="nav-link _" data-ice="link">Timer</a></li>
+</ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/icons.html"><a href="manual/icons.html" class="nav-link _" data-ice="link">Icons</a></li>
+</ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#change-log" class="nav-link _" data-ice="link">Change Log</a></li>
+<li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-9---v1-0-0-10--1-0-0-10--a---2018-02-26-" class="nav-link _" data-ice="link">1.0.0-10 (2018-02-26)</a></li>
+<li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-8---v1-0-0-9--1-0-0-9--a---2018-02-26-" class="nav-link _" data-ice="link">1.0.0-9 (2018-02-26)</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#bug-fixes" class="nav-link _" data-ice="link">Bug Fixes</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-7---v1-0-0-8--1-0-0-8--a---2018-02-25-" class="nav-link _" data-ice="link">1.0.0-8 (2018-02-25)</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-6---v1-0-0-7--1-0-0-7--a---2018-02-25-" class="nav-link _" data-ice="link">1.0.0-7 (2018-02-25)</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-5---v1-0-0-6--1-0-0-6--a---2018-02-25-" class="nav-link _" data-ice="link">1.0.0-6 (2018-02-25)</a></li>
