@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Img from './img'
 import Mask from './mask'
 
@@ -8,14 +9,14 @@ import Mask from './mask'
  * It loads an image as a background-image. The original image is still
  * rendered for accessibility reasons.
  * @public
- * @class Image
+ * @class MaskedImage
  * @reactProps {Object} props
  *   The properties
  * @reactProps {String} props.alt
  * @reactProps {String} props.src
  * @reactProps {?String} props.title
  */
-class Image extends Component {
+class MaskedImage extends Component {
   /**
    * @private
    */
@@ -74,10 +75,10 @@ class Image extends Component {
    * @private
    * @return {String|Array}
    */
-  get mixin() {
+  get imageData() {
     return `
-      --height: ${this.state.height}px;
-      --width: ${this.state.width}px;
+      --original-height: ${this.state.height}px;
+      --original-width: ${this.state.width}px;
       background-image: url("${this.props.src}");
     `
   }
@@ -101,7 +102,10 @@ class Image extends Component {
    */
   render() {
     return (
-      <Mask mixin={this.mixin}>
+      <Mask
+        mixin={this.props.mixin}
+        imageData={this.imageData}
+        className={this.props.className}>
         <Img
           innerRef={this.getImage}
           src={this.props.src}
@@ -114,4 +118,9 @@ class Image extends Component {
   }
 }
 
-export default Image
+export default MaskedImage
+
+export const FitImage = styled(MaskedImage)`
+  --image-height: 100%;
+  --image-width: 100%;
+`
