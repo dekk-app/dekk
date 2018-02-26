@@ -17,7 +17,7 @@ export default createMaster(
 )
 ```
 
-## Adding Slots
+## Adding slots
 
 If you want different sections in your slide you can simply add more slots.
 
@@ -51,7 +51,7 @@ export default createMaster(
 )
 ```
 
-## Static Slots
+## Static slots
 
 In some cases you might want a slot to always appear without having to add it to every slide.
 You can add static slots to allow this feature.
@@ -75,7 +75,7 @@ export default createMaster(
 )
 ```
 
-## Adding Styles
+## Adding styles
 
 Dekk uses styled-components under the hood.
 It is recommended to follow this concept to style your slides.
@@ -119,4 +119,82 @@ export const Slide = styled(MasterSlide)`
     grid-area: Content;
   }
 `
+```
+
+
+## Styled master slides
+
+Dekk provides a styled component wrapper for master slides.
+
+This allows an easier approach at creating master slides.
+This is especially helpful when you have worked with styled-components before.
+
+**master.js**
+
+```jsx
+import React from 'react'
+import {Master, Static, createStyledMaster} from '@dekk/master'
+exort default createStyledMaster(
+  <Master>
+    <Slot name="A"/>
+    <Slot name="B"/>
+  </Master>
+)`
+  display: grid;
+  grid-template-areas: "A" "B";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  [data-slot="A"] {
+    grid-area: A;
+  }
+  [data-slot="B"] {
+    grid-area: B;
+  }
+`
+```
+
+**deck.js**
+
+`Layout` is a master slide without styling.
+
+It provides statics for `Slide` and all slots that have been defined 
+e.g. `{Slot, A, B}` or `{Slot, Top, Bottom}` depending on the names you
+assigned.
+
+```jsx
+import React from 'react'
+import Deck from '@dekk/deck'
+import Layout from './path/to/my/master.js'
+
+export default () => (
+  <Deck>
+    {/* unstyled master */}
+    <Layout>
+      <Layout.A>Slot A</Layout.A>
+      <Layout.B>Slot B</Layout.B>
+    </Layout>
+    {/* styled master */}
+    <Layout.Slide>
+      <Layout.A>Slot A</Layout.A>
+      <Layout.B>Slot B</Layout.B>
+    </Layout.Slide>
+  </Deck>
+)
+```
+
+or even 
+
+```jsx
+import React from 'react'
+import Deck from '@dekk/deck'
+import {Slide, A, B} from './path/to/my/master.js'
+
+export default () => (
+  <Deck>
+    <Slide>
+      <A>Slot A</A>
+      <B>Slot B</B>
+    </Slide>
+  </Deck>
+)
 ```

@@ -1,2 +1,2 @@
 export * from './components'
-export {default} from './create'
+export {default, createStyledMaster} from './create'

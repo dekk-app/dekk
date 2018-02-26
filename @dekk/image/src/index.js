@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Img from './img'
 import Mask from './mask'
 
@@ -8,14 +9,16 @@ import Mask from './mask'
  * It loads an image as a background-image. The original image is still
  * rendered for accessibility reasons.
  * @public
- * @class Image
- * @reactProps {Object} props
+ * @class MaskedImage
+ * @param {Object} props
  *   The properties
- * @reactProps {String} props.alt
- * @reactProps {String} props.src
- * @reactProps {?String} props.title
+ * @param {(String|Array)} [props.mixin]
+ * @param {String} [props.className]
+ * @param {String} props.alt
+ * @param {String} props.src
+ * @param {?String} props.title
  */
-class Image extends Component {
+class MaskedImage extends Component {
   /**
    * @private
    */
@@ -23,11 +26,11 @@ class Image extends Component {
 
   /**
    * @private
-   * @return {{alt: String, src: String, title: ?String}}
-   *   Allowed propTypes for `<Fragment/>`
    */
   static get propTypes() {
     return {
+      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+      className: PropTypes.string,
       alt: PropTypes.string.isRequired,
       src: PropTypes.string.isRequired,
       title: PropTypes.string
@@ -39,7 +42,9 @@ class Image extends Component {
    */
   static get defaultProps() {
     return {
-      title: ''
+      title: '',
+      mixin: '',
+      className: ''
     }
   }
 
@@ -48,6 +53,8 @@ class Image extends Component {
    * @public
    * @param {Object} props
    *   The properties
+   * @param {(String|Array)} [props.mixin]
+   * @param {String} [props.className]
    * @param {String} props.alt
    * @param {String} props.src
    * @param {?String} [props.title]
@@ -74,10 +81,10 @@ class Image extends Component {
    * @private
    * @return {String|Array}
    */
-  get mixin() {
+  get imageData() {
     return `
-      --height: ${this.state.height}px;
-      --width: ${this.state.width}px;
+      --original-height: ${this.state.height}px;
+      --original-width: ${this.state.width}px;
       background-image: url("${this.props.src}");
     `
   }
@@ -101,7 +108,10 @@ class Image extends Component {
    */
   render() {
     return (
-      <Mask mixin={this.mixin}>
+      <Mask
+        mixin={this.props.mixin}
+        imageData={this.imageData}
+        className={this.props.className}>
         <Img
           innerRef={this.getImage}
           src={this.props.src}
@@ -114,4 +124,30 @@ class Image extends Component {
   }
 }
 
-export default Image
+export default MaskedImage
+
+/**
+ * A version of `MaskedImage` that fits into its parent using
+ * height/width 100%/100%
+ * @param {Object} props
+ *   The properties
+ * @param {(String|Array)} [props.mixin]
+ * @param {String} [props.className]
+ * @param {String} props.alt
+ * @param {String} props.src
+ * @param {?String} props.title
+ */
+export const FitImage = styled(MaskedImage)`
+  --image-height: 100%;
+  --image-width: 100%;
+`
+/**
+ * @private
+ */
+FitImage.propTypes = {
+  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  className: PropTypes.string,
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string
+}
