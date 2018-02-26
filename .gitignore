@@ -63,3 +63,5 @@ typings/
 # lib directories
 **/lib
 
+# patches
+/patches/*
