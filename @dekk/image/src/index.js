@@ -10,11 +10,13 @@ import Mask from './mask'
  * rendered for accessibility reasons.
  * @public
  * @class MaskedImage
- * @reactProps {Object} props
+ * @param {Object} props
  *   The properties
- * @reactProps {String} props.alt
- * @reactProps {String} props.src
- * @reactProps {?String} props.title
+ * @param {(String|Array)} [props.mixin]
+ * @param {String} [props.className]
+ * @param {String} props.alt
+ * @param {String} props.src
+ * @param {?String} props.title
  */
 class MaskedImage extends Component {
   /**
@@ -51,6 +53,8 @@ class MaskedImage extends Component {
    * @public
    * @param {Object} props
    *   The properties
+   * @param {(String|Array)} [props.mixin]
+   * @param {String} [props.className]
    * @param {String} props.alt
    * @param {String} props.src
    * @param {?String} [props.title]
@@ -122,7 +126,28 @@ class MaskedImage extends Component {
 
 export default MaskedImage
 
+/**
+ * A version of `MaskedImage` that fits into its parent using
+ * height/width 100%/100%
+ * @param {Object} props
+ *   The properties
+ * @param {(String|Array)} [props.mixin]
+ * @param {String} [props.className]
+ * @param {String} props.alt
+ * @param {String} props.src
+ * @param {?String} props.title
+ */
 export const FitImage = styled(MaskedImage)`
   --image-height: 100%;
   --image-width: 100%;
 `
+/**
+ * @private
+ */
+FitImage.propTypes = {
+  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  className: PropTypes.string,
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string
+}

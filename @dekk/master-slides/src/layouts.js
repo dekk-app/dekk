@@ -1,19 +1,46 @@
 import {css} from 'styled-components'
 
+/**
+ * A collection of layouts
+ * @private
+ * @type {Object}
+ */
 const layouts = {
+  /**
+   * A collection of AB layouts
+   * @type {Object}
+   */
   AB: {},
+  /**
+   * A collection of ABC layouts
+   * @type {Object}
+   */
   ABC: {}
 }
 
 export default layouts
 
+/**
+ * Basic styles used in layouts
+ * @private
+ */
 export const baseStyles = css`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 2rem;
 `
 
+/**
+ * Vertical alignment helpers
+ * @private
+ * @type {Object}
+ */
 export const vertical = {}
+
+/**
+ * Vertical alignemt using flexbox
+ * @private
+ */
 vertical.base = css`
   display: flex;
   flex-direction: column;
@@ -21,14 +48,26 @@ vertical.base = css`
   align-content: center;
 `
 
+/**
+ * Vertically align top
+ * @private
+ */
 vertical.start = css`
   ${vertical.base} justify-content: flex-start;
 `
 
+/**
+ * Vertically align bottom
+ * @private
+ */
 vertical.end = css`
   ${vertical.base} justify-content: flex-end;
 `
 
+/**
+ * Base layout
+ * @private
+ */
 layouts.base = css`
   ${baseStyles};
   display: grid;
@@ -50,6 +89,10 @@ layouts.base = css`
   }
 `
 
+/**
+ * Layout for A
+ * @private
+ */
 layouts.A = css`
   ${layouts.base};
   grid-template-columns: 1fr;
@@ -57,6 +100,10 @@ layouts.A = css`
   grid-template-areas: 'slotA';
 `
 
+/**
+ * Layout for AB
+ * @private
+ */
 layouts.AB.topBottom = css`
   ${layouts.base};
   grid-template-columns: 1fr;
@@ -66,6 +113,10 @@ layouts.AB.topBottom = css`
     'slotB';
 `
 
+/**
+ * Layout for AB
+ * @private
+ */
 layouts.AB.leftRight = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
@@ -73,6 +124,10 @@ layouts.AB.leftRight = css`
   grid-template-areas: 'slotA slotB';
 `
 
+/**
+ * Layout for ABC
+ * @private
+ */
 layouts.ABC.top = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
@@ -82,6 +137,10 @@ layouts.ABC.top = css`
     'slotB slotC';
 `
 
+/**
+ * Layout for ABC
+ * @private
+ */
 layouts.ABC.right = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
@@ -91,6 +150,10 @@ layouts.ABC.right = css`
     'slotC slotA';
 `
 
+/**
+ * Layout for ABC
+ * @private
+ */
 layouts.ABC.bottom = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
@@ -100,6 +163,10 @@ layouts.ABC.bottom = css`
     'slotA slotA';
 `
 
+/**
+ * Layout for ABC
+ * @private
+ */
 layouts.ABC.left = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
@@ -109,6 +176,10 @@ layouts.ABC.left = css`
     'slotA slotC';
 `
 
+/**
+ * Layout for ABCD
+ * @private
+ */
 layouts.ABCD = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;

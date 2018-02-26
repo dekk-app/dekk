@@ -6,6 +6,10 @@ import layouts, {vertical} from './layouts'
 
 export {baseStyles} from './layouts'
 
+/**
+ * A cover slide
+ * @type {Slide}
+ */
 export const Cover = createMaster(
   <Master>
     <Slot name="A" only={[Title]} />
@@ -21,6 +25,10 @@ export const Cover = createMaster(
   }
 `
 
+/**
+ * A chapter slide
+ * @type {Slide}
+ */
 export const Chapter = createMaster(
   <Master>
     <Slot name="A" only={[Title]} />
@@ -36,6 +44,10 @@ export const Chapter = createMaster(
   }
 `
 
+/**
+ * A 50/50 slide. (half image)
+ * @type {Slide}
+ */
 export const Half = createMaster(
   <Master>
     <Slot name="A" only={[Image]} />
@@ -50,6 +62,10 @@ export const Half = createMaster(
   }
 `
 
+/**
+ * A collage slide. (two images)
+ * @type {Slide}
+ */
 export const Collage = createMaster(
   <Master>
     <Slot name="A" not={[Image]} />
@@ -65,6 +81,10 @@ export const Collage = createMaster(
   }
 `
 
+/**
+ * A grid slide (4 slots)
+ * @type {Slide}
+ */
 export const Grid = createMaster(
   <Master>
     <Slot name="A" />
@@ -80,6 +100,10 @@ export const Grid = createMaster(
   }
 `
 
+/**
+ * An image gris slide (4 images)
+ * @type {Slide}
+ */
 export const ImageGrid = createMaster(
   <Master>
     <Slot name="A" only={[Image]} />

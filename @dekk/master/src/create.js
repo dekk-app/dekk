@@ -169,5 +169,5 @@ export const createStyledMaster = template => {
  * @public
  * @typedef StyledLayout
  * @type {ReactComponent}
- * @return {{Slide: ReactComponent, ...Slots}}
+ * @return {{Slide: ReactComponent, Slot: ReactComponent}}
  */
