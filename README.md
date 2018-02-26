@@ -24,6 +24,7 @@ configured via several available packages.
 
 ## Links
 * [Demo](https://sinnerschrader.github.io/dekk/)
+* [Demo (presenter mode)](https://sinnerschrader.github.io/dekk/?present=true)
 * [Documentation](https://sinnerschrader.github.io/dekk/api/)
   * [Installation](https://sinnerschrader.github.io/dekk/api/manual/installation.html)
   * [Usage](https://sinnerschrader.github.io/dekk/api/manual/usage.html)
