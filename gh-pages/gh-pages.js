@@ -11,24 +11,21 @@ import Paging from '@dekk/paging'
 import Slide from '@dekk/slide'
 import Fragment from '@dekk/fragment'
 import Notes from '@dekk/speaker-notes'
-import Image from '@dekk/image'
+import {FitImage} from '@dekk/image'
 import Text, {Title, Subtitle} from '@dekk/text'
-import {fadeSlide, flip, cube} from '@dekk/animation'
-
+import {fadeSlide, fade, flip, cube} from '@dekk/animation'
 import {
-  CoverSlide,
   Cover,
-  ChapterSlide,
   Chapter,
-  HalfSlide,
   Half,
-  CollageSlide,
+  Grid,
   Collage,
   baseStyles
-} from './masters'
+} from '@dekk/master-slides'
 
 import redImage from './assets/red.jpg'
 import greenImage from './assets/green.jpg'
+import blueImage from './assets/blue.jpg'
 
 import {red, green, blue, grey, black} from './design-system'
 
@@ -105,7 +102,7 @@ const speakerMixin = css`
  * Cover slide
  */
 const cover = (
-  <CoverSlide key={uuid()}>
+  <Cover.Slide key={uuid()}>
     <Cover.A>
       <Title>Welcome to Dekk!</Title>
     </Cover.A>
@@ -119,14 +116,14 @@ const cover = (
         want to test and help develop Dekk.
       </Text>
     </Notes>
-  </CoverSlide>
+  </Cover.Slide>
 )
 
 /**
  * Thank you slide
  */
 const thankYou = (
-  <CoverSlide key={uuid()} background={blue.main}>
+  <Cover.Slide key={uuid()} background={blue.main}>
     <Cover.A>
       <Title>Thank you!</Title>
     </Cover.A>
@@ -143,14 +140,14 @@ const thankYou = (
         </Fragment>
       </Subtitle>
     </Cover.B>
-  </CoverSlide>
+  </Cover.Slide>
 )
 
 /**
  * A title example
  */
 const title = (
-  <ChapterSlide key={uuid()} background={red.main}>
+  <Chapter.Slide key={uuid()} background={red.main}>
     <Chapter.A>
       <Title>Presentations powered by React.js</Title>
     </Chapter.A>
@@ -165,11 +162,28 @@ const title = (
         even entire applications.
       </Text>
     </Notes>
-  </ChapterSlide>
+  </Chapter.Slide>
 )
 
-const highlight = css`
+const highlight = {}
+highlight.red = css`
   ${({isActive}) => (isActive ? `color: ${red.main}` : '')};
+`
+
+highlight.green = css`
+  ${({isActive}) => (isActive ? `color: ${green.main}` : '')};
+`
+
+highlight.blue = css`
+  ${({isActive}) => (isActive ? `color: ${blue.main}` : '')};
+`
+
+highlight.bold = css`
+  ${({isActive}) => (isActive ? 'font-weight: bolder' : '')};
+`
+
+highlight.underline = css`
+  ${({isActive}) => (isActive ? 'text-decoration: underline' : '')};
 `
 
 const imageFragment = css`
@@ -177,32 +191,30 @@ const imageFragment = css`
   width: 100%;
   height: 100%;
   opacity: calc(1 - var(--time));
-  --image-height: 100%;
-  --image-width: 100%;
 `
 /**
  * A fragment example
  */
 const fragment = (
-  <CollageSlide key={uuid()}>
+  <Collage.Slide key={uuid()}>
     <Collage.A>
       <Title>Fragments</Title>
       <Text>
-        A slide can be devided into different{' '}
-        <Fragment order={1} animation={highlight}>
+        A slide can be divided into different{' '}
+        <Fragment order={1} animation={highlight.red}>
           fragments
         </Fragment>. Fragments are sorted by{' '}
-        <Fragment order={2} animation={highlight}>
+        <Fragment order={2} animation={highlight.underline}>
           order
         </Fragment>, which allows multiple fragments to appear at the{' '}
-        <Fragment order={3} animation={highlight}>
+        <Fragment order={3} animation={highlight.green}>
           same time
         </Fragment>.
       </Text>
     </Collage.A>
     <Collage.B>
       <Fragment order={1} animation={imageFragment}>
-        <Image
+        <FitImage
           src={redImage}
           alt="fragment 1, red image, a woman  with guitar"
         />
@@ -210,7 +222,7 @@ const fragment = (
     </Collage.B>
     <Collage.C>
       <Fragment order={3} animation={imageFragment}>
-        <Image
+        <FitImage
           src={greenImage}
           alt="fragment 2, green image, a man jumping up the stairs"
         />
@@ -224,14 +236,14 @@ const fragment = (
         choose from presets or write your own animations and/or transitions.
       </Text>
     </Notes>
-  </CollageSlide>
+  </Collage.Slide>
 )
 
 /**
  * An animation example
  */
 const animation_1 = (
-  <ChapterSlide key={uuid()} animationOut={flip.x}>
+  <Chapter.Slide key={uuid()} animationOut={flip.x}>
     <Chapter.A>
       <Title>Animations</Title>
     </Chapter.A>
@@ -241,14 +253,14 @@ const animation_1 = (
     <Notes>
       <Text>Dekk allows you to add animations or transitions to slides.</Text>
     </Notes>
-  </ChapterSlide>
+  </Chapter.Slide>
 )
 
 /**
  * An animation example
  */
 const animation_2 = (
-  <ChapterSlide key={uuid()} animationIn={flip.x} animationOut={flip.y}>
+  <Chapter.Slide key={uuid()} animationIn={flip.x} animationOut={flip.y}>
     <Chapter.A>
       <Title>Different effects</Title>
     </Chapter.A>
@@ -258,14 +270,14 @@ const animation_2 = (
     <Notes>
       <Text>Animations can be defined as in, out or both</Text>
     </Notes>
-  </ChapterSlide>
+  </Chapter.Slide>
 )
 
 /**
  * An animation example
  */
 const animation_3 = (
-  <ChapterSlide key={uuid()} animationIn={flip.y} animationOut={cube.slideX}>
+  <Chapter.Slide key={uuid()} animationIn={flip.y} animationOut={cube.slideX}>
     <Chapter.A>
       <Title>Flip, Cube, Slide, Fade</Title>
     </Chapter.A>
@@ -276,16 +288,16 @@ const animation_3 = (
     <Notes>
       <Text>Dekk provides default animations.</Text>
     </Notes>
-  </ChapterSlide>
+  </Chapter.Slide>
 )
 
 /**
  * An animation example
  */
 const animation_4 = (
-  <ChapterSlide key={uuid()} animationIn={cube.slideX}>
+  <Chapter.Slide key={uuid()} animationIn={cube.slideX} animationOut={fade.in}>
     <Chapter.A>
-      <Title>Animation are just CSS</Title>
+      <Title>Transitions are just CSS</Title>
     </Chapter.A>
     <Chapter.B>
       <Subtitle>with some CSS variable magic</Subtitle>
@@ -293,7 +305,42 @@ const animation_4 = (
     <Notes>
       <Text>Dekk uses CSS variables under the hood.</Text>
     </Notes>
-  </ChapterSlide>
+  </Chapter.Slide>
+)
+
+/**
+ * An animation example
+ */
+const animation_5 = (
+  <Grid.Slide key={uuid()} animationIn={fade.in}>
+    <Grid.A>
+      <FitImage
+        src={greenImage}
+        alt="green image, a man jumping up the stairs"
+      />
+    </Grid.A>
+    <Grid.B>
+      <Subtitle>Master slides</Subtitle>
+      <Text>Create masters and define a reusable layout and style</Text>
+    </Grid.B>
+    <Grid.C>
+      <Subtitle>Sharable layouts</Subtitle>
+      <Text>
+        Share master slides in your team or even with the rest of the world.
+      </Text>
+    </Grid.C>
+    <Grid.D>
+      <FitImage
+        src={blueImage}
+        alt="blue image, a man sitting and ping pong balls fallingdown on him"
+      />
+    </Grid.D>
+    <Notes>
+      <Text>
+        Master slides help share layouts and create consistent appearances.
+      </Text>
+    </Notes>
+  </Grid.Slide>
 )
 
 /**
@@ -305,7 +352,8 @@ const content = [
   animation_1,
   animation_2,
   animation_3,
-  animation_4
+  animation_4,
+  animation_5
 ]
 
 /**
