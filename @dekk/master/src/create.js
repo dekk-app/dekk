@@ -1,5 +1,6 @@
 import React, {Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Master from './master'
 import {Slot} from './components'
 
@@ -97,6 +98,41 @@ export default function createMaster(master) {
 
   return Slide
 }
+
+/**
+ * A wrapper around createMaster.
+ *
+ * This helper allows creating a styled Master Component.
+ * @param {MasterTemplate} template
+ *   A typical template as used in createMaster
+ * @returns {StyledLayout}
+ * @example
+ * const Layout = createStyledMaster(
+ *   <Master>
+ *   <Slot name="A"/>
+ *   <Slot name="B"/>
+ *   </Master>
+ * )`
+ *   display: grid;
+ *   grid-template-areas: "A" "B";
+ *   grid-template-rows: 1fr 1fr;
+ *   grid-template-columns: 1fr;
+ *   [data-slot="A"] {
+ *     grid-area: A;
+ *   }
+ *   [data-slot="B"] {
+ *     grid-area: B;
+ *   }
+ * `
+ */
+export const createStyledMaster = template => {
+  const Layout = createMaster(template)
+  return (...args) => {
+    Layout.Slide = styled(Layout)(...args)
+    return Layout
+  }
+}
+
 /**
  * This Component will be returned by `createMaster`.
  * It has a static method for each slot that has been added.
@@ -106,4 +142,32 @@ export default function createMaster(master) {
  * @param {Object} props
  * @param {Object} props.mixin
  *   A mixin that is added to the style block
+ */
+
+/**
+ * A template to create master slides
+ * @public
+ * @typedef MasterTemplate
+ * @type {ReactComponent}
+ * @param {Object} props
+ * @param {(Slot|(Slot[]|Static|Static[])} props.children
+ *   The Template only allows slots and static slots
+ */
+
+/**
+ * A styled layout component
+ * @public
+ * @typedef StyledLayout
+ * @type {Function}
+ * @param {...Array} args
+ *   The `input` of styled.literal...
+ * @return {Layout}
+ */
+
+/**
+ * A complete layout with styling
+ * @public
+ * @typedef StyledLayout
+ * @type {ReactComponent}
+ * @return {{Slide: ReactComponent, ...Slots}}
  */
