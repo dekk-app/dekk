@@ -5,7 +5,7 @@ import uuid from 'uuid/v4'
 import styled, {css} from 'styled-components'
 
 import Deck, {Plugins, Elements} from '@dekk/deck'
-import SpeakerDeck from '@dekk/deck'
+import SpeakerDeck from '@dekk/speaker-deck'
 import Url, {search} from '@dekk/url'
 import Paging from '@dekk/paging'
 import Slide from '@dekk/slide'
