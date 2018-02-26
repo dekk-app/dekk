@@ -32,20 +32,19 @@ vertical.end = css`
 layouts.base = css`
   ${baseStyles};
   display: grid;
-  [data-slot],
-  [data-static] {
-    height: 100%;
-    width: 100%;
-  }
+
   [data-slot='A'] {
     grid-area: slotA;
   }
+
   [data-slot='B'] {
     grid-area: slotB;
   }
+
   [data-slot='C'] {
     grid-area: slotC;
   }
+
   [data-slot='D'] {
     grid-area: slotD;
   }
@@ -55,7 +54,6 @@ layouts.A = css`
   ${layouts.base};
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-gap: 1rem;
   grid-template-areas: 'slotA';
 `
 
@@ -63,7 +61,6 @@ layouts.AB.topBottom = css`
   ${layouts.base};
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1rem;
   grid-template-areas:
     'slotA'
     'slotB';
@@ -73,7 +70,6 @@ layouts.AB.leftRight = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-gap: 1rem;
   grid-template-areas: 'slotA slotB';
 `
 
@@ -81,7 +77,6 @@ layouts.ABC.top = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1rem;
   grid-template-areas:
     'slotA slotA'
     'slotB slotC';
@@ -91,7 +86,6 @@ layouts.ABC.right = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1rem;
   grid-template-areas:
     'slotB slotA'
     'slotC slotA';
@@ -101,7 +95,6 @@ layouts.ABC.bottom = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1rem;
   grid-template-areas:
     'slotB slotC'
     'slotA slotA';
@@ -111,7 +104,6 @@ layouts.ABC.left = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1rem;
   grid-template-areas:
     'slotA slotB'
     'slotA slotC';
@@ -121,7 +113,6 @@ layouts.ABCD = css`
   ${layouts.base};
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1rem;
   grid-template-areas:
     'slotA slotB'
     'slotC slotD';
