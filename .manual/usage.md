@@ -2,14 +2,14 @@
 
 To create a Deck you need two core packages, `Deck` and `Slide`.
 A Deck can contain several Components aside `Slide`. Take a look at
-[`Plugins`](manual/plugins.html) and [`Elements`](manual/plugins.html)
+[`Plugins`](plugins.html) and [`Elements`](static-elements.html)
 to understand how these can be used in your
-`Deck``
+`Deck`
 
 Decks and Slides only provide the render logic and handle an internal
 state. Without plugins you won't be able to navigate through the Deck.
 This allows a very unique kind of configauration.
-Read more [here](manual/plugins.html)
+Read more [here](plugins.html)
 
 **deck.js**
 

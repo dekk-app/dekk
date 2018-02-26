@@ -19,7 +19,7 @@ yarn add @dekk/deck
 import Deck, {Plugins, Elements} from '@dekk/dekk'
 ```
 
-### SpaekerDeck (root)
+### SpeakerDeck (root)
 
 ```shell
 yarn add @dekk/speaker-deck
