@@ -24,11 +24,11 @@ class MaskedImage extends Component {
 
   /**
    * @private
-   * @return {{alt: String, src: String, title: ?String}}
-   *   Allowed propTypes for `<Fragment/>`
    */
   static get propTypes() {
     return {
+      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+      className: PropTypes.string,
       alt: PropTypes.string.isRequired,
       src: PropTypes.string.isRequired,
       title: PropTypes.string
@@ -40,7 +40,9 @@ class MaskedImage extends Component {
    */
   static get defaultProps() {
     return {
-      title: ''
+      title: '',
+      mixin: '',
+      className: ''
     }
   }
 

@@ -1,12 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
-
 import {Master, Slot, createStyledMaster as createMaster} from '@dekk/master'
 import Text, {Title, Subtitle} from '@dekk/text'
 import {FitImage as Image} from '@dekk/image'
-
 import layouts, {vertical} from './layouts'
+
 export {baseStyles} from './layouts'
 
 export const Cover = createMaster(

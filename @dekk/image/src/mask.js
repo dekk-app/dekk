@@ -29,6 +29,7 @@ const Mask = styled.div`
 Mask.propTypes = {
   imageData: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  className: PropTypes.string,
   children: PropTypes.element
 }
 

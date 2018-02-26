@@ -20,7 +20,6 @@ import {Slot, Static} from './components'
  *   An invalid component warning
  */
 const invalid = (child, index, itemProps) => {
-  console.log(itemProps, child)
   return (
     <div key={`slot__${index}`} data-slot={child.name}>
       <Warning
