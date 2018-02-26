@@ -19,18 +19,21 @@ import {Slot, Static} from './components'
  * @returns {Warning}
  *   An invalid component warning
  */
-const invalid = (child, index, itemProps) => (
-  <div key={`slot__${index}`} data-slot={itemProps.name}>
-    <Warning
-      {...itemProps}
-      type={
-        (child.type && (child.type.displayName || child.type.name)) ||
-        `"${child}"`
-      }
-      invalid
-    />
-  </div>
-)
+const invalid = (child, index, itemProps) => {
+  console.log(itemProps, child)
+  return (
+    <div key={`slot__${index}`} data-slot={child.name}>
+      <Warning
+        {...itemProps}
+        type={
+          (child.type && (child.type.displayName || child.type.name)) ||
+          `"${child}"`
+        }
+        invalid
+      />
+    </div>
+  )
+}
 
 /**
  * Renders a component that displays a warning about an invalid
@@ -73,8 +76,8 @@ const onlyOrWarning = (only, child, index, itemProps) => {
   // In case the child is a fragment, check all child elements
   if (child.type === Fragment || child.type === FragmentRoot) {
     return cloneElement(child, {
-      children: Children.toArray(child.props.children).map(child =>
-        onlyOrWarning(only, child)
+      children: Children.toArray(child.props.children).map((child, i) =>
+        onlyOrWarning(only, child, index * 100 + i, itemProps)
       )
     })
   }
@@ -98,8 +101,8 @@ const onlyOrWarning = (only, child, index, itemProps) => {
 const notOrWarning = (not, child, index, itemProps) => {
   if (child.type === Fragment || child.type === FragmentRoot) {
     return cloneElement(child, {
-      children: Children.toArray(child.props.children).map(child =>
-        notOrWarning(not, child)
+      children: Children.toArray(child.props.children).map((child, i) =>
+        notOrWarning(not, child, index * 100 + i, itemProps)
       )
     })
   }
