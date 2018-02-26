@@ -1,6 +1,6 @@
 {
   "name": "@dekk/master-slides",
-  "version": "1.0.0-8",
+  "version": "1.0.0-9",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -17,8 +17,8 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/image": "^1.0.0-8",
-    "@dekk/master": "^1.0.0-8",
+    "@dekk/image": "^1.0.0-9",
+    "@dekk/master": "^1.0.0-9",
     "@dekk/text": "^1.0.0-8",
     "react": "^16.2.0",
     "styled-components": "^3.1.6"

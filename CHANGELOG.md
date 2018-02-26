@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-9"></a>
+# [1.0.0-9](https://github.com/sinnerschrader/dekk/compare/v1.0.0-8...v1.0.0-9) (2018-02-26)
+
+
+### Bug Fixes
+
+* **deck:** controls styles ([4bd0b62](https://github.com/sinnerschrader/dekk/commit/4bd0b62))
+* **image:** adjust image to work better ([9179e6d](https://github.com/sinnerschrader/dekk/commit/9179e6d))
+* **image:** remove import of Img in Mask ([47fb6f7](https://github.com/sinnerschrader/dekk/commit/47fb6f7))
+* **paging:** fix default value ([0853f83](https://github.com/sinnerschrader/dekk/commit/0853f83))
+
+
+
+
 <a name="1.0.0-8"></a>
 # [1.0.0-8](https://github.com/sinnerschrader/dekk/compare/v1.0.0-7...v1.0.0-8) (2018-02-25)
 

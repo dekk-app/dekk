@@ -1,6 +1,6 @@
 {
   "name": "@dekk/speaker-deck",
-  "version": "1.0.0-8",
+  "version": "1.0.0-9",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@dekk/countdown": "^1.0.0-8",
-    "@dekk/deck": "^1.0.0-8",
+    "@dekk/deck": "^1.0.0-9",
     "@dekk/icon": "^1.0.0-8",
     "@dekk/slide": "^1.0.0-8",
     "@dekk/text": "^1.0.0-8",
