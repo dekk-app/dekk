@@ -17,16 +17,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/countdown": "^1.0.0-8",
-    "@dekk/fragment": "^1.0.0-8",
-    "@dekk/icon": "^1.0.0-8",
-    "@dekk/image": "^1.0.0-8",
-    "@dekk/master": "^1.0.0-8",
-    "@dekk/slide": "^1.0.0-8",
-    "@dekk/speaker-notes": "^1.0.0-8",
     "@dekk/store": "^1.0.0-8",
-    "@dekk/text": "^1.0.0-8",
-    "@dekk/url": "^1.0.0-8",
     "@dekk/utils": "^1.0.0-8",
     "mobx": "^3.5.1",
     "mobx-react": "^4.4.2",
