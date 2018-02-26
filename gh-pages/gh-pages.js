@@ -4,15 +4,16 @@ import {render} from 'react-dom'
 import uuid from 'uuid/v4'
 import styled, {css} from 'styled-components'
 
-import Deck, {SpeakerDeck, Plugins, Elements} from '@dekk/deck'
+import Deck, {Plugins, Elements} from '@dekk/deck'
+import SpeakerDeck from '@dekk/deck'
 import Url, {search} from '@dekk/url'
+import Paging from '@dekk/paging'
 import Slide from '@dekk/slide'
 import Fragment from '@dekk/fragment'
 import Notes from '@dekk/speaker-notes'
 import Image from '@dekk/image'
-import Text, {Title, Subtitle, Uppercase} from '@dekk/text'
+import Text, {Title, Subtitle} from '@dekk/text'
 import {fadeSlide, flip, cube} from '@dekk/animation'
-import Paging from '@dekk/paging'
 
 import {
   CoverSlide,
@@ -45,6 +46,7 @@ const StyledHeader = styled.header`
   left: 0;
   font-size: 1rem;
 `
+
 const Header = () => <StyledHeader>Dekk Tutorial</StyledHeader>
 
 const StyledFooter = styled.footer`
@@ -61,6 +63,7 @@ const StyledFooter = styled.footer`
   left: 0;
   font-size: 1rem;
 `
+
 const Footer = () => <StyledFooter>Dekk Tutorial</StyledFooter>
 
 const plugins = (
