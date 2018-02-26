@@ -77,10 +77,13 @@
           "files": [
             "./.manual/installation.md",
             "./.manual/usage.md",
-            "./.manual/fragments.md",
-            "./.manual/masters.md",
             "./.manual/plugins.md",
             "./.manual/static-elements.md",
+            "./.manual/text-elements.md",
+            "./.manual/images.md",
+            "./.manual/fragments.md",
+            "./.manual/master-slides.md",
+            "./.manual/masters.md",
             "./CHANGELOG.md"
           ]
         }
