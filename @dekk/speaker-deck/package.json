@@ -1,5 +1,5 @@
 {
-  "name": "@dekk/deck",
+  "name": "@dekk/speaker-deck",
   "version": "1.0.0-8",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
@@ -17,7 +17,12 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/store": "^1.0.0-8",
+    "@dekk/countdown": "^1.0.0-8",
+    "@dekk/deck": "^1.0.0-8",
+    "@dekk/icon": "^1.0.0-8",
+    "@dekk/slide": "^1.0.0-8",
+    "@dekk/text": "^1.0.0-8",
+    "@dekk/url": "^1.0.0-8",
     "@dekk/utils": "^1.0.0-8",
     "mobx": "^3.5.1",
     "mobx-react": "^4.4.2",

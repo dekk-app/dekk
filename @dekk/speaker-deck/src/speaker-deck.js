@@ -7,10 +7,9 @@ import Slide from '@dekk/slide'
 import {Title} from '@dekk/text'
 import {search} from '@dekk/url'
 import Timer, {renderCountdown} from '@dekk/countdown'
+import Deck, {Wrapper} from '@dekk/deck'
 
-import Wrapper from './wrapper'
 import SpeakerWrapper from './speaker-wrapper'
-import Deck from './deck'
 import Controls, {
   PageNumber,
   FragmentNumber,
