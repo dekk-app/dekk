@@ -84,6 +84,8 @@
             "./.manual/fragments.md",
             "./.manual/master-slides.md",
             "./.manual/masters.md",
+            "./.manual/timer.md",
+            "./.manual/icons.md",
             "./CHANGELOG.md"
           ]
         }
