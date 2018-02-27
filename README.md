@@ -2,8 +2,10 @@
 
 <p align="center"><img width="300" src="https://raw.githubusercontent.com/sinnerschrader/dekk/master/resources/logo.png" alt="Dekk logo"/></p>
 
-Dekk is a presentation tool written in React.js. It can be used and
-configured via several available packages.
+Dekk is a presentation tool written in React.js.
+It is developed as a monorepo and provides several packages.
+
+This file does not explain how Dekk works. Please take a look at the [Manual](https://sinnerschrader.github.io/dekk/api/manual/) instead.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/sinnerschrader/dekk.svg?style=flat-square)](https://github.com/sinnerschrader/dekk/issues)
@@ -27,6 +29,7 @@ configured via several available packages.
 	* [Examples](#examples)
 	* [API Reference](#api-reference)
 	* [Dependencies](#dependencies)
+	* [Special thanks.](#special-thanks)
 
 <!-- /code_chunk_output -->
 
@@ -60,6 +63,8 @@ basic usage of Dekk.
 ## API Reference
 
 Dekk is fully documented. Feel free to look through the reference.
+If something is missing it has probably not been generated.
+Take a look at the source comments instead.
 
 [Reference](https://sinnerschrader.github.io/dekk/api/identifiers.html)
 
@@ -75,6 +80,10 @@ So let's thank the creators and contributers of these projects.
 
 ## Special thanks.
 
+To develop Dekk a lot more than just those 4 packages were needed 😱 
+
+`npx thanks` (top 10)
+
 | Author | Where to Donate | Dependencies |
 |---|---|---|
 | sindresorhus              | patreon.com/sindresorhus              | eslint-config-xo-react + 195 more |
@@ -87,19 +96,6 @@ So let's thank the creators and contributers of these projects.
 | thlorenz                  | patreon.com/thlorenz                  | resolve + 5 more |
 | hueniverse                | patreon.com/eranhammer                | qs, boom, hoek, hawk, sntp + 1 more |
 | yoshuawuyts               | patreon.com/yoshuawuyts               | resolve, timers-browserify + 1 more |
-| marijn                    | patreon.com/marijn                    | acorn, codemirror |
-| typicode                  | patreon.com/typicode                  | husky |
-| jaredhanson               | patreon.com/jaredhanson               | utils-merge |
-| jayphelps                 | patreon.com/jayphelps                 | symbol-observable |
-| moox                      | liberapay.com/MoOx                    | color-convert |
-| debug (team)              | opencollective.com/debug              | debug |
-| babel-core (team)         | opencollective.com/babel              | babel-core |
-| webpack (team)            | opencollective.com/webpack            | webpack |
-| cheerio (team)            | opencollective.com/cheerio            | cheerio |
-| styled-components (team)  | opencollective.com/styled-components  | styled-components |
-| mobx (team)               | opencollective.com/mobx               | mobx |
-| ava (team)                | opencollective.com/ava                | ava |
-
 
 
 © Copyright 2018 [Gregor Adams](https://github.com/pixelass)  
