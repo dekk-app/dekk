@@ -86,6 +86,7 @@
             "./.manual/masters.md",
             "./.manual/timer.md",
             "./.manual/icons.md",
+            "./.manual/examples.md",
             "./CHANGELOG.md"
           ]
         }
