@@ -44,6 +44,13 @@
       }
     },
     {
+      "name": "esdoc-inject-style-plugin",
+      "option": {
+        "enable": true,
+        "styles": ["./gh-pages/docs.css"]
+      }
+    },
+    {
       "name": "esdoc-jsx-plugin",
       "option": {
         "enable": true

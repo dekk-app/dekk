@@ -1,0 +1,31 @@
+._indent-h1 {
+  --left-sidebar-indent-background: #f2f5f9;
+}
+
+._indent-h2 {
+  --left-sidebar-indent-background: #c9d0d5;
+}
+
+._indent-h3 {
+  --left-sidebar-indent-background: #acb4b7;
+}
+
+._indent-h4 {
+  --left-sidebar-indent-background: #99a2a6;
+}
+
+:root.dark ._indent-h1 {
+    --left-sidebar-indent-background: #212429;
+}
+
+:root.dark ._indent-h2 {
+  --left-sidebar-indent-background: #2d3038;
+}
+
+:root.dark ._indent-h3 {
+  --left-sidebar-indent-background: #484c58;
+}
+
+:root.dark ._indent-h4 {
+  --left-sidebar-indent-background: #696e76;
+}
