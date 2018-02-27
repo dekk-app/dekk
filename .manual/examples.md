@@ -59,12 +59,12 @@ const App = () => (
     </Slide>
     <Slide animation={cube.slideX}>
       This is slide <strong>3</strong>.
-      <br/
+      <br/>
       It rotates as a cube when leaving and entering.
     </Slide>
     <Slide animationIn={cube.slideX}>
       This is slide <strong>4</strong>.
-      <br/
+      <br/>
       It rotates as a cube when entering.
     </Slide>
     <Slide>This is slide <strong>5</strong></Slide>
