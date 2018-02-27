@@ -1,4 +1,4 @@
-# Master slides
+# Masters
 
 This section will guide you through the options and explain how master slides work.
 
