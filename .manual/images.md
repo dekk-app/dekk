@@ -80,3 +80,14 @@ export const ZoomImage = styled(MaskedImage)`
   ${topRight};  
 `
 ```
+
+## FitImage
+
+a version of MaskedImage that is already using 
+
+```jsx
+css`
+  --height: 100%;
+  --width: 100%;
+`
+```
