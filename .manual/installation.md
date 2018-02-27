@@ -36,7 +36,7 @@ yarn add @dekk/master
 ```
 
 ```jsx
-import createMster, {
+import createMaster, {
   Master,
   Slot,
   Static,
