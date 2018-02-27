@@ -11,7 +11,7 @@ and offers several packages.</p><p>You can find all public packages and their pr
 </code></pre><h3>SpeakerDeck (root)</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/speaker-deck</code>
 </code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import SpeakerDeck from &apos;@dekk/speaker-dekk&apos;</code>
 </code></pre><h3>Master Slides</h3><pre><code class="lang-shell"><code class="source-code prettyprint">yarn add @dekk/master</code>
-</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import createMster, {
+</code></pre><pre><code class="lang-jsx"><code class="source-code prettyprint">import createMaster, {
   Master,
   Slot,
   Static,
@@ -268,6 +268,10 @@ const SmallImage = styled(MaskedImage)`
 export const ZoomImage = styled(MaskedImage)`
   ${zoom2};
   ${topRight};  
+`</code>
+</code></pre><h2>FitImage</h2><p>a version of MaskedImage that is already using </p><pre><code class="lang-jsx"><code class="source-code prettyprint">css`
+  --height: 100%;
+  --width: 100%;
 `</code>
 </code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/images.html"></a></div>
 <div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Fragments</h1><p>A slide can have multiple fragments which are activated before the next slide.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
@@ -712,6 +716,182 @@ export const PeopleIcon = ({size = &apos;1em&apos;}) =&gt; (
   &lt;Icon size={size} icon={people}/&gt;
 )</code>
 </code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/icons.html"></a></div>
+<div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Examples</h1><h2>Basic Example</h2><p>To get started you can copy the following code. 
+This example adds a Deck with 3 slides.
+It enables paging and adds url handling.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import {render} from &apos;react-dom&apos;
+import Deck, {Plugins} from &apos;@dekk/deck&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Paging from &apos;@dekk/paging&apos;
+import Url from &apos;@dekk/url&apos;
+
+const App = () =&gt; (
+  &lt;Deck&gt;
+    &lt;Plugins&gt;
+    &lt;Paging/&gt;
+    &lt;Url/&gt;
+    &lt;/Plugins&gt;
+    &lt;Slide&gt;This is slide &lt;strong&gt;1&lt;/strong&gt;.&lt;/Slide&gt;
+    &lt;Slide&gt;This is slide &lt;strong&gt;2&lt;/strong&gt;.&lt;/Slide&gt;
+    &lt;Slide&gt;This is slide &lt;strong&gt;3&lt;/strong&gt;.&lt;/Slide&gt;
+  &lt;/Deck&gt;
+)
+
+render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
+</code></pre><h2>Changing the transitions</h2><p>To use other transitions you only need to add one more package. 
+This example adds a Deck with 5 slides.
+It shows how animations are configured.
+It enables paging and adds url handling.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import {render} from &apos;react-dom&apos;
+import Deck, {Plugins} from &apos;@dekk/deck&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Paging from &apos;@dekk/paging&apos;
+import Url from &apos;@dekk/url&apos;
+import {cube} from &apos;@dekk/animation&apos;
+
+const App = () =&gt; (
+  &lt;Deck&gt;
+    &lt;Plugins&gt;
+    &lt;Paging/&gt;
+    &lt;Url/&gt;
+    &lt;/Plugins&gt;
+    &lt;Slide&gt;This is slide &lt;strong&gt;1&lt;/strong&gt;&lt;/Slide&gt;
+    &lt;Slide animationOut={cube.slideX}&gt;
+      This is slide &lt;strong&gt;2&lt;/strong&gt;.
+      &lt;br/&gt;
+      It rotates as a cube when leaving.
+    &lt;/Slide&gt;
+    &lt;Slide animation={cube.slideX}&gt;
+      This is slide &lt;strong&gt;3&lt;/strong&gt;.
+      &lt;br/
+      It rotates as a cube when leaving and entering.
+    &lt;/Slide&gt;
+    &lt;Slide animationIn={cube.slideX}&gt;
+      This is slide &lt;strong&gt;4&lt;/strong&gt;.
+      &lt;br/
+      It rotates as a cube when entering.
+    &lt;/Slide&gt;
+    &lt;Slide&gt;This is slide &lt;strong&gt;5&lt;/strong&gt;&lt;/Slide&gt;
+  &lt;/Deck&gt;
+)
+
+render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
+</code></pre><h2>Using fragments</h2><p>To use fragments you only need to add one more package. 
+This example adds a Deck with 3 slides.
+It shows how fragments behave.
+It enables paging and adds url handling.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import {render} from &apos;react-dom&apos;
+import Deck, {Plugins} from &apos;@dekk/deck&apos;
+import Slide from &apos;@dekk/slide&apos;
+import Paging from &apos;@dekk/paging&apos;
+import Url from &apos;@dekk/url&apos;
+import Fragment from &apos;@dekk/fragment&apos;
+import {fadeSwipe} from &apos;@dekk/animation&apos;
+
+const App = () =&gt; (
+  &lt;Deck&gt;
+    &lt;Plugins&gt;
+    &lt;Paging/&gt;
+    &lt;Url/&gt;
+    &lt;/Plugins&gt;
+    &lt;Slide&gt;
+      &lt;Fragment 
+        order={1}
+        animation={fadeSwipe.in.reverse}&gt;This is&lt;/Fragment&gt;{&apos; &apos;}
+      &lt;Fragment 
+        order={2}
+        animation={fadeSwipe.in.up}&gt;slide&lt;/Fragment&gt;{&apos; &apos;}
+      &lt;Fragment 
+        order={3}
+        animation={fadeSwipe.in.down}&gt;1&lt;/Fragment&gt;
+      &lt;Fragment 
+        order={4}
+        animation={fadeSwipe.in.up}&gt;, with different&lt;/Fragment&gt;
+      &lt;Fragment 
+        order={5}
+        animation={fadeSwipe.in.normal}&gt;animations.&lt;/Fragment&gt;
+    &lt;/Slide&gt;
+    &lt;Slide&gt;
+      &lt;Fragment order={1}&gt;This is&lt;/Fragment&gt;{&apos; &apos;}
+      &lt;Fragment order={2} root&gt;slide{&apos; &apos;}
+        &lt;Fragment order={3}&gt;2&lt;/Fragment&gt;
+        &lt;Fragment order={4}&gt;, with nested&lt;/Fragment&gt;{&apos; &apos;}
+        &lt;Fragment order={5}&gt;fragments.&lt;/Fragment&gt;
+      &lt;/Fragment&gt;
+    &lt;/Slide&gt;
+    &lt;Slide&gt;
+      &lt;Fragment order={1}&gt;This is&lt;/Fragment&gt;{&apos; &apos;}
+      &lt;Fragment order={2} root&gt;slide{&apos; &apos;}
+        &lt;Fragment order={1}&gt;3&lt;/Fragment&gt;
+        &lt;Fragment order={2}&gt;, using a&lt;/Fragment&gt;{&apos; &apos;}
+        &lt;Fragment order={3}&gt;root fragment.&lt;/Fragment&gt;
+      &lt;/Fragment&gt;
+    &lt;/Slide&gt;
+  &lt;/Deck&gt;
+)
+
+render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
+</code></pre><h2>Using master slides</h2><p>To use master slides you need to add several packages.
+This example adds a Deck with 3 slides.
+It enables paging and adds url handling.
+It uses master slides instead of plain slides.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
+import {render} from &apos;react-dom&apos;
+import Deck, {Plugins} from &apos;@dekk/deck&apos;
+import Paging from &apos;@dekk/paging&apos;
+import Url from &apos;@dekk/url&apos;
+import {FitImage} from &apos;@dekk/image&apos;
+import Text, {Title, Subtitle} from &apos;@dekk/text&apos;
+import {
+  Cover,
+  Collage,
+} from &apos;@dekk/master-slides&apos;
+
+
+const App = () =&gt; (
+  &lt;Deck&gt;
+    &lt;Plugins&gt;
+    &lt;Paging/&gt;
+    &lt;Url/&gt;
+    &lt;/Plugins&gt;
+    &lt;Cover.Slide&gt;
+      &lt;Cover.A&gt;
+        &lt;Title&gt;Welcome to Dekk!&lt;/Title&gt;
+      &lt;/Cover.A&gt;
+      &lt;Cover.B&gt;
+        &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
+      &lt;/Cover.B&gt;
+    &lt;/Cover.Slide&gt;
+    &lt;Collage.Slide&gt;
+      &lt;Collage.A&gt;
+        &lt;Title&gt;Collage&lt;/Title&gt;
+        &lt;Text&gt;
+          This is a slide with two images and a text section.
+        &lt;/Text&gt;
+      &lt;/Collage.A&gt;
+        &lt;FitImage 
+          src=&quot;https://placehold.it/600&quot;
+          alt=&quot;this is a placeholder image. please adjust the alt accordingly&quot;/&gt;
+      &lt;Collage.B&gt;
+      &lt;/Collage.B&gt;
+      &lt;Collage.C&gt;
+        &lt;FitImage 
+          src=&quot;https://placehold.it/600&quot;
+          alt=&quot;this is a placeholder image. please adjust the alt accordingly&quot;/&gt;
+      &lt;/Collage.C&gt;
+    &lt;/Collage.Slide&gt;
+    &lt;Cover.Slide&gt;
+      &lt;Cover.A&gt;
+        &lt;Title&gt;Thank you!&lt;/Title&gt;
+      &lt;/Cover.A&gt;
+      &lt;Cover.B&gt;
+        &lt;Subtitle&gt;for listening&lt;/Subtitle&gt;
+      &lt;/Cover.B&gt;
+    &lt;/Cover.Slide&gt;
+  &lt;/Deck&gt;
+)
+
+render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
+</code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/examples.html"></a></div>
 <div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>0.1.0-beta.5cbe4f15 (2018-02-17)</h1><h3>Bug Fixes</h3><ul>
 <li>fixes issues after refactor (<a href="https://github.com/sinnerschrader/dekk/commit/1e061ea">1e061ea</a>)</li>
 <li>fixes random issues (<a href="https://github.com/sinnerschrader/dekk/commit/6ac2fb2">6ac2fb2</a>)</li>
@@ -755,6 +935,7 @@ export const PeopleIcon = ({size = &apos;1em&apos;}) =&gt; (
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/images.html"><a href="manual/images.html" class="nav-link _" data-ice="link">Image elements</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/images.html"><a href="manual/images.html#maskedimage" class="nav-link _" data-ice="link">MaskedImage</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/images.html"><a href="manual/images.html#fitimage" class="nav-link _" data-ice="link">FitImage</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html" class="nav-link _" data-ice="link">Fragments</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/fragments.html"><a href="manual/fragments.html#fragment-order" class="nav-link _" data-ice="link">Fragment order</a></li>
@@ -783,7 +964,15 @@ export const PeopleIcon = ({size = &apos;1em&apos;}) =&gt; (
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/icons.html"><a href="manual/icons.html" class="nav-link _" data-ice="link">Icons</a></li>
 </ul></nav>
+<nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/examples.html"><a href="manual/examples.html" class="nav-link _" data-ice="link">Examples</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/examples.html"><a href="manual/examples.html#basic-example" class="nav-link _" data-ice="link">Basic Example</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/examples.html"><a href="manual/examples.html#changing-the-transitions" class="nav-link _" data-ice="link">Changing the transitions</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/examples.html"><a href="manual/examples.html#using-fragments" class="nav-link _" data-ice="link">Using fragments</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/examples.html"><a href="manual/examples.html#using-master-slides" class="nav-link _" data-ice="link">Using master slides</a></li>
+</ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#change-log" class="nav-link _" data-ice="link">Change Log</a></li>
+<li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-10---v1-0-0-11--1-0-0-11--a---2018-02-27-" class="nav-link _" data-ice="link">1.0.0-11 (2018-02-27)</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#bug-fixes" class="nav-link _" data-ice="link">Bug Fixes</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-9---v1-0-0-10--1-0-0-10--a---2018-02-26-" class="nav-link _" data-ice="link">1.0.0-10 (2018-02-26)</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-8---v1-0-0-9--1-0-0-9--a---2018-02-26-" class="nav-link _" data-ice="link">1.0.0-9 (2018-02-26)</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#bug-fixes" class="nav-link _" data-ice="link">Bug Fixes</a></li>
