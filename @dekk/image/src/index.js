@@ -138,8 +138,8 @@ export default MaskedImage
  * @param {?String} props.title
  */
 export const FitImage = styled(MaskedImage)`
-  --image-height: 100%;
-  --image-width: 100%;
+  --height: 100%;
+  --width: 100%;
 `
 /**
  * @private
