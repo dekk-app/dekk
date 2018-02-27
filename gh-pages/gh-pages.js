@@ -324,7 +324,7 @@ const animation_5 = (
       <Text>Create masters and define a reusable layout and style</Text>
     </Grid.B>
     <Grid.C>
-      <Subtitle>Sharable layouts</Subtitle>
+      <Subtitle>Shareable layouts</Subtitle>
       <Text>
         Share master slides in your team or even with the rest of the world.
       </Text>
