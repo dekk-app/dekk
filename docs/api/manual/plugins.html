@@ -88,6 +88,144 @@ export default (
   &lt;/Deck&gt;
 )</code>
 </code></pre>
+<h2 id="writing-plugins">Writing plugins</h2><p>Dekk will allow any plugin that is nested inside <code>Plugins</code>.
+It fills the plugin with some properties before it is enabled.
+This will allow you to interact with your <code>Deck</code>.</p>
+<h3 id="simple-broadcast-plugin">Simple broadcast plugin</h3><pre><code class="lang-jsx"><code class="source-code prettyprint">&lt;Broadcast credentials={MY_SECRET}/&gt;</code>
+</code></pre>
+<pre><code class="lang-jsx"><code class="source-code prettyprint">import {Component} from &apos;react&apos;
+import PropTypes from &apos;prop-types&apos;
+
+const sendData (data) =&gt; {
+  // do something with the data
+}
+
+export default class Broadcast extends Component {
+  componentWillReceiveProps({slideIndex, credentials}) {
+    if (this.props.slideIndex !== slideIndex) {
+      // Let&apos;s send some data when the slide changes
+      sendData({slideIndex, credentials})
+    }
+  }
+
+  render() {
+    return null
+  }
+}</code>
+</code></pre>
+<h3 id="simple-autoplay-plugin">Simple autoplay plugin</h3><pre><code class="lang-jsx"><code class="source-code prettyprint">&lt;Autoplay delay={120} isPlaying={true}/&gt;</code>
+</code></pre>
+<pre><code class="lang-jsx"><code class="source-code prettyprint">import {Component} from &apos;react&apos;
+import PropTypes from &apos;prop-types&apos;
+
+export default class Autoplay extends Component {
+  componentDidMount() {
+    this.play()
+  }
+
+  play() {
+    const {
+      fragmentCount,
+      fragmentIndex,
+      slideCount,
+      slideIndex,
+      toNextFragment,
+      toNextSlide,
+      isPlaying
+    } = this props
+    const fragments = Math.max(0, fragmentCount - 1)
+    const slides = Math.max(0, slideCount - 1)
+    if (isPlaying) {
+      setTimeout(() =&gt; {
+        if (fragments &gt; fragmentIndex) {
+          toNextFragment()
+        } if (slides &gt; slideIndex) {
+          toNextSlide()
+        }
+        requestAnimationFrame(this.play.bind(this))
+      }, 1000 * this.props.delay)
+    }
+  }
+
+  render() {
+    return null
+  }
+}</code>
+</code></pre>
+<h3 id="full-api-usage-">Full API usage.</h3><p>Take a look at one of the plugins, provided by Dekk to get a better
+understanding of all the possibilities.</p>
+<ul>
+<li><a href="./manual/../file/@dekk/listener/src/index.js.html">Listener</a></li>
+<li><a href="./manual/../file/@dekk/paging/src/index.js.html">Paging</a></li>
+<li><a href="./manual/../file/@dekk/url/src/index.js.html">Url</a></li>
+</ul>
+<p>Dekk will fill your Plugin with the following properties.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slideCount</code></td>
+<td><strong><code>number</code></strong></td>
+<td>The total number of slides in the Deck.</td>
+</tr>
+<tr>
+<td><code>slideIndex</code></td>
+<td><strong><code>number</code></strong></td>
+<td>The index of the currently active slide.</td>
+</tr>
+<tr>
+<td><code>fragmentCount</code></td>
+<td><strong><code>number</code></strong></td>
+<td>The total number of slides in the currently active slide.</td>
+</tr>
+<tr>
+<td><code>fragmentIndex</code></td>
+<td><strong><code>number</code></strong></td>
+<td>The index of the currently active fragment in the currently active slide.</td>
+</tr>
+<tr>
+<td><code>fragmentOrder</code></td>
+<td><strong><code>number</code></strong></td>
+<td>The order of the currently active fragment in the currently active slide. This is the value including all fragment root orders if there are any.</td>
+</tr>
+<tr>
+<td><code>toFragment(index)</code></td>
+<td><strong><code>function</code></strong></td>
+<td>This function will allow you to navigate to a fragment. The index must be in range of <code>fragmentCount</code>.</td>
+</tr>
+<tr>
+<td><code>toSlide(index)</code></td>
+<td><strong><code>function</code></strong></td>
+<td>This function will allow you to navigate to a slide. The index must be in range of <code>slideCount</code>.</td>
+</tr>
+<tr>
+<td><code>toNextFragment()</code></td>
+<td><strong><code>function</code></strong></td>
+<td>This function will allow you to navigate to the next fragment. The index must be in range of <code>slideCount</code>.</td>
+</tr>
+<tr>
+<td><code>toPrevFragment()</code></td>
+<td><strong><code>function</code></strong></td>
+<td>This function will allow you to navigate to the previous fragment.</td>
+</tr>
+<tr>
+<td><code>toNextSlide()</code></td>
+<td><strong><code>function</code></strong></td>
+<td>This function will allow you to navigate to the next slide.</td>
+</tr>
+<tr>
+<td><code>toPrevSlide()</code></td>
+<td><strong><code>function</code></strong></td>
+<td>This function will allow you to navigate to the previous slide.</td>
+</tr>
+</tbody>
+</table>
 </div></div><footer class="main-footer"><img alt="esdoc logo" class="esdoc-logo" src="image/esdoc-logo-mini.png"> <span>Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span></a></span></footer></main><aside class="sidebar initial js_sidebarLeft sidebar-left" data-ice="nav"><nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html" class="nav-link _" data-ice="link">Installation</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#available-packages" class="nav-link _" data-ice="link">Available packages</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#deck--root-" class="nav-link _" data-ice="link">Deck (root)</a></li>
@@ -107,6 +245,10 @@ export default (
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#adding-listeners" class="nav-link _" data-ice="link">Adding listeners</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#adding-urls" class="nav-link _" data-ice="link">Adding URLs</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#enable-paging" class="nav-link _" data-ice="link">Enable paging</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#writing-plugins" class="nav-link _" data-ice="link">Writing plugins</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#simple-broadcast-plugin" class="nav-link _" data-ice="link">Simple broadcast plugin</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#simple-autoplay-plugin" class="nav-link _" data-ice="link">Simple autoplay plugin</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#full-api-usage-" class="nav-link _" data-ice="link">Full API usage.</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/static-elements.html"><a href="manual/static-elements.html" class="nav-link _" data-ice="link">Elements</a></li>
 </ul></nav>
