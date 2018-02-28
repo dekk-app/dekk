@@ -1,3 +1,3 @@
-# Dekk
+# Store
 
-A presentation tool written in React.js
+Documentation TBD

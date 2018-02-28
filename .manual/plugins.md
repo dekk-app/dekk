@@ -22,10 +22,13 @@ export default (
 )
 ```
 
-## Adding listeners
+## Listener
 
-* handleSlide: function
-* handleFragment: function
+| Param        | Type           | Default | Description |
+|--------------|----------------|---------|-------------|
+| `onSlide`    | **`Function`** | noop    | A callback when the slide changes |
+| `onFragment` | **`Function`** | noop    | A callback when the fragment changes |
+
  
 ```jsx
 import React from 'react'
@@ -53,11 +56,12 @@ export default (
 )
 ```
 
-## Adding URLs
+## Url
 
-* type: string: `hash|query`
-  * default: `hash`
- 
+| Param  | Type         | Default | Description |
+|--------|--------------|---------|-------------|
+| `type` | **`String`** | hash    | The URL type can be either `hash` or `query` |
+
 
 ```jsx
 import React from 'react'
@@ -77,10 +81,38 @@ export default (
 )
 ```
 
-## Enable paging
+## Paging
 
-* trigger: string: `keyup|keydown`
-  * default: `keyup`
+| Param     | Type         | Default | Description |
+|-----------|--------------|---------|-------------|
+| `trigger` | **`String`** | keyup   | The event that triggers navigation can be either `keyup` or `keydown`|
+
+
+```jsx
+import React from 'react'
+import Deck, {Plugins} from '@dekk/deck'
+import Slide from '@dekk/slide'
+import Paging from '@dekk/paging'
+
+export default (
+  <Deck>
+    <Plugins>
+      <Paging trigger="keydown"/>
+    </Plugins>
+    <Slide> 1 </Slide>
+    <Slide> 2 </Slide>
+    <Slide> 3 </Slide>
+  </Deck>
+)
+```
+
+## Autoplay
+
+| Param       | Type         | Default | Description |
+|-------------|--------------|---------|-------------|
+| `delay`     | **`number`** | 30      | The number of seconds until the next slide or fragment |
+| `isPlaying` | **`number`** | false   | Autoplay can be started or paused via this param |
+
 
 ```jsx
 import React from 'react'
@@ -134,56 +166,12 @@ export default class Broadcast extends Component {
 }
 ```
 
-### Simple autoplay plugin
-
-```jsx
-<Autoplay delay={120} isPlaying={true}/>
-```
-
-```jsx
-import {Component} from 'react'
-import PropTypes from 'prop-types'
-
-export default class Autoplay extends Component {
-  componentDidMount() {
-    this.play()
-  }
-
-  play() {
-    const {
-      fragmentCount,
-      fragmentIndex,
-      slideCount,
-      slideIndex,
-      toNextFragment,
-      toNextSlide,
-      isPlaying
-    } = this props
-    const fragments = Math.max(0, fragmentCount - 1)
-    const slides = Math.max(0, slideCount - 1)
-    if (isPlaying) {
-      setTimeout(() => {
-        if (fragments > fragmentIndex) {
-          toNextFragment()
-        } if (slides > slideIndex) {
-          toNextSlide()
-        }
-        requestAnimationFrame(this.play.bind(this))
-      }, 1000 * this.props.delay)
-    }
-  }
-
-  render() {
-    return null
-  }
-}
-```
-
 ### Full API usage.
 
 Take a look at one of the plugins, provided by Dekk to get a better
 understanding of all the possibilities.
 
+* [Autoplay](../file/@dekk/autoplay/src/index.js.html)
 * [Listener](../file/@dekk/listener/src/index.js.html)
 * [Paging](../file/@dekk/paging/src/index.js.html)
 * [Url](../file/@dekk/url/src/index.js.html)

@@ -1,5 +1,6 @@
 /* global window */
 import React, {cloneElement} from 'react'
+import PropTypes from 'prop-types'
 import {css} from 'styled-components'
 import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
@@ -101,6 +102,26 @@ const nOf = (n, {length}) =>
  */
 @observer
 export default class SpeakerDeck extends Deck {
+  /**
+   * @private
+   */
+  static get propTypes() {
+    return {
+      children: PropTypes.node.isRequired,
+      timer: PropTypes.number.isRequired,
+      timerWarning: PropTypes.number
+    }
+  }
+
+  /**
+   * @private
+   */
+  static get defaultProps() {
+    return {
+      timerWarning: 0
+    }
+  }
+
   /**
    * @param {Object} props
    *   The properties

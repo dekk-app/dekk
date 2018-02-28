@@ -32,10 +32,12 @@ export default (
 There is a speaker/presenter version of Dekk with some extra features.
 SpeakerDeck expects a timer to be set. You can also specify a warning time.
 
-* timer: number
-  * time in minutes (30 minutes = 30)
-* timerWarning: number
-  * time in seconds (5 minutes = 5 * 60 || 300)
+
+| Param          | Type         | Default          | Description |
+|----------------|--------------|------------------|-------------|
+| `timer`        | **`number`** | (required)       | The time in minutes (30 minutes = 30) |
+| `timerWarning` | **`number`** | 0                | The time in seconds (5 minutes = 5 * 60) |
+
 
 ```jsx
 import React from 'react'

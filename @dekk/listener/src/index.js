@@ -35,7 +35,7 @@ import PropTypes from 'prop-types'
  * import Deck, {Plugins} from '@dekk/deck'
  * import Listener from '@dekk/listener'
  *
- * const handleSlide = slideIndex => {
+ * const handleSlide = (slideIndex, slideCount) => {
  *   // code
  * }
  *
@@ -44,7 +44,8 @@ import PropTypes from 'prop-types'
  *   slideCount,
  *   fragmentIndex,
  *   fragmentOrder,
- *   fragmentCount) => {
+ *   fragmentCount
+ * ) => {
  *  // code
  * }
  * export default (
