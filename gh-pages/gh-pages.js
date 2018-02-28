@@ -332,7 +332,7 @@ const animation_5 = (
     <Grid.D>
       <FitImage
         src={blueImage}
-        alt="blue image, a man sitting and ping pong balls fallingdown on him"
+        alt="blue image, a man sitting and ping pong balls falling down on him"
       />
     </Grid.D>
     <Notes>
