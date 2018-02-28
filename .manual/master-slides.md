@@ -12,7 +12,7 @@ The default usage could look something like this:
 
 ```jsx
 import React from 'react'
-import Cover from '@dekk/master-slides'
+import {Cover} from '@dekk/master-slides'
 import {Title, Subtitle} from '@dekk/text'
 
 export default () => (
@@ -37,12 +37,10 @@ deconstruct the import.
 ```jsx
 import React from 'react'
 import uuid from 'uuid/v4'
-import {
-  Slide,
-  A,
-  B
-} from '@dekk/master-slides'
+import {Cover} from '@dekk/master-slides'
 import {Title, Subtitle} from '@dekk/text'
+
+const {Slide, A, B} = Cover
 
 export default (
   <Slide key={uuid()}>
@@ -63,22 +61,20 @@ Too add some naming sugar, you can rename your deconstructed Components.
 ```jsx
 import React from 'react'
 import uuid from 'uuid/v4'
-import {
-  Slide as Cover,
-  A as Top,
-  B as Bottom
-} from '@dekk/master-slides'
+import {Cover} from '@dekk/master-slides'
 import {Title, Subtitle} from '@dekk/text'
 
+const {Slide, A: Top, B: Bottom} = Cover
+
 export default (
-  <Cover key={uuid()}>
+  <Slide key={uuid()}>
     <Top>
       <Title>Welcome Dekk!</Title>
     </Top>
     <Bottom>
       <Subtitle>Presentations done right</Subtitle>
     </Bottom>
-  </Cover>
+  </Slide>
 )
 ```
 
