@@ -765,7 +765,7 @@ fadeZoom.out = css`
 `</code>
 </code></pre></div></div><a class="manual-card-link" data-ice="link" tabindex="0" href="manual/animations.html"></a></div>
 <div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Master slides</h1><p>Dekk privides a collection of very simple master layouts.</p><h2>Usage</h2><p>There are several ways to use these masters.</p><p>The default usage could look something like this:</p><p><strong> deck.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Cover from &apos;@dekk/master-slides&apos;
+import {Cover} from &apos;@dekk/master-slides&apos;
 import {Title, Subtitle} from &apos;@dekk/text&apos;
 
 export default () =&gt; (
@@ -783,12 +783,10 @@ export default () =&gt; (
 </code></pre><p>It is recommended to have one module/file per slide so you could
 deconstruct the import.</p><p><strong> cover-deconstructed.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
 import uuid from &apos;uuid/v4&apos;
-import {
-  Slide,
-  A,
-  B
-} from &apos;@dekk/master-slides&apos;
+import {Cover} from &apos;@dekk/master-slides&apos;
 import {Title, Subtitle} from &apos;@dekk/text&apos;
+
+const {Slide, A, B} = Cover
 
 export default (
   &lt;Slide key={uuid()}&gt;
@@ -802,22 +800,20 @@ export default (
 )</code>
 </code></pre><p>Too add some naming sugar, you can rename your deconstructed Components.</p><p><strong> cover-named-deconstructed.js</strong></p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
 import uuid from &apos;uuid/v4&apos;
-import {
-  Slide as Cover,
-  A as Top,
-  B as Bottom
-} from &apos;@dekk/master-slides&apos;
+import {Cover} from &apos;@dekk/master-slides&apos;
 import {Title, Subtitle} from &apos;@dekk/text&apos;
 
+const {Slide, A: Top, B: Bottom} = Cover
+
 export default (
-  &lt;Cover key={uuid()}&gt;
+  &lt;Slide key={uuid()}&gt;
     &lt;Top&gt;
       &lt;Title&gt;Welcome Dekk!&lt;/Title&gt;
     &lt;/Top&gt;
     &lt;Bottom&gt;
       &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
     &lt;/Bottom&gt;
-  &lt;/Cover&gt;
+  &lt;/Slide&gt;
 )</code>
 </code></pre><h2>Available Layouts</h2><p>Dekk currently offers the following master layouts: </p><h3>Cover</h3><table>
 <thead>

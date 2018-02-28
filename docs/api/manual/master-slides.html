@@ -3,7 +3,7 @@
 <p>The default usage could look something like this:</p>
 <p><strong> deck.js</strong></p>
 <pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Cover from &apos;@dekk/master-slides&apos;
+import {Cover} from &apos;@dekk/master-slides&apos;
 import {Title, Subtitle} from &apos;@dekk/text&apos;
 
 export default () =&gt; (
@@ -24,12 +24,10 @@ deconstruct the import.</p>
 <p><strong> cover-deconstructed.js</strong></p>
 <pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
 import uuid from &apos;uuid/v4&apos;
-import {
-  Slide,
-  A,
-  B
-} from &apos;@dekk/master-slides&apos;
+import {Cover} from &apos;@dekk/master-slides&apos;
 import {Title, Subtitle} from &apos;@dekk/text&apos;
+
+const {Slide, A, B} = Cover
 
 export default (
   &lt;Slide key={uuid()}&gt;
@@ -46,22 +44,20 @@ export default (
 <p><strong> cover-named-deconstructed.js</strong></p>
 <pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
 import uuid from &apos;uuid/v4&apos;
-import {
-  Slide as Cover,
-  A as Top,
-  B as Bottom
-} from &apos;@dekk/master-slides&apos;
+import {Cover} from &apos;@dekk/master-slides&apos;
 import {Title, Subtitle} from &apos;@dekk/text&apos;
 
+const {Slide, A: Top, B: Bottom} = Cover
+
 export default (
-  &lt;Cover key={uuid()}&gt;
+  &lt;Slide key={uuid()}&gt;
     &lt;Top&gt;
       &lt;Title&gt;Welcome Dekk!&lt;/Title&gt;
     &lt;/Top&gt;
     &lt;Bottom&gt;
       &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
     &lt;/Bottom&gt;
-  &lt;/Cover&gt;
+  &lt;/Slide&gt;
 )</code>
 </code></pre>
 <h2 id="available-layouts">Available Layouts</h2><p>Dekk currently offers the following master layouts: </p>
