@@ -1,185 +1,187 @@
-<!DOCTYPE html><html class="dark no-js"><head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="width=device-width,initial-scale=1" name="viewport"><base data-ice="baseUrl" href="../"><title data-ice="title">Manual | Dekk</title><script src="script/search_index.js"></script><link href="css/b6dd192589c6a1cfad4e.css" rel="stylesheet"><meta name="description" content="A presentation tool written in React.js"><meta property="og:type" content="website"><meta property="og:url" content="sinnerschrader.github.io/dekk"><meta property="og:site_name" content="Dekk"><meta property="og:title" content="Dekk"><meta property="og:image" content="./resources/logo.png"><meta property="og:description" content="A presentation tool written in React.js"><meta property="og:author" content="https://github.com/pixelass"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Dekk"><meta property="twitter:description" content="A presentation tool written in React.js"><meta property="twitter:image" content="./resources/logo.png"><link rel="stylesheet" href="./inject/css/0-docs.css"></head><body class="layout-container manual-root" data-ice="rootContainer"><header class="js_mainHeader main-header"><div class="menu-switch"><a href="#" class="switch js_menuSwitch menu-switch"><span class="icon menu-icon"><svg viewbox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/></svg></span></a></div><nav class="main-nav"><a href="./" class="link link-to-home" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a><a href="identifiers.html" class="link link-to-reference"><span class="icon link-icon reference-icon"><svg viewbox="0 0 24 24"><path d="M16,6H13V7.9H16C18.26,7.9 20.1,9.73 20.1,12A4.1,4.1 0 0,1 16,16.1H13V18H16A6,6 0 0,0 22,12C22,8.68 19.31,6 16,6M3.9,12C3.9,9.73 5.74,7.9 8,7.9H11V6H8A6,6 0 0,0 2,12A6,6 0 0,0 8,18H11V16.1H8C5.74,16.1 3.9,14.26 3.9,12M8,13H16V11H8V13Z"/></svg> </span><span class="link-text">Reference</span> </a><a href="source.html" class="link link-to-source"><span class="icon link-icon source-icon"><svg viewbox="0 0 24 24"><path d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z"/></svg> </span><span class="link-text">Source</span> </a></nav><div class="js_searchBox search-box"><div class="js_searchInputWrapper search-input-wrapper"><span class="icon js_searchIcon search-icon"><svg viewbox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/></svg> </span><input class="js_searchInput search-input"></div><ul class="hidden js_searchResult search-result"></ul></div><div class="mode-switch"><a href="#" class="switch js_modeSwitch mode-switch"><span class="icon light-dark-icon"><svg viewbox="0 0 24 24"><path d="M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z"/></svg></span></a></div><div class="settings-switch"><a href="#" class="switch js_settingsSwitch settings-switch"><span class="icon settings-icon"><svg viewbox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg></span></a></div><a style="position:relative; top:3px;" href="https://github.com/sinnerschrader/dekk"><img width="20px" src="./image/github.png"></a></header><main class="main"><div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="examples">Examples</h1><h2 id="basic-example">Basic Example</h2><p>To get started you can copy the following code. 
-This example adds a Deck with 3 slides.
-It enables paging and adds url handling.</p>
-<pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import {render} from &apos;react-dom&apos;
-import Deck, {Plugins} from &apos;@dekk/deck&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Paging from &apos;@dekk/paging&apos;
-import Url from &apos;@dekk/url&apos;
+<!DOCTYPE html><html class="dark no-js"><head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="width=device-width,initial-scale=1" name="viewport"><base data-ice="baseUrl" href="../"><title data-ice="title">Manual | Dekk</title><script src="script/search_index.js"></script><link href="css/b6dd192589c6a1cfad4e.css" rel="stylesheet"><meta name="description" content="A presentation tool written in React.js"><meta property="og:type" content="website"><meta property="og:url" content="sinnerschrader.github.io/dekk"><meta property="og:site_name" content="Dekk"><meta property="og:title" content="Dekk"><meta property="og:image" content="./resources/logo.png"><meta property="og:description" content="A presentation tool written in React.js"><meta property="og:author" content="https://github.com/pixelass"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Dekk"><meta property="twitter:description" content="A presentation tool written in React.js"><meta property="twitter:image" content="./resources/logo.png"><link rel="stylesheet" href="./inject/css/0-docs.css"></head><body class="layout-container manual-root" data-ice="rootContainer"><header class="js_mainHeader main-header"><div class="menu-switch"><a href="#" class="switch js_menuSwitch menu-switch"><span class="icon menu-icon"><svg viewbox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/></svg></span></a></div><nav class="main-nav"><a href="./" class="link link-to-home" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a><a href="identifiers.html" class="link link-to-reference"><span class="icon link-icon reference-icon"><svg viewbox="0 0 24 24"><path d="M16,6H13V7.9H16C18.26,7.9 20.1,9.73 20.1,12A4.1,4.1 0 0,1 16,16.1H13V18H16A6,6 0 0,0 22,12C22,8.68 19.31,6 16,6M3.9,12C3.9,9.73 5.74,7.9 8,7.9H11V6H8A6,6 0 0,0 2,12A6,6 0 0,0 8,18H11V16.1H8C5.74,16.1 3.9,14.26 3.9,12M8,13H16V11H8V13Z"/></svg> </span><span class="link-text">Reference</span> </a><a href="source.html" class="link link-to-source"><span class="icon link-icon source-icon"><svg viewbox="0 0 24 24"><path d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z"/></svg> </span><span class="link-text">Source</span> </a></nav><div class="js_searchBox search-box"><div class="js_searchInputWrapper search-input-wrapper"><span class="icon js_searchIcon search-icon"><svg viewbox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/></svg> </span><input class="js_searchInput search-input"></div><ul class="hidden js_searchResult search-result"></ul></div><div class="mode-switch"><a href="#" class="switch js_modeSwitch mode-switch"><span class="icon light-dark-icon"><svg viewbox="0 0 24 24"><path d="M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z"/></svg></span></a></div><div class="settings-switch"><a href="#" class="switch js_settingsSwitch settings-switch"><span class="icon settings-icon"><svg viewbox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg></span></a></div><a style="position:relative; top:3px;" href="https://github.com/sinnerschrader/dekk"><img width="20px" src="./image/github.png"></a></header><main class="main"><div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="animations">Animations</h1><p>Dekk offers some basic transitions. Some trantions only work on slides
+since they use viewport units for perspective or tranlation on the z axis.</p>
+<h2 id="shared-transitions">Shared transitions</h2><p>The transitions in this category work for slides and fragments.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Usage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fade in</td>
+<td>slide, fragment</td>
+<td>It fades the element in.</td>
+</tr>
+<tr>
+<td>fade out</td>
+<td>slide, fragment</td>
+<td>It fades the element out.</td>
+</tr>
+<tr>
+<td>slide reverse</td>
+<td>slide, fragment</td>
+<td>This is the default slide animation. It moves the element from right to center.</td>
+</tr>
+<tr>
+<td>slide normal</td>
+<td>slide, fragment</td>
+<td>It moves the element from left to center.</td>
+</tr>
+<tr>
+<td>slide up</td>
+<td>slide, fragment</td>
+<td>It moves the element from bottom to center.</td>
+</tr>
+<tr>
+<td>slide down</td>
+<td>slide, fragment</td>
+<td>It moves the element from top to center.</td>
+</tr>
+<tr>
+<td>fadeSlide out reverse</td>
+<td>slide, fragment</td>
+<td>It moves the element from center to right and fades out.</td>
+</tr>
+<tr>
+<td>fadeSlide out normal</td>
+<td>slide, fragment</td>
+<td>It moves the element from center to left and fades out.</td>
+</tr>
+<tr>
+<td>fadeSlide out up</td>
+<td>slide, fragment</td>
+<td>It moves the element from center to top and fades out.</td>
+</tr>
+<tr>
+<td>fadeSlide out down</td>
+<td>slide, fragment</td>
+<td>It moves the element from center to bottom and fades out.</td>
+</tr>
+<tr>
+<td>fadeSlide in reverse</td>
+<td>slide, fragment</td>
+<td>It moves the element from right to center and fades in.</td>
+</tr>
+<tr>
+<td>fadeSlide in normal</td>
+<td>slide, fragment</td>
+<td>It moves the element from left to center and fades in.</td>
+</tr>
+<tr>
+<td>fadeSlide in up</td>
+<td>slide, fragment</td>
+<td>It moves the element from top to center and fades in.</td>
+</tr>
+<tr>
+<td>fadeSlide in down</td>
+<td>slide, fragment</td>
+<td>It moves the element from bottom to center and fades in.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slide-transitions">Slide transitions</h2><p>The transitions in this category only work for slides.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Usage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cube slideX</td>
+<td>slide</td>
+<td>It rotates the cube on the x axis.</td>
+</tr>
+<tr>
+<td>cube slideY</td>
+<td>slide</td>
+<td>It rotates the cube on the y axis.</td>
+</tr>
+<tr>
+<td>cube slide invert x</td>
+<td>slide</td>
+<td>It rotates the cube on the x axis. The viewer sits in the center of the cube, like in a room</td>
+</tr>
+<tr>
+<td>cube slide invert y</td>
+<td>slide</td>
+<td>It rotates the cube on the y axis. The viewer sits in the center of the cube, like in a room</td>
+</tr>
+<tr>
+<td>flip x</td>
+<td>slide</td>
+<td>It flips the slide on the x axis.</td>
+</tr>
+<tr>
+<td>flip y</td>
+<td>slide</td>
+<td>It flips the slide on the y axis.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="writing-transitions">Writing transitions</h2><p>Transitions are very simple css snippets.
+You can create your own, using two css variables.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Values</th>
+<th>Usage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--time</code></td>
+<td>1.0 - 0.0</td>
+<td>slide, fragment</td>
+<td>A float from 1 to 0. 0 defines an active state.</td>
+</tr>
+<tr>
+<td><code>--direction</code></td>
+<td>-1, 0, 1</td>
+<td>slide</td>
+<td>previous is -1, current is 0, next is 1</td>
+</tr>
+</tbody>
+</table>
+<p>As long as you only use <code>--time</code> and work with relaitive values you
+can use the transitions for slides and fragments. </p>
+<blockquote>
+<p><strong>Relative values</strong><br>They can be used for slides and fragments<br><code>translateX(var(--time) * 100%)</code>  </p>
+<p><strong>Viewport values</strong><br>They can be used for slides and in rare cases for fragments<br><code>translateX(var(--time) * 100vw)</code>  </p>
+<p><strong>Absolute values</strong><br>They can be used for fragments and in rare cases for slides<br><code>translateX(var(--time) * 100px)</code></p>
+</blockquote>
+<pre><code class="lang-jsx"><code class="source-code prettyprint">import {css} from &apos;styled-components&apos;
+import {fade} from &apos;@dekk/animation&apos;
 
-const App = () =&gt; (
-  &lt;Deck&gt;
-    &lt;Plugins&gt;
-    &lt;Paging/&gt;
-    &lt;Url/&gt;
-    &lt;/Plugins&gt;
-    &lt;Slide&gt;This is slide &lt;strong&gt;1&lt;/strong&gt;.&lt;/Slide&gt;
-    &lt;Slide&gt;This is slide &lt;strong&gt;2&lt;/strong&gt;.&lt;/Slide&gt;
-    &lt;Slide&gt;This is slide &lt;strong&gt;3&lt;/strong&gt;.&lt;/Slide&gt;
-  &lt;/Deck&gt;
-)
+export const zoom = {}
 
-render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
-</code></pre>
-<h2 id="changing-the-transitions">Changing the transitions</h2><p>To use other transitions you only need to add one more package. 
-This example adds a Deck with 5 slides.
-It shows how animations are configured.
-It enables paging and adds url handling.</p>
-<pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import {render} from &apos;react-dom&apos;
-import Deck, {Plugins} from &apos;@dekk/deck&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Paging from &apos;@dekk/paging&apos;
-import Url from &apos;@dekk/url&apos;
-import {cube} from &apos;@dekk/animation&apos;
+zoom.in = css`
+  --scale: calc(1 - var(--time));
+  transform: scale3d(var(--scale, 0), var(--scale, 0), 1);
+`
 
-const App = () =&gt; (
-  &lt;Deck&gt;
-    &lt;Plugins&gt;
-    &lt;Paging/&gt;
-    &lt;Url/&gt;
-    &lt;/Plugins&gt;
-    &lt;Slide&gt;This is slide &lt;strong&gt;1&lt;/strong&gt;&lt;/Slide&gt;
-    &lt;Slide animationOut={cube.slideX}&gt;
-      This is slide &lt;strong&gt;2&lt;/strong&gt;.
-      &lt;br/&gt;
-      It rotates as a cube when leaving.
-    &lt;/Slide&gt;
-    &lt;Slide animation={cube.slideX}&gt;
-      This is slide &lt;strong&gt;3&lt;/strong&gt;.
-      &lt;br/&gt;
-      It rotates as a cube when leaving and entering.
-    &lt;/Slide&gt;
-    &lt;Slide animationIn={cube.slideX}&gt;
-      This is slide &lt;strong&gt;4&lt;/strong&gt;.
-      &lt;br/&gt;
-      It rotates as a cube when entering.
-    &lt;/Slide&gt;
-    &lt;Slide&gt;This is slide &lt;strong&gt;5&lt;/strong&gt;&lt;/Slide&gt;
-  &lt;/Deck&gt;
-)
+zoom.out = css`
+  transform: scale3d(var(--time, 1), var(--time, 1), 1);
+`
 
-render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
-</code></pre>
-<h2 id="using-fragments">Using fragments</h2><p>To use fragments you only need to add one more package. 
-This example adds a Deck with 3 slides.
-It shows how fragments behave.
-It enables paging and adds url handling.</p>
-<pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import {render} from &apos;react-dom&apos;
-import Deck, {Plugins} from &apos;@dekk/deck&apos;
-import Slide from &apos;@dekk/slide&apos;
-import Paging from &apos;@dekk/paging&apos;
-import Url from &apos;@dekk/url&apos;
-import Fragment from &apos;@dekk/fragment&apos;
-import {fadeSwipe} from &apos;@dekk/animation&apos;
+export const fadeZoom = {}
 
-const App = () =&gt; (
-  &lt;Deck&gt;
-    &lt;Plugins&gt;
-    &lt;Paging/&gt;
-    &lt;Url/&gt;
-    &lt;/Plugins&gt;
-    &lt;Slide&gt;
-      &lt;Fragment 
-        order={1}
-        animation={fadeSwipe.in.reverse}&gt;This is&lt;/Fragment&gt;{&apos; &apos;}
-      &lt;Fragment 
-        order={2}
-        animation={fadeSwipe.in.up}&gt;slide&lt;/Fragment&gt;{&apos; &apos;}
-      &lt;Fragment 
-        order={3}
-        animation={fadeSwipe.in.down}&gt;1&lt;/Fragment&gt;
-      &lt;Fragment 
-        order={4}
-        animation={fadeSwipe.in.up}&gt;, with different&lt;/Fragment&gt;
-      &lt;Fragment 
-        order={5}
-        animation={fadeSwipe.in.normal}&gt;animations.&lt;/Fragment&gt;
-    &lt;/Slide&gt;
-    &lt;Slide&gt;
-      &lt;Fragment order={1}&gt;This is&lt;/Fragment&gt;{&apos; &apos;}
-      &lt;Fragment order={2} root&gt;slide{&apos; &apos;}
-        &lt;Fragment order={3}&gt;2&lt;/Fragment&gt;
-        &lt;Fragment order={4}&gt;, with nested&lt;/Fragment&gt;{&apos; &apos;}
-        &lt;Fragment order={5}&gt;fragments.&lt;/Fragment&gt;
-      &lt;/Fragment&gt;
-    &lt;/Slide&gt;
-    &lt;Slide&gt;
-      &lt;Fragment order={1}&gt;This is&lt;/Fragment&gt;{&apos; &apos;}
-      &lt;Fragment order={2} root&gt;slide{&apos; &apos;}
-        &lt;Fragment order={1}&gt;3&lt;/Fragment&gt;
-        &lt;Fragment order={2}&gt;, using a&lt;/Fragment&gt;{&apos; &apos;}
-        &lt;Fragment order={3}&gt;root fragment.&lt;/Fragment&gt;
-      &lt;/Fragment&gt;
-    &lt;/Slide&gt;
-  &lt;/Deck&gt;
-)
+fadeZoom.in = css`
+  ${fade.in};
+  ${zoom.in};
+`
 
-render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
-</code></pre>
-<h2 id="using-master-slides">Using master slides</h2><p>To use master slides you need to add several packages.
-This example adds a Deck with 3 slides.
-It enables paging and adds url handling.
-It uses master slides instead of plain slides.</p>
-<pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import {render} from &apos;react-dom&apos;
-import Deck, {Plugins} from &apos;@dekk/deck&apos;
-import Paging from &apos;@dekk/paging&apos;
-import Url from &apos;@dekk/url&apos;
-import {FitImage} from &apos;@dekk/image&apos;
-import Text, {Title, Subtitle} from &apos;@dekk/text&apos;
-import {
-  Cover,
-  Collage,
-} from &apos;@dekk/master-slides&apos;
-
-
-const App = () =&gt; (
-  &lt;Deck&gt;
-    &lt;Plugins&gt;
-    &lt;Paging/&gt;
-    &lt;Url/&gt;
-    &lt;/Plugins&gt;
-    &lt;Cover.Slide&gt;
-      &lt;Cover.A&gt;
-        &lt;Title&gt;Welcome to Dekk!&lt;/Title&gt;
-      &lt;/Cover.A&gt;
-      &lt;Cover.B&gt;
-        &lt;Subtitle&gt;Presentations done right&lt;/Subtitle&gt;
-      &lt;/Cover.B&gt;
-    &lt;/Cover.Slide&gt;
-    &lt;Collage.Slide&gt;
-      &lt;Collage.A&gt;
-        &lt;Title&gt;Collage&lt;/Title&gt;
-        &lt;Text&gt;
-          This is a slide with two images and a text section.
-        &lt;/Text&gt;
-      &lt;/Collage.A&gt;
-        &lt;FitImage 
-          src=&quot;https://placehold.it/600&quot;
-          alt=&quot;this is a placeholder image. please adjust the alt accordingly&quot;/&gt;
-      &lt;Collage.B&gt;
-      &lt;/Collage.B&gt;
-      &lt;Collage.C&gt;
-        &lt;FitImage 
-          src=&quot;https://placehold.it/600&quot;
-          alt=&quot;this is a placeholder image. please adjust the alt accordingly&quot;/&gt;
-      &lt;/Collage.C&gt;
-    &lt;/Collage.Slide&gt;
-    &lt;Cover.Slide&gt;
-      &lt;Cover.A&gt;
-        &lt;Title&gt;Thank you!&lt;/Title&gt;
-      &lt;/Cover.A&gt;
-      &lt;Cover.B&gt;
-        &lt;Subtitle&gt;for listening&lt;/Subtitle&gt;
-      &lt;/Cover.B&gt;
-    &lt;/Cover.Slide&gt;
-  &lt;/Deck&gt;
-)
-
-render(&lt;App/&gt;, document.getElementById(&apos;app&apos;))</code>
+fadeZoom.out = css`
+  ${fade.out};
+  ${zoom.out};
+`</code>
 </code></pre>
 </div></div><footer class="main-footer"><img alt="esdoc logo" class="esdoc-logo" src="image/esdoc-logo-mini.png"> <span>Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span></a></span></footer></main><aside class="sidebar initial js_sidebarLeft sidebar-left" data-ice="nav"><nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html" class="nav-link _" data-ice="link">Installation</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/installation.html"><a href="manual/installation.html#available-packages" class="nav-link _" data-ice="link">Available packages</a></li>
