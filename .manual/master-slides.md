@@ -88,10 +88,10 @@ Dekk currently offers the following master layouts:
 
 ### Cover
 
-* A: only `Title`
-  * center/bottom
-* B: only `Subtitle`
-  * center/top
+| Slot | Content        | Alignment      |
+|------|----------------|----------------|
+| A    | only: Title    | center, bottom |
+| B    | only: Subtitle | center, bottom |
 
 ```
 ┏━━━━━━━━━━━━━━━┓
@@ -105,10 +105,10 @@ Dekk currently offers the following master layouts:
 
 ### Chapter
 
-* A: only `Title`
-  * center/bottom
-* B: only `Subtitle` or `Text`
-  * center/top
+| Slot | Content              | Alignment      |
+|------|----------------------|----------------|
+| A    | only: Title          | center, bottom |
+| B    | only: Subtitle, Text | center, bottom |
 
 ```
 ┏━━━━━━━━━━━━━━━┓
@@ -122,10 +122,10 @@ Dekk currently offers the following master layouts:
 
 ### Half
 
-* A: only `FitImage`
-  * left/top
-* B: not `FitImage`
-  * left/top
+| Slot | Content        | Alignment |
+|------|----------------|-----------|
+| A    | only: FitImage | top, left |
+| B    | not: FitImage  | top, left |
 
 ```
 ┏━━━━━━━┳━━━━━━━┓
@@ -139,12 +139,11 @@ Dekk currently offers the following master layouts:
 
 ### Collage
 
-* A: not `FitImage`
-  * left/top
-* B: only `FitImage`
-  * left/top
-* C: only `FitImage`
-  * left/top
+| Slot | Content        | Alignment |
+|------|----------------|-----------|
+| A    | not: FitImage  | top, left |
+| B    | only: FitImage | top, left |
+| C    | only: FitImage | top, left |
 
 ```
 ┏━━━━━━━┳━━━━━━━┓
@@ -158,14 +157,12 @@ Dekk currently offers the following master layouts:
 
 ### Grid
 
-* A: any
-  * left/top
-* B: any
-  * left/top
-* C: any
-  * left/top
-* D: any
-  * left/top
+| Slot | Content  | Alignment |
+|------|----------|-----------|
+| A    | Any      | top, left |
+| B    | Any      | top, left |
+| C    | Any      | top, left |
+| D    | Any      | top, left |
 
 ```
 ┏━━━━━━━┳━━━━━━━┓
@@ -179,14 +176,12 @@ Dekk currently offers the following master layouts:
 
 ### ImageGrid
 
-* A: only `FitImage`
-  * left/top
-* B: only `FitImage`
-  * left/top
-* C: only `FitImage`
-  * left/top
-* D: only `FitImage`
-  * left/top
+| Slot | Content        | Alignment |
+|------|----------------|-----------|
+| A    | only: FitImage | top, left |
+| B    | only: FitImage | top, left |
+| C    | only: FitImage | top, left |
+| D    | only: FitImage | top, left |
 
 ```
 ┏━━━━━━━┳━━━━━━━┓

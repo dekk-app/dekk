@@ -83,7 +83,7 @@ export const ZoomImage = styled(MaskedImage)`
 
 ## FitImage
 
-a version of MaskedImage that is already using 
+A version of MaskedImage that is already using:
 
 ```jsx
 css`
@@ -91,3 +91,8 @@ css`
   --width: 100%;
 `
 ```
+
+This component is required
+for `@dekk/master-slides~Collage`,
+`@dekk/master-slides~Half`
+and `@dekk/master-slides~ImageGrid`
