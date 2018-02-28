@@ -29,17 +29,25 @@ export default (
 | `onSlide`    | **`Function`** | noop    | A callback when the slide changes |
 | `onFragment` | **`Function`** | noop    | A callback when the fragment changes |
 
- 
 ```jsx
 import React from 'react'
 import Deck, {Plugins} from '@dekk/deck'
 import Slide from '@dekk/slide'
 import Listener from '@dekk/listener'
 
-const handleSlide = (slideIndex, slideCount) => {
+const handleSlide = (
+  slideIndex,
+  slideCount
+) => {
   // code
 }
-const handleFragment = (slideIndex, slideCount, fragmentIndex, fragmentOrder, fragmentCount) => {
+const handleFragment = (
+  slideIndex,
+  slideCount,
+  fragmentIndex,
+  fragmentOrder,
+  fragmentCount
+) => {
   // code
 } 
 
@@ -118,12 +126,12 @@ export default (
 import React from 'react'
 import Deck, {Plugins} from '@dekk/deck'
 import Slide from '@dekk/slide'
-import Paging from '@dekk/paging'
+import Autoplay from '@dekk/autoplay'
 
 export default (
   <Deck>
     <Plugins>
-      <Paging trigger="keydown"/>
+      <Autoplay delay={60} isPlaying/>
     </Plugins>
     <Slide> 1 </Slide>
     <Slide> 2 </Slide>
@@ -178,16 +186,16 @@ understanding of all the possibilities.
 
 Dekk will fill your Plugin with the following properties.
 
-| Name                | Type                     | Description|
-|---------------------|--------------------------|------------|
-| `slideCount`        | **`number`**   | The total number of slides in the Deck. |
-| `slideIndex`        | **`number`**   | The index of the currently active slide. |
-| `fragmentCount`     | **`number`**   | The total number of slides in the currently active slide. |
-| `fragmentIndex`     | **`number`**   | The index of the currently active fragment in the currently active slide. |
-| `fragmentOrder`     | **`number`**   | The order of the currently active fragment in the currently active slide. This is the value including all fragment root orders if there are any. |
-| `toFragment(index)` | **`function`** | This function will allow you to navigate to a fragment. The index must be in range of `fragmentCount`. |
-| `toSlide(index)`    | **`function`** | This function will allow you to navigate to a slide. The index must be in range of `slideCount`. |
-| `toNextFragment()`  | **`function`** | This function will allow you to navigate to the next fragment. The index must be in range of `slideCount`. |
-| `toPrevFragment()`  | **`function`** | This function will allow you to navigate to the previous fragment. |
-| `toNextSlide()`     | **`function`** | This function will allow you to navigate to the next slide. |
-| `toPrevSlide()`     | **`function`** | This function will allow you to navigate to the previous slide. |
+| Name             | Type           | Description|
+|------------------|----------------|------------|
+| `slideCount`     | **`number`**   | The total number of slides in the Deck. |
+| `slideIndex`     | **`number`**   | The index of the currently active slide. |
+| `fragmentCount`  | **`number`**   | The total number of slides in the currently active slide. |
+| `fragmentIndex`  | **`number`**   | The index of the currently active fragment in the currently active slide. |
+| `fragmentOrder`  | **`number`**   | The order of the currently active fragment in the currently active slide. This is the value including all fragment root orders if there are any. |
+| `toFragment`     | **`function`** | This function will allow you to navigate to a fragment. The index must be in range of `fragmentCount`. |
+| `toSlide`        | **`function`** | This function will allow you to navigate to a slide. The index must be in range of `slideCount`. |
+| `toNextFragment` | **`function`** | This function will allow you to navigate to the next fragment. The index must be in range of `slideCount`. |
+| `toPrevFragment` | **`function`** | This function will allow you to navigate to the previous fragment. |
+| `toNextSlide`    | **`function`** | This function will allow you to navigate to the next slide. |
+| `toPrevSlide`    | **`function`** | This function will allow you to navigate to the previous slide. |
