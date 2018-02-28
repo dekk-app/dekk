@@ -1,3 +1,3 @@
 # Store
 
-Documentation TBD
+Internal storage of Dekk

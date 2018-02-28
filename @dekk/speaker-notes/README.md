@@ -1,3 +1,3 @@
 # Speaker notes
 
-Documentation TBD
+[Documentation](https://sinnerschrader.github.io/dekk/api/manual/speaker-notes.html)

@@ -1,3 +1,3 @@
-# Dekk
+# Dekk utils
 
-Documentation TBD
+A set of utils used by Dekk

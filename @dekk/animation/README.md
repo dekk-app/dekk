@@ -1,3 +1,3 @@
 # Animation
 
-Documentation: TBD
+[Documentation](https://sinnerschrader.github.io/dekk/api/manual/animations.html)
