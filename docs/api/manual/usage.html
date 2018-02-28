@@ -23,16 +23,30 @@ export default (
 <p><strong>speaker-deck.js</strong></p>
 <p>There is a speaker/presenter version of Dekk with some extra features.
 SpeakerDeck expects a timer to be set. You can also specify a warning time.</p>
-<ul>
-<li>timer: number<ul>
-<li>time in minutes (30 minutes = 30)</li>
-</ul>
-</li>
-<li>timerWarning: number<ul>
-<li>time in seconds (5 minutes = 5 * 60 || 300)</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timer</code></td>
+<td><strong><code>number</code></strong></td>
+<td>(required)</td>
+<td>The time in minutes (30 minutes = 30)</td>
+</tr>
+<tr>
+<td><code>timerWarning</code></td>
+<td><strong><code>number</code></strong></td>
+<td>0</td>
+<td>The time in seconds (5 minutes = 5 * 60)</td>
+</tr>
+</tbody>
+</table>
 <pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
 import SpeakerDeck from &apos;@dekk/speaker-deck&apos;
 import Slide from &apos;@dekk/slide&apos;
@@ -63,12 +77,12 @@ export default (
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/usage.html"><a href="manual/usage.html" class="nav-link _" data-ice="link">Creating a Deck</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html" class="nav-link _" data-ice="link">Plugins</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#adding-listeners" class="nav-link _" data-ice="link">Adding listeners</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#adding-urls" class="nav-link _" data-ice="link">Adding URLs</a></li>
-<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#enable-paging" class="nav-link _" data-ice="link">Enable paging</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#listener" class="nav-link _" data-ice="link">Listener</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#url" class="nav-link _" data-ice="link">Url</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#paging" class="nav-link _" data-ice="link">Paging</a></li>
+<li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#autoplay" class="nav-link _" data-ice="link">Autoplay</a></li>
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#writing-plugins" class="nav-link _" data-ice="link">Writing plugins</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#simple-broadcast-plugin" class="nav-link _" data-ice="link">Simple broadcast plugin</a></li>
-<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#simple-autoplay-plugin" class="nav-link _" data-ice="link">Simple autoplay plugin</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/plugins.html"><a href="manual/plugins.html#full-api-usage-" class="nav-link _" data-ice="link">Full API usage.</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/static-elements.html"><a href="manual/static-elements.html" class="nav-link _" data-ice="link">Elements</a></li>
@@ -120,6 +134,9 @@ export default (
 <li class="nav-item _indent-h2" data-ice="manualNav" data-link="manual/examples.html"><a href="manual/examples.html#using-master-slides" class="nav-link _" data-ice="link">Using master slides</a></li>
 </ul></nav>
 <nav class="nav manual-nav" data-ice="manual"><ul class="nav-list manual-toc"><li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#change-log" class="nav-link _" data-ice="link">Change Log</a></li>
+<li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-12---v1-0-0-13--1-0-0-13--a---2018-02-28-" class="nav-link _" data-ice="link">1.0.0-13 (2018-02-28)</a></li>
+<li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-11---v1-0-0-12--1-0-0-12--a---2018-02-28-" class="nav-link _" data-ice="link">1.0.0-12 (2018-02-28)</a></li>
+<li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#features" class="nav-link _" data-ice="link">Features</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-10---v1-0-0-11--1-0-0-11--a---2018-02-27-" class="nav-link _" data-ice="link">1.0.0-11 (2018-02-27)</a></li>
 <li class="nav-item _indent-h3" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#bug-fixes" class="nav-link _" data-ice="link">Bug Fixes</a></li>
 <li class="nav-item _indent-h1" data-ice="manualNav" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-sinnerschrader-dekk-compare-v1-0-0-9---v1-0-0-10--1-0-0-10--a---2018-02-26-" class="nav-link _" data-ice="link">1.0.0-10 (2018-02-26)</a></li>

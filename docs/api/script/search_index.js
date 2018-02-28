@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "@dekk/autoplay~autoplay",
+    "class/@dekk/autoplay/src/index.js~Autoplay.html",
+    "<span>Autoplay</span> <span class=\"search-result-import-path\">@dekk/autoplay</span>",
+    "class"
+  ],
+  [
     "@dekk/text~bold",
     "variable/index.html#static-variable-Bold",
     "<span>Bold</span> <span class=\"search-result-import-path\">@dekk/text</span>",
@@ -562,6 +568,18 @@ window.esdocSearchIndex = [
     "file/@dekk/animation/src/slide.js.html",
     "@dekk/animation/src/slide.js",
     "file"
+  ],
+  [
+    "@dekk/autoplay/src/index.js",
+    "file/@dekk/autoplay/src/index.js.html",
+    "@dekk/autoplay/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/autoplay/src/index.js~autoplay#constructor",
+    "class/@dekk/autoplay/src/index.js~Autoplay.html#instance-constructor-constructor",
+    "@dekk/autoplay/src/index.js~Autoplay#constructor",
+    "method"
   ],
   [
     "@dekk/countdown/src/date-helpers.js",

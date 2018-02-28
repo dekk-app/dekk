@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 203,
-  "actualCount": 203,
+  "expectCount": 212,
+  "actualCount": 212,
   "files": {
     "@dekk/animation/src/cube.js": {
       "expectCount": 1,
@@ -26,6 +26,11 @@
     "@dekk/animation/src/slide.js": {
       "expectCount": 1,
       "actualCount": 1,
+      "undocumentLines": []
+    },
+    "@dekk/autoplay/src/index.js": {
+      "expectCount": 7,
+      "actualCount": 7,
       "undocumentLines": []
     },
     "@dekk/countdown/src/date-helpers.js": {
@@ -159,8 +164,8 @@
       "undocumentLines": []
     },
     "@dekk/speaker-deck/src/speaker-deck.js": {
-      "expectCount": 16,
-      "actualCount": 16,
+      "expectCount": 18,
+      "actualCount": 18,
       "undocumentLines": []
     },
     "@dekk/speaker-deck/src/speaker-wrapper.js": {

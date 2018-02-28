@@ -1,16 +1,20 @@
-._indent-h1 {
+:root {
+  line-height: 1.3;
+}
+
+:root.light ._indent-h1 {
   --left-sidebar-indent-background: #f2f5f9;
 }
 
-._indent-h2 {
+:root.light ._indent-h2 {
   --left-sidebar-indent-background: #c9d0d5;
 }
 
-._indent-h3 {
+:root.light ._indent-h3 {
   --left-sidebar-indent-background: #acb4b7;
 }
 
-._indent-h4 {
+:root.light ._indent-h4 {
   --left-sidebar-indent-background: #99a2a6;
 }
 
@@ -28,4 +32,18 @@
 
 :root.dark ._indent-h4 {
   --left-sidebar-indent-background: #696e76;
+}
+
+:root.light {
+  --blockquote-background: #f2f5f9;
+  --blockquote-border-color: #c9d0d5;
+}
+
+:root.dark {
+  --blockquote-background: #212429;
+  --blockquote-border-color: #2d3038;
+}
+
+blockquote {
+  margin: var(--global-margin);
 }
