@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-12"></a>
+# [1.0.0-12](https://github.com/sinnerschrader/dekk/compare/v1.0.0-11...v1.0.0-12) (2018-02-28)
+
+
+### Features
+
+* **autoplay:** autoplay plugin ([28a4808](https://github.com/sinnerschrader/dekk/commit/28a4808))
+
+
+
+
 <a name="1.0.0-10"></a>
 # [1.0.0-10](https://github.com/sinnerschrader/dekk/compare/v1.0.0-9...v1.0.0-10) (2018-02-26)
 
