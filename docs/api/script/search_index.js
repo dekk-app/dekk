@@ -1,254 +1,278 @@
 window.esdocSearchIndex = [
   [
-    "@dekk/autoplay~autoplay",
+    "@dekk/autoplay/lib/index.js~autoplay",
     "class/@dekk/autoplay/src/index.js~Autoplay.html",
-    "<span>Autoplay</span> <span class=\"search-result-import-path\">@dekk/autoplay</span>",
+    "<span>Autoplay</span> <span class=\"search-result-import-path\">@dekk/autoplay/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/text~bold",
+    "@dekk/text/lib/bold.js~bold",
     "variable/index.html#static-variable-Bold",
-    "<span>Bold</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Bold</span> <span class=\"search-result-import-path\">@dekk/text/lib/bold.js</span>",
     "variable"
   ],
   [
-    "@dekk/text~center",
+    "@dekk/text/lib/center.js~center",
     "variable/index.html#static-variable-Center",
-    "<span>Center</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Center</span> <span class=\"search-result-import-path\">@dekk/text/lib/center.js</span>",
     "variable"
   ],
   [
-    "@dekk/master-slides~chapter",
+    "@dekk/master-slides/lib/index.js~chapter",
     "variable/index.html#static-variable-Chapter",
-    "<span>Chapter</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "<span>Chapter</span> <span class=\"search-result-import-path\">@dekk/master-slides/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/text~code",
+    "@dekk/text/lib/code.js~code",
     "variable/index.html#static-variable-Code",
-    "<span>Code</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Code</span> <span class=\"search-result-import-path\">@dekk/text/lib/code.js</span>",
     "variable"
   ],
   [
-    "@dekk/master-slides~collage",
+    "@dekk/master-slides/lib/index.js~collage",
     "variable/index.html#static-variable-Collage",
-    "<span>Collage</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "<span>Collage</span> <span class=\"search-result-import-path\">@dekk/master-slides/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/countdown~countdown",
+    "@dekk/countdown/lib/index.js~countdown",
     "class/@dekk/countdown/src/index.js~Countdown.html",
-    "<span>Countdown</span> <span class=\"search-result-import-path\">@dekk/countdown</span>",
+    "<span>Countdown</span> <span class=\"search-result-import-path\">@dekk/countdown/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/master-slides~cover",
+    "@dekk/master-slides/lib/index.js~cover",
     "variable/index.html#static-variable-Cover",
-    "<span>Cover</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "<span>Cover</span> <span class=\"search-result-import-path\">@dekk/master-slides/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/deck~deck",
+    "@dekk/deck/lib/deck.js~deck",
     "class/@dekk/deck/src/deck.js~Deck.html",
-    "<span>Deck</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "<span>Deck</span> <span class=\"search-result-import-path\">@dekk/deck/lib/deck.js</span>",
     "class"
   ],
   [
-    "@dekk/deck~elements",
+    "@dekk/dekk/lib/index.js~dekk",
+    "function/index.html#static-function-Dekk",
+    "<span>Dekk</span> <span class=\"search-result-import-path\">@dekk/dekk/lib/index.js</span>",
+    "function"
+  ],
+  [
+    "@dekk/deck/lib/elements.js~elements",
     "function/index.html#static-function-Elements",
-    "<span>Elements</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "<span>Elements</span> <span class=\"search-result-import-path\">@dekk/deck/lib/elements.js</span>",
     "function"
   ],
   [
-    "@dekk/image~fitimage",
+    "@dekk/image/lib/index.js~fitimage",
     "variable/index.html#static-variable-FitImage",
-    "<span>FitImage</span> <span class=\"search-result-import-path\">@dekk/image</span>",
+    "<span>FitImage</span> <span class=\"search-result-import-path\">@dekk/image/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/fragment~fragment",
+    "@dekk/fragment/lib/index.js~fragment",
     "class/@dekk/fragment/src/index.js~Fragment.html",
-    "<span>Fragment</span> <span class=\"search-result-import-path\">@dekk/fragment</span>",
+    "<span>Fragment</span> <span class=\"search-result-import-path\">@dekk/fragment/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/fragment~fragmentroot",
+    "@dekk/fragment/lib/index.js~fragmentroot",
     "function/index.html#static-function-FragmentRoot",
-    "<span>FragmentRoot</span> <span class=\"search-result-import-path\">@dekk/fragment</span>",
+    "<span>FragmentRoot</span> <span class=\"search-result-import-path\">@dekk/fragment/lib/index.js</span>",
     "function"
   ],
   [
-    "@dekk/master-slides~grid",
+    "@dekk/master-slides/lib/index.js~grid",
     "variable/index.html#static-variable-Grid",
-    "<span>Grid</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "<span>Grid</span> <span class=\"search-result-import-path\">@dekk/master-slides/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/master-slides~half",
+    "@dekk/master-slides/lib/index.js~half",
     "variable/index.html#static-variable-Half",
-    "<span>Half</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "<span>Half</span> <span class=\"search-result-import-path\">@dekk/master-slides/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/icon~icon",
+    "@dekk/icon/lib/index.js~icon",
     "function/index.html#static-function-Icon",
-    "<span>Icon</span> <span class=\"search-result-import-path\">@dekk/icon</span>",
+    "<span>Icon</span> <span class=\"search-result-import-path\">@dekk/icon/lib/index.js</span>",
     "function"
   ],
   [
-    "@dekk/master-slides~imagegrid",
+    "@dekk/master-slides/lib/index.js~imagegrid",
     "variable/index.html#static-variable-ImageGrid",
-    "<span>ImageGrid</span> <span class=\"search-result-import-path\">@dekk/master-slides</span>",
+    "<span>ImageGrid</span> <span class=\"search-result-import-path\">@dekk/master-slides/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/listener~listener",
+    "@dekk/listener/lib/index.js~listener",
     "class/@dekk/listener/src/index.js~Listener.html",
-    "<span>Listener</span> <span class=\"search-result-import-path\">@dekk/listener</span>",
+    "<span>Listener</span> <span class=\"search-result-import-path\">@dekk/listener/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/image~maskedimage",
+    "@dekk/local-storage/lib/index.js~localstorage",
+    "class/@dekk/local-storage/src/index.js~LocalStorage.html",
+    "<span>LocalStorage</span> <span class=\"search-result-import-path\">@dekk/local-storage/lib/index.js</span>",
+    "class"
+  ],
+  [
+    "@dekk/image/lib/index.js~maskedimage",
     "class/@dekk/image/src/index.js~MaskedImage.html",
-    "<span>MaskedImage</span> <span class=\"search-result-import-path\">@dekk/image</span>",
+    "<span>MaskedImage</span> <span class=\"search-result-import-path\">@dekk/image/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/master~master",
+    "@dekk/master/lib/components.js~master",
     "function/index.html#static-function-Master",
-    "<span>Master</span> <span class=\"search-result-import-path\">@dekk/master</span>",
+    "<span>Master</span> <span class=\"search-result-import-path\">@dekk/master/lib/components.js</span>",
     "function"
   ],
   [
-    "@dekk/speaker-notes~notes",
+    "@dekk/speaker-notes/lib/index.js~notes",
     "function/index.html#static-function-Notes",
-    "<span>Notes</span> <span class=\"search-result-import-path\">@dekk/speaker-notes</span>",
+    "<span>Notes</span> <span class=\"search-result-import-path\">@dekk/speaker-notes/lib/index.js</span>",
     "function"
   ],
   [
-    "@dekk/paging~paging",
+    "@dekk/paging/lib/index.js~paging",
     "class/@dekk/paging/src/index.js~Paging.html",
-    "<span>Paging</span> <span class=\"search-result-import-path\">@dekk/paging</span>",
+    "<span>Paging</span> <span class=\"search-result-import-path\">@dekk/paging/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/deck~plugins",
+    "@dekk/deck/lib/plugins.js~plugins",
     "function/index.html#static-function-Plugins",
-    "<span>Plugins</span> <span class=\"search-result-import-path\">@dekk/deck</span>",
+    "<span>Plugins</span> <span class=\"search-result-import-path\">@dekk/deck/lib/plugins.js</span>",
     "function"
   ],
   [
-    "@dekk/text~quote",
+    "@dekk/pubnub/lib/index.js~pubnub",
+    "class/@dekk/pubnub/src/index.js~Pubnub.html",
+    "<span>Pubnub</span> <span class=\"search-result-import-path\">@dekk/pubnub/lib/index.js</span>",
+    "class"
+  ],
+  [
+    "@dekk/text/lib/quote.js~quote",
     "function/index.html#static-function-Quote",
-    "<span>Quote</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Quote</span> <span class=\"search-result-import-path\">@dekk/text/lib/quote.js</span>",
     "function"
   ],
   [
-    "@dekk/slide~slide",
+    "@dekk/slide/lib/index.js~slide",
     "class/@dekk/slide/src/index.js~Slide.html",
-    "<span>Slide</span> <span class=\"search-result-import-path\">@dekk/slide</span>",
+    "<span>Slide</span> <span class=\"search-result-import-path\">@dekk/slide/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/master~slot",
+    "@dekk/master/lib/components.js~slot",
     "function/index.html#static-function-Slot",
-    "<span>Slot</span> <span class=\"search-result-import-path\">@dekk/master</span>",
+    "<span>Slot</span> <span class=\"search-result-import-path\">@dekk/master/lib/components.js</span>",
     "function"
   ],
   [
-    "@dekk/speaker-deck~speakerdeck",
+    "@dekk/speaker-deck/lib/speaker-deck.js~speakerdeck",
     "class/@dekk/speaker-deck/src/speaker-deck.js~SpeakerDeck.html",
-    "<span>SpeakerDeck</span> <span class=\"search-result-import-path\">@dekk/speaker-deck</span>",
+    "<span>SpeakerDeck</span> <span class=\"search-result-import-path\">@dekk/speaker-deck/lib/speaker-deck.js</span>",
     "class"
   ],
   [
-    "@dekk/master~static",
+    "@dekk/master/lib/components.js~static",
     "function/index.html#static-function-Static",
-    "<span>Static</span> <span class=\"search-result-import-path\">@dekk/master</span>",
+    "<span>Static</span> <span class=\"search-result-import-path\">@dekk/master/lib/components.js</span>",
     "function"
   ],
   [
-    "@dekk/text~subtitle",
+    "@dekk/text/lib/subtitle.js~subtitle",
     "variable/index.html#static-variable-Subtitle",
-    "<span>Subtitle</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Subtitle</span> <span class=\"search-result-import-path\">@dekk/text/lib/subtitle.js</span>",
     "variable"
   ],
   [
-    "@dekk/text~text",
+    "@dekk/text/lib/index.js~text",
     "variable/index.html#static-variable-Text",
-    "<span>Text</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Text</span> <span class=\"search-result-import-path\">@dekk/text/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/text~title",
+    "@dekk/text/lib/title.js~title",
     "variable/index.html#static-variable-Title",
-    "<span>Title</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Title</span> <span class=\"search-result-import-path\">@dekk/text/lib/title.js</span>",
     "variable"
   ],
   [
-    "@dekk/text~uppercase",
+    "@dekk/text/lib/uppercase.js~uppercase",
     "variable/index.html#static-variable-Uppercase",
-    "<span>Uppercase</span> <span class=\"search-result-import-path\">@dekk/text</span>",
+    "<span>Uppercase</span> <span class=\"search-result-import-path\">@dekk/text/lib/uppercase.js</span>",
     "variable"
   ],
   [
-    "@dekk/url~url",
+    "@dekk/url/lib/index.js~url",
     "class/@dekk/url/src/index.js~Url.html",
-    "<span>Url</span> <span class=\"search-result-import-path\">@dekk/url</span>",
+    "<span>Url</span> <span class=\"search-result-import-path\">@dekk/url/lib/index.js</span>",
     "class"
   ],
   [
-    "@dekk/master~createmaster",
+    "@dekk/master/lib/create.js~createmaster",
     "function/index.html#static-function-createMaster",
-    "<span>createMaster</span> <span class=\"search-result-import-path\">@dekk/master</span>",
+    "<span>createMaster</span> <span class=\"search-result-import-path\">@dekk/master/lib/create.js</span>",
     "function"
   ],
   [
-    "@dekk/master~createstyledmaster",
+    "@dekk/master/lib/create.js~createstyledmaster",
     "function/index.html#static-function-createStyledMaster",
-    "<span>createStyledMaster</span> <span class=\"search-result-import-path\">@dekk/master</span>",
+    "<span>createStyledMaster</span> <span class=\"search-result-import-path\">@dekk/master/lib/create.js</span>",
     "function"
   ],
   [
-    "@dekk/animation~cube",
+    "@dekk/animation/lib/cube.js~cube",
     "variable/index.html#static-variable-cube",
-    "<span>cube</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "<span>cube</span> <span class=\"search-result-import-path\">@dekk/animation/lib/cube.js</span>",
     "variable"
   ],
   [
-    "@dekk/animation~fade",
+    "@dekk/animation/lib/fade.js~fade",
     "variable/index.html#static-variable-fade",
-    "<span>fade</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "<span>fade</span> <span class=\"search-result-import-path\">@dekk/animation/lib/fade.js</span>",
     "variable"
   ],
   [
-    "@dekk/animation~fadeslide",
+    "@dekk/animation/lib/fade-slide.js~fadeslide",
     "variable/index.html#static-variable-fadeSlide",
-    "<span>fadeSlide</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "<span>fadeSlide</span> <span class=\"search-result-import-path\">@dekk/animation/lib/fade-slide.js</span>",
     "variable"
   ],
   [
-    "@dekk/animation~flip",
+    "@dekk/animation/lib/flip.js~flip",
     "variable/index.html#static-variable-flip",
-    "<span>flip</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "<span>flip</span> <span class=\"search-result-import-path\">@dekk/animation/lib/flip.js</span>",
     "variable"
   ],
   [
-    "@dekk/countdown~rendersimplecountdown",
+    "@dekk/dekk/lib/index.js~present",
+    "variable/index.html#static-variable-present",
+    "<span>present</span> <span class=\"search-result-import-path\">@dekk/dekk/lib/index.js</span>",
+    "variable"
+  ],
+  [
+    "@dekk/countdown/lib/render-countdown.js~rendersimplecountdown",
     "function/index.html#static-function-renderSimpleCountdown",
-    "<span>renderSimpleCountdown</span> <span class=\"search-result-import-path\">@dekk/countdown</span>",
+    "<span>renderSimpleCountdown</span> <span class=\"search-result-import-path\">@dekk/countdown/lib/render-countdown.js</span>",
     "function"
   ],
   [
-    "@dekk/url~search",
+    "@dekk/url/lib/index.js~search",
     "variable/index.html#static-variable-search",
-    "<span>search</span> <span class=\"search-result-import-path\">@dekk/url</span>",
+    "<span>search</span> <span class=\"search-result-import-path\">@dekk/url/lib/index.js</span>",
     "variable"
   ],
   [
-    "@dekk/animation~slide",
+    "@dekk/animation/lib/slide.js~slide",
     "variable/index.html#static-variable-slide",
-    "<span>slide</span> <span class=\"search-result-import-path\">@dekk/animation</span>",
+    "<span>slide</span> <span class=\"search-result-import-path\">@dekk/animation/lib/slide.js</span>",
     "variable"
   ],
   [
@@ -648,6 +672,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/dekk/src/index.js",
+    "file/@dekk/dekk/src/index.js.html",
+    "@dekk/dekk/src/index.js",
+    "file"
+  ],
+  [
     "@dekk/fragment/src/fragment.js",
     "file/@dekk/fragment/src/fragment.js.html",
     "@dekk/fragment/src/fragment.js",
@@ -804,6 +834,18 @@ window.esdocSearchIndex = [
     "typedef"
   ],
   [
+    "@dekk/local-storage/src/index.js",
+    "file/@dekk/local-storage/src/index.js.html",
+    "@dekk/local-storage/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/local-storage/src/index.js~localstorage#constructor",
+    "class/@dekk/local-storage/src/index.js~LocalStorage.html#instance-constructor-constructor",
+    "@dekk/local-storage/src/index.js~LocalStorage#constructor",
+    "method"
+  ],
+  [
     "@dekk/master-slides/src/index.js",
     "file/@dekk/master-slides/src/index.js.html",
     "@dekk/master-slides/src/index.js",
@@ -828,6 +870,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/master/src/create.js~layout",
+    "typedef/index.html#static-typedef-Layout",
+    "@dekk/master/src/create.js~Layout",
+    "typedef"
+  ],
+  [
     "@dekk/master/src/create.js~masterslide",
     "typedef/index.html#static-typedef-MasterSlide",
     "@dekk/master/src/create.js~MasterSlide",
@@ -837,12 +885,6 @@ window.esdocSearchIndex = [
     "@dekk/master/src/create.js~mastertemplate",
     "typedef/index.html#static-typedef-MasterTemplate",
     "@dekk/master/src/create.js~MasterTemplate",
-    "typedef"
-  ],
-  [
-    "@dekk/master/src/create.js~styledlayout",
-    "typedef/index.html#static-typedef-StyledLayout",
-    "@dekk/master/src/create.js~StyledLayout",
     "typedef"
   ],
   [
@@ -879,6 +921,18 @@ window.esdocSearchIndex = [
     "@dekk/paging/src/index.js~paging#constructor",
     "class/@dekk/paging/src/index.js~Paging.html#instance-constructor-constructor",
     "@dekk/paging/src/index.js~Paging#constructor",
+    "method"
+  ],
+  [
+    "@dekk/pubnub/src/index.js",
+    "file/@dekk/pubnub/src/index.js.html",
+    "@dekk/pubnub/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/pubnub/src/index.js~pubnub#constructor",
+    "class/@dekk/pubnub/src/index.js~Pubnub.html#instance-constructor-constructor",
+    "@dekk/pubnub/src/index.js~Pubnub#constructor",
     "method"
   ],
   [
@@ -999,6 +1053,12 @@ window.esdocSearchIndex = [
     "@dekk/url/src/index.js",
     "file/@dekk/url/src/index.js.html",
     "@dekk/url/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/utils/src/checks.js",
+    "file/@dekk/utils/src/checks.js.html",
+    "@dekk/utils/src/checks.js",
     "file"
   ],
   [

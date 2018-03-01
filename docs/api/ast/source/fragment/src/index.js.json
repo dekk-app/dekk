@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 6066,
+  "end": 6046,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 215,
+      "line": 214,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 6066,
+    "end": 6046,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 215,
+        "line": 214,
         "column": 0
       }
     },
@@ -10071,16 +10071,16 @@
           "trailingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
+              "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
               "start": 5615,
-              "end": 5999,
+              "end": 5979,
               "loc": {
                 "start": {
                   "line": 202,
                   "column": 0
                 },
                 "end": {
-                  "line": 213,
+                  "line": 212,
                   "column": 3
                 }
               }
@@ -10108,16 +10108,16 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
+            "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
             "start": 5615,
-            "end": 5999,
+            "end": 5979,
             "loc": {
               "start": {
                 "line": 202,
                 "column": 0
               },
               "end": {
-                "line": 213,
+                "line": 212,
                 "column": 3
               }
             }
@@ -10126,15 +10126,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 6000,
-        "end": 6065,
+        "start": 5980,
+        "end": 6045,
         "loc": {
           "start": {
-            "line": 214,
+            "line": 213,
             "column": 0
           },
           "end": {
-            "line": 214,
+            "line": 213,
             "column": 65
           }
         },
@@ -10142,44 +10142,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 6007,
-          "end": 6065,
+          "start": 5987,
+          "end": 6045,
           "loc": {
             "start": {
-              "line": 214,
+              "line": 213,
               "column": 7
             },
             "end": {
-              "line": 214,
+              "line": 213,
               "column": 65
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 6013,
-              "end": 6065,
+              "start": 5993,
+              "end": 6045,
               "loc": {
                 "start": {
-                  "line": 214,
+                  "line": 213,
                   "column": 13
                 },
                 "end": {
-                  "line": 214,
+                  "line": 213,
                   "column": 65
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 6013,
-                "end": 6025,
+                "start": 5993,
+                "end": 6005,
                 "loc": {
                   "start": {
-                    "line": 214,
+                    "line": 213,
                     "column": 13
                   },
                   "end": {
-                    "line": 214,
+                    "line": 213,
                     "column": 25
                   },
                   "identifierName": "FragmentRoot"
@@ -10189,29 +10189,29 @@
               },
               "init": {
                 "type": "ArrowFunctionExpression",
-                "start": 6028,
-                "end": 6065,
+                "start": 6008,
+                "end": 6045,
                 "loc": {
                   "start": {
-                    "line": 214,
+                    "line": 213,
                     "column": 28
                   },
                   "end": {
-                    "line": 214,
+                    "line": 213,
                     "column": 65
                   }
                 },
                 "id": {
                   "type": "Identifier",
-                  "start": 6013,
-                  "end": 6025,
+                  "start": 5993,
+                  "end": 6005,
                   "loc": {
                     "start": {
-                      "line": 214,
+                      "line": 213,
                       "column": 13
                     },
                     "end": {
-                      "line": 214,
+                      "line": 213,
                       "column": 25
                     },
                     "identifierName": "FragmentRoot"
@@ -10225,15 +10225,15 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 6028,
-                    "end": 6033,
+                    "start": 6008,
+                    "end": 6013,
                     "loc": {
                       "start": {
-                        "line": 214,
+                        "line": 213,
                         "column": 28
                       },
                       "end": {
-                        "line": 214,
+                        "line": 213,
                         "column": 33
                       },
                       "identifierName": "props"
@@ -10243,58 +10243,58 @@
                 ],
                 "body": {
                   "type": "JSXElement",
-                  "start": 6037,
-                  "end": 6065,
+                  "start": 6017,
+                  "end": 6045,
                   "loc": {
                     "start": {
-                      "line": 214,
+                      "line": 213,
                       "column": 37
                     },
                     "end": {
-                      "line": 214,
+                      "line": 213,
                       "column": 65
                     }
                   },
                   "openingElement": {
                     "type": "JSXOpeningElement",
-                    "start": 6037,
-                    "end": 6065,
+                    "start": 6017,
+                    "end": 6045,
                     "loc": {
                       "start": {
-                        "line": 214,
+                        "line": 213,
                         "column": 37
                       },
                       "end": {
-                        "line": 214,
+                        "line": 213,
                         "column": 65
                       }
                     },
                     "attributes": [
                       {
                         "type": "JSXSpreadAttribute",
-                        "start": 6047,
-                        "end": 6057,
+                        "start": 6027,
+                        "end": 6037,
                         "loc": {
                           "start": {
-                            "line": 214,
+                            "line": 213,
                             "column": 47
                           },
                           "end": {
-                            "line": 214,
+                            "line": 213,
                             "column": 57
                           }
                         },
                         "argument": {
                           "type": "Identifier",
-                          "start": 6051,
-                          "end": 6056,
+                          "start": 6031,
+                          "end": 6036,
                           "loc": {
                             "start": {
-                              "line": 214,
+                              "line": 213,
                               "column": 51
                             },
                             "end": {
-                              "line": 214,
+                              "line": 213,
                               "column": 56
                             },
                             "identifierName": "props"
@@ -10304,29 +10304,29 @@
                       },
                       {
                         "type": "JSXAttribute",
-                        "start": 6058,
-                        "end": 6062,
+                        "start": 6038,
+                        "end": 6042,
                         "loc": {
                           "start": {
-                            "line": 214,
+                            "line": 213,
                             "column": 58
                           },
                           "end": {
-                            "line": 214,
+                            "line": 213,
                             "column": 62
                           }
                         },
                         "name": {
                           "type": "JSXIdentifier",
-                          "start": 6058,
-                          "end": 6062,
+                          "start": 6038,
+                          "end": 6042,
                           "loc": {
                             "start": {
-                              "line": 214,
+                              "line": 213,
                               "column": 58
                             },
                             "end": {
-                              "line": 214,
+                              "line": 213,
                               "column": 62
                             }
                           },
@@ -10337,15 +10337,15 @@
                     ],
                     "name": {
                       "type": "JSXIdentifier",
-                      "start": 6038,
-                      "end": 6046,
+                      "start": 6018,
+                      "end": 6026,
                       "loc": {
                         "start": {
-                          "line": 214,
+                          "line": 213,
                           "column": 38
                         },
                         "end": {
-                          "line": 214,
+                          "line": 213,
                           "column": 46
                         }
                       },
@@ -10364,16 +10364,16 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
+              "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
               "start": 5615,
-              "end": 5999,
+              "end": 5979,
               "loc": {
                 "start": {
                   "line": 202,
                   "column": 0
                 },
                 "end": {
-                  "line": 213,
+                  "line": 212,
                   "column": 3
                 }
               }
@@ -10384,16 +10384,16 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
+            "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
             "start": 5615,
-            "end": 5999,
+            "end": 5979,
             "loc": {
               "start": {
                 "line": 202,
                 "column": 0
               },
               "end": {
-                "line": 213,
+                "line": 212,
                 "column": 3
               }
             }
@@ -10774,16 +10774,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
+      "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
       "start": 5615,
-      "end": 5999,
+      "end": 5979,
       "loc": {
         "start": {
           "line": 202,
           "column": 0
         },
         "end": {
-          "line": 213,
+          "line": 212,
           "column": 3
         }
       }
@@ -27934,16 +27934,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @see    Fragment\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
+      "value": "*\n * Fragment root component. When using the fragmentRoot, nested Fragments start\n * after the parent. This is a curry version of Fragment.\n * @public\n * @class  FragmentRoot\n * @reactProps {Object} props\n * @reactProps {(ReactElement|ReactElement[])} props.children\n * @reactProps {number} props.order\n * @return {Fragment}\n *   A Fragment component as root\n ",
       "start": 5615,
-      "end": 5999,
+      "end": 5979,
       "loc": {
         "start": {
           "line": 202,
           "column": 0
         },
         "end": {
-          "line": 213,
+          "line": 212,
           "column": 3
         }
       }
@@ -27963,15 +27963,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 6000,
-      "end": 6006,
+      "start": 5980,
+      "end": 5986,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 0
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 6
         }
       }
@@ -27991,15 +27991,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 6007,
-      "end": 6012,
+      "start": 5987,
+      "end": 5992,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 7
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 12
         }
       }
@@ -28017,15 +28017,15 @@
         "binop": null
       },
       "value": "FragmentRoot",
-      "start": 6013,
-      "end": 6025,
+      "start": 5993,
+      "end": 6005,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 13
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 25
         }
       }
@@ -28044,15 +28044,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 6026,
-      "end": 6027,
+      "start": 6006,
+      "end": 6007,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 26
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 27
         }
       }
@@ -28070,15 +28070,15 @@
         "binop": null
       },
       "value": "props",
-      "start": 6028,
-      "end": 6033,
+      "start": 6008,
+      "end": 6013,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 28
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 33
         }
       }
@@ -28096,15 +28096,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 6034,
-      "end": 6036,
+      "start": 6014,
+      "end": 6016,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 34
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 36
         }
       }
@@ -28121,15 +28121,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 6037,
-      "end": 6038,
+      "start": 6017,
+      "end": 6018,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 37
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 38
         }
       }
@@ -28148,15 +28148,15 @@
         "updateContext": null
       },
       "value": "Fragment",
-      "start": 6038,
-      "end": 6046,
+      "start": 6018,
+      "end": 6026,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 38
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 46
         }
       }
@@ -28173,15 +28173,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 6047,
-      "end": 6048,
+      "start": 6027,
+      "end": 6028,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 47
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 48
         }
       }
@@ -28199,15 +28199,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 6048,
-      "end": 6051,
+      "start": 6028,
+      "end": 6031,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 48
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 51
         }
       }
@@ -28225,15 +28225,15 @@
         "binop": null
       },
       "value": "props",
-      "start": 6051,
-      "end": 6056,
+      "start": 6031,
+      "end": 6036,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 51
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 56
         }
       }
@@ -28250,15 +28250,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 6056,
-      "end": 6057,
+      "start": 6036,
+      "end": 6037,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 56
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 57
         }
       }
@@ -28277,15 +28277,15 @@
         "updateContext": null
       },
       "value": "root",
-      "start": 6058,
-      "end": 6062,
+      "start": 6038,
+      "end": 6042,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 58
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 62
         }
       }
@@ -28304,15 +28304,15 @@
         "updateContext": null
       },
       "value": "/",
-      "start": 6063,
-      "end": 6064,
+      "start": 6043,
+      "end": 6044,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 63
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 64
         }
       }
@@ -28329,15 +28329,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 6064,
-      "end": 6065,
+      "start": 6044,
+      "end": 6045,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 213,
           "column": 64
         },
         "end": {
-          "line": 214,
+          "line": 213,
           "column": 65
         }
       }
@@ -28355,15 +28355,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 6066,
-      "end": 6066,
+      "start": 6046,
+      "end": 6046,
       "loc": {
         "start": {
-          "line": 215,
+          "line": 214,
           "column": 0
         },
         "end": {
-          "line": 215,
+          "line": 214,
           "column": 0
         }
       }

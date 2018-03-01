@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 212,
-  "actualCount": 212,
+  "expectCount": 235,
+  "actualCount": 235,
   "files": {
     "@dekk/animation/src/cube.js": {
       "expectCount": 1,
@@ -73,6 +73,11 @@
       "actualCount": 1,
       "undocumentLines": []
     },
+    "@dekk/dekk/src/index.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
     "@dekk/fragment/src/fragment.js": {
       "expectCount": 1,
       "actualCount": 1,
@@ -108,6 +113,11 @@
       "actualCount": 5,
       "undocumentLines": []
     },
+    "@dekk/local-storage/src/index.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
     "@dekk/master/src/components.js": {
       "expectCount": 3,
       "actualCount": 3,
@@ -141,6 +151,11 @@
     "@dekk/paging/src/index.js": {
       "expectCount": 8,
       "actualCount": 8,
+      "undocumentLines": []
+    },
+    "@dekk/pubnub/src/index.js": {
+      "expectCount": 10,
+      "actualCount": 10,
       "undocumentLines": []
     },
     "@dekk/slide/src/index.js": {
@@ -231,6 +246,11 @@
     "@dekk/url/src/index.js": {
       "expectCount": 12,
       "actualCount": 12,
+      "undocumentLines": []
+    },
+    "@dekk/utils/src/checks.js": {
+      "expectCount": 1,
+      "actualCount": 1,
       "undocumentLines": []
     },
     "@dekk/utils/src/range.js": {
