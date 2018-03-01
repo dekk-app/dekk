@@ -2,6 +2,10 @@
   "name": "dekk",
   "version": "1.0.0-0",
   "private": true,
+  "engines" : {
+    "node" : ">=6 <9",
+    "npm" : ">=3 <6"
+  },
   "description": "A presentation tool written in react.js",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
@@ -18,6 +22,7 @@
     "develop": "npm-run-all --parallel babel:packages:watch watch",
     "docgen": "esdoc",
     "docs": "open docs/api/index.html",
+    "reset:docs": "rimraf docs && git checkout docs",
     "format:js": "lerna run format:js",
     "lint": "lerna run lint --concurrency",
     "prerelease": "npm run babel:packages",
@@ -59,6 +64,7 @@
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.18.1",
     "eslint-config-xo-react": "^0.16.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^1.1.9",

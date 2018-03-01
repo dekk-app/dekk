@@ -6,10 +6,5 @@
   "files": [
     "config.json"
   ],
-  "main": "config.json",
-  "dependencies": {
-    "babel-eslint": "^8.2.2",
-    "eslint-config-xo-react": "^0.16.0",
-    "eslint-plugin-react": "^7.7.0"
-  }
+  "main": "config.json"
 }
