@@ -1,5 +1,13 @@
 # Timer
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+
+
+<!-- /code_chunk_output -->
+
 Dekk provides a simple countdoen timer.
 
 You can use it but it is mainly intended as a tool for

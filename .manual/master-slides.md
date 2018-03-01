@@ -1,5 +1,20 @@
 # Master slides
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Usage](#usage)
+* [Available Layouts](#available-layouts)
+	* [Cover](#cover)
+	* [Chapter](#chapter)
+	* [Half](#half)
+	* [Collage](#collage)
+	* [Grid](#grid)
+	* [ImageGrid](#imagegrid)
+
+<!-- /code_chunk_output -->
+
 Dekk privides a collection of very simple master layouts.
 
 ## Usage

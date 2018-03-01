@@ -1,5 +1,16 @@
 # Examples
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Basic Example](#basic-example)
+* [Changing the transitions](#changing-the-transitions)
+* [Using fragments](#using-fragments)
+* [Using master slides](#using-master-slides)
+
+<!-- /code_chunk_output -->
+
 ## Basic Example
 
 To get started you can copy the following code. 
@@ -17,8 +28,8 @@ import Url from '@dekk/url'
 const App = () => (
   <Deck>
     <Plugins>
-    <Paging/>
-    <Url/>
+      <Paging/>
+      <Url/>
     </Plugins>
     <Slide>This is slide <strong>1</strong>.</Slide>
     <Slide>This is slide <strong>2</strong>.</Slide>
@@ -48,8 +59,8 @@ import {cube} from '@dekk/animation'
 const App = () => (
   <Deck>
     <Plugins>
-    <Paging/>
-    <Url/>
+      <Paging/>
+      <Url/>
     </Plugins>
     <Slide>This is slide <strong>1</strong></Slide>
     <Slide animationOut={cube.slideX}>
@@ -94,8 +105,8 @@ import {fadeSwipe} from '@dekk/animation'
 const App = () => (
   <Deck>
     <Plugins>
-    <Paging/>
-    <Url/>
+      <Paging/>
+      <Url/>
     </Plugins>
     <Slide>
       <Fragment 
@@ -160,8 +171,8 @@ import {
 const App = () => (
   <Deck>
     <Plugins>
-    <Paging/>
-    <Url/>
+      <Paging/>
+      <Url/>
     </Plugins>
     <Cover.Slide>
       <Cover.A>

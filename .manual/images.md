@@ -1,5 +1,14 @@
 # Image elements
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [MaskedImage](#maskedimage)
+* [FitImage](#fitimage)
+
+<!-- /code_chunk_output -->
+
 Dekk provides some basic iamge elements.
 
 ## MaskedImage

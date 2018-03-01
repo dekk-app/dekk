@@ -1,5 +1,15 @@
 # Fragments
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Fragment order](#fragment-order)
+* [Nested Fragments](#nested-fragments)
+* [Fragment root](#fragment-root)
+
+<!-- /code_chunk_output -->
+
 A slide can have multiple fragments which are activated before the next slide.
 
 ```jsx

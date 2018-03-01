@@ -1,5 +1,15 @@
 # Creating a Deck
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Deck](#deck)
+* [Speaker Deck](#speaker-deck)
+
+<!-- /code_chunk_output -->
+
+
 To create a Deck you need two core packages, `Deck` and `Slide`.
 A Deck can contain several Components aside `Slide`. Take a look at
 [`Plugins`](plugins.html) and [`Elements`](static-elements.html)
@@ -11,7 +21,7 @@ state. Without plugins you won't be able to navigate through the Deck.
 This allows a very unique kind of configauration.
 Read more [here](plugins.html)
 
-**deck.js**
+## Deck
 
 ```jsx
 import React from 'react'
@@ -27,7 +37,7 @@ export default (
 )
 ```
 
-**speaker-deck.js**
+## Speaker Deck
 
 There is a speaker/presenter version of Dekk with some extra features.
 SpeakerDeck expects a timer to be set. You can also specify a warning time.

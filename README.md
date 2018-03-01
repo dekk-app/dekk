@@ -28,6 +28,7 @@ This file does not explain how Dekk works. Please take a look at the [Manual](ht
 	* [Manual](#manual)
 	* [Examples](#examples)
 	* [API Reference](#api-reference)
+	* [Developing Dekk](#developing-dekk)
 	* [Dependencies](#dependencies)
 	* [Special thanks.](#special-thanks)
 
@@ -35,20 +36,19 @@ This file does not explain how Dekk works. Please take a look at the [Manual](ht
 
 ## Demos
 
-There is currently one demo which can be viewed as a default or speaker deck
+The demo can be viewed as a default or speaker deck
 
 * [Demo](https://sinnerschrader.github.io/dekk/)
 * [Demo (presenter mode)](https://sinnerschrader.github.io/dekk/?present=true)
 
-
-## Manual
+## Getting Started
 
 If you need examples or more information about a component or usage you
 will most likely find it here.
 
-[Manual](https://sinnerschrader.github.io/dekk/api/manual/)
+[Manual](https://sinnerschrader.github.io/dekk/api/manual/index.html)
 
-Here's the most important imformation to get started.
+Here's the most important information to for advanced usage.
 
 * [Installation](https://sinnerschrader.github.io/dekk/api/manual/installation.html)
 * [Usage](https://sinnerschrader.github.io/dekk/api/manual/usage.html)
@@ -58,7 +58,7 @@ Here's the most important imformation to get started.
 There are a few copy & paste examples which you can use. They show the
 basic usage of Dekk.
 
-[Manual](https://sinnerschrader.github.io/dekk/api/manual/examples.html)
+[Examples](https://sinnerschrader.github.io/dekk/api/manual/examples.html)
 
 ## API Reference
 
@@ -67,6 +67,60 @@ If something is missing it has probably not been generated.
 Take a look at the source comments instead.
 
 [Reference](https://sinnerschrader.github.io/dekk/api/identifiers.html)
+
+
+## Developing Dekk
+
+You are welcome to help develop Dekk. to contribute please follow these steps:
+
+Prepare:
+
+Please take the time and read our
+[contribution guiidelines](https://github.com/sinnerschrader/dekk/blob/master/.github/CONTRIBUTING.md)
+and the [code of conduct](https://github.com/sinnerschrader/dekk/blob/master/.github/CODE_OF_CONDUCT.md)
+
+1. Node.js & npm
+
+Please ensure that you are running the correct node version.
+The supported engines are listed in `package.json~enines`.
+
+```json
+{
+  "engines" : {
+    "node" : ">=6 <9",
+    "npm" : ">=3"
+  }
+}
+```
+
+2. Clone Dekk
+
+```shell
+git clone git@github.com:sinnerschrader/dekk.git
+cd dekk
+```
+
+3. Install and bootstrap
+
+```shell
+yarn
+lerna bootstrap
+```
+
+4. start development mode
+
+This opens a webpack-dev-server on port 8080
+
+http://localhost:8080
+
+```shell
+yarn develop
+```
+
+5. open your browser. The hosted content is defined in 
+  `gh/pages/gh-pages.js`
+
+
 
 ## Dependencies
 

@@ -1,5 +1,15 @@
 # Animations
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Shared transitions](#shared-transitions)
+* [Slide transitions](#slide-transitions)
+* [Writing transitions](#writing-transitions)
+
+<!-- /code_chunk_output -->
+
 Dekk offers some basic transitions. Some trantions only work on slides
 since they use viewport units for perspective or tranlation on the z axis.
 

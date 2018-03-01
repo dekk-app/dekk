@@ -202,7 +202,6 @@ export default class Fragment extends Component {
 /**
  * Fragment root component. When using the fragmentRoot, nested Fragments start
  * after the parent. This is a curry version of Fragment.
- * @see    Fragment
  * @public
  * @class  FragmentRoot
  * @reactProps {Object} props

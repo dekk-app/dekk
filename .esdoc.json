@@ -16,7 +16,7 @@
       "name": "esdoc-importpath-plugin",
       "option": {
         "stripPackageName": true,
-        "replaces": [{"from": "src/.*", "to": ""}, {"from": "/$", "to": ""}]
+        "replaces": [{"from": "/src/", "to": "/lib/"}]
       }
     },
     {

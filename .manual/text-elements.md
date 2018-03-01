@@ -1,5 +1,19 @@
 # Text elements
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Text](#text)
+* [Title](#title)
+* [Subtitle](#subtitle)
+* [Uppercase](#uppercase)
+* [Bold](#bold)
+* [Center](#center)
+* [Code](#code)
+
+<!-- /code_chunk_output -->
+
 Dekk provides some basic text elements.
 
 ## Text

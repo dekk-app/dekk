@@ -1,15 +1,27 @@
 # Installation
 
-Dekk is a monorepo and all of its packages can be found under the namespace [@dekk](https://www.npmjs.com/org/dekk)
 
-## Available packages
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
 
-Dekk is available under the npm namespace [@dekk](https://www.npmjs.com/org/dekk)
-and offers several packages.
+* [Deck (root)](#deck-root)
+* [SpeakerDeck (root)](#speakerdeck-root)
+* [Master Slides](#master-slides)
+* [Plugins](#plugins)
+* [Text Elements](#text-elements)
+* [Image Elements](#image-elements)
+* [Fragments](#fragments)
+* [Speaker notes](#speaker-notes)
+* [Tools](#tools)
+* [Icons](#icons)
 
+<!-- /code_chunk_output -->
+
+Dekk is a monorepo and all of its packages can be found under the namespace
+[@dekk](https://www.npmjs.com/org/dekk).
 You can find all public packages and their provided exports below.
 
-### Deck (root)
+## Deck (root)
 
 ```shell
 yarn add @dekk/deck
@@ -19,7 +31,7 @@ yarn add @dekk/deck
 import Deck, {Plugins, Elements} from '@dekk/dekk'
 ```
 
-### SpeakerDeck (root)
+## SpeakerDeck (root)
 
 ```shell
 yarn add @dekk/speaker-deck
@@ -29,7 +41,7 @@ yarn add @dekk/speaker-deck
 import SpeakerDeck from '@dekk/speaker-dekk'
 ```
 
-### Master Slides
+## Master Slides
 
 ```shell
 yarn add @dekk/master
@@ -44,21 +56,23 @@ import createMaster, {
 } from '@dekk/master'
 ```
 
-### Plugins
+## Plugins
 
 ```shell
-yarn add @dekk/url
-yarn add @dekk/paging
+yarn add @dekk/autoplay
 yarn add @dekk/listener
+yarn add @dekk/paging
+yarn add @dekk/url
 ```
 
 ```jsx
-import Paging from '@dekk/paging'
+import Autoplay from '@dekk/autoplay'
 import Listener from '@dekk/listener'
+import Paging from '@dekk/paging'
 import Url, {search} from '@dekk/url'
 ```
 
-### Text Elements
+## Text Elements
 
 ```shell
 yarn add @dekk/text
@@ -76,7 +90,7 @@ import Text, {
 } from '@dekk/text'
 ```
 
-### Image Elements
+## Image Elements
 
 ```shell
 yarn add @dekk/image
@@ -86,7 +100,7 @@ yarn add @dekk/image
 import MaskedImage, {FitImage} from '@dekk/image'
 ```
 
-### Fragments
+## Fragments
 
 ```shell
 yarn add @dekk/fragment
@@ -96,7 +110,7 @@ yarn add @dekk/fragment
 import Fragment, {FragmentRoot} from '@dekk/fragment'
 ```
 
-### Speaker notes
+## Speaker notes
 
 ```shell
 yarn add @dekk/speaker-notes
@@ -107,7 +121,7 @@ import Notes from '@dekk/speaker-notes'
 ```
 
 
-### Tools
+## Tools
 
 ```shell
 yarn add @dekk/countdown
@@ -117,7 +131,7 @@ yarn add @dekk/countdown
 import Countdown from '@dekk/countdown'
 ```
 
-### Icons
+## Icons
 
 ```jsx
 import Icon from '@dekk/icon'

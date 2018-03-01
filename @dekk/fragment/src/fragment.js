@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 /**
  * Styled version of the Fragment component
- * @see Fragment
  * @private
  * @type {StyledComponent}
  * @reactProps {Object} props

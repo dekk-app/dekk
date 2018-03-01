@@ -5,15 +5,14 @@ import Master from './master'
 import {Slot} from './components'
 
 /**
- * # createMaster
  * This is a helper function to create master slides.
- * A master slide is an already layouted slide with predefined slots.
+ * A master slide is a slide with predefined slots.
  *
  * To create a master a wrapping component is used. While it does not
  * matter what this component is, Dekk already provides this for you.
  * Simply use `Master` from `./components`.
  *
- * The schildren are then parsed and cheked to ensure the slides have
+ * The children are then parsed and cheked to ensure the slides have
  * the correct content. These checks are very simple and only define
  * which children should be used.
  * To ensure further safety you can define PropTypes or other mechanisms
@@ -109,8 +108,8 @@ export default function createMaster(master) {
  * @example
  * const Layout = createStyledMaster(
  *   <Master>
- *   <Slot name="A"/>
- *   <Slot name="B"/>
+ *     <Slot name="A"/>
+ *     <Slot name="B"/>
  *   </Master>
  * )`
  *   display: grid;
@@ -165,9 +164,9 @@ export const createStyledMaster = template => {
  */
 
 /**
- * A complete layout with styling
+ * A complete layout
  * @public
- * @typedef StyledLayout
+ * @typedef Layout
  * @type {ReactComponent}
  * @return {{Slide: ReactComponent, Slot: ReactComponent}}
  */

@@ -18,8 +18,8 @@ import Elements from './elements'
  * @class Deck
  * @param {Object} props
  *   The properties
- * @param {(Slide|Slide[])} props.children
- * @param {?String} props.mixin
+ * @param {(Slide|Slide[]|Elements|Elements[]|Plugins|Plugins[])} props.children
+ * @param {?(String|Array)} props.mixin
  *
  * @example
  * import React from 'react'
