@@ -21,6 +21,16 @@ Dekk is a monorepo and all of its packages can be found under the namespace
 [@dekk](https://www.npmjs.com/org/dekk).
 You can find all public packages and their provided exports below.
 
+## Deck (preconfigured)
+
+```shell
+yarn add @dekk/dekk
+```
+
+```jsx
+import Deck, {Plugins, Elements, Slide} from '@dekk/dekk'
+```
+
 ## Deck (root)
 
 ```shell
