@@ -76,4 +76,12 @@ Dekk.propTypes = {
   mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
 }
 
+/**
+ * @private
+ */
+Dekk.defaultProps = {
+  timerWarning: 0,
+  mixin: ''
+}
+
 export default Dekk
