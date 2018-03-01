@@ -81,11 +81,13 @@ const nOf = (n, {length}) =>
  * `<SpeakerDeck/>` displays the slides in various layouts
  *
  *
- * @class DeSpeakerDeckck
+ * @class SpeakerDeck
  * @param {Object} props
  *   The properties
- * @param {(Slide|Slide[])} props.children
- * @param {?String} props.mixin
+ * @param {(Slide|Slide[]|Elements|Elements[]|Plugins|Plugins[])} props.children
+ * @param {?(String|Array)} props.mixin
+ * @param {number} props.timer
+ * @param {number} [props.timerWarning=0]
  *
  * @example
  * import React from 'react'
@@ -107,6 +109,7 @@ export default class SpeakerDeck extends Deck {
    */
   static get propTypes() {
     return {
+      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       children: PropTypes.node.isRequired,
       timer: PropTypes.number.isRequired,
       timerWarning: PropTypes.number
@@ -118,15 +121,19 @@ export default class SpeakerDeck extends Deck {
    */
   static get defaultProps() {
     return {
-      timerWarning: 0
+      timerWarning: 0,
+      mixin: ''
     }
   }
 
   /**
    * @param {Object} props
    *   The properties
-   * @param {(Slide|Slide[])} props.children
-   * @param {?String} props.mixin
+   * @param {(Slide|Slide[]|Elements|Elements[]|Plugins|Plugins[])} props.children
+   * @param {?(String|Array)} props.mixin
+   * @param {number} props.timer
+   * @param {number} [props.timerWarning=0]
+   *
    */
   constructor(props) {
     super(props)
