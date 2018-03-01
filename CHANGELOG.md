@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-14"></a>
+# [1.0.0-14](https://github.com/sinnerschrader/dekk/compare/v1.0.0-13...v1.0.0-14) (2018-03-01)
+
+
+### Bug Fixes
+
+* **animation:** fixes directions logic ([390c589](https://github.com/sinnerschrader/dekk/commit/390c589))
+* **speaker-deck:** added missing proptypes ([7ff1ae5](https://github.com/sinnerschrader/dekk/commit/7ff1ae5))
+
+
+### Features
+
+* **dekk:** preconfigured Deck ([8e68002](https://github.com/sinnerschrader/dekk/commit/8e68002))
+* **local-storage:** presenter localstorage ([c120506](https://github.com/sinnerschrader/dekk/commit/c120506))
+* **pubnub:** presenter pubnub ([c72640c](https://github.com/sinnerschrader/dekk/commit/c72640c))
+* **utils:** numeric check ([f63effc](https://github.com/sinnerschrader/dekk/commit/f63effc))
+
+
+
+
 <a name="1.0.0-13"></a>
 # [1.0.0-13](https://github.com/sinnerschrader/dekk/compare/v1.0.0-12...v1.0.0-13) (2018-02-28)
 

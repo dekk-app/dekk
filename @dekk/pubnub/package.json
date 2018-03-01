@@ -1,6 +1,6 @@
 {
   "name": "@dekk/pubnub",
-  "version": "1.0.0-13",
+  "version": "1.0.0-14",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -17,7 +17,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/utils": "^1.0.0-13",
+    "@dekk/utils": "^1.0.0-14",
     "prop-types": "^15.6.0",
     "pubnub-react": "^1.2.0",
     "react": "^16.2.0"
