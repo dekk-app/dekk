@@ -67,15 +67,15 @@ the entire content with this code.
 
 ```jsx
 import React from 'react'
-import Deck, {Slide} from '@dekk/dekk'
+import Dekk, {Slide} from '@dekk/dekk'
 
 const App = () => {
   return (
-    <Deck>
+    <Dekk>
       <Slide> Slide 1 </Slide>
       <Slide> Slide 2 </Slide>
       <Slide> Slide 3 </Slide>
-    </Deck>
+    </Dekk>
   )
 }
 
@@ -96,8 +96,19 @@ navigate to http://localhost:3000/ and you're good to go.
 `@dekk/dekk` provides a preconfigured Deck. It provides all needed 
 features to get started. 
 
-1. Try using the "arrow right key" on your keyboard to go to the next slide.
-2. The "arrow left key" allows you to go back to the previous slide.
+Dekk provides 3 viewing modes:
+
+1. default: with paging and URls
+2. presenter: with previews
+3. live: is controlled by a presenter Dekk
+
+#### Explore your Deck
+
+* Try using the "arrow right key" on your keyboard to go to the next slide.
+* The "arrow left key" allows you to go back to the previous slide.
+* Open the pages to get the speaker and live view:
+  * http://localhost:3000?present=true
+  * http://localhost:3000?live=true
 
 You can now add more slides to your Deck.
 
