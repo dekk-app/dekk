@@ -4,6 +4,7 @@
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 
+* [Deck (preconfigured)](#deck-preconfigured)
 * [Deck (root)](#deck-root)
 * [SpeakerDeck (root)](#speakerdeck-root)
 * [Master Slides](#master-slides)
