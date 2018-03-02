@@ -20,17 +20,16 @@ This file does not explain how Dekk works. Please take a look at the [Manual](ht
 [![commitlint](https://img.shields.io/badge/commitlint-enabled-44aa44.svg?style=flat-square)](https://github.com/marionebl/commitlint)
 
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 
-* [Dekk](#dekk)
-	* [Demos](#demos)
-	* [Manual](#manual)
-	* [Examples](#examples)
-	* [API Reference](#api-reference)
-	* [Developing Dekk](#developing-dekk)
-	* [Dependencies](#dependencies)
-	* [Special thanks.](#special-thanks)
+* [Demos](#demos)
+* [Getting Started](#getting-started)
+* [Examples](#examples)
+* [API Reference](#api-reference)
+* [Developing Dekk](#developing-dekk)
+* [Dependencies](#dependencies)
+* [Special thanks.](#special-thanks)
 
 <!-- /code_chunk_output -->
 
