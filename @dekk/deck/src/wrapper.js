@@ -59,7 +59,7 @@ Wrapper.displayName = 'Wapper'
  * Allowed propTypes for `<Wrapper/>`
  * @private
  * @param {Array<SlidesWrapper,Deck.elements,Dekk.plugins>} children
- * @param {String,Array} mixin
+ * @param {?(String|Array)} mixin
  * @type {Object}
  */
 Wrapper.propTypes = {

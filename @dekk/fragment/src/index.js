@@ -20,8 +20,6 @@ import StyledFragment from './fragment'
 export default class Fragment extends Component {
   /**
    * @private
-   * @return {{children: (ReactElement|ReactElement[]), animation: ?(String|Array), order: ?number}}
-   *   Allowed propTypes for `<Fragment/>`
    */
   static get propTypes() {
     return {

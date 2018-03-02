@@ -7,8 +7,8 @@ import {isNumeric} from '@dekk/utils'
  * @public
  * @param {Object} props
  *   The properties
- * @param {Boolean} props.publishKey
- * @param {Boolean} props.subscribeKey
+ * @param {String} props.publishKey
+ * @param {String} props.subscribeKey
  * @param {Boolean} props.publish
  * @param {Boolean} props.subscribe
  * @param {number} props.slideIndex
@@ -73,8 +73,8 @@ export default class Pubnub extends Component {
    * @public
    * @param {Object} props
    *   The properties
-   * @param {Boolean} props.publishKey
-   * @param {Boolean} props.subscribeKey
+   * @param {String} props.publishKey
+   * @param {String} props.subscribeKey
    * @param {Boolean} props.publish
    * @param {Boolean} props.subscribe
    * @param {number} props.slideIndex

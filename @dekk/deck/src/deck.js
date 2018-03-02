@@ -19,7 +19,7 @@ import Elements from './elements'
  * @param {Object} props
  *   The properties
  * @param {(Slide|Slide[]|Elements|Elements[]|Plugins|Plugins[])} props.children
- * @param {?(String|Array)} props.mixin
+ * @param {(String|Array)} props.mixin
  *
  * @example
  * import React from 'react'

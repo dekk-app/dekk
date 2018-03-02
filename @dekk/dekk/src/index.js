@@ -23,7 +23,7 @@ const {present, live} = search.parse(window.location.href)
  * @param {Object} props
  *   The properties
  * @param {(Slide|Slide[]|Elements|Elements[]|Plugins|Plugins[])} props.children
- * @param {?(String|Array)} props.mixin
+ * @param {?(String|Array)} [props.mixin='']
  * @param {number} props.timer
  * @param {number} [props.timerWarning=0]
  *
