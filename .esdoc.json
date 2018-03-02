@@ -20,15 +20,22 @@
       }
     },
     {
+      "name": "esdoc-coverage-plugin", 
+      "option": {
+        "enable": true,
+        "kind": ["class", "method", "member", "get", "set", "constructor", "function", "variable"]
+      }
+    },
+    {
       "name": "esdoc-brand-plugin",
       "option": {
-        "title": "Dekk",
-        "logo": "./resources/logo.png",
-        "image": "./resources/logo.png",
+        "author": "https://github.com/pixelass",
         "description": "A presentation tool written in React.js",
+        "image": "./resources/logo.png",
+        "logo": "./resources/logo.png",
         "repository": "https://github.com/sinnerschrader/dekk",
-        "site": "sinnerschrader.github.io/dekk",
-        "author": "https://github.com/pixelass"
+        "site": "https://sinnerschrader.github.io/dekk",
+        "title": "Dekk"
       }
     },
     {
@@ -60,22 +67,26 @@
       "name": "esdoc-publish-html-plugin",
       "option": {
         "template": "./node_modules/esdoc-custom-theme/template"
-      }},
+      }
+    },
+    {
+      "name": "esdoc-external-ecmascript-plugin", 
+      "option": {
+        "enable": false
+      }
+    },
     {
       "name": "esdoc-standard-plugin",
       "option": {
-        "coverage": {
-          "enable": true
-        },
         "accessor": {
           "access": ["public"],
-          "autoPrivate": true
+          "autoPrivate": false
         },
         "undocumentIdentifier": {
-          "enable": true
+          "enable": false
         },
         "unexportedIdentifier": {
-          "enable": true
+          "enable": false
         },
         "manual": {
           "index": "./.manual/index.md",
