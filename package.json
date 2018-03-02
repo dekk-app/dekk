@@ -2,9 +2,9 @@
   "name": "dekk",
   "version": "1.0.0-0",
   "private": true,
-  "engines" : {
-    "node" : ">=6 <9",
-    "npm" : ">=3 <6"
+  "engines": {
+    "node": ">=6 <9",
+    "npm": ">=3 <6"
   },
   "description": "A presentation tool written in react.js",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "reset:docs": "rimraf docs && git checkout docs",
     "format:js": "lerna run format:js",
     "lint": "lerna run lint --concurrency",
-    "prerelease": "npm run babel:packages",
+    "prerelease": "npm run test && npm run babel:packages",
     "release": "lerna publish --conventional-commits",
     "release:prerelease": "npm run prerelease && lerna publish --conventional-commits --cd-version=prerelease",
     "prepush": "npm run test",
@@ -73,6 +73,7 @@
     "husky": "^0.14.3",
     "lerna": "^2.5.1",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.11.1",
     "rimraf": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
