@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
-import Icon from '@dekk/icon'
-import image from '@dekk/icon/lib/image'
+import Icon, {icons} from '@dekk/icon'
 
 /**
  * @private
@@ -75,7 +74,7 @@ const StyledLayoutToggle = styled.button`
  */
 export const LayoutToggle = props => (
   <StyledLayoutToggle {...props}>
-    <Icon icon={image['view-compact']} />
+    <Icon icon={icons.layout} />
   </StyledLayoutToggle>
 )
 
@@ -177,7 +176,7 @@ export const Countdown = styled.div`
  * @private
  */
 export const PlayButton = props => {
-  const icon = props.isPlaying ? image['timer-off'] : image.timer
+  const icon = props.isPlaying ? icons.timerOff : icons.timerOn
   return (
     <StyledPlayButton {...props}>
       <Icon icon={icon} />
@@ -189,7 +188,7 @@ export const PlayButton = props => {
  * @private
  */
 export const ThemeToggle = props => {
-  const icon = props.isDark ? image['wb-sunny'] : image['brightness-2']
+  const icon = props.isDark ? icons.themeLight : icons.themeDark
   return (
     <StyledThemeToggle {...props}>
       <Icon icon={icon} />

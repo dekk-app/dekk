@@ -1,51 +1,34 @@
-import action from './action'
-import alert from './alert'
-import av from './av'
-import communication from './communication'
-import content from './content'
-import device from './device'
-import editor from './editor'
-import file from './file'
-import hardware from './hardware'
-import image from './image'
-import maps from './maps'
-import navigation from './navigation'
-import notification from './notification'
-import social from './social'
-import toggle from './toggle'
+import React from 'react'
 
 export default {
-  action,
-  alert,
-  av,
-  communication,
-  content,
-  device,
-  editor,
-  file,
-  hardware,
-  image,
-  maps,
-  navigation,
-  notification,
-  social,
-  toggle
-}
-
-export {
-  action,
-  alert,
-  av,
-  communication,
-  content,
-  device,
-  editor,
-  file,
-  hardware,
-  image,
-  maps,
-  navigation,
-  notification,
-  social,
-  toggle
+  layout: (
+    <svg viewBox="0 0 24 24">
+      <path d="M3 19h6v-7H3v7zm7 0h12v-7H10v7zM3 5v6h19V5H3z" />
+    </svg>
+  ),
+  themeDark: (
+    <svg viewBox="0 0 24 24">
+      <path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z" />
+    </svg>
+  ),
+  themeLight: (
+    <svg viewBox="0 0 24 24">
+      <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z" />
+    </svg>
+  ),
+  timerOn: (
+    <svg viewBox="0 0 24 24">
+      <path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+    </svg>
+  ),
+  timerAuto: (
+    <svg viewBox="0 0 24 24">
+      <path d="M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.67-5.33-4-8-4z" />
+    </svg>
+  ),
+  timerOff: (
+    <svg viewBox="0 0 24 24">
+      <path d="M19.04 4.55l-1.42 1.42C16.07 4.74 14.12 4 12 4c-1.83 0-3.53.55-4.95 1.48l1.46 1.46C9.53 6.35 10.73 6 12 6c3.87 0 7 3.13 7 7 0 1.27-.35 2.47-.94 3.49l1.45 1.45C20.45 16.53 21 14.83 21 13c0-2.12-.74-4.07-1.97-5.61l1.42-1.42-1.41-1.42zM15 1H9v2h6V1zm-4 8.44l2 2V8h-2v1.44zM3.02 4L1.75 5.27 4.5 8.03C3.55 9.45 3 11.16 3 13c0 4.97 4.02 9 9 9 1.84 0 3.55-.55 4.98-1.5l2.5 2.5 1.27-1.27-7.71-7.71L3.02 4zM12 20c-3.87 0-7-3.13-7-7 0-1.28.35-2.48.95-3.52l9.56 9.56c-1.03.61-2.23.96-3.51.96z" />
+    </svg>
+  )
 }
