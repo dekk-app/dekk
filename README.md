@@ -35,10 +35,17 @@ This file does not explain how Dekk works. Please take a look at the [Manual](ht
 
 ## Demos
 
-The demo can be viewed as a default or speaker deck
+The demo can be viewed as a default or live deck or speaker deck
 
 * [Demo](https://sinnerschrader.github.io/dekk/)
+  * includes: URLs, Paging
+  * This viewmode is a standalone version
 * [Demo (presenter mode)](https://sinnerschrader.github.io/dekk/?present=true)
+  * includes URLs, Paging, LocalStorage as publisher
+  * This viewmode controls from a live deck
+* [Demo (live mode)](https://sinnerschrader.github.io/dekk/?live=true)
+  * LocalStorage as subscriber
+  * This viewmode is controlled from a speaker deck
 
 ## Getting Started
 
