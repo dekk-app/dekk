@@ -1,6 +1,6 @@
 {
   "name": "@dekk/slide",
-  "version": "1.0.0-16",
+  "version": "1.0.0-17",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,8 +18,8 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/animation": "^1.0.0-16",
-    "@dekk/speaker-notes": "^1.0.0-16",
+    "@dekk/animation": "^1.0.0-17",
+    "@dekk/speaker-notes": "^1.0.0-17",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-motion": "^0.5.2",
