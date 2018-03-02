@@ -4,11 +4,7 @@ import {render} from 'react-dom'
 import uuid from 'uuid/v4'
 import styled, {css} from 'styled-components'
 
-import Deck, {Plugins, Elements} from '@dekk/deck'
-import SpeakerDeck from '@dekk/speaker-deck'
-import Url, {search} from '@dekk/url'
-import Paging from '@dekk/paging'
-import Slide from '@dekk/slide'
+import Deck, {Slide, Elements} from '@dekk/dekk'
 import Fragment from '@dekk/fragment'
 import Notes from '@dekk/speaker-notes'
 import {FitImage} from '@dekk/image'
@@ -28,6 +24,11 @@ import greenImage from './assets/green.jpg'
 import blueImage from './assets/blue.jpg'
 
 import {red, green, blue, grey, black} from './design-system'
+
+const pubnubCreds = {
+  publishKey: 'pub-c-e516655b-9a34-4fd5-84b0-e722cfd38b9d',
+  subscribeKey: 'sub-c-d4bd97fa-1d38-11e8-84be-f641dd32cbde'
+}
 
 const StyledHeader = styled.header`
   background: var(--header-background);
@@ -63,13 +64,6 @@ const StyledFooter = styled.footer`
 
 const Footer = () => <StyledFooter>Dekk Tutorial</StyledFooter>
 
-const plugins = (
-  <Plugins>
-    <Paging />
-    <Url />
-  </Plugins>
-)
-
 const elements = (
   <Elements>
     <Header />
@@ -92,10 +86,6 @@ const deckMixin = css`
   --footer-background: ${grey.main};
   --footer-color: black;
   padding: var(--header-height, 0) 0 var(--footer-height, 0);
-`
-
-const speakerMixin = css`
-  ${baseMixin};
 `
 
 /**
@@ -363,31 +353,13 @@ const slides = [cover, ...content, thankYou]
 
 /**
  * The app.
- * It switches modes depending on a property.
- *
- * @param {Object} props
- *   The properties
- * @param {Boolean} props.present
- *   If true the speaker deck is rendered
  */
-const App = ({present}) =>
-  present ? (
-    <SpeakerDeck timer={20} timerWarning={5} mixin={speakerMixin}>
-      {plugins}
-      {slides}
-    </SpeakerDeck>
-  ) : (
-    <Deck mixin={deckMixin}>
-      {elements}
-      {plugins}
-      {slides}
-    </Deck>
-  )
-
-/**
- * Flag to set presenter mode
- */
-const {present} = search.parse(window.location.href)
+const App = () => (
+  <Deck mixin={deckMixin} timer={5} timerWarning={90}>
+    {elements}
+    {slides}
+  </Deck>
+)
 
 // render the app based on the window.location.search
-render(<App present={present} />, document.getElementById('mount-point'))
+render(<App />, document.getElementById('mount-point'))
