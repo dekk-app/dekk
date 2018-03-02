@@ -39,15 +39,15 @@ Once the installation is done, you can open your project folder:</p>
 <h3 id="2--creating-a-deck">2. Creating a Deck</h3><p>Open the file <code>my-app/src/App.js</code> in your text editor and replace
 the entire content with this code.</p>
 <pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &apos;react&apos;
-import Deck, {Slide} from &apos;@dekk/dekk&apos;
+import Dekk, {Slide} from &apos;@dekk/dekk&apos;
 
 const App = () =&gt; {
   return (
-    &lt;Deck&gt;
+    &lt;Dekk&gt;
       &lt;Slide&gt; Slide 1 &lt;/Slide&gt;
       &lt;Slide&gt; Slide 2 &lt;/Slide&gt;
       &lt;Slide&gt; Slide 3 &lt;/Slide&gt;
-    &lt;/Deck&gt;
+    &lt;/Dekk&gt;
   )
 }
 
@@ -59,10 +59,21 @@ export default App</code>
 navigate to <a href="http://localhost:3000/">http://localhost:3000/</a> and you&apos;re good to go.</p>
 <p><code>@dekk/dekk</code> provides a preconfigured Deck. It provides all needed 
 features to get started. </p>
+<p>Dekk provides 3 viewing modes:</p>
 <ol>
+<li>default: with paging and URls</li>
+<li>presenter: with previews</li>
+<li>live: is controlled by a presenter Dekk</li>
+</ol>
+<h4 id="explore-your-deck">Explore your Deck</h4><ul>
 <li>Try using the &quot;arrow right key&quot; on your keyboard to go to the next slide.</li>
 <li>The &quot;arrow left key&quot; allows you to go back to the previous slide.</li>
-</ol>
+<li>Open the pages to get the speaker and live view:<ul>
+<li><a href="http://localhost:3000?present=true">http://localhost:3000?present=true</a></li>
+<li><a href="http://localhost:3000?live=true">http://localhost:3000?live=true</a></li>
+</ul>
+</li>
+</ul>
 <p>You can now add more slides to your Deck.</p>
 <p>Enjoy!</p>
 <h2 id="advanced-usage">Advanced usage</h2><p>Dekk allows a lot more than just navigating through slides. If you are
@@ -77,6 +88,7 @@ in our <a href="https://github.com/sinnerschrader/dekk/issues">github repo</a>.<
 </div><div class="manual-cards"><div class="manual-card-wrap" data-ice="cards"><div class="manual-card js_ManualCard" href="#" tabindex="-1"><div data-ice="card"><h1>Installation</h1><p><!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 </p><p><!-- code_chunk_output -->
 </p><ul>
+<li><a href="#deck-preconfigured">Deck (preconfigured)</a></li>
 <li><a href="#deck-root">Deck (root)</a></li>
 <li><a href="#speakerdeck-root">SpeakerDeck (root)</a></li>
 <li><a href="#master-slides">Master Slides</a></li>

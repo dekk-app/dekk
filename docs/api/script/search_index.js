@@ -558,6 +558,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "@dekk/animation/index.js",
+    "file/@dekk/animation/index.js.html",
+    "@dekk/animation/index.js",
+    "file"
+  ],
+  [
     "@dekk/animation/src/cube.js",
     "file/@dekk/animation/src/cube.js.html",
     "@dekk/animation/src/cube.js",
@@ -594,6 +600,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/autoplay/index.js",
+    "file/@dekk/autoplay/index.js.html",
+    "@dekk/autoplay/index.js",
+    "file"
+  ],
+  [
     "@dekk/autoplay/src/index.js",
     "file/@dekk/autoplay/src/index.js.html",
     "@dekk/autoplay/src/index.js",
@@ -604,6 +616,12 @@ window.esdocSearchIndex = [
     "class/@dekk/autoplay/src/index.js~Autoplay.html#instance-constructor-constructor",
     "@dekk/autoplay/src/index.js~Autoplay#constructor",
     "method"
+  ],
+  [
+    "@dekk/countdown/index.js",
+    "file/@dekk/countdown/index.js.html",
+    "@dekk/countdown/index.js",
+    "file"
   ],
   [
     "@dekk/countdown/src/date-helpers.js",
@@ -633,6 +651,12 @@ window.esdocSearchIndex = [
     "@dekk/countdown/src/render-countdown.js",
     "file/@dekk/countdown/src/render-countdown.js.html",
     "@dekk/countdown/src/render-countdown.js",
+    "file"
+  ],
+  [
+    "@dekk/deck/index.js",
+    "file/@dekk/deck/index.js.html",
+    "@dekk/deck/index.js",
     "file"
   ],
   [
@@ -672,9 +696,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/dekk/index.js",
+    "file/@dekk/dekk/index.js.html",
+    "@dekk/dekk/index.js",
+    "file"
+  ],
+  [
     "@dekk/dekk/src/index.js",
     "file/@dekk/dekk/src/index.js.html",
     "@dekk/dekk/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/fragment/index.js",
+    "file/@dekk/fragment/index.js.html",
+    "@dekk/fragment/index.js",
     "file"
   ],
   [
@@ -687,6 +723,12 @@ window.esdocSearchIndex = [
     "@dekk/fragment/src/index.js",
     "file/@dekk/fragment/src/index.js.html",
     "@dekk/fragment/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/icon/index.js",
+    "file/@dekk/icon/index.js.html",
+    "@dekk/icon/index.js",
     "file"
   ],
   [
@@ -792,6 +834,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/image/index.js",
+    "file/@dekk/image/index.js.html",
+    "@dekk/image/index.js",
+    "file"
+  ],
+  [
     "@dekk/image/src/img.js",
     "file/@dekk/image/src/img.js.html",
     "@dekk/image/src/img.js",
@@ -816,6 +864,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/listener/index.js",
+    "file/@dekk/listener/index.js.html",
+    "@dekk/listener/index.js",
+    "file"
+  ],
+  [
     "@dekk/listener/src/index.js",
     "file/@dekk/listener/src/index.js.html",
     "@dekk/listener/src/index.js",
@@ -834,6 +888,12 @@ window.esdocSearchIndex = [
     "typedef"
   ],
   [
+    "@dekk/local-storage/index.js",
+    "file/@dekk/local-storage/index.js.html",
+    "@dekk/local-storage/index.js",
+    "file"
+  ],
+  [
     "@dekk/local-storage/src/index.js",
     "file/@dekk/local-storage/src/index.js.html",
     "@dekk/local-storage/src/index.js",
@@ -846,6 +906,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "@dekk/master-slides/index.js",
+    "file/@dekk/master-slides/index.js.html",
+    "@dekk/master-slides/index.js",
+    "file"
+  ],
+  [
     "@dekk/master-slides/src/index.js",
     "file/@dekk/master-slides/src/index.js.html",
     "@dekk/master-slides/src/index.js",
@@ -855,6 +921,12 @@ window.esdocSearchIndex = [
     "@dekk/master-slides/src/layouts.js",
     "file/@dekk/master-slides/src/layouts.js.html",
     "@dekk/master-slides/src/layouts.js",
+    "file"
+  ],
+  [
+    "@dekk/master/index.js",
+    "file/@dekk/master/index.js.html",
+    "@dekk/master/index.js",
     "file"
   ],
   [
@@ -912,6 +984,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/paging/index.js",
+    "file/@dekk/paging/index.js.html",
+    "@dekk/paging/index.js",
+    "file"
+  ],
+  [
     "@dekk/paging/src/index.js",
     "file/@dekk/paging/src/index.js.html",
     "@dekk/paging/src/index.js",
@@ -922,6 +1000,12 @@ window.esdocSearchIndex = [
     "class/@dekk/paging/src/index.js~Paging.html#instance-constructor-constructor",
     "@dekk/paging/src/index.js~Paging#constructor",
     "method"
+  ],
+  [
+    "@dekk/pubnub/index.js",
+    "file/@dekk/pubnub/index.js.html",
+    "@dekk/pubnub/index.js",
+    "file"
   ],
   [
     "@dekk/pubnub/src/index.js",
@@ -936,9 +1020,21 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "@dekk/slide/index.js",
+    "file/@dekk/slide/index.js.html",
+    "@dekk/slide/index.js",
+    "file"
+  ],
+  [
     "@dekk/slide/src/index.js",
     "file/@dekk/slide/src/index.js.html",
     "@dekk/slide/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/speaker-deck/index.js",
+    "file/@dekk/speaker-deck/index.js.html",
+    "@dekk/speaker-deck/index.js",
     "file"
   ],
   [
@@ -990,15 +1086,33 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/speaker-notes/index.js",
+    "file/@dekk/speaker-notes/index.js.html",
+    "@dekk/speaker-notes/index.js",
+    "file"
+  ],
+  [
     "@dekk/speaker-notes/src/index.js",
     "file/@dekk/speaker-notes/src/index.js.html",
     "@dekk/speaker-notes/src/index.js",
     "file"
   ],
   [
+    "@dekk/store/index.js",
+    "file/@dekk/store/index.js.html",
+    "@dekk/store/index.js",
+    "file"
+  ],
+  [
     "@dekk/store/src/index.js",
     "file/@dekk/store/src/index.js.html",
     "@dekk/store/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/text/index.js",
+    "file/@dekk/text/index.js.html",
+    "@dekk/text/index.js",
     "file"
   ],
   [
@@ -1050,9 +1164,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "@dekk/url/index.js",
+    "file/@dekk/url/index.js.html",
+    "@dekk/url/index.js",
+    "file"
+  ],
+  [
     "@dekk/url/src/index.js",
     "file/@dekk/url/src/index.js.html",
     "@dekk/url/src/index.js",
+    "file"
+  ],
+  [
+    "@dekk/utils/index.js",
+    "file/@dekk/utils/index.js.html",
+    "@dekk/utils/index.js",
     "file"
   ],
   [
