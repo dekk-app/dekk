@@ -4,9 +4,10 @@
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
-    "lib"
+    "lib",
+    "index.js"
   ],
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "babel": "npm run clean && cross-env NODE_ENV=production babel src --out-dir lib --copy-files",
     "babel:watch": "npm run clean && babel src --out-dir lib --copy-files -w -s",
