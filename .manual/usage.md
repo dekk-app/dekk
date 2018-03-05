@@ -1,15 +1,5 @@
 # Creating a Deck
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-* [Deck](#deck)
-* [Speaker Deck](#speaker-deck)
-
-<!-- /code_chunk_output -->
-
-
 To create a Deck you need two core packages, `Deck` and `Slide`.
 A Deck can contain several Components aside `Slide`. Take a look at
 [`Plugins`](plugins.html) and [`Elements`](static-elements.html)

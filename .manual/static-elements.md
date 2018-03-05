@@ -1,13 +1,5 @@
 # Elements
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-
-
-<!-- /code_chunk_output -->
-
 To add static elements to your deck you can use the `Elements` component.
 It will render any ReactElement aside the slides. You might have to add
 additional styling to your `Deck`.

@@ -1,13 +1,5 @@
 # Notes
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-
-
-<!-- /code_chunk_output -->
-
 You can add as many notes in your slides as you want.
 They will be displayed in order. Notes are filtered from the slides,
 they are available in the speaker deck.

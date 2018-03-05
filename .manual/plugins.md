@@ -1,24 +1,5 @@
 # Plugins
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-* [Paging](#paging)
-* [Url](#url)
-* [LocalStorage](#localstorage)
-* [Pubnub](#pubnub)
-* [Autoplay](#autoplay)
-* [Listener](#listener)
-* [Writing plugins](#writing-plugins)
-	* [Simple broadcast plugin](#simple-broadcast-plugin)
-	* [Sharing Plugins](#sharing-plugins)
-	* [Using shared plugins](#using-shared-plugins)
-	* [Full API usage.](#full-api-usage)
-
-<!-- /code_chunk_output -->
-
-
 To configure your Deck you can use the Plugins component. This allows you
 to choose the type of URLs Dekk writes or add listeners as well as enable
 paging

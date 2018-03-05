@@ -2,28 +2,32 @@
 
 <p align="center"><img width="300" src="https://raw.githubusercontent.com/sinnerschrader/dekk/master/resources/logo.png" alt="Dekk logo"/></p>
 
-Dekk is a presentation tool written in React.js.
-It is developed as a monorepo and provides several packages.
+**Dekk is a modular presentation library written in React.js.**
 
-This file does not explain how Dekk works. Please take a look at the [Manual](https://sinnerschrader.github.io/dekk/api/manual/) instead.
+[![Travis branch](https://img.shields.io/travis/sinnerschrader/dekk/master.svg?style=for-the-badge)](https://travis-ci.org/sinnerschrader/dekk)
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/sinnerschrader/dekk.svg?style=flat-square)](https://github.com/sinnerschrader/dekk/issues)
+[![npm](https://img.shields.io/npm/v/@dekk/dekk.svg?style=for-the-badge)](https://www.npmjs.com/org/dekk)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/sinnerschrader/dekk.svg?style=for-the-badge)](https://github.com/sinnerschrader/dekk/issues)
 
-[![Esdoc](https://sinnerschrader.github.io/dekk/api/badge.svg)](https://sinnerschrader.github.io/dekk/api)
+[![bitHound](https://img.shields.io/bithound/code/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
+[![bitHound](https://img.shields.io/bithound/dependencies/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
+[![bitHound](https://img.shields.io/bithound/devDependencies/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
 
-[![Travis branch](https://img.shields.io/travis/sinnerschrader/dekk/master.svg?style=flat-square)](https://travis-ci.org/sinnerschrader/dekk)
-[![bitHound](https://img.shields.io/bithound/code/github/sinnerschrader/dekk.svg?style=flat-square)](https://www.bithound.io/github/sinnerschrader/dekk)
-[![bitHound](https://img.shields.io/bithound/devDependencies/github/sinnerschrader/dekk.svg?style=flat-square)](https://www.bithound.io/github/sinnerschrader/dekk)
+[![Esdoc](https://img.shields.io/badge/documentation-100%-8bc300.svg?style=for-the-badge)](https://sinnerschrader.github.io/dekk/api/identifiers.html)
+[![commitlint](https://img.shields.io/badge/commitlint-enabled-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
+[![concetional-changelog](https://img.shields.io/badge/changelog-conventional-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
 
-[![yarn](https://img.shields.io/badge/yarn-friendly-2c8ebb.svg?style=flat-square)](https://yarnpkg.com/)
-[![commitlint](https://img.shields.io/badge/commitlint-enabled-44aa44.svg?style=flat-square)](https://github.com/marionebl/commitlint)
 
+[![slack](https://img.shields.io/badge/slack-join_chat-e11b59.svg?style=for-the-badge)](https://join.slack.com/t/dekk-app/shared_invite/enQtMzIzMTMyNTQzNjY0LWRmZmUzZTFkNDRlZDY1YmMyYWY0YjU1NmQ4ZDg3NWQ3NzNjNDFmNWUxYTgzMTk4NTZjZDdhZDU1NGNhOWVmYzk)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 
 * [Demos](#demos)
+	* [Default mode](#default-mode)
+	* [Presenter mode](#presenter-mode)
+	* [Live mode](#live-mode)
 * [Getting Started](#getting-started)
 * [Examples](#examples)
 * [API Reference](#api-reference)
@@ -37,32 +41,36 @@ This file does not explain how Dekk works. Please take a look at the [Manual](ht
 
 The demo can be viewed as a default or live deck or speaker deck
 
-* [Demo](https://sinnerschrader.github.io/dekk/)
-  * includes: URLs, Paging
-  * This viewmode is a standalone version
-* [Demo (presenter mode)](https://sinnerschrader.github.io/dekk/?present=true)
-  * includes URLs, Paging, LocalStorage as publisher
-  * This viewmode controls from a live deck
-* [Demo (live mode)](https://sinnerschrader.github.io/dekk/?live=true)
-  * LocalStorage as subscriber
-  * This viewmode is controlled from a speaker deck
+### Default mode
+  * [Dekk demo](https://sinnerschrader.github.io/dekk/)
+  * Includes: URLs and Paging.
+  * This viewmode is a standalone version.
+### Presenter mode
+  * [Presenter demo](https://sinnerschrader.github.io/dekk/?present=true)
+  * includes URLs, Paging and LocalStorage as publisher.
+  * Ihis viewmode controls from a live deck.
+### Live mode
+  * [Live demo](https://sinnerschrader.github.io/dekk/?live=true)
+  * Includes LocalStorage as subscriber.
+  * Paging and URLs are disabled.
+  * This viewmode is controlled from a speaker deck.
 
 ## Getting Started
 
-If you need examples or more information about a component or usage you
-will most likely find it here.
+To create your first Deck we recommend reading the
+[Getting started](https://sinnerschrader.github.io/dekk/api/index.html)
+guide. It will show you how to use a precofugured `Dekk` to create your
+presentation.
 
-[Manual](https://sinnerschrader.github.io/dekk/api/manual/index.html)
-
-Here's the most important information to for advanced usage.
+If you want to use your own logic, you can start from here and just follow along:
 
 * [Installation](https://sinnerschrader.github.io/dekk/api/manual/installation.html)
 * [Usage](https://sinnerschrader.github.io/dekk/api/manual/usage.html)
 
 ## Examples
 
-There are a few copy & paste examples which you can use. They show the
-basic usage of Dekk.
+There are a few copy & paste examples which you can use. They show some configuration
+options of Dekk.
 
 [Examples](https://sinnerschrader.github.io/dekk/api/manual/examples.html)
 
@@ -82,22 +90,13 @@ You are welcome to help develop Dekk. to contribute please follow these steps:
 Prepare:
 
 Please take the time and read our
-[contribution guiidelines](https://github.com/sinnerschrader/dekk/blob/master/.github/CONTRIBUTING.md)
+[contributing guidelines](https://github.com/sinnerschrader/dekk/blob/master/.github/CONTRIBUTING.md)
 and the [code of conduct](https://github.com/sinnerschrader/dekk/blob/master/.github/CODE_OF_CONDUCT.md)
 
-1. Node.js & npm
+1. Node.js, npm
 
 Please ensure that you are running the correct node version.
-The supported engines are listed in `package.json~enines`.
-
-```json
-{
-  "engines" : {
-    "node" : ">=6 <9",
-    "npm" : ">=3"
-  }
-}
-```
+The supported engines are listed in [`package.json~engines`](https://github.com/sinnerschrader/dekk/blob/master/package.json#L5).
 
 2. Clone Dekk
 
@@ -110,7 +109,7 @@ cd dekk
 
 ```shell
 yarn
-lerna bootstrap
+npx lerna bootstrap
 ```
 
 4. start development mode
@@ -123,8 +122,7 @@ http://localhost:8080
 yarn develop
 ```
 
-5. open your browser. The hosted content is defined in 
-  `gh/pages/gh-pages.js`
+5. open your browser. The hosted content is defined in [`gh/pages/gh-pages.js`](https://github.com/sinnerschrader/dekk/blob/master/gh-pages/gh-pages.js)
 
 
 
@@ -144,18 +142,18 @@ To develop Dekk a lot more than just those 4 packages were needed 😱
 
 `npx thanks` (top 10)
 
-| Author | Where to Donate | Dependencies |
-|---|---|---|
-| sindresorhus              | patreon.com/sindresorhus              | eslint-config-xo-react + 195 more |
-| feross                    | patreon.com/feross                    | safe-buffer, resolve + 10 more |
-| mafintosh                 | patreon.com/mafintosh                 | safe-buffer, resolve + 7 more |
-| mikeal                    | patreon.com/mikeal                    | request, form-data + 6 more |
-| nzakas                    | paypal.me/nczonline                   | eslint, estraverse + 6 more |
-| juliangruber              | patreon.com/juliangruber              | isarray, balanced-match + 6 more |
-| hughsk                    | hughsk.io/donate                      | resolve, is-typedarray + 5 more |
-| thlorenz                  | patreon.com/thlorenz                  | resolve + 5 more |
-| hueniverse                | patreon.com/eranhammer                | qs, boom, hoek, hawk, sntp + 1 more |
-| yoshuawuyts               | patreon.com/yoshuawuyts               | resolve, timers-browserify + 1 more |
+| Author       | Where to Donate          | Dependencies |
+|--------------|--------------------------|--------------|
+| sindresorhus | patreon.com/sindresorhus | eslint-config-xo-react + 195 more |
+| feross       | patreon.com/feross       | safe-buffer, resolve + 10 more |
+| mafintosh    | patreon.com/mafintosh    | safe-buffer, resolve + 7 more |
+| mikeal       | patreon.com/mikeal       | request, form-data + 6 more |
+| nzakas       | paypal.me/nczonline      | eslint, estraverse + 6 more |
+| juliangruber | patreon.com/juliangruber | isarray, balanced-match + 6 more |
+| hughsk       | hughsk.io/donate         | resolve, is-typedarray + 5 more |
+| thlorenz     | patreon.com/thlorenz     | resolve + 5 more |
+| hueniverse   | patreon.com/eranhammer   | qs, boom, hoek, hawk, sntp + 1 more |
+| yoshuawuyts  | patreon.com/yoshuawuyts  | resolve, timers-browserify + 1 more |
 
 
 © Copyright 2018 [Gregor Adams](https://github.com/pixelass)  

@@ -93,6 +93,7 @@
           "globalIndex": true,
           "asset": "./.manual/assets",
           "files": [
+            "./.manual/index.md",
             "./.manual/installation.md",
             "./.manual/usage.md",
             "./.manual/plugins.md",

@@ -1,20 +1,5 @@
 # Getting started
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-* [Installing node.js](#installing-nodejs)
-* [Creating a React App](#creating-a-react-app)
-* [Your first Deck](#your-first-deck)
-	* [1. Installing Dekk](#1-installing-dekk)
-	* [2. Creating a Deck](#2-creating-a-deck)
-	* [3. Starting the app](#3-starting-the-app)
-* [Advanced usage](#advanced-usage)
-
-<!-- /code_chunk_output -->
-
-
 ## Installing node.js
 
 Dekk requires node.js, so please make sure it is installed on your

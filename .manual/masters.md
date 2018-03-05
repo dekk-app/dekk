@@ -1,18 +1,5 @@
 # Masters
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-* [Creating master slides](#creating-master-slides)
-* [Adding slots](#adding-slots)
-* [Content types](#content-types)
-* [Static slots](#static-slots)
-* [Adding styles](#adding-styles)
-* [Styled master slides](#styled-master-slides)
-
-<!-- /code_chunk_output -->
-
 This section will guide you through the options and explain how master slides work.
 
 ## Creating master slides

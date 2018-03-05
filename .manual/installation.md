@@ -1,23 +1,5 @@
 # Installation
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-* [Deck (preconfigured)](#deck-preconfigured)
-* [Deck (root)](#deck-root)
-* [SpeakerDeck (root)](#speakerdeck-root)
-* [Master Slides](#master-slides)
-* [Plugins](#plugins)
-* [Text Elements](#text-elements)
-* [Image Elements](#image-elements)
-* [Fragments](#fragments)
-* [Speaker notes](#speaker-notes)
-* [Tools](#tools)
-* [Icons](#icons)
-
-<!-- /code_chunk_output -->
-
 Dekk is a monorepo and all of its packages can be found under the namespace
 [@dekk](https://www.npmjs.com/org/dekk).
 You can find all public packages and their provided exports below.

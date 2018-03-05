@@ -1,16 +1,5 @@
 # Examples
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-* [Basic Example](#basic-example)
-* [Changing the transitions](#changing-the-transitions)
-* [Using fragments](#using-fragments)
-* [Using master slides](#using-master-slides)
-
-<!-- /code_chunk_output -->
-
 ## Basic Example
 
 To get started you can copy the following code. 
@@ -100,7 +89,7 @@ import Slide from '@dekk/slide'
 import Paging from '@dekk/paging'
 import Url from '@dekk/url'
 import Fragment from '@dekk/fragment'
-import {fadeSwipe} from '@dekk/animation'
+import {fadeSlide} from '@dekk/animation'
 
 const App = () => (
   <Deck>
@@ -111,19 +100,19 @@ const App = () => (
     <Slide>
       <Fragment 
         order={1}
-        animation={fadeSwipe.in.reverse}>This is</Fragment>{' '}
+        animation={fadeSlide.in.reverse}>This is</Fragment>{' '}
       <Fragment 
         order={2}
-        animation={fadeSwipe.in.up}>slide</Fragment>{' '}
+        animation={fadeSlide.in.up}>slide</Fragment>{' '}
       <Fragment 
         order={3}
-        animation={fadeSwipe.in.down}>1</Fragment>
+        animation={fadeSlide.in.down}>1</Fragment>
       <Fragment 
         order={4}
-        animation={fadeSwipe.in.up}>, with different</Fragment>
+        animation={fadeSlide.in.up}>, with different</Fragment>
       <Fragment 
         order={5}
-        animation={fadeSwipe.in.normal}>animations.</Fragment>
+        animation={fadeSlide.in.normal}>animations.</Fragment>
     </Slide>
     <Slide>
       <Fragment order={1}>This is</Fragment>{' '}
