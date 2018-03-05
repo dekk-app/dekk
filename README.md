@@ -14,7 +14,7 @@
 [![bitHound](https://img.shields.io/bithound/dependencies/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
 [![bitHound](https://img.shields.io/bithound/devDependencies/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
 
-[![Esdoc](https://img.shields.io/badge/documentation-100%-8bc300.svg?style=for-the-badge)](https://sinnerschrader.github.io/dekk/api/identifiers.html)
+[![Esdoc](https://img.shields.io/badge/documentation-all_star-8bc300.svg?style=for-the-badge)](https://sinnerschrader.github.io/dekk/api/identifiers.html)
 [![commitlint](https://img.shields.io/badge/commitlint-enabled-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
 [![concetional-changelog](https://img.shields.io/badge/changelog-conventional-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
 
