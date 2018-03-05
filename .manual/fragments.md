@@ -2,6 +2,16 @@
 
 A slide can have multiple fragments which are activated before the next slide.
 
+| Param           | Type               | Default       | Description |
+|-----------------|--------------------|---------------|-------------|
+| `order`         | **`number`**       |               | the order of the fragment |
+| `root`          | **`boolean`**      | false         | defines if a fragment is considered a RootFragment |
+| `animation`     | **`string,array`** | slide.reverse | An animation to replace the default |
+| `mixin`         | **`string,array`** |               | A mixin to extend the fragment styles |
+| `displayAs`     | **`string`**       |               | Displays the fragment as ... (CSS box-model display modes, e.g `inline-block`, `block`) |
+| `springOptions` | **`object`**       | presets.stiff | A [react-motion configuration]()https://github.com/chenglou/react-motion#helpers |
+
+
 ```jsx
 import React from 'react'
 import Slide from '@dekk/slide'

@@ -3196,9 +3196,9 @@ esdoc-coverage-plugin@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/esdoc-coverage-plugin/-/esdoc-coverage-plugin-1.1.0.tgz#3869869cd7f87891f972625787695a299aece45c"
 
-esdoc-custom-theme@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/esdoc-custom-theme/-/esdoc-custom-theme-1.4.1.tgz#4ca444d2ce403239c38a66a512a6abc9e4a7e1ad"
+esdoc-custom-theme@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/esdoc-custom-theme/-/esdoc-custom-theme-1.4.2.tgz#7b2fc65c84977b75ec8a7c85fcbeacb50aaa27bc"
   dependencies:
     codemirror "^5.34.0"
 

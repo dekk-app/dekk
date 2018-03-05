@@ -17,6 +17,15 @@ import Deck, {Plugins, Elements, Slide} from '@dekk/dekk'
 ## Deck (root)
 
 ```shell
+yarn add @dekk/slide
+```
+
+```jsx
+import Slide from '@dekk/slide'
+```
+
+
+```shell
 yarn add @dekk/deck
 ```
 

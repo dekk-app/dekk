@@ -127,7 +127,7 @@ Requires a [pubnub](https://www.pubnub.com/) keyset with "Storage & Playback" en
 | `subscribeKey` | **`string`**  | (required) | Your pubnub subscribeKey |
 | `publishKey`   | **`string`**  | (required) | Your pubnub publishKey |
 | `channel`      | **`string`**  | "@dekk"    | The pubnub channel used for sending and receivig messages |
-| `publish`      | **`boolean`** | false"     | Defines a publisher |
+| `publish`      | **`boolean`** | false     | Defines a publisher |
 | `subscribe`    | **`string`**  | false      | Defines a subscriber |
 
 ```jsx
