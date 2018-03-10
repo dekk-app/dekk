@@ -269,6 +269,25 @@
   version "9.4.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
 
+"@types/tapable@*":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-0.2.4.tgz#8181a228da46185439300e600c5ae3b3b3982585"
+
+"@types/uglify-js@*":
+  version "2.6.30"
+  resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-2.6.30.tgz#257d2b6dd86673d60da476680fba90f2e30c6eef"
+  dependencies:
+    source-map "^0.6.1"
+
+"@types/webpack@^3.0.5":
+  version "3.8.9"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.9.tgz#c420c9428ba18e20e4fe8eff7bee4d04bace9182"
+  dependencies:
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
+    source-map "^0.6.0"
+
 JSONStream@^1.0.4:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.2.tgz#c102371b6ec3a7cf3b847ca00c20bb0fce4c6dea"
@@ -4509,10 +4528,11 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.3.x"
 
-html-webpack-harddisk-plugin@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-harddisk-plugin/-/html-webpack-harddisk-plugin-0.1.0.tgz#432024961a21ac668fa2b5dfe24629c60b9c58d7"
+html-webpack-harddisk-plugin@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/html-webpack-harddisk-plugin/-/html-webpack-harddisk-plugin-0.2.0.tgz#465414a534219b69c1fd8127b585f8d86897fb2d"
   dependencies:
+    "@types/webpack" "^3.0.5"
     mkdirp "^0.5.1"
 
 html-webpack-plugin@2.30.1:
@@ -7838,7 +7858,7 @@ source-map@^0.4.4, source-map@~0.4.1:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.6.0, source-map@~0.6.1:
+source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
