@@ -45,19 +45,6 @@
       }
     },
     {
-      "name": "esdoc-react-plugin",
-      "option": {
-        "enable": true
-      }
-    },
-    {
-      "name": "esdoc-inject-style-plugin",
-      "option": {
-        "enable": true,
-        "styles": ["./gh-pages/docs.css"]
-      }
-    },
-    {
       "name": "esdoc-jsx-plugin",
       "option": {
         "enable": true
@@ -67,12 +54,6 @@
       "name": "esdoc-publish-html-plugin",
       "option": {
         "template": "./node_modules/esdoc-custom-theme/template"
-      }
-    },
-    {
-      "name": "esdoc-external-ecmascript-plugin", 
-      "option": {
-        "enable": false
       }
     },
     {
