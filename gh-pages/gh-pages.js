@@ -11,6 +11,7 @@ import {FitImage} from '@dekk/image'
 import Text, {Title, Subtitle} from '@dekk/text'
 import {fadeSlide, fade, flip, cube} from '@dekk/animation'
 import {
+  Main,
   Cover,
   Chapter,
   Half,
@@ -137,22 +138,20 @@ const thankYou = (
  * A title example
  */
 const title = (
-  <Chapter.Slide key={uuid()} background={red.main}>
-    <Chapter.A>
+  <Main.Slide key={uuid()} background={red.main}>
+    <Main.A>
       <Title>Presentations powered by React.js</Title>
-    </Chapter.A>
-    <Chapter.B>
       <Subtitle>styled-components</Subtitle>
       <Subtitle>react-motion</Subtitle>
       <Subtitle>mobX</Subtitle>
-    </Chapter.B>
+    </Main.A>
     <Notes>
       <Text>
         Dekk is powered by React.js and can therfore host any react component or
         even entire applications.
       </Text>
     </Notes>
-  </Chapter.Slide>
+  </Main.Slide>
 )
 
 const highlight = {}
@@ -176,12 +175,6 @@ highlight.underline = css`
   ${({isActive}) => (isActive ? 'text-decoration: underline' : '')};
 `
 
-const imageFragment = css`
-  display: block;
-  width: 100%;
-  height: 100%;
-  opacity: calc(1 - var(--time));
-`
 /**
  * A fragment example
  */
@@ -198,12 +191,12 @@ const fragment = (
           order
         </Fragment>, which allows multiple fragments to appear at the{' '}
         <Fragment order={3} animation={highlight.green}>
-          same time
+          {(t, a) => `time: ${a ? t : '...'}`}
         </Fragment>.
       </Text>
     </Collage.A>
     <Collage.B>
-      <Fragment order={1} animation={imageFragment}>
+      <Fragment order={1} fit animation={fadeSlide.in.reverse}>
         <FitImage
           src={redImage}
           alt="fragment 1, red image, a woman  with guitar"
@@ -211,7 +204,7 @@ const fragment = (
       </Fragment>
     </Collage.B>
     <Collage.C>
-      <Fragment order={3} animation={imageFragment}>
+      <Fragment order={3} fit animation={fadeSlide.in.normal}>
         <FitImage
           src={greenImage}
           alt="fragment 2, green image, a man jumping up the stairs"
@@ -304,10 +297,12 @@ const animation_4 = (
 const animation_5 = (
   <Grid.Slide key={uuid()} animationIn={fade.in}>
     <Grid.A>
-      <FitImage
-        src={greenImage}
-        alt="green image, a man jumping up the stairs"
-      />
+      <Fragment fit order={1} animation={fadeSlide.in.up}>
+        <FitImage
+          src={greenImage}
+          alt="green image, a man jumping up the stairs"
+        />
+      </Fragment>
     </Grid.A>
     <Grid.B>
       <Subtitle>Master slides</Subtitle>
