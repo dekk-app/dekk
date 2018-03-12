@@ -94,7 +94,7 @@ export default class Deck extends Component {
    * @private
    */
   componentWillMount() {
-    this.buildFragmentHosts()
+    this.buildFragmentHosts(this.props.children)
   }
 
   /**
@@ -105,18 +105,20 @@ export default class Deck extends Component {
     // this will prevent undefined hosts while reducing the number
     // of calls
     if (newProps.children !== this.props.children) {
-      this.buildFragmentHosts()
+      this.buildFragmentHosts(newProps.children)
     }
   }
 
   /**
    * @private
    */
-  buildFragmentHosts() {
-    this.slides.forEach((child, index) => {
-      if (this.store.fragmentHosts.length - 1 < index)
-        this.store.fragmentHosts[index] = []
-    })
+  buildFragmentHosts(children) {
+    Children.toArray(children)
+      .filter(child => !this.slots.includes(child.type))
+      .forEach((child, index) => {
+        if (this.store.fragmentHosts.length - 1 < index)
+          this.store.fragmentHosts[index] = []
+      })
   }
 
   /**
