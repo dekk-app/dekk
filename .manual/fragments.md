@@ -136,7 +136,7 @@ export default (
 ```
 
 
-### Fit fragments.
+## Fit fragments.
 
 Since fragments do not provide a box-model any nested fit element
 (`height/width: 100%` or `flex: 1`) will simply collapse.
