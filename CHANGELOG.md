@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/sinnerschrader/dekk/compare/v1.0.0-17...v1.0.0) (2018-03-12)
+
+
+### Bug Fixes
+
+* **deck:** allow dynamic slides ([3c63aef](https://github.com/sinnerschrader/dekk/commit/3c63aef))
+* **deps:** update dependency styled-components to v3.2.1 ([#38](https://github.com/sinnerschrader/dekk/issues/38)) ([ba49072](https://github.com/sinnerschrader/dekk/commit/ba49072))
+* **icon:** fix whitespace issue ([8651143](https://github.com/sinnerschrader/dekk/commit/8651143))
+
+
+### Features
+
+* **fragment:** allows fragments to host relative size elements ([a40cc77](https://github.com/sinnerschrader/dekk/commit/a40cc77)), closes [#40](https://github.com/sinnerschrader/dekk/issues/40)
+* **fragment:** use timeline on children ([397ea7d](https://github.com/sinnerschrader/dekk/commit/397ea7d)), closes [#40](https://github.com/sinnerschrader/dekk/issues/40)
+* **master-slides:** adds an A layout slide ([0a2cfd4](https://github.com/sinnerschrader/dekk/commit/0a2cfd4)), closes [#33](https://github.com/sinnerschrader/dekk/issues/33)
+
+
+
+
 <a name="1.0.0-17"></a>
 # [1.0.0-17](https://github.com/sinnerschrader/dekk/compare/v1.0.0-16...v1.0.0-17) (2018-03-02)
 

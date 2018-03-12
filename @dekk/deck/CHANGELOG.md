@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/sinnerschrader/dekk/compare/v1.0.0-17...v1.0.0) (2018-03-12)
+
+
+### Bug Fixes
+
+* **deck:** allow dynamic slides ([3c63aef](https://github.com/sinnerschrader/dekk/commit/3c63aef))
+
+
+
+
 <a name="1.0.0-17"></a>
 # [1.0.0-17](https://github.com/sinnerschrader/dekk/compare/v1.0.0-16...v1.0.0-17) (2018-03-02)
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/sinnerschrader/dekk/compare/v1.0.0-17...v1.0.0) (2018-03-12)
+
+
+### Features
+
+* **master-slides:** adds an A layout slide ([0a2cfd4](https://github.com/sinnerschrader/dekk/commit/0a2cfd4)), closes [#33](https://github.com/sinnerschrader/dekk/issues/33)
+
+
+
+
 <a name="1.0.0-17"></a>
 # [1.0.0-17](https://github.com/sinnerschrader/dekk/compare/v1.0.0-16...v1.0.0-17) (2018-03-02)
 

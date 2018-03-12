@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/sinnerschrader/dekk/compare/v1.0.0-17...v1.0.0) (2018-03-12)
+
+
+### Features
+
+* **fragment:** allows fragments to host relative size elements ([a40cc77](https://github.com/sinnerschrader/dekk/commit/a40cc77)), closes [#40](https://github.com/sinnerschrader/dekk/issues/40)
+* **fragment:** use timeline on children ([397ea7d](https://github.com/sinnerschrader/dekk/commit/397ea7d)), closes [#40](https://github.com/sinnerschrader/dekk/issues/40)
+
+
+
+
 <a name="1.0.0-17"></a>
 # [1.0.0-17](https://github.com/sinnerschrader/dekk/compare/v1.0.0-16...v1.0.0-17) (2018-03-02)
 
