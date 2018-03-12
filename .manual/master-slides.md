@@ -82,6 +82,23 @@ export default (
 
 Dekk currently offers the following master layouts: 
 
+### Main
+
+| Slot | Content        | Alignment |
+|------|----------------|-----------|
+| A    | Any            | center    |
+
+```
+┏━━━━━━━━━━━━━━━┓
+┃               ┃
+┃               ┃
+┃       A       ┃
+┃               ┃
+┃               ┃
+┗━━━━━━━━━━━━━━━┛
+```
+
+
 ### Cover
 
 | Slot | Content        | Alignment      |
