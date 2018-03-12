@@ -44,7 +44,7 @@ The demo can be viewed as a default or live deck or speaker deck
 ### Presenter mode
   * [Presenter demo](https://sinnerschrader.github.io/dekk/?present=true)
   * includes URLs, Paging and LocalStorage as publisher.
-  * This viewmode controls from a live deck.
+  * This viewmode controls a live deck.
 ### Live mode
   * [Live demo](https://sinnerschrader.github.io/dekk/?live=true)
   * Includes LocalStorage as subscriber.
