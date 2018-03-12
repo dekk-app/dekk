@@ -6,6 +6,7 @@ A slide can have multiple fragments which are activated before the next slide.
 |-----------------|--------------------|---------------|-------------|
 | `order`         | **`number`**       |               | the order of the fragment |
 | `root`          | **`boolean`**      | false         | defines if a fragment is considered a RootFragment |
+| `fit`           | **`boolean`**      | false         | defines if a fragment is considered a FitFragment |
 | `animation`     | **`string,array`** | slide.reverse | An animation to replace the default |
 | `mixin`         | **`string,array`** |               | A mixin to extend the fragment styles |
 | `displayAs`     | **`string`**       |               | Displays the fragment as ... (CSS box-model display modes, e.g `inline-block`, `block`) |
@@ -131,5 +132,25 @@ export default (
       <Fragment order={4}> 4 + 5 = 9 </Fragment>
     </Fragment>
   </Slide>
+)
+```
+
+
+### Fit fragments.
+
+Since fragments do not provide a box-model any nested fit element
+(`height/width: 100%` or `flex: 1`) will simply collapse.
+To prevent this behaviour you can set your fragments to `fit`
+
+
+```jsx
+import React from 'react'
+import Fragment from '@dekk/fragment'
+import {FitImage} from '@dekk/image'
+
+export default (
+  <Fragment order={1} fit>
+    <FitImage/>
+  </Fragment>
 )
 ```

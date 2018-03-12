@@ -83,7 +83,7 @@ export const ZoomImage = styled(MaskedImage)`
 
 ## FitImage
 
-A version of MaskedImage that is already using:
+A version of MaskedImage that is already using the following CSS:
 
 ```jsx
 css`
@@ -92,7 +92,31 @@ css`
 `
 ```
 
-This component is required
-for `@dekk/master-slides~Collage`,
-`@dekk/master-slides~Half`
-and `@dekk/master-slides~ImageGrid`
+This component requires a parent with a defined size. since it will
+simply stretch to fit its parent element.
+
+### Fitimage inside fragments.
+
+Since fragments do not provide a box-model any nested fit-image will simply
+collapse. To prevent this behaviour you can set your fragments to `fit`
+
+
+```jsx
+import React from 'react'
+import Fragment from '@dekk/fragment'
+import {FitImage} from '@dekk/image'
+
+
+export default (
+  <Fragment order={1} fit>
+    <FitImage/>
+  </Fragment>
+)
+```
+
+
+
+> This component is required
+> for `@dekk/master-slides~Collage`,
+> `@dekk/master-slides~Half`
+> and `@dekk/master-slides~ImageGrid`
