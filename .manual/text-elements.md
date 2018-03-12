@@ -27,7 +27,24 @@ Uppercases the text
 
 ## Bold
 
-Boldens the text
+Boldens the text and optionally highlights it.
+
+The highlight color is can be set using a CSS variable.
+
+```css
+:host {
+  --highlight-color: inherit;
+}
+```
+
+```jsx
+import React from 'react'
+import {Bold} from '@dekk/text'
+
+export default (
+  <Bold hightlight>Bold and beautiful</Bold>
+)
+```
 
 ## Center
 
@@ -40,5 +57,19 @@ A syntax highlighter
 See [github](https://github.com/conorhastings/react-syntax-highlighter)
 or [npm](https://www.npmjs.com/package/react-syntax-highlighter)
 for more information and a full documentation.
-
 Dekk simply passes all properties to `ReactSyntaxHighlighter`
+
+### Example
+
+```jsx
+import React from 'react'
+import {Code, colorSchemes} from '@dekk/text'
+
+export default codeString =>  <Code language='javascript' style={colorSchemes.docco}>{codeString}</Code>
+// <DoccoCode>`const a = 'A';`</DoccoCode>
+// <DoccoCode>`
+//  function hello(name) {
+//    return `Hello ${name}`
+// }
+//`</DoccoCode>
+```
