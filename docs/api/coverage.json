@@ -1,7 +1,7 @@
 {
-  "coverage": "100%",
-  "expectCount": 235,
-  "actualCount": 235,
+  "coverage": "99.16%",
+  "expectCount": 239,
+  "actualCount": 237,
   "files": {
     "@dekk/animation/src/cube.js": {
       "expectCount": 1,
@@ -84,9 +84,12 @@
       "undocumentLines": []
     },
     "@dekk/fragment/src/index.js": {
-      "expectCount": 10,
-      "actualCount": 10,
-      "undocumentLines": []
+      "expectCount": 13,
+      "actualCount": 11,
+      "undocumentLines": [
+        85,
+        148
+      ]
     },
     "@dekk/icon/src/index.js": {
       "expectCount": 2,
@@ -139,8 +142,8 @@
       "undocumentLines": []
     },
     "@dekk/master-slides/src/index.js": {
-      "expectCount": 6,
-      "actualCount": 6,
+      "expectCount": 7,
+      "actualCount": 7,
       "undocumentLines": []
     },
     "@dekk/master-slides/src/layouts.js": {
