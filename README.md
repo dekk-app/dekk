@@ -16,10 +16,8 @@
 
 [![Esdoc](https://img.shields.io/badge/documentation-all_star-8bc300.svg?style=for-the-badge)](https://sinnerschrader.github.io/dekk/api/identifiers.html)
 [![commitlint](https://img.shields.io/badge/commitlint-enabled-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
-[![concetional-changelog](https://img.shields.io/badge/changelog-conventional-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
+[![convetional-changelog](https://img.shields.io/badge/changelog-conventional-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
 
-
-[![slack](https://img.shields.io/badge/slack-join_chat-e11b59.svg?style=for-the-badge)](https://join.slack.com/t/dekk-app/shared_invite/enQtMzIzMTMyNTQzNjY0LWRmZmUzZTFkNDRlZDY1YmMyYWY0YjU1NmQ4ZDg3NWQ3NzNjNDFmNWUxYTgzMTk4NTZjZDdhZDU1NGNhOWVmYzk)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
@@ -32,8 +30,6 @@
 * [Examples](#examples)
 * [API Reference](#api-reference)
 * [Developing Dekk](#developing-dekk)
-* [Dependencies](#dependencies)
-* [Special thanks.](#special-thanks)
 
 <!-- /code_chunk_output -->
 
@@ -114,9 +110,8 @@ npx lerna bootstrap
 
 4. start development mode
 
-This opens a webpack-dev-server on port 8080
+This opens a webpack-dev-server on [localhost (port 8080)](http://localhost:8080)
 
-http://localhost:8080
 
 ```shell
 yarn develop
@@ -126,7 +121,7 @@ yarn develop
 
 
 
-## Dependencies
+**Dependencies**
 
 Without the work of these amazing libraries Dekk would not work.
 So let's thank the creators and contributers of these projects.
@@ -136,7 +131,7 @@ So let's thank the creators and contributers of these projects.
 * [mobx-react](https://github.com/mobxjs/mobx-react)
 * [styled-components](https://github.com/styled-components/styled-components)
 
-## Special thanks.
+**Special thanks**
 
 To develop Dekk a lot more than just those 4 packages were needed 😱 
 
