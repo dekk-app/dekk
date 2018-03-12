@@ -65,6 +65,14 @@ vertical.end = css`
 `
 
 /**
+ * Vertically align bottom
+ * @private
+ */
+vertical.center = css`
+  ${vertical.base} justify-content: center;
+`
+
+/**
  * Base layout
  * @private
  */

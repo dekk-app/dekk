@@ -7,6 +7,21 @@ import layouts, {vertical} from './layouts'
 export {baseStyles} from './layouts'
 
 /**
+ * A main slide
+ * @type {Slide}
+ */
+export const Main = createMaster(
+  <Master>
+    <Slot name="A" />
+  </Master>
+)`
+  ${layouts.A};
+  [data-slot='A'] {
+    ${vertical.center};
+  }
+`
+
+/**
  * A cover slide
  * @type {Slide}
  */
