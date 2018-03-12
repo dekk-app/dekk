@@ -13,6 +13,7 @@ import styled from 'styled-components'
  */
 const StyledFragment = styled.span`
   --direction: 1;
+  ${({mixin}) => mixin || ''};
   display: ${({displayAs}) => displayAs || 'inline-block'};
   ${props =>
     props.animation ||
@@ -35,8 +36,9 @@ StyledFragment.displayName = 'StyledFragment'
  * @prop {?(String|Array)} animation
  */
 StyledFragment.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   active: PropTypes.bool,
+  mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
 }
 

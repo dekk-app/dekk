@@ -23,7 +23,9 @@ export default class Fragment extends Component {
    */
   static get propTypes() {
     return {
-      children: PropTypes.node.isRequired,
+      children: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
+        .isRequired,
+      mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       root: PropTypes.bool,
       order: PropTypes.number.isRequired,
@@ -42,6 +44,7 @@ export default class Fragment extends Component {
   static get defaultProps() {
     return {
       animation: '',
+      mixin: '',
       displayAs: undefined,
       root: false,
       springSettings: presets.stiff
@@ -75,6 +78,11 @@ export default class Fragment extends Component {
     return {
       hostedFragmentOrder: PropTypes.number
     }
+  }
+
+  constructor(props, context) {
+    super(props, context)
+    this.renderChildren = this.renderChildren.bind(this)
   }
 
   /**
@@ -135,6 +143,13 @@ export default class Fragment extends Component {
     return this.context.store.fragmentHosts[this.context.fragmentHost].length
   }
 
+  renderChildren(time, isActive) {
+    if (typeof this.props.children === 'function') {
+      return this.props.children(time, isActive)
+    }
+    return this.props.children
+  }
+
   /**
    * @private
    * @return {StyledFragment}
@@ -172,23 +187,25 @@ export default class Fragment extends Component {
       (fragmentOrder || storedFragmentOrder) >= totalFragmentOrder
     const isActive = isPreview || isPrev || (isNext ? isZero : isActivated)
     const springStyle = {
-      time: spring(isActive ? 0 : 1, {
+      t: spring(isActive ? 0 : 1, {
         ...this.props.springSettings
       })
     }
     return (
       <Motion style={springStyle}>
-        {({time}) => {
+        {({t}) => {
+          const time = isActive ? t : 1
           const style = {
-            '--time': isActive ? time : 1
+            '--time': time
           }
           return (
             <StyledFragment
               style={style}
               isActive={isActive}
               displayAs={this.props.displayAs}
+              mixin={this.props.mixin}
               animation={this.props.animation}>
-              {this.props.children}
+              {this.renderChildren(time, isActive)}
             </StyledFragment>
           )
         }}
