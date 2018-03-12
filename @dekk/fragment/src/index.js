@@ -28,6 +28,7 @@ export default class Fragment extends Component {
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       root: PropTypes.bool,
+      fit: PropTypes.bool,
       order: PropTypes.number.isRequired,
       displayAs: PropTypes.string,
       springSettings: PropTypes.shape({
@@ -46,6 +47,7 @@ export default class Fragment extends Component {
       animation: '',
       mixin: '',
       displayAs: undefined,
+      fit: false,
       root: false,
       springSettings: presets.stiff
     }
@@ -202,6 +204,7 @@ export default class Fragment extends Component {
             <StyledFragment
               style={style}
               isActive={isActive}
+              isFit={this.props.fit}
               displayAs={this.props.displayAs}
               mixin={this.props.mixin}
               animation={this.props.animation}>
@@ -220,9 +223,18 @@ export default class Fragment extends Component {
  * @public
  * @class  FragmentRoot
  * @reactProps {Object} props
- * @reactProps {(ReactElement|ReactElement[])} props.children
- * @reactProps {number} props.order
  * @return {Fragment}
  *   A Fragment component as root
  */
 export const FragmentRoot = props => <Fragment {...props} root />
+
+/**
+ * Fragment fit component. When using the FitFragment, nested elements
+ * can use percentage or flex based dimensions.
+ * @public
+ * @class  FragmentRoot
+ * @reactProps {Object} props
+ * @return {Fragment}
+ *   A Fragment component as fit fragment
+ */
+export const FitFragment = props => <Fragment {...props} fit />

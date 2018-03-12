@@ -15,6 +15,15 @@ const StyledFragment = styled.span`
   --direction: 1;
   ${({mixin}) => mixin || ''};
   display: ${({displayAs}) => displayAs || 'inline-block'};
+  ${({isFit}) =>
+    isFit
+      ? `
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+  `
+      : ''};
   ${props =>
     props.animation ||
     `
@@ -32,12 +41,13 @@ StyledFragment.displayName = 'StyledFragment'
  * @private
  * @type {Object}
  * @prop {(ReactNode|ReactNode[])} children
- * @prop {?Boolean} active
+ * @prop {?Boolean} isActive
  * @prop {?(String|Array)} animation
  */
 StyledFragment.propTypes = {
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  active: PropTypes.bool,
+  isFit: PropTypes.bool,
+  isActive: PropTypes.bool,
   mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
 }
