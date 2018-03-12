@@ -10,6 +10,7 @@ export {default as icons} from './icons'
  * @private
  */
 export const StyledIcon = styled.span`
+  display: inline-flex;
   font-size: ${({size}) => size || '1em'};
 
   svg,
