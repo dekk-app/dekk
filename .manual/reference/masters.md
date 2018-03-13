@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Creating Master Slides"
+description: "How to create your own Master slides"
+tags: 
+  - Reference
+options:
+  order: 11
+---
+
+
 # Masters
 
 This section will guide you through the options and explain how master slides work.

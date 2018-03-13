@@ -1,3 +1,12 @@
+---
+displayName: "Reference: Using Icons"
+description: "Material design icons for Dekk"
+tags: 
+  - Reference
+options:
+  order: 13
+---
+
 # Icons
 
 Dekk provides a collection of material design icons.

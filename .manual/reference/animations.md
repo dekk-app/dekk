@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Using animations"
+description: "Learn how to use animations for slides and fragments"
+tags: 
+  - Reference
+options:
+  order: 4
+---
+
+
 # Animations
 
 Dekk offers some basic transitions. Some trantions only work on slides

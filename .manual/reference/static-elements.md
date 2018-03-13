@@ -1,3 +1,12 @@
+---
+displayName: "Reference: Using Dekk Elements"
+description: "A simple overview of Dekk Elements"
+tags: 
+  - Reference
+options:
+  order: 6
+---
+
 # Elements
 
 To add static elements to your deck you can use the `Elements` component.

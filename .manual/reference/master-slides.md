@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Using Master Slides"
+description: "A simple overview of Master slides"
+tags: 
+  - Reference
+options:
+  order: 10
+---
+
+
 # Master slides
 
 Dekk privides a collection of very simple master layouts.

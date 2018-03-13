@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Plugins"
+description: "Describes included plugins and explains how to write custom plugins"
+tags: 
+  - Reference
+options:
+  order: 5
+---
+
+
 # Plugins
 
 To configure your Deck you can use the Plugins component. This allows you

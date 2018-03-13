@@ -1,3 +1,12 @@
+---
+displayName: "Reference: Using Text Elements"
+description: "A simple overview of Text Elements"
+tags: 
+  - Reference
+options:
+  order: 8
+---
+
 # Text elements
 
 Dekk provides some basic text elements.
@@ -12,7 +21,6 @@ An h1 title.
 This component is required
 for `@dekk/master-slides~Cover`
 and `@dekk/master-slides~Chapter`
-
 
 ## Subtitle
 

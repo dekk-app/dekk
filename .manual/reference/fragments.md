@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Using Fragments"
+description: "A simple overview of Fragments"
+tags: 
+  - Reference
+options:
+  order: 3
+---
+
+
 # Fragments
 
 A slide can have multiple fragments which are activated before the next slide.
@@ -151,6 +161,39 @@ import {FitImage} from '@dekk/image'
 export default (
   <Fragment order={1} fit>
     <FitImage/>
+  </Fragment>
+)
+```
+
+## Function fragments.
+
+Fragments can have a function as a child. This gives access to the active state and timeline.
+
+```jsx
+import React from 'react'
+import Fragment from '@dekk/fragment'
+
+export default (
+  <Fragment order={1}>
+    {(time, isActive) => {
+      if (isActive) {
+        return time
+      }
+      return null
+    }}
+  </Fragment>
+)
+```
+
+```jsx
+import React from 'react'
+import Fragment from '@dekk/fragment'
+
+const Hello = props => isActive ? 'hello world' : null
+
+export default (
+  <Fragment order={1}>
+    {(time, isActive) => <Hello isActive={isActive} />}
   </Fragment>
 )
 ```

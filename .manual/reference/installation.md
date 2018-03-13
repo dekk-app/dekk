@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Installing Dekk"
+description: "An overview of available packages and imports"
+tags: 
+  - Reference
+options:
+  order: 0
+---
+
+
 # Installation
 
 Dekk is a monorepo and all of its packages can be found under the namespace
@@ -109,7 +119,7 @@ yarn add @dekk/fragment
 ```
 
 ```jsx
-import Fragment, {FragmentRoot} from '@dekk/fragment'
+import Fragment, {FragmentRoot, FitFragment} from '@dekk/fragment'
 ```
 
 ## Speaker notes

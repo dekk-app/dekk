@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Using Images"
+description: "A simple overview of Image Elements"
+tags: 
+  - Reference
+options:
+  order: 9
+---
+
+
 # Image elements
 
 Dekk provides some basic iamge elements.

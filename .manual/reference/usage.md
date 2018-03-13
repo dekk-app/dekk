@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Basic usage"
+description: "A simple overview of Dekk and SpeakerDekk"
+tags: 
+  - Reference
+options:
+  order: 1
+---
+
+
 # Creating a Deck
 
 To create a Deck you need two core packages, `Deck` and `Slide`.

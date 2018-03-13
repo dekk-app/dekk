@@ -1,3 +1,13 @@
+---
+displayName: "Reference: Timer"
+description: "A simple timer component (internally used)"
+tags: 
+  - Reference
+options:
+  order: 12
+---
+
+
 # Timer
 
 Dekk provides a simple countdoen timer.

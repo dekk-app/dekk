@@ -1,3 +1,12 @@
+---
+displayName: "Reference: Using Slides"
+description: "How to configure your Slide"
+tags: 
+  - Reference
+options:
+  order: 2
+---
+
 # Slides
 
 A slide defines one page of the deck. You have several options to modify

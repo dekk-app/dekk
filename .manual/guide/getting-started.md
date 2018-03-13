@@ -1,3 +1,12 @@
+---
+displayName: "Guide: Your first Dekk"
+description: "Learn how to set up a Dekk in 3 simple steps"
+tags: 
+  - Guide
+options:
+  order: 1
+---
+
 # Getting started
 
 ## Installing node.js

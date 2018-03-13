@@ -1,3 +1,14 @@
+---
+displayName: "Reference: Using Speaker Notes"
+description: "A simple overview of Speaker Notes"
+tags: 
+  - Reference
+options:
+  order: 5
+---
+
+
+
 # Notes
 
 You can add as many notes in your slides as you want.
