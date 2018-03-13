@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "rules": {
     "no-console": 2,
-    "react/no-array-index-key": 0
+    "react/no-array-index-key": 0,
+    "unicorn/import-index": 0
   },
   "extends": [
     "xo-react"
