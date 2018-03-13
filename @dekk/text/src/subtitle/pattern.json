@@ -1,0 +1,13 @@
+{
+    "name": "subtitle",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "headline",
+        "h2",
+        "subtitle"
+    ],
+    "patternplate": {
+      "displayName": "Text: Subtitle"
+    }
+}

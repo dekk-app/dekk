@@ -1,0 +1,13 @@
+{
+    "name": "quote",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "quote", 
+        "blockquote",
+        "cite"
+    ],
+    "patternplate": {
+      "displayName": "Text: Quote"
+    }
+}

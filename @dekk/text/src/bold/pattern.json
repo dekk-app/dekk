@@ -1,0 +1,13 @@
+{
+    "name": "bold",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "bold", 
+        "strong",
+        "highlight"
+    ],
+    "patternplate": {
+      "displayName": "Text: Bold"
+    }
+}

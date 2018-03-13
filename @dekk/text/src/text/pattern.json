@@ -1,0 +1,12 @@
+{
+    "name": "text",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "paragraph",
+        "copy"
+    ],
+    "patternplate": {
+      "displayName": "Text: text"
+    }
+}

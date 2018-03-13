@@ -1,0 +1,13 @@
+{
+    "name": "code",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "code", 
+        "syntax highlighter",
+        "highlight"
+    ],
+    "patternplate": {
+      "displayName": "Text: Code"
+    }
+}
