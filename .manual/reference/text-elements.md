@@ -15,12 +15,30 @@ Dekk provides some basic text elements.
 
 A simple Text wrapper.
 
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="text" />;
+```
+
 ## Title
 
 An h1 title.
 This component is required
 for `@dekk/master-slides~Cover`
 and `@dekk/master-slides~Chapter`
+
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="title" />;
+```
 
 ## Subtitle
 
@@ -29,9 +47,29 @@ This component is required
 for `@dekk/master-slides~Cover`
 and `@dekk/master-slides~Chapter`
 
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="subtitle" />;
+```
+
+
 ## Uppercase
 
 Uppercases the text
+
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="uppercase" />;
+```
+
 
 ## Bold
 
@@ -54,9 +92,29 @@ export default (
 )
 ```
 
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="bold" />;
+```
+
+
 ## Center
 
 Centers the text
+
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="center" />;
+```
+
 
 ## Code
 
@@ -73,11 +131,18 @@ Dekk simply passes all properties to `ReactSyntaxHighlighter`
 import React from 'react'
 import {Code, colorSchemes} from '@dekk/text'
 
-export default codeString =>  <Code language='javascript' style={colorSchemes.docco}>{codeString}</Code>
-// <DoccoCode>`const a = 'A';`</DoccoCode>
-// <DoccoCode>`
-//  function hello(name) {
-//    return `Hello ${name}`
-// }
-//`</DoccoCode>
+export default ({code}) =>
+  <Code language='javascript'
+        style={colorSchemes.docco}>
+    {code}
+  </Code>
+```
+
+### Demo:
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="code" />;
 ```
