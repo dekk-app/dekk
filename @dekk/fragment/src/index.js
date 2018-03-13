@@ -221,7 +221,6 @@ export default class Fragment extends Component {
  * Fragment root component. When using the fragmentRoot, nested Fragments start
  * after the parent. This is a curry version of Fragment.
  * @public
- * @class  FragmentRoot
  * @reactProps {Object} props
  * @return {Fragment}
  *   A Fragment component as root
@@ -232,7 +231,6 @@ export const FragmentRoot = props => <Fragment {...props} root />
  * Fragment fit component. When using the FitFragment, nested elements
  * can use percentage or flex based dimensions.
  * @public
- * @class  FragmentRoot
  * @reactProps {Object} props
  * @return {Fragment}
  *   A Fragment component as fit fragment
