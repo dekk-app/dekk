@@ -65,3 +65,5 @@ typings/
 
 # patches
 /patches/*
+/manual/jsdoc/*
+!/manual/jsdoc/.gitkeep

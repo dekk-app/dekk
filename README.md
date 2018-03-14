@@ -55,24 +55,24 @@ The demo can be viewed as a default or live deck or speaker deck
 ## Getting Started
 
 To create your first Deck we recommend reading the
-[Getting started](https://sinnerschrader.github.io/dekk/manual/doc/.manual/guide/getting-started/)
+[Getting started](https://sinnerschrader.github.io/dekk/manual/doc/manual/guide/getting-started/)
 guide. It will show you how to use a precofugured `Dekk` to create your
 presentation.
 
 If you want to use your own logic, you can start from here and just follow along:
 
-* [Installation](https://sinnerschrader.github.io/dekk/manual/doc/.manual/reference/installation/)
-* [Usage](https://sinnerschrader.github.io/dekk/manual/doc/.manual/reference/usage/)
+* [Installation](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/installation/)
+* [Usage](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/usage/)
 
 ## Examples
 
 There are a few copy & paste examples which you can use. They show some configuration
 options of Dekk.
 
-* [Basic Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/basic/)
-* [Fragment Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/fragmernts/)
-* [Master Slide Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/master-slides/)
-* [Transition Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/transitions/)
+* [Basic Examples](https://sinnerschrader.github.io/dekk/manual/doc/manual/example/basic/)
+* [Fragment Examples](https://sinnerschrader.github.io/dekk/manual/doc/manual/example/fragmernts/)
+* [Master Slide Examples](https://sinnerschrader.github.io/dekk/manual/doc/manual/example/master-slides/)
+* [Transition Examples](https://sinnerschrader.github.io/dekk/manual/doc/manual/example/transitions/)
 
 
 ## Developing Dekk

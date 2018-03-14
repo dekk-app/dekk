@@ -114,8 +114,8 @@ Enjoy!
 Dekk allows a lot more than just navigating through slides. If you are
 familiar with React.js or are comfortable with your demo app and want
 to add custom behaviour you can take a look at the
-[Installation](https://sinnerschrader.github.io/dekk/api/manual/usage.html)
-and [Usage](https://sinnerschrader.github.io/dekk/api/manual/usage.html)
+[Installation](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/installation/)
+and [Usage](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/usage/)
 manual and continue from there.
 
 If anything is missing or seems unclear feel free to open an issue 

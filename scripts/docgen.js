@@ -38,7 +38,7 @@ globby([
           ) {
             const text = addHeader(output, file)
             writeFileSync(
-              path.resolve(__dirname, `../.manual/jsdoc/${filename}`),
+              path.resolve(__dirname, `../manual/jsdoc/${filename}`),
               text,
               err => {
                 if (err) {

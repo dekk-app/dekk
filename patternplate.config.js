@@ -1,5 +1,5 @@
 module.exports = {
-  docs: [".manual/**/*.md"],
+  docs: ["manual/**/*.md"],
   entry: ["@dekk/**/lib/**/demo.js"],
   render: "@patternplate/render-styled-components/render",
   mount: "@patternplate/render-styled-components/mount",
