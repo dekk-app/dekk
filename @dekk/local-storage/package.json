@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "babel": "npm run clean && cross-env NODE_ENV=production babel src --out-dir lib --copy-files",
-    "babel:watch": "npm run clean && babel src --out-dir lib --copy-files -w -s",
+    "babel:watch": "babel src --out-dir lib --copy-files -w -s",
     "clean": "rimraf lib",
     "format:js": "prettier --write src/**/*.js",
     "lint": "xo 'src/**/*.js'",
