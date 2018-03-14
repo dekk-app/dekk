@@ -4,8 +4,7 @@ import Deck from '../deck'
 import Slide from '../../../slide'
 import Plugins from './'
 
-const MyPlugin = props => {
-  console.info('[Look at the console] > MyPlugin called')
+const MyPlugin = () => {
   return null
 }
 
