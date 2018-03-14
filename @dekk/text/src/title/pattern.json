@@ -1,0 +1,13 @@
+{
+    "name": "title",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "headline",
+        "h1",
+        "title"
+    ],
+    "patternplate": {
+      "displayName": "Text: Title"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "paging",
+    "version": "1.0.0",
+    "tags": [
+        "plugins", 
+        "paging"
+    ],
+    "patternplate": {
+      "displayName": "Plugins: Paging"
+    }
+}

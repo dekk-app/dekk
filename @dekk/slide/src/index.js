@@ -281,10 +281,10 @@ const StyledSlide = styled(SlideDirection)`
   left: 0;
   overflow: hidden;
   color: var(--slide-color, currentColor);
+  ${({mixin}) => mixin || ''};
   background: ${({background}) =>
     background || 'var(--slide-background, none)'};
   background-size: cover;
-  ${({mixin}) => mixin || ''};
   ${props =>
     props.present
       ? `

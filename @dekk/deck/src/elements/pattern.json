@@ -1,0 +1,12 @@
+{
+    "name": "elements",
+    "version": "1.0.0",
+    "tags": [
+        "deck", 
+        "elements", 
+        "static"
+    ],
+    "patternplate": {
+      "displayName": "Deck: Elements"
+    }
+}

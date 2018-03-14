@@ -1,0 +1,10 @@
+{
+    "name": "deck",
+    "version": "1.0.0",
+    "tags": [
+        "deck"
+    ],
+    "patternplate": {
+      "displayName": "Deck: Deck"
+    }
+}

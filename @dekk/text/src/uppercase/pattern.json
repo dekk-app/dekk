@@ -1,0 +1,11 @@
+{
+    "name": "uppercase",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "uppercase"
+    ],
+    "patternplate": {
+      "displayName": "Text: Uppercase"
+    }
+}

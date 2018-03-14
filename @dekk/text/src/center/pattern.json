@@ -1,0 +1,11 @@
+{
+    "name": "center",
+    "version": "1.0.0",
+    "tags": [
+        "text", 
+        "center"
+    ],
+    "patternplate": {
+      "displayName": "Text: Center"
+    }
+}

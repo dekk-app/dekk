@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 /**
  * @public
+ * @param {Object} props
+ * @param {ReactElement} prosp.children
  */
 const Notes = ({children}) => {
   return typeof children === 'string'
