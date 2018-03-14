@@ -75989,13 +75989,9 @@ function mount(input) {
 /* eslint-disable no-var */
 function main() {
   var components = window['patternplate-components'];
-  var mount = window['patternplate-mount'];
   var errors = [];
   if (!components) {
     errors.push(new Error('No patternplate components found. There might be errors during bundling.'))
-  }
-  if (!mount) {
-    errors.push(new Error('No mount module found. There might be errors during bundling.'))
   }
   if (errors.length > 0) {
     errors.forEach(err => console.error(err));
@@ -76004,6 +76000,8 @@ function main() {
 
   var component = getComponent(components, getData());
   component.element = component.element || document.querySelector('[data-patternplate-mount]');
+  var mount = typeof component.mount === "function" ? component.mount : window["patternplate-mount"]
+
   mount(component);
 }
 
