@@ -5,7 +5,9 @@
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
     "lib",
-    "index.js"
+    "src",
+    "./index.js",
+    "./browser.js"
   ],
   "main": "index.js",
   "scripts": {

@@ -94,7 +94,7 @@ class Paging extends Component {
    * Listen to events before we mount the component
    * @private
    */
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener(this.props.trigger, this.goTo)
   }
 
