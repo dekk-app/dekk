@@ -20,6 +20,7 @@
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
 <!-- code_chunk_output -->
 
 * [Demos](#demos)
@@ -28,10 +29,10 @@
 	* [Live mode](#live-mode)
 * [Getting Started](#getting-started)
 * [Examples](#examples)
-* [API Reference](#api-reference)
 * [Developing Dekk](#developing-dekk)
 
 <!-- /code_chunk_output -->
+
 
 ## Demos
 
@@ -54,29 +55,24 @@ The demo can be viewed as a default or live deck or speaker deck
 ## Getting Started
 
 To create your first Deck we recommend reading the
-[Getting started](https://sinnerschrader.github.io/dekk/api/index.html)
+[Getting started](https://sinnerschrader.github.io/dekk/manual/doc/.manual/guide/getting-started/)
 guide. It will show you how to use a precofugured `Dekk` to create your
 presentation.
 
 If you want to use your own logic, you can start from here and just follow along:
 
-* [Installation](https://sinnerschrader.github.io/dekk/api/manual/installation.html)
-* [Usage](https://sinnerschrader.github.io/dekk/api/manual/usage.html)
+* [Installation](https://sinnerschrader.github.io/dekk/manual/doc/.manual/reference/installation/)
+* [Usage](https://sinnerschrader.github.io/dekk/manual/doc/.manual/reference/usage/)
 
 ## Examples
 
 There are a few copy & paste examples which you can use. They show some configuration
 options of Dekk.
 
-[Examples](https://sinnerschrader.github.io/dekk/api/manual/examples.html)
-
-## API Reference
-
-Dekk is fully documented. Feel free to look through the reference.
-If something is missing it has probably not been generated.
-Take a look at the source comments instead.
-
-[Reference](https://sinnerschrader.github.io/dekk/api/identifiers.html)
+* [Basic Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/basic/)
+* [Fragment Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/fragmernts/)
+* [Master Slide Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/master-slides/)
+* [Transition Examples](https://sinnerschrader.github.io/dekk/manual/doc/.manual/example/transitions/)
 
 
 ## Developing Dekk

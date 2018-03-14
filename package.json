@@ -32,7 +32,7 @@
     "prepush": "npm run test",
     "test": "lerna run test --concurrency",
     "patternplate:watch": "npm run babel:packages && node ./scripts/patternplate",
-    "patternplate:build": "patternplate build --out=docs/manual --base=/Users/greada/Documents/workspace/sinner/dekk/docs/manual",
+    "patternplate:build": "npm run docgen && patternplate build --out 'docs/manual' --base 'dekk/manual'",
     "patternplate": "patternplate",
     "watch": "webpack-dev-server --hot"
   },
