@@ -103,6 +103,17 @@ export default class Autoplay extends Component {
   }
 
   /**
+   * @private
+   */
+  componentDidUpdate(oldProps) {
+    if (!oldProps.isPlaying && this.props.isPlaying) {
+      this.play()
+    } else if (oldProps.isPlaying && !this.props.isPlaying) {
+      this.stop()
+    }
+  }
+
+  /**
    * Waits for 1000 * `delay` ms and then navigates to the next
    * fragment or slide.
    *
@@ -119,20 +130,29 @@ export default class Autoplay extends Component {
       isPlaying
     } = this.props
     if (isPlaying) {
-      setTimeout(() => {
-        if (fragmentCount > fragmentIndex + 1) {
-          toNextFragment()
-          window.requestAnimationFrame(this.play)
-        } else if (slideCount > slideIndex + 1) {
-          toNextSlide()
-          window.requestAnimationFrame(this.play)
+      this.timer = setTimeout(() => {
+        if (isPlaying) {
+          if (fragmentCount > fragmentIndex + 1) {
+            toNextFragment()
+            window.requestAnimationFrame(this.play)
+          } else if (slideCount > slideIndex + 1) {
+            toNextSlide()
+            window.requestAnimationFrame(this.play)
+          } else {
+            this.stop()
+          }
         } else {
-          window.cancelAnimationFrame(this.play)
+          this.stop()
         }
       }, 1000 * this.props.delay)
     } else {
-      window.cancelAnimationFrame(this.play)
+      this.stop()
     }
+  }
+
+  stop() {
+    clearTimeout(this.timer)
+    window.cancelAnimationFrame(this.play)
   }
 
   /**

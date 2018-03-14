@@ -1,0 +1,12 @@
+{
+    "name": "autoplay",
+    "version": "1.0.0",
+    "tags": [
+        "plugins", 
+        "autoplay",
+        "paging"
+    ],
+    "patternplate": {
+      "displayName": "Plugins: Autoplay"
+    }
+}
