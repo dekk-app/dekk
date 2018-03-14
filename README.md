@@ -8,15 +8,12 @@
 
 [![npm](https://img.shields.io/npm/v/@dekk/dekk.svg?style=for-the-badge)](https://www.npmjs.com/org/dekk)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/sinnerschrader/dekk.svg?style=for-the-badge)](https://github.com/sinnerschrader/dekk/issues)
 
 [![bitHound](https://img.shields.io/bithound/code/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
 [![bitHound](https://img.shields.io/bithound/dependencies/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
 [![bitHound](https://img.shields.io/bithound/devDependencies/github/sinnerschrader/dekk.svg?style=for-the-badge)](https://www.bithound.io/github/sinnerschrader/dekk)
 
-[![Esdoc](https://img.shields.io/badge/documentation-all_star-8bc300.svg?style=for-the-badge)](https://sinnerschrader.github.io/dekk/api/identifiers.html)
-[![commitlint](https://img.shields.io/badge/commitlint-enabled-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
-[![convetional-changelog](https://img.shields.io/badge/changelog-conventional-8bc300.svg?style=for-the-badge)](https://github.com/marionebl/commitlint)
+[![Patternplate](https://img.shields.io/badge/manual-patternplate-3399ff.svg?style=for-the-badge)](https://sinnerschrader.github.io/dekk/manual/)
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
@@ -147,5 +144,4 @@ To develop Dekk a lot more than just those 4 packages were needed 😱
 | yoshuawuyts  | patreon.com/yoshuawuyts  | resolve, timers-browserify + 1 more |
 
 
-© Copyright 2018 [Gregor Adams](https://github.com/pixelass)  
-Proudly powered by [Sinnerschrader](https://sinnerschrader.com)
+© Copyright 2018 [Sinnerschrader](https://sinnerschrader.com)
