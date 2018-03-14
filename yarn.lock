@@ -265,15 +265,15 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@patternplate/cli@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/cli/-/cli-2.0.0-61.tgz#0c09d94b4b8fec9b3f62c42ecd60f8069b213b94"
+"@patternplate/cli@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/cli/-/cli-2.0.0-63.tgz#b1787014b237287634c66978164ec3456a593be5"
   dependencies:
-    "@patternplate/compiler" "^2.0.0-61"
-    "@patternplate/demo-client" "^2.0.0-61"
-    "@patternplate/probe-client" "^2.0.0-61"
-    "@patternplate/render-default" "^2.0.0-61"
-    "@patternplate/webpack-entry" "^2.0.0-61"
+    "@patternplate/compiler" "^2.0.0-63"
+    "@patternplate/demo-client" "^2.0.0-63"
+    "@patternplate/probe-client" "^2.0.0-63"
+    "@patternplate/render-default" "^2.0.0-63"
+    "@patternplate/webpack-entry" "^2.0.0-63"
     chalk "^2.3.2"
     command-exists "^1.2.2"
     css-loader "^0.28.10"
@@ -295,14 +295,14 @@
     webpack-dev-middleware "1"
     ws "^5.0.0"
 
-"@patternplate/compiler@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/compiler/-/compiler-2.0.0-61.tgz#ac29e6f95c70d9b50d0d1fe4d4de0fee3ef67dcf"
+"@patternplate/compiler@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/compiler/-/compiler-2.0.0-63.tgz#053c016d8318137dc336c1fcd30e8ab86c860719"
   dependencies:
-    "@patternplate/demo-client" "^2.0.0-61"
-    "@patternplate/load-config" "^2.0.0-61"
-    "@patternplate/probe-client" "^2.0.0-61"
-    "@patternplate/webpack-entry" "^2.0.0-61"
+    "@patternplate/demo-client" "^2.0.0-63"
+    "@patternplate/load-config" "^2.0.0-63"
+    "@patternplate/probe-client" "^2.0.0-63"
+    "@patternplate/webpack-entry" "^2.0.0-63"
     css-loader "^0.28.10"
     html-loader "^0.5.5"
     memory-fs "^0.4.1"
@@ -310,11 +310,11 @@
     webpack "3"
     webpack-node-externals "^1.6.0"
 
-"@patternplate/components@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/components/-/components-2.0.0-61.tgz#e0f3f5df7f302e7aa03d850e8a6dd78390961cbb"
+"@patternplate/components@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/components/-/components-2.0.0-63.tgz#c2a0bc8273d1f0e44de06ccd98e78d442d87a77b"
   dependencies:
-    "@patternplate/widgets" "^2.0.0-61"
+    "@patternplate/widgets" "^2.0.0-63"
     buble "^0.19.3"
     color "^2.0.0"
     front-matter "^2.3.0"
@@ -336,42 +336,42 @@
     styled-components "^3.1.6"
     tag-hoc "^1.0.0"
 
-"@patternplate/demo-client@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/demo-client/-/demo-client-2.0.0-61.tgz#80192755dd1ea0fd1b7a84565f57d83d995dbe07"
+"@patternplate/demo-client@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/demo-client/-/demo-client-2.0.0-63.tgz#64817bfc285702d9978a250b1a85d7f577348be7"
   dependencies:
-    "@patternplate/websocket-client" "^2.0.0-61"
+    "@patternplate/websocket-client" "^2.0.0-63"
 
-"@patternplate/load-config@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/load-config/-/load-config-2.0.0-61.tgz#5232ed6870321135e7522b2fa103c1ba4b5a4985"
+"@patternplate/load-config@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/load-config/-/load-config-2.0.0-63.tgz#cecc7dceb57e3f2651168610fe4585361ca5891d"
   dependencies:
     cosmiconfig "^3.1.0"
 
-"@patternplate/probe-client@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/probe-client/-/probe-client-2.0.0-61.tgz#10917db29dfa2a165a444344ee532667037581c2"
+"@patternplate/probe-client@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/probe-client/-/probe-client-2.0.0-63.tgz#9512f7a844975ae2ff3c79d82a74c09034b63b84"
   dependencies:
-    "@patternplate/websocket-client" "^2.0.0-61"
+    "@patternplate/websocket-client" "^2.0.0-63"
     arson "^0.2.6"
     iframe-resizer "^3.5.16"
 
-"@patternplate/render-default@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/render-default/-/render-default-2.0.0-61.tgz#de651a920453e8437843ae25c749ee016bb4ccdc"
+"@patternplate/render-default@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-default/-/render-default-2.0.0-63.tgz#e0153debb3d3287f8fac0f95ce27913eff748ad2"
 
-"@patternplate/render-styled-components@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/render-styled-components/-/render-styled-components-2.0.0-61.tgz#39eee3e7e02631c158388eca8e4bb88b5ca15007"
+"@patternplate/render-styled-components@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-styled-components/-/render-styled-components-2.0.0-63.tgz#1b6e78242a28d70089abcebb42823b1732324c1a"
   dependencies:
     react "^16.2.0"
     react-dom "^16.2.0"
     styled-components "^3.1.6"
     xmldom "^0.1.27"
 
-"@patternplate/webpack-entry@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/webpack-entry/-/webpack-entry-2.0.0-61.tgz#32f24eb802cf6d76ace4b2bd1d3a73a85991ee58"
+"@patternplate/webpack-entry@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/webpack-entry/-/webpack-entry-2.0.0-63.tgz#6cfd0c08957a3d11ed2d592f9ec73756511a49c0"
   dependencies:
     glob-parent "^3.1.0"
     globby "^6.1.0"
@@ -381,15 +381,15 @@
     raw-loader "^0.5.1"
     require-from-string "^2.0.1"
 
-"@patternplate/websocket-client@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/websocket-client/-/websocket-client-2.0.0-61.tgz#2e07f4659785a08282813b5c21d80cd02a518daf"
+"@patternplate/websocket-client@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/websocket-client/-/websocket-client-2.0.0-63.tgz#0ad915dbd4005628d0b4d564251a9502163b18b5"
 
-"@patternplate/widgets@^2.0.0-61":
-  version "2.0.0-61"
-  resolved "https://registry.yarnpkg.com/@patternplate/widgets/-/widgets-2.0.0-61.tgz#9a38a6e1641aabbf15f261dd99d21d12d94937b9"
+"@patternplate/widgets@^2.0.0-63":
+  version "2.0.0-63"
+  resolved "https://registry.yarnpkg.com/@patternplate/widgets/-/widgets-2.0.0-63.tgz#0becb95cda6e4d1d0ba458699d8444c3a2dd2f25"
   dependencies:
-    "@patternplate/components" "^2.0.0-61"
+    "@patternplate/components" "^2.0.0-63"
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
