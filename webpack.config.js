@@ -15,6 +15,7 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'umd'
   },
+  mode: process.env.NODE_ENV || 'development',
   devtool: 'source-map',
   module: {
     rules: [
@@ -61,21 +62,6 @@ module.exports = {
     }),
     new HtmlWebpackHarddiskPlugin({
       outputPath: DOCS
-    }),
-    new FaviconsWebpackPlugin({
-      logo: './gh-pages/favico.png',
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: false,
-        coast: false,
-        favicons: true,
-        firefox: false,
-        opengraph: false,
-        twitter: false,
-        yandex: false,
-        windows: false
-      }
     })
   ]
 }
