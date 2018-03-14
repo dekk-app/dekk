@@ -1,5 +1,5 @@
 ---
-displayName: "Reference: Plugins"
+displayName: "Reference: Using and creating Plugins"
 description: "Describes included plugins and explains how to write custom plugins"
 tags: 
   - Reference
@@ -14,6 +14,14 @@ To configure your Deck you can use the Plugins component. This allows you
 to choose the type of URLs Dekk writes or add listeners as well as enable
 paging
 
+## Demo
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="plugins" />;
+```
 
 ```jsx
 import React from 'react'
@@ -43,6 +51,16 @@ This plugin enables paging via the arrow keys of your keyboard.
 | `trigger` | **`String`** | keyup   | The event that triggers navigation can be either `keyup` or `keydown`|
 
 
+## Demo
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="paging" />;
+```
+
+
 ```jsx
 import React from 'react'
 import Deck, {Plugins} from '@dekk/deck'
@@ -60,6 +78,7 @@ export default (
   </Deck>
 )
 ```
+
 
 ## Url
 
@@ -193,6 +212,15 @@ export default (
 )
 ```
 
+## Demo
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="autoplay" />;
+```
+
 
 ## Listener
 
@@ -277,7 +305,6 @@ export default class Broadcast extends Component {
 }
 ```
 
-
 ### Sharing Plugins
 
 If you create a set of Plugins you can share it with others
@@ -320,7 +347,6 @@ export default (
       {/* more plugins */}
     </Plugins>
 
-
     <Slide> 1 </Slide>
     <Slide> 2 </Slide>
     <Slide> 3 </Slide>
@@ -344,7 +370,7 @@ export default (
       {navigation}
       {/* more plugins */}
     </Plugins>
-    
+
     <Slide> 1 </Slide>
     <Slide> 2 </Slide>
     <Slide> 3 </Slide>

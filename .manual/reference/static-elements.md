@@ -13,6 +13,14 @@ To add static elements to your deck you can use the `Elements` component.
 It will render any ReactElement aside the slides. You might have to add
 additional styling to your `Deck`.
 
+## Demo
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="elements" />;
+```
 
 ```jsx
 import React from 'react'

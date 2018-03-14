@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
-import Wrapper from './wrapper'
-import SlidesWrapper from './slides-wrapper'
-import Plugins from './plugins'
-import Elements from './elements'
+import Wrapper from '../wrapper'
+import SlidesWrapper from '../slides-wrapper'
+import Plugins from '../plugins'
+import Elements from '../elements'
 
 /**
  * A wrapper around the slides.
