@@ -72,9 +72,7 @@ class App extends Component {
         </StyledButton>
         <Wrapper>
           <Deck>
-            <Plugins>
-              {this.state.isEnabled ? <Paging /> : null}
-            </Plugins>
+            <Plugins>{this.state.isEnabled ? <Paging /> : null}</Plugins>
             {[...new Array(60)].map((x, i) => (
               <Slide
                 key={i}
