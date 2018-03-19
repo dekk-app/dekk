@@ -265,15 +265,15 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@patternplate/cli@2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/cli/-/cli-2.0.0-63.tgz#b1787014b237287634c66978164ec3456a593be5"
+"@patternplate/cli@2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/cli/-/cli-2.0.0-82.tgz#dcada47f9426e2f4d38ee4e3aad685890130abef"
   dependencies:
-    "@patternplate/compiler" "^2.0.0-63"
-    "@patternplate/demo-client" "^2.0.0-63"
-    "@patternplate/probe-client" "^2.0.0-63"
-    "@patternplate/render-default" "^2.0.0-63"
-    "@patternplate/webpack-entry" "^2.0.0-63"
+    "@patternplate/compiler" "^2.0.0-82"
+    "@patternplate/demo-client" "^2.0.0-82"
+    "@patternplate/probe-client" "^2.0.0-82"
+    "@patternplate/render-default" "^2.0.0-82"
+    "@patternplate/webpack-entry" "^2.0.0-82"
     chalk "^2.3.2"
     command-exists "^1.2.2"
     css-loader "^0.28.10"
@@ -295,14 +295,15 @@
     webpack-dev-middleware "1"
     ws "^5.0.0"
 
-"@patternplate/compiler@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/compiler/-/compiler-2.0.0-63.tgz#053c016d8318137dc336c1fcd30e8ab86c860719"
+"@patternplate/compiler@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/compiler/-/compiler-2.0.0-82.tgz#6cdde8297b44c008c1e5d380896771d80626b00e"
   dependencies:
-    "@patternplate/demo-client" "^2.0.0-63"
-    "@patternplate/load-config" "^2.0.0-63"
-    "@patternplate/probe-client" "^2.0.0-63"
-    "@patternplate/webpack-entry" "^2.0.0-63"
+    "@patternplate/cover-client" "^2.0.0-82"
+    "@patternplate/demo-client" "^2.0.0-82"
+    "@patternplate/load-config" "^2.0.0-82"
+    "@patternplate/probe-client" "^2.0.0-82"
+    "@patternplate/webpack-entry" "^2.0.0-82"
     css-loader "^0.28.10"
     html-loader "^0.5.5"
     memory-fs "^0.4.1"
@@ -337,42 +338,60 @@
     styled-components "^3.1.6"
     tag-hoc "^1.0.0"
 
-"@patternplate/demo-client@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/demo-client/-/demo-client-2.0.0-63.tgz#64817bfc285702d9978a250b1a85d7f577348be7"
+"@patternplate/cover-client@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/cover-client/-/cover-client-2.0.0-82.tgz#14cafb17ba96f7ff8d4d08fe319e1fcbd81892d4"
   dependencies:
-    "@patternplate/websocket-client" "^2.0.0-63"
+    "@patternplate/websocket-client" "^2.0.0-82"
 
-"@patternplate/load-config@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/load-config/-/load-config-2.0.0-63.tgz#cecc7dceb57e3f2651168610fe4585361ca5891d"
+"@patternplate/demo-client@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/demo-client/-/demo-client-2.0.0-82.tgz#7d635e8978aa3d47550e609e8868a9f750d176f4"
+  dependencies:
+    "@patternplate/websocket-client" "^2.0.0-82"
+
+"@patternplate/load-config@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/load-config/-/load-config-2.0.0-82.tgz#b7f0afcffcdf467c20ea631a6bfe7e9a52167e29"
   dependencies:
     cosmiconfig "^3.1.0"
 
-"@patternplate/probe-client@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/probe-client/-/probe-client-2.0.0-63.tgz#9512f7a844975ae2ff3c79d82a74c09034b63b84"
+"@patternplate/probe-client@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/probe-client/-/probe-client-2.0.0-82.tgz#5391c6ce47db9447dac8d5e0835288c16b5a4eea"
   dependencies:
-    "@patternplate/websocket-client" "^2.0.0-63"
+    "@patternplate/websocket-client" "^2.0.0-82"
     arson "^0.2.6"
     iframe-resizer "^3.5.16"
 
-"@patternplate/render-default@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/render-default/-/render-default-2.0.0-63.tgz#e0153debb3d3287f8fac0f95ce27913eff748ad2"
-
-"@patternplate/render-styled-components@2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/render-styled-components/-/render-styled-components-2.0.0-63.tgz#1b6e78242a28d70089abcebb42823b1732324c1a"
+"@patternplate/render-default@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-default/-/render-default-2.0.0-82.tgz#e1e7017a9f064b5283bb780e1b13e6e03428746b"
   dependencies:
+    lodash "^4.17.5"
+
+"@patternplate/render-react@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-react/-/render-react-2.0.0-82.tgz#9ae5a73cb691eadfb4a258c1a6da61d2ea98ebca"
+  dependencies:
+    "@patternplate/render-default" "^2.0.0-82"
+    lodash "^4.17.5"
+    react "^16.2.0"
+    react-dom "^16.2.0"
+
+"@patternplate/render-styled-components@2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-styled-components/-/render-styled-components-2.0.0-82.tgz#c7104e9507584d45c582f899ddba7cfe717669c7"
+  dependencies:
+    "@patternplate/render-react" "^2.0.0-82"
+    lodash "^4.17.5"
     react "^16.2.0"
     react-dom "^16.2.0"
     styled-components "^3.1.6"
-    xmldom "^0.1.27"
 
-"@patternplate/webpack-entry@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/webpack-entry/-/webpack-entry-2.0.0-63.tgz#6cfd0c08957a3d11ed2d592f9ec73756511a49c0"
+"@patternplate/webpack-entry@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/webpack-entry/-/webpack-entry-2.0.0-82.tgz#c5800078ea92cb15917c68a4fe1a10eedc2f39bb"
   dependencies:
     glob-parent "^3.1.0"
     globby "^6.1.0"
@@ -382,9 +401,9 @@
     raw-loader "^0.5.1"
     require-from-string "^2.0.1"
 
-"@patternplate/websocket-client@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/websocket-client/-/websocket-client-2.0.0-63.tgz#0ad915dbd4005628d0b4d564251a9502163b18b5"
+"@patternplate/websocket-client@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/websocket-client/-/websocket-client-2.0.0-82.tgz#1803182b22b20250143d1fc9c7fe8e73c4e0575a"
 
 "@patternplate/widgets@2.0.0-82", "@patternplate/widgets@^2.0.0-82":
   version "2.0.0-82"
@@ -3084,7 +3103,7 @@ cross-spawn@^5.0.1, cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-cross-spawn@^6.0.5:
+cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
   dependencies:
@@ -4259,11 +4278,11 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-execa@0.9.0, execa@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-0.9.0.tgz#adb7ce62cf985071f60580deb4a88b9e34712d01"
+execa@0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
   dependencies:
-    cross-spawn "^5.0.1"
+    cross-spawn "^6.0.0"
     get-stream "^3.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
@@ -4286,6 +4305,18 @@ execa@^0.7.0:
 execa@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.8.0.tgz#d8d76bbc1b55217ed190fd6dd49d3c774ecfc8da"
+  dependencies:
+    cross-spawn "^5.0.1"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
+execa@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-0.9.0.tgz#adb7ce62cf985071f60580deb4a88b9e34712d01"
   dependencies:
     cross-spawn "^5.0.1"
     get-stream "^3.0.0"
@@ -10429,9 +10460,9 @@ strong-log-transformer@^1.0.6:
     moment "^2.6.0"
     through "^2.3.4"
 
-styled-components@3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.2.2.tgz#3a3a49e0009a212d1fee173e3a7719a489e11299"
+styled-components@3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.2.3.tgz#50f71207320eeb1ef539dec4637f21f5e3c936b4"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
@@ -11757,10 +11788,6 @@ xml2js@>=0.2.4, xml2js@^0.4.5:
 xmlbuilder@~9.0.1:
   version "9.0.7"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
-
-xmldom@^0.1.27:
-  version "0.1.27"
-  resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.27.tgz#d501f97b3bdb403af8ef9ecc20573187aadac0e9"
 
 xo-init@^0.7.0:
   version "0.7.0"
