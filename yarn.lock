@@ -310,11 +310,11 @@
     webpack "3"
     webpack-node-externals "^1.6.0"
 
-"@patternplate/components@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/components/-/components-2.0.0-63.tgz#c2a0bc8273d1f0e44de06ccd98e78d442d87a77b"
+"@patternplate/components@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/components/-/components-2.0.0-82.tgz#17f73aa11683e668c0211d710c1f614000511d65"
   dependencies:
-    "@patternplate/widgets" "^2.0.0-63"
+    "@patternplate/widgets" "^2.0.0-82"
     buble "^0.19.3"
     color "^2.0.0"
     front-matter "^2.3.0"
@@ -328,6 +328,7 @@
     react-addons-text-content "^0.0.4"
     react-clipboard.js "^1.1.3"
     react-dom "16.2.0"
+    react-helmet "^5.2.0"
     react-iframe-resizer-super "^0.2.0"
     react-side-effect "^1.0.2"
     remark "^8.0.0"
@@ -385,11 +386,11 @@
   version "2.0.0-63"
   resolved "https://registry.yarnpkg.com/@patternplate/websocket-client/-/websocket-client-2.0.0-63.tgz#0ad915dbd4005628d0b4d564251a9502163b18b5"
 
-"@patternplate/widgets@2.0.0-63", "@patternplate/widgets@^2.0.0-63":
-  version "2.0.0-63"
-  resolved "https://registry.yarnpkg.com/@patternplate/widgets/-/widgets-2.0.0-63.tgz#0becb95cda6e4d1d0ba458699d8444c3a2dd2f25"
+"@patternplate/widgets@2.0.0-82", "@patternplate/widgets@^2.0.0-82":
+  version "2.0.0-82"
+  resolved "https://registry.yarnpkg.com/@patternplate/widgets/-/widgets-2.0.0-82.tgz#6308aeeaee9dc9a59d6771ab5382c3326e33a5e4"
   dependencies:
-    "@patternplate/components" "^2.0.0-63"
+    "@patternplate/components" "^2.0.0-82"
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
@@ -9001,6 +9002,15 @@ react-dom@16.2.0, react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-helmet@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
+  dependencies:
+    deep-equal "^1.0.1"
+    object-assign "^4.1.1"
+    prop-types "^15.5.4"
+    react-side-effect "^1.1.0"
+
 react-iframe-resizer-super@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-iframe-resizer-super/-/react-iframe-resizer-super-0.2.0.tgz#2fe4c80b664a8b27cd32d8f00533ac5b514488b1"
@@ -9015,7 +9025,7 @@ react-motion@^0.5.2:
     prop-types "^15.5.8"
     raf "^3.1.0"
 
-react-side-effect@^1.0.2:
+react-side-effect@^1.0.2, react-side-effect@^1.1.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
   dependencies:
