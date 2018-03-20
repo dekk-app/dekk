@@ -311,11 +311,11 @@
     webpack "3"
     webpack-node-externals "^1.6.0"
 
-"@patternplate/components@^2.0.0-82":
-  version "2.0.0-82"
-  resolved "https://registry.yarnpkg.com/@patternplate/components/-/components-2.0.0-82.tgz#17f73aa11683e668c0211d710c1f614000511d65"
+"@patternplate/components@^2.0.0-87":
+  version "2.0.0-87"
+  resolved "https://registry.yarnpkg.com/@patternplate/components/-/components-2.0.0-87.tgz#ae794da4923f520dd71f91a29c156285f8353f44"
   dependencies:
-    "@patternplate/widgets" "^2.0.0-82"
+    "@patternplate/widgets" "^2.0.0-87"
     buble "^0.19.3"
     color "^2.0.0"
     front-matter "^2.3.0"
@@ -405,11 +405,11 @@
   version "2.0.0-82"
   resolved "https://registry.yarnpkg.com/@patternplate/websocket-client/-/websocket-client-2.0.0-82.tgz#1803182b22b20250143d1fc9c7fe8e73c4e0575a"
 
-"@patternplate/widgets@2.0.0-82", "@patternplate/widgets@^2.0.0-82":
-  version "2.0.0-82"
-  resolved "https://registry.yarnpkg.com/@patternplate/widgets/-/widgets-2.0.0-82.tgz#6308aeeaee9dc9a59d6771ab5382c3326e33a5e4"
+"@patternplate/widgets@2.0.0-87", "@patternplate/widgets@^2.0.0-87":
+  version "2.0.0-87"
+  resolved "https://registry.yarnpkg.com/@patternplate/widgets/-/widgets-2.0.0-87.tgz#bbc69680c8736298d4565b5a1718d10bb8001b39"
   dependencies:
-    "@patternplate/components" "^2.0.0-82"
+    "@patternplate/components" "^2.0.0-87"
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
