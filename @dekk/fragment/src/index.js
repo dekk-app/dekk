@@ -27,6 +27,7 @@ export default class Fragment extends Component {
         .isRequired,
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+      onRest: PropTypes.func,
       root: PropTypes.bool,
       plain: PropTypes.bool,
       fit: PropTypes.bool,
@@ -47,6 +48,7 @@ export default class Fragment extends Component {
     return {
       animation: '',
       mixin: '',
+      onRest() {},
       displayAs: undefined,
       fit: false,
       root: false,
@@ -84,6 +86,9 @@ export default class Fragment extends Component {
     }
   }
 
+  /**
+   * @private
+   */
   constructor(props, context) {
     super(props, context)
     this.renderChildren = this.renderChildren.bind(this)
@@ -147,6 +152,9 @@ export default class Fragment extends Component {
     return this.context.store.fragmentHosts[this.context.fragmentHost].length
   }
 
+  /**
+   * @private
+   */
   renderChildren(time, isActive) {
     if (typeof this.props.children === 'function') {
       return this.props.children(time, isActive)
@@ -195,8 +203,12 @@ export default class Fragment extends Component {
         ...this.props.springSettings
       })
     }
+    const handleRest = () =>
+      isActive
+        ? this.props.onRest(store.fragmentIndex, store.fragmentOrder)
+        : null
     return (
-      <Motion style={springStyle}>
+      <Motion style={springStyle} onRest={handleRest}>
         {({t}) => {
           const time = isActive ? t : 1
           const style = {
@@ -233,6 +245,7 @@ export const FragmentRoot = props => <Fragment {...props} root />
 
 /**
  * Fragment plain component. When using the PlainFragment, no wrapping span is used.
+ * This is a curry version of Fragment.
  * @public
  * @param {Object} props
  * @return {Fragment}
@@ -243,9 +256,71 @@ export const PlainFragment = props => <Fragment {...props} plain />
 /**
  * Fragment fit component. When using the FitFragment, nested elements
  * can use percentage or flex based dimensions.
+ * This is a curry version of Fragment.
  * @public
  * @param {Object} props
  * @return {Fragment}
  *   A Fragment component as fit fragment
  */
 export const FitFragment = props => <Fragment {...props} fit />
+
+/**
+ * Fragment sequence component. When using the Sequence, an array of
+ * timelines is returned.
+ * @public
+ * @param {Object} props
+ *   The properties
+ * @param {number} props.steps number uf steps
+ * @param {number} props.order
+ *   The starting order
+ * @param {number} props.nextOrder
+ *   (protected)
+ * @return {Fragment}
+ *   A Fragment component as sequence
+ */
+export const Sequence = props => {
+  const nextOrder =
+    props.nextOrder < props.order ? props.order : props.nextOrder
+  const index = nextOrder - props.order - (props.time ? 1 : 0)
+  return (
+    <Fragment order={nextOrder} plain onRest={props.onRest}>
+      {(fragmentTime, isActive) => {
+        const time = props.time || fragmentTime
+        const timeline = index + 1 - time
+        return isActive && nextOrder < props.order + props.steps - 1 ? (
+          <Sequence {...props} nextOrder={nextOrder + 1} time={fragmentTime} />
+        ) : (
+          props.children(
+            nextOrder - props.order - (props.time ? 1 : 0),
+            props.time || fragmentTime,
+            timeline
+          )
+        )
+      }}
+    </Fragment>
+  )
+}
+
+/**
+ * @private
+ */
+Sequence.defaultProps = {
+  children() {},
+  onRest() {},
+  time: 1,
+  nextOrder: 0,
+  order: 0,
+  steps: 2
+}
+
+/**
+ * @private
+ */
+Sequence.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  onRest: PropTypes.func,
+  nextOrder: PropTypes.number,
+  time: PropTypes.number,
+  order: PropTypes.number,
+  steps: PropTypes.number
+}
