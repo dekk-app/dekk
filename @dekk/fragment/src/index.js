@@ -283,12 +283,17 @@ export const Sequence = props => {
     props.nextOrder < props.order ? props.order : props.nextOrder
   const index = nextOrder - props.order - (props.time ? 1 : 0)
   return (
-    <Fragment order={nextOrder} plain onRest={props.onRest}>
+    <Fragment {...props} order={nextOrder} plain>
       {(fragmentTime, isActive) => {
         const time = props.time || fragmentTime
         const timeline = index + 1 - time
         return isActive && nextOrder < props.order + props.steps - 1 ? (
-          <Sequence {...props} nextOrder={nextOrder + 1} time={fragmentTime} />
+          <Sequence
+            {...props}
+            nextOrder={nextOrder + 1}
+            time={fragmentTime}
+            root={false}
+          />
         ) : (
           props.children(
             nextOrder - props.order - (props.time ? 1 : 0),
