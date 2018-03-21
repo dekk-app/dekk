@@ -20,6 +20,7 @@ A slide can have multiple fragments which are activated before the next slide.
 | `animation`     | **`string,array`** | slide.reverse | An animation to replace the default |
 | `mixin`         | **`string,array`** |               | A mixin to extend the fragment styles |
 | `displayAs`     | **`string`**       |               | Displays the fragment as ... (CSS box-model display modes, e.g `inline-block`, `block`) |
+| `onRest`        | **`function`**     |               | Callback when the animation is done |
 | `springOptions` | **`object`**       | presets.stiff | A [react-motion configuration]()https://github.com/chenglou/react-motion#helpers |
 
 
@@ -28,9 +29,14 @@ import React from 'react'
 import Slide from '@dekk/slide'
 import Fragment from '@dekk/fragment'
 
+const onRest = (fragmentIndex, fragmentOrder) => {
+  // The animation is done
+  console.log(fragmentIndex, fragmentOrder)
+}
+
 export default (
   <Slide>
-    <Fragment order={1}> 1 </Fragment>
+    <Fragment order={1} onRest={handleRest}> 1 </Fragment>
     <Fragment order={2}> 2 </Fragment>
     <Fragment order={3}> 3 </Fragment>
   </Slide>
@@ -214,5 +220,48 @@ export default (
   <Fragment order={1}>
     {(time, isActive) => <Hello isActive={isActive} />}
   </Fragment>
+)
+```
+
+## Sequence
+
+If you want to chain multiple fragments you can use a Sequence instead.  
+
+
+| Param           | Type         | Description |
+|-----------------|--------------|-------------|
+| `order`         | **`number`** | the order of the fragment (see Fragment) |
+| `steps`         | **`number`** | number of steps in the sequence |
+| `onRest`        | **`number`** | callback when a fragment has rested (animation is done) |
+
+
+It allows calling a function with 3 arguments:
+
+| Param           | Type         | Description |
+|-----------------|--------------|-------------|
+| `index`         | **`number`** | the index of the fragment in the sequence [-1...Sequence.steps - 1()] (-1 when inactive)|
+| `time`          | **`number`** | the time that is currently running [1...0] (decreasing)|
+| `index`         | **`number`** | the timeline of the sequence [-1...Sequence.steps] (-1 when inactive)|
+
+
+```jsx
+import React from 'react'
+import {Sequence} from '@dekk/fragment'
+
+const handleRest = (fragementIndex, fragmentOrder) => {
+  // Each time a fragment has ended
+  console.log(fragementIndex, fragmentOrder)
+}
+
+export default (
+  <Sequence order={1} steps={3} onRest={handleRest}>
+    {(index, time, timeline) => (
+      <div>
+        <div>{index}</div>
+        <div>{time}</div>
+        <div>{timeline}</div>
+      </div>
+    )}
+  </Sequence>
 )
 ```
