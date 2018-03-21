@@ -5,7 +5,7 @@ import uuid from 'uuid/v4'
 import styled, {css} from 'styled-components'
 
 import Deck, {Slide, Elements} from '@dekk/dekk'
-import Fragment from '@dekk/fragment'
+import Fragment, {Sequence} from '@dekk/fragment'
 import Notes from '@dekk/speaker-notes'
 import {FitImage} from '@dekk/image'
 import Text, {Title, Subtitle} from '@dekk/text'
@@ -175,6 +175,9 @@ highlight.underline = css`
   ${({isActive}) => (isActive ? 'text-decoration: underline' : '')};
 `
 
+const handleSeq = (fragementIndex, fragmentOrder) => {
+  console.log(fragementIndex, fragmentOrder)
+}
 /**
  * A fragment example
  */
@@ -194,6 +197,15 @@ const fragment = (
           {(t, a) => `time: ${a ? t : '...'}`}
         </Fragment>.
       </Text>
+      <Sequence order={8} steps={5} onRest={handleSeq}>
+        {(index, time, timeline) => {
+          return (
+            <div>
+              <h4>{~~(timeline * 100) / 100}</h4>
+            </div>
+          )
+        }}
+      </Sequence>
     </Collage.A>
     <Collage.B>
       <Fragment order={1} fit animation={fadeSlide.in.reverse}>

@@ -3714,7 +3714,7 @@ var switchAnimation = function switchAnimation(props) {
  */
 var StyledSlide = (0, _styledComponents2.default)(SlideDirection).withConfig({
   displayName: 'src__StyledSlide'
-})(['position:absolute;top:0;left:0;overflow:hidden;color:var(--slide-color,currentColor);', ';background:', ';background-size:cover;', ';'], function (_ref4) {
+})(['', ';position:absolute;top:0;left:0;overflow:hidden;background:', ';background-size:cover;color:var(--slide-color,currentColor);', ';'], function (_ref4) {
   var mixin = _ref4.mixin;
   return mixin || '';
 }, function (_ref5) {
