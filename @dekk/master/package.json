@@ -1,6 +1,6 @@
 {
   "name": "@dekk/master",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,9 +18,9 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/fragment": "^1.2.0",
-    "@dekk/slide": "^1.2.0",
-    "@dekk/speaker-notes": "^1.2.0",
+    "@dekk/fragment": "^1.2.1",
+    "@dekk/slide": "^1.2.1",
+    "@dekk/speaker-notes": "^1.2.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "styled-components": "^3.1.6"
