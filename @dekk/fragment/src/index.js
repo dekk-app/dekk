@@ -290,7 +290,7 @@ export const Sequence = props => {
     <Fragment {...props} order={nextOrder} plain>
       {(fragmentTime, isActive) => {
         const time = props.time || fragmentTime
-        const timeline = index + 1 - time
+        const timeline = Math.max(0, index + 1 - time)
         return isActive && nextOrder < props.order + props.steps - 1 ? (
           <Sequence
             {...props}
@@ -300,7 +300,7 @@ export const Sequence = props => {
           />
         ) : (
           props.children(
-            nextOrder - props.order - (props.time ? 1 : 0),
+            Math.ceil(timeline),
             props.time || fragmentTime,
             timeline
           )
