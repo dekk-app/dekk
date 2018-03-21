@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Motion, spring, presets} from 'react-motion'
+import {Motion, spring} from 'react-motion'
 
 import StyledFragment from './fragment'
 
@@ -53,7 +53,10 @@ export default class Fragment extends Component {
       fit: false,
       root: false,
       plain: false,
-      springSettings: presets.stiff
+      springSettings: {
+        stiffness: 100,
+        damping: 20
+      }
     }
   }
 
@@ -192,6 +195,7 @@ export default class Fragment extends Component {
     // Define several flags to determine the acitve state
     // of the fragment.
     const isPrev = fragmentHost < store.slideIndex
+    const isCurrent = fragmentHost === store.slideIndex
     const isNext = fragmentHost > store.slideIndex
     const totalFragmentOrder = this.props.order + hostedFragmentOrder
     const isZero = totalFragmentOrder === 0
@@ -215,7 +219,7 @@ export default class Fragment extends Component {
             '--time': time
           }
           return this.props.plain ? (
-            this.renderChildren(time, isActive)
+            this.renderChildren(time, isActive && isCurrent)
           ) : (
             <StyledFragment
               style={style}
