@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/sinnerschrader/dekk/compare/v1.2.1...v1.2.2) (2018-03-21)
+
+
+### Bug Fixes
+
+* **fragment:** active state and animation time ([99dc409](https://github.com/sinnerschrader/dekk/commit/99dc409))
+* **fragment:** fixes sequence index/timeline inconsistency ([186cd57](https://github.com/sinnerschrader/dekk/commit/186cd57))
+* **slide:** animation time ([28891c1](https://github.com/sinnerschrader/dekk/commit/28891c1))
+
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/sinnerschrader/dekk/compare/v1.2.0...v1.2.1) (2018-03-21)
 
