@@ -28,6 +28,7 @@ export default class Fragment extends Component {
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       animation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       root: PropTypes.bool,
+      plain: PropTypes.bool,
       fit: PropTypes.bool,
       order: PropTypes.number.isRequired,
       displayAs: PropTypes.string,
@@ -49,6 +50,7 @@ export default class Fragment extends Component {
       displayAs: undefined,
       fit: false,
       root: false,
+      host: false,
       springSettings: presets.stiff
     }
   }
@@ -200,7 +202,9 @@ export default class Fragment extends Component {
           const style = {
             '--time': time
           }
-          return (
+          return this.props.plain ? (
+            this.renderChildren(time, isActive)
+          ) : (
             <StyledFragment
               style={style}
               isActive={isActive}
@@ -221,17 +225,26 @@ export default class Fragment extends Component {
  * Fragment root component. When using the fragmentRoot, nested Fragments start
  * after the parent. This is a curry version of Fragment.
  * @public
- * @reactProps {Object} props
+ * @param {Object} props
  * @return {Fragment}
  *   A Fragment component as root
  */
 export const FragmentRoot = props => <Fragment {...props} root />
 
 /**
+ * Fragment plain component. When using the PlainFragment, no wrapping span is used.
+ * @public
+ * @param {Object} props
+ * @return {Fragment}
+ *   A Fragment component as plain
+ */
+export const PlainFragment = props => <Fragment {...props} plain />
+
+/**
  * Fragment fit component. When using the FitFragment, nested elements
  * can use percentage or flex based dimensions.
  * @public
- * @reactProps {Object} props
+ * @param {Object} props
  * @return {Fragment}
  *   A Fragment component as fit fragment
  */
