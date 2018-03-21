@@ -37,7 +37,7 @@
     "prepush": "yarn run test",
     "test": "lerna run test --concurrency",
     "patternplate:watch": "yarn run babel:packages && node ./scripts/patternplate",
-    "patternplate:build": "yarn run clean:manual && yarn run docgen && patternplate build --out 'docs/manual' --base 'manual'",
+    "patternplate:build": "yarn run clean:manual && yarn run docgen && patternplate build --out='docs/manual' --base='dekk/manual'",
     "patternplate": "patternplate",
     "watch": "webpack-dev-server --hot"
   },
