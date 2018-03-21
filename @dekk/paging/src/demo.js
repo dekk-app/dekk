@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import styled, {css} from 'styled-components'
 import Deck, {Plugins} from '../../deck'
 import Slide from '../../slide'

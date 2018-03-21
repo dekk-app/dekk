@@ -61,6 +61,7 @@ class Slide extends Component {
       present: PropTypes.bool,
       fragmentOrder: PropTypes.number,
       className: PropTypes.string,
+      onRest: PropTypes.func,
       children: PropTypes.node.isRequired,
       springSettings: PropTypes.shape({
         stiffness: PropTypes.number,
@@ -90,6 +91,7 @@ class Slide extends Component {
       fromNext: false,
       isPreview: false,
       present: false,
+      onRest: () => null,
       fragmentOrder: 0,
       className: '',
       springSettings: presets.stiff,

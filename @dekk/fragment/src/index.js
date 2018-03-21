@@ -50,7 +50,7 @@ export default class Fragment extends Component {
       displayAs: undefined,
       fit: false,
       root: false,
-      host: false,
+      plain: false,
       springSettings: presets.stiff
     }
   }

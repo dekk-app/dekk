@@ -1,4 +1,6 @@
+/* global window */
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
 import Deck from '../deck'
 import Slide from '../../../slide'
@@ -15,7 +17,7 @@ class MyPlugin extends Component {
     this.props.doSomething(`Counter: ${this.counter++}`)
     this.props.toSlide(this.counter % 4)
     setTimeout(() => {
-      requestAnimationFrame(this.loop)
+      window.requestAnimationFrame(this.loop)
     }, 1000)
   }
 
@@ -26,6 +28,16 @@ class MyPlugin extends Component {
   render() {
     return null
   }
+}
+
+MyPlugin.propTypes = {
+  doSomething: PropTypes.func,
+  toSlide: PropTypes.func
+}
+
+MyPlugin.defaultProps = {
+  doSomething: () => null,
+  toSlide: () => null
 }
 
 const Wrapper = styled.div`
@@ -51,14 +63,17 @@ class Demo extends Component {
     this.handleSomething = this.handleSomething.bind(this)
     this.handleRest = this.handleRest.bind(this)
   }
+
   handleSomething(content) {
     this.setState({content})
   }
-  handleRest(slideIndex) {
+
+  handleRest() {
     this.setState({
       background: `hsl(${~~(Math.random() * 360)}, 50%, 50%)`
     })
   }
+
   render() {
     return (
       <Wrapper>

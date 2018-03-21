@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
 import Deck, {Plugins} from '../../deck'
 import Slide from '../../slide'
-import Paging from '../../paging'
-import {fade, slide, fadeSlide, flip, cube} from './'
+import {fade, slide, flip, cube} from './'
 
 const OuterWrapper = styled.div``
 
@@ -123,6 +123,22 @@ const Animations = props => {
   )
 }
 
+Animations.propTypes = {
+  onClick: PropTypes.func,
+  toNextSlide: PropTypes.func,
+  toPrevSlide: PropTypes.func,
+  slideCount: PropTypes.number,
+  slideIndex: PropTypes.number
+}
+
+Animations.defaultProps = {
+  onClick: () => null,
+  toNextSlide: () => null,
+  toPrevSlide: () => null,
+  slideCount: 0,
+  slideIndex: 0
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -133,6 +149,7 @@ class App extends Component {
   handleClick(animation) {
     this.setState({animation})
   }
+
   render() {
     return (
       <OuterWrapper>
