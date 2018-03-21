@@ -283,15 +283,15 @@ const switchAnimation = props => {
  * @private
  */
 const StyledSlide = styled(SlideDirection)`
+  ${({mixin}) => mixin || ''};
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
-  color: var(--slide-color, currentColor);
-  ${({mixin}) => mixin || ''};
   background: ${({background}) =>
     background || 'var(--slide-background, none)'};
   background-size: cover;
+  color: var(--slide-color, currentColor);
   ${props =>
     props.present
       ? `
