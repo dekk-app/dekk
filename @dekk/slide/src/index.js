@@ -1,7 +1,7 @@
 import React, {Component, Children} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {Motion, spring, presets} from 'react-motion'
+import {Motion, spring} from 'react-motion'
 import {slide} from '@dekk/animation'
 import Notes from '@dekk/speaker-notes'
 
@@ -94,7 +94,10 @@ class Slide extends Component {
       onRest: () => null,
       fragmentOrder: 0,
       className: '',
-      springSettings: presets.stiff,
+      springSettings: {
+        stiffness: 200,
+        damping: 60
+      },
       animation: '',
       animationIn: '',
       animationOut: '',
