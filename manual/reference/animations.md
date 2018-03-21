@@ -13,6 +13,7 @@ options:
 Dekk offers some basic transitions. Some trantions only work on slides
 since they use viewport units for perspective or tranlation on the z axis.
 
+
 ## Shared transitions
 
 The transitions in this category work for slides and fragments.
@@ -20,20 +21,10 @@ The transitions in this category work for slides and fragments.
 | Name                  | Usage           | Description |
 |-----------------------|-----------------|-------------|
 | fade in               | slide, fragment | It fades the element in. |
-| fade out              | slide, fragment | It fades the element out. |
 | slide reverse         | slide, fragment | This is the default slide animation. It moves the element from right to center. |
 | slide normal          | slide, fragment | It moves the element from left to center. |
 | slide up              | slide, fragment | It moves the element from bottom to center. |
 | slide down            | slide, fragment | It moves the element from top to center. |
-| fadeSlide out reverse | slide, fragment | It moves the element from center to right and fades out. |
-| fadeSlide out normal  | slide, fragment | It moves the element from center to left and fades out. |
-| fadeSlide out up      | slide, fragment | It moves the element from center to top and fades out. |
-| fadeSlide out down    | slide, fragment | It moves the element from center to bottom and fades out. |
-| fadeSlide in reverse  | slide, fragment | It moves the element from right to center and fades in. |
-| fadeSlide in normal   | slide, fragment | It moves the element from left to center and fades in. |
-| fadeSlide in up       | slide, fragment | It moves the element from top to center and fades in. |
-| fadeSlide in down     | slide, fragment | It moves the element from bottom to center and fades in. |
-
 
 
 ## Slide transitions
@@ -42,12 +33,37 @@ The transitions in this category only work for slides.
 
 | Name                | Usage | Description |
 |---------------------|-------|-------------|
-| cube slideX         | slide | It rotates the cube on the x axis. |
-| cube slideY         | slide | It rotates the cube on the y axis. |
-| cube slide invert x | slide | It rotates the cube on the x axis. The viewer sits in the center of the cube, like in a room |
-| cube slide invert y | slide | It rotates the cube on the y axis. The viewer sits in the center of the cube, like in a room |
+| cube slideX         | slide | It rotates the cube on the x axis. convex version |
+| cube slideY         | slide | It rotates the cube on the y axis. convex version |
+| cube slide invert x | slide | It rotates the cube on the x axis. concave version |
+| cube slide invert y | slide | It rotates the cube on the y axis. concave version |
 | flip x              | slide | It flips the slide on the x axis. |
 | flip y              | slide | It flips the slide on the y axis. |
+
+### Demo
+
+```widget
+const React = require("react");
+const {PatternDemo} = require("@patternplate/widgets");
+
+module.exports = () => <PatternDemo id="animation" />;
+```
+
+## Fragment transitions
+
+The transitions in this category only work for fragments.
+
+| Name                  | Usage    | Description |
+|-----------------------|----------|-------------|
+| fade out              | fragment | It fades the fragment out. |
+| fadeSlide out reverse | fragment | It moves the fragment from center to right and fades out. |
+| fadeSlide out normal  | fragment | It moves the fragment from center to left and fades out. |
+| fadeSlide out up      | fragment | It moves the fragment from center to top and fades out. |
+| fadeSlide out down    | fragment | It moves the fragment from center to bottom and fades out. |
+| fadeSlide in reverse  | fragment | It moves the fragment from right to center and fades in. |
+| fadeSlide in normal   | fragment | It moves the fragment from left to center and fades in. |
+| fadeSlide in up       | fragment | It moves the fragment from top to center and fades in. |
+| fadeSlide in down     | fragment | It moves the fragment from bottom to center and fades in. |
 
 ## Writing transitions
 

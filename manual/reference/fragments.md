@@ -165,6 +165,25 @@ export default (
 )
 ```
 
+
+## Plain fragments.
+
+If you don't want to have a wrapping span you can use a plain fragment.
+This only works for function fragemnts (see next section).
+
+
+```jsx
+import React from 'react'
+import Fragment from '@dekk/fragment'
+import {FitImage} from '@dekk/image'
+
+export default (
+  <Fragment order={1} plain>
+    {(time, isActive) isActive && => <div/>}
+  </Fragment>
+)
+```
+
 ## Function fragments.
 
 Fragments can have a function as a child. This gives access to the active state and timeline.

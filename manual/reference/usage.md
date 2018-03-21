@@ -12,14 +12,15 @@ options:
 
 To create a Deck you need two core packages, `Deck` and `Slide`.
 A Deck can contain several Components aside `Slide`. Take a look at
-[`Plugins`](plugins.html) and [`Elements`](static-elements.html)
+[`Plugins`](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/plugins) and 
+[`Elements`](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/static-elements)
 to understand how these can be used in your
 `Deck`
 
 Decks and Slides only provide the render logic and handle an internal
 state. Without plugins you won't be able to navigate through the Deck.
-This allows a very unique kind of configauration.
-Read more [here](plugins.html)
+This allows a very unique kind of configuration.
+Read more [here](https://sinnerschrader.github.io/dekk/manual/doc/manual/reference/plugins)
 
 ## Deck
 
