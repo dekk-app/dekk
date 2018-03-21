@@ -1,0 +1,16 @@
+{
+    "name": "animation",
+    "version": "1.0.0",
+    "tags": [
+        "animation", 
+        "cube",
+        "concave",
+        "convex",
+        "flip",
+        "fade",
+        "zoom"
+    ],
+    "patternplate": {
+      "displayName": "Animations"
+    }
+}

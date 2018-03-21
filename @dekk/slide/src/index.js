@@ -193,7 +193,7 @@ class Slide extends Component {
    * @private
    */
   render() {
-    const {isPrev, isNext, isCurrent} = this.props
+    const {isPrev, isNext, isCurrent, onRest} = this.props
     const direction = (() => {
       if (this.props.fromPrev) {
         return -1
@@ -225,8 +225,13 @@ class Slide extends Component {
         ...this.props.springSettings
       })
     }
+    const handleRest = () => {
+      if (typeof onRest === 'function' && isCurrent) {
+        onRest(this.props.slideIndex)
+      }
+    }
     return (
-      <Motion style={springStyle}>
+      <Motion style={springStyle} onRest={handleRest}>
         {({time}) => {
           const style = {
             '--time': time

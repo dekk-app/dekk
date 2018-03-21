@@ -1,11 +1,31 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {Component} from 'react'
+import styled, {css} from 'styled-components'
 import Deck from '../deck'
 import Slide from '../../../slide'
 import Plugins from './'
 
-const MyPlugin = () => {
-  return null
+class MyPlugin extends Component {
+  constructor(props) {
+    super(props)
+    this.counter = 0
+    this.loop = this.loop.bind(this)
+  }
+
+  loop() {
+    this.props.doSomething(`Counter: ${this.counter++}`)
+    this.props.toSlide(this.counter % 4)
+    setTimeout(() => {
+      requestAnimationFrame(this.loop)
+    }, 1000)
+  }
+
+  componentDidMount() {
+    this.loop()
+  }
+
+  render() {
+    return null
+  }
 }
 
 const Wrapper = styled.div`
@@ -13,15 +33,52 @@ const Wrapper = styled.div`
   height: 10rem;
 `
 
-export default function() {
-  return (
-    <Wrapper>
-      <Deck>
-        <Plugins>
-          <MyPlugin />
-        </Plugins>
-        <Slide>Look at the console</Slide>
-      </Deck>
-    </Wrapper>
-  )
+const mixin = css`
+  --slide-background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+`
+
+class Demo extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      content: 'start'
+    }
+    this.handleSomething = this.handleSomething.bind(this)
+    this.handleRest = this.handleRest.bind(this)
+  }
+  handleSomething(content) {
+    this.setState({content})
+  }
+  handleRest(slideIndex) {
+    this.setState({
+      background: `hsl(${~~(Math.random() * 360)}, 50%, 50%)`
+    })
+  }
+  render() {
+    return (
+      <Wrapper>
+        <Deck>
+          <Plugins>
+            <MyPlugin doSomething={this.handleSomething} />
+          </Plugins>
+          {[...new Array(4)].map((x, i) => (
+            <Slide
+              key={i}
+              mixin={mixin}
+              background={this.state.background}
+              onRest={this.handleRest}>
+              Slide {i + 1}: {this.state.content}
+            </Slide>
+          ))}
+        </Deck>
+      </Wrapper>
+    )
+  }
 }
+
+export default Demo
