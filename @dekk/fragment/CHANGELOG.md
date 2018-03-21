@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/sinnerschrader/dekk/compare/v1.0.0...v1.2.0) (2018-03-21)
+
+
+### Features
+
+* **fragment:** added plain fragments ([6e0d335](https://github.com/sinnerschrader/dekk/commit/6e0d335))
+* **fragment:** added Sequence ([d47617e](https://github.com/sinnerschrader/dekk/commit/d47617e))
+
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/sinnerschrader/dekk/compare/v1.0.0...v1.1.0) (2018-03-21)
 
