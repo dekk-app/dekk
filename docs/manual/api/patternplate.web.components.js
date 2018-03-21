@@ -11,141 +11,121 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _styledComponents = __webpack_require__(12);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/**
- * A simple flip transition.
- * @property {Array} x
- *   Flips on the x axis
- * @property {Array} y
- *   Flips on the y axis
- */
-var flip = {
-  x: (0, _styledComponents.css)(['backface-visibility:hidden;transform:perspective(200vw) rotate3d(0,1,0,calc(180deg * var(--direction,-1) * var(--time,1)));']),
-  y: (0, _styledComponents.css)(['backface-visibility:hidden;transform:perspective(200vh) rotate3d(1,0,0,calc(180deg * var(--direction,-1) * var(--time,1)));'])
+exports.default = function () {
+  return _react2.default.createElement(App, null);
 };
-
-exports.default = flip;
-//# sourceMappingURL=flip.js.map
-
-/***/ }),
-
-/***/ 101:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _styledComponents = __webpack_require__(12);
-
-var _slide = __webpack_require__(45);
-
-var _slide2 = _interopRequireDefault(_slide);
-
-var _fade = __webpack_require__(44);
-
-var _fade2 = _interopRequireDefault(_fade);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * A sliding fade transition.
- *
- * @public
- * @property {Array} in
- *   Fades in
- * @property {Array} in.normal
- *   Transition from left to right
- * @property {Array} in.reverse
- *   Transition from right to left
- * @property {Array} in.up
- *   Transition upwards
- * @property {Array} in.down
- *   Transition downwards
- * @property {Array} out
- *   Fades out
- * @property {Array} out.normal
- *   Transition from left to right
- * @property {Array} out.reverse
- *   Transition from right to left
- * @property {Array} out.up
- *   Transition upwards
- * @property {Array} out.down
- *   Transition downwards
- */
-var fadeSlide = {
-  in: {
-    normal: (0, _styledComponents.css)(['--direction:1;--regulator:0;', ';', ';'], _fade2.default.in, _slide2.default.normal),
-    reverse: (0, _styledComponents.css)(['--direction:1;--regulator:0;', ';', ';'], _fade2.default.in, _slide2.default.reverse),
-    up: (0, _styledComponents.css)(['', ';', ';'], _fade2.default.in, _slide2.default.up),
-    down: (0, _styledComponents.css)(['', ';', ';'], _fade2.default.in, _slide2.default.down)
-  },
-  out: {
-    normal: (0, _styledComponents.css)(['--direction:1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.normal),
-    reverse: (0, _styledComponents.css)(['--direction:1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.reverse),
-    up: (0, _styledComponents.css)(['--direction:-1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.up),
-    down: (0, _styledComponents.css)(['--direction:-1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.down)
-  }
-};
-
-exports.default = fadeSlide;
-//# sourceMappingURL=fade-slide.js.map
-
-/***/ }),
-
-/***/ 102:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(103)
-
-
-/***/ }),
-
-/***/ 103:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _react = __webpack_require__(0);
 
-var _propTypes = __webpack_require__(1);
+var _react2 = _interopRequireDefault(_react);
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _styledComponents = __webpack_require__(101);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _deck = __webpack_require__(22);
+
+var _deck2 = _interopRequireDefault(_deck);
+
+var _slide = __webpack_require__(9);
+
+var _slide2 = _interopRequireDefault(_slide);
+
+var _ = __webpack_require__(104);
+
+var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * @public
- * @param {Object} props
- * @param {ReactElement} prosp.children
- */
-var Notes = function Notes(_ref) {
-  var children = _ref.children;
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-  return typeof children === 'string' ? children : _react.Children.toArray(children).map(function (child, i) {
-    return (0, _react.cloneElement)(child, { key: i });
-  });
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * @private
- */
-Notes.propTypes = {
-  className: _propTypes2.default.string,
-  children: _propTypes2.default.node
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-exports.default = Notes;
-//# sourceMappingURL=index.js.map
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var OuterWrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'demo__OuterWrapper'
+})(['padding-top:3rem;']);
+
+var Wrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'demo__Wrapper'
+})(['position:relative;height:10rem;overflow:visible;']);
+
+var StyledButton = _styledComponents2.default.button.withConfig({
+  displayName: 'demo__StyledButton'
+})(['box-sizing:border-box;position:absolute;top:0;left:0;margin:0.5rem;padding:0.25rem 0.5rem;height:2rem;font-size:1rem;display:flex;align-items:center;align-content:center;justify-content:center;background:#ddd;color:#111;border:1px solid #aaa;border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,0.3);cursor:pointer;&:hover{background:#bbb;border-color:#888;}']);
+
+var mixin = (0, _styledComponents.css)(['background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
+
+var App = function (_Component) {
+  _inherits(App, _Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      isPlaying: false
+    };
+    _this.togglePlay = _this.togglePlay.bind(_this);
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'togglePlay',
+    value: function togglePlay() {
+      this.setState(function (prevState) {
+        return {
+          isPlaying: !prevState.isPlaying
+        };
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        OuterWrapper,
+        null,
+        _react2.default.createElement(
+          StyledButton,
+          { onClick: this.togglePlay },
+          this.state.isPlaying ? 'Pause' : 'Play'
+        ),
+        _react2.default.createElement(
+          Wrapper,
+          null,
+          _react2.default.createElement(
+            _deck2.default,
+            null,
+            _react2.default.createElement(
+              _deck.Plugins,
+              null,
+              _react2.default.createElement(_2.default, { delay: 3, isPlaying: this.state.isPlaying })
+            ),
+            [].concat(_toConsumableArray(new Array(60))).map(function (x, i) {
+              return _react2.default.createElement(
+                _slide2.default,
+                {
+                  key: i,
+                  background: 'hsl(' + 20 * i + ', 50%, 50%)',
+                  mixin: mixin },
+                'Slide ',
+                i + 1
+              );
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react.Component);
 
 /***/ }),
 
@@ -377,14 +357,13 @@ var Autoplay = function (_Component) {
 }(_react.Component);
 
 exports.default = Autoplay;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 105:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nexports.default = function () {\n  return _react2.default.createElement(App, null);\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar OuterWrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__OuterWrapper'\n})(['padding-top:3rem;']);\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;overflow:visible;']);\n\nvar StyledButton = _styledComponents2.default.button.withConfig({\n  displayName: 'demo__StyledButton'\n})(['box-sizing:border-box;position:absolute;top:0;left:0;margin:0.5rem;padding:0.25rem 0.5rem;height:2rem;font-size:1rem;display:flex;align-items:center;align-content:center;justify-content:center;background:#ddd;color:#111;border:1px solid #aaa;border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,0.3);cursor:pointer;&:hover{background:#bbb;border-color:#888;}']);\n\nvar mixin = (0, _styledComponents.css)(['background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n\nvar App = function (_Component) {\n  _inherits(App, _Component);\n\n  function App(props) {\n    _classCallCheck(this, App);\n\n    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));\n\n    _this.state = {\n      isPlaying: false\n    };\n    _this.togglePlay = _this.togglePlay.bind(_this);\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: 'togglePlay',\n    value: function togglePlay() {\n      this.setState(function (prevState) {\n        return {\n          isPlaying: !prevState.isPlaying\n        };\n      });\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      return _react2.default.createElement(\n        OuterWrapper,\n        null,\n        _react2.default.createElement(\n          StyledButton,\n          { onClick: this.togglePlay },\n          this.state.isPlaying ? 'Pause' : 'Play'\n        ),\n        _react2.default.createElement(\n          Wrapper,\n          null,\n          _react2.default.createElement(\n            _deck2.default,\n            null,\n            _react2.default.createElement(\n              _deck.Plugins,\n              null,\n              _react2.default.createElement(_2.default, { delay: 3, isPlaying: this.state.isPlaying })\n            ),\n            [].concat(_toConsumableArray(new Array(60))).map(function (x, i) {\n              return _react2.default.createElement(\n                _slide2.default,\n                {\n                  key: i,\n                  background: 'hsl(' + 20 * i + ', 50%, 50%)',\n                  mixin: mixin },\n                'Slide ',\n                i + 1\n              );\n            })\n          )\n        )\n      );\n    }\n  }]);\n\n  return App;\n}(_react.Component);\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nexports.default = function () {\n  return _react2.default.createElement(App, null);\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar OuterWrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__OuterWrapper'\n})(['padding-top:3rem;']);\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;overflow:visible;']);\n\nvar StyledButton = _styledComponents2.default.button.withConfig({\n  displayName: 'demo__StyledButton'\n})(['box-sizing:border-box;position:absolute;top:0;left:0;margin:0.5rem;padding:0.25rem 0.5rem;height:2rem;font-size:1rem;display:flex;align-items:center;align-content:center;justify-content:center;background:#ddd;color:#111;border:1px solid #aaa;border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,0.3);cursor:pointer;&:hover{background:#bbb;border-color:#888;}']);\n\nvar mixin = (0, _styledComponents.css)(['background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n\nvar App = function (_Component) {\n  _inherits(App, _Component);\n\n  function App(props) {\n    _classCallCheck(this, App);\n\n    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));\n\n    _this.state = {\n      isPlaying: false\n    };\n    _this.togglePlay = _this.togglePlay.bind(_this);\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: 'togglePlay',\n    value: function togglePlay() {\n      this.setState(function (prevState) {\n        return {\n          isPlaying: !prevState.isPlaying\n        };\n      });\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      return _react2.default.createElement(\n        OuterWrapper,\n        null,\n        _react2.default.createElement(\n          StyledButton,\n          { onClick: this.togglePlay },\n          this.state.isPlaying ? 'Pause' : 'Play'\n        ),\n        _react2.default.createElement(\n          Wrapper,\n          null,\n          _react2.default.createElement(\n            _deck2.default,\n            null,\n            _react2.default.createElement(\n              _deck.Plugins,\n              null,\n              _react2.default.createElement(_2.default, { delay: 3, isPlaying: this.state.isPlaying })\n            ),\n            [].concat(_toConsumableArray(new Array(60))).map(function (x, i) {\n              return _react2.default.createElement(\n                _slide2.default,\n                {\n                  key: i,\n                  background: 'hsl(' + 20 * i + ', 50%, 50%)',\n                  mixin: mixin },\n                'Slide ',\n                i + 1\n              );\n            })\n          )\n        )\n      );\n    }\n  }]);\n\n  return App;\n}(_react.Component);"
 
 /***/ }),
 
@@ -398,85 +377,79 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 exports.default = function () {
-  return _react2.default.createElement(
-    Wrapper,
-    null,
-    _react2.default.createElement(
-      _deck2.default,
-      { mixin: mixin },
-      _react2.default.createElement(
-        _2.default,
-        null,
-        _react2.default.createElement(Header, null),
-        _react2.default.createElement(Footer, null)
-      ),
-      _react2.default.createElement(
-        _slide2.default,
-        null,
-        'Slide 1'
-      )
-    )
-  );
+  return _react2.default.createElement(App, null);
 };
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(15);
+var _styledComponents = __webpack_require__(14);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _deck = __webpack_require__(22);
-
-var _deck2 = _interopRequireDefault(_deck);
-
-var _slide = __webpack_require__(16);
+var _slide = __webpack_require__(9);
 
 var _slide2 = _interopRequireDefault(_slide);
 
-var _ = __webpack_require__(21);
+var _ = __webpack_require__(18);
 
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var StyledHeader = _styledComponents2.default.header.withConfig({
-  displayName: 'demo__StyledHeader'
-})(['position:absolute;top:0;left:0;right:0;height:3rem;font-size:2rem;line-height:3rem;background:black;color:white;']);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var StyledFooter = _styledComponents2.default.footer.withConfig({
-  displayName: 'demo__StyledFooter'
-})(['position:absolute;bottom:0;left:0;right:0;height:2rem;line-height:2rem;background:black;color:white;']);
-var Header = function Header() {
-  return _react2.default.createElement(
-    StyledHeader,
-    null,
-    'Dekk Elements'
-  );
-};
-var Footer = function Footer() {
-  return _react2.default.createElement(
-    StyledFooter,
-    null,
-    'Dekk Elements'
-  );
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'demo__Wrapper'
 })(['position:relative;height:10rem;']);
 
-var mixin = (0, _styledComponents.css)(['padding:3rem 0 2rem;']);
-//# sourceMappingURL=demo.js.map
+var mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
+
+var App = function (_Component) {
+  _inherits(App, _Component);
+
+  function App() {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _2.default,
+          null,
+          _react2.default.createElement(
+            _slide2.default,
+            { mixin: mixin },
+            'Hello Dekk!'
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react.Component);
 
 /***/ }),
 
 /***/ 107:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    _react2.default.createElement(\n      _deck2.default,\n      { mixin: mixin },\n      _react2.default.createElement(\n        _2.default,\n        null,\n        _react2.default.createElement(Header, null),\n        _react2.default.createElement(Footer, null)\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        null,\n        'Slide 1'\n      )\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar StyledHeader = _styledComponents2.default.header.withConfig({\n  displayName: 'demo__StyledHeader'\n})(['position:absolute;top:0;left:0;right:0;height:3rem;font-size:2rem;line-height:3rem;background:black;color:white;']);\n\nvar StyledFooter = _styledComponents2.default.footer.withConfig({\n  displayName: 'demo__StyledFooter'\n})(['position:absolute;bottom:0;left:0;right:0;height:2rem;line-height:2rem;background:black;color:white;']);\nvar Header = function Header() {\n  return _react2.default.createElement(\n    StyledHeader,\n    null,\n    'Dekk Elements'\n  );\n};\nvar Footer = function Footer() {\n  return _react2.default.createElement(\n    StyledFooter,\n    null,\n    'Dekk Elements'\n  );\n};\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;']);\n\nvar mixin = (0, _styledComponents.css)(['padding:3rem 0 2rem;']);\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nexports.default = function () {\n  return _react2.default.createElement(App, null);\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _slide = require('../../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;']);\n\nvar mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n\nvar App = function (_Component) {\n  _inherits(App, _Component);\n\n  function App() {\n    _classCallCheck(this, App);\n\n    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));\n  }\n\n  _createClass(App, [{\n    key: 'render',\n    value: function render() {\n      return _react2.default.createElement(\n        Wrapper,\n        null,\n        _react2.default.createElement(\n          _2.default,\n          null,\n          _react2.default.createElement(\n            _slide2.default,\n            { mixin: mixin },\n            'Hello Dekk!'\n          )\n        )\n      );\n    }\n  }]);\n\n  return App;\n}(_react.Component);"
 
 /***/ }),
 
@@ -496,16 +469,17 @@ exports.default = function () {
     null,
     _react2.default.createElement(
       _deck2.default,
-      null,
+      { mixin: dekkMixin },
       _react2.default.createElement(
         _2.default,
         null,
-        _react2.default.createElement(MyPlugin, null)
+        _react2.default.createElement(Header, null),
+        _react2.default.createElement(Footer, null)
       ),
       _react2.default.createElement(
         _slide2.default,
-        null,
-        'Look at the console'
+        { mixin: mixin },
+        'Slide 1'
       )
     )
   );
@@ -515,43 +489,247 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(15);
+var _styledComponents = __webpack_require__(14);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _deck = __webpack_require__(22);
+var _deck = __webpack_require__(18);
 
 var _deck2 = _interopRequireDefault(_deck);
 
-var _slide = __webpack_require__(16);
+var _slide = __webpack_require__(9);
 
 var _slide2 = _interopRequireDefault(_slide);
 
-var _ = __webpack_require__(20);
+var _ = __webpack_require__(24);
 
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MyPlugin = function MyPlugin() {
-  return null;
+var StyledHeader = _styledComponents2.default.header.withConfig({
+  displayName: 'demo__StyledHeader'
+})(['position:absolute;top:0;left:0;right:0;height:3rem;padding:0 1rem;font-size:2rem;line-height:3rem;background:#aa0;color:black;']);
+
+var StyledFooter = _styledComponents2.default.footer.withConfig({
+  displayName: 'demo__StyledFooter'
+})(['position:absolute;bottom:0;left:0;right:0;height:2rem;padding:0 1rem;line-height:2rem;background:#aa0;color:black;']);
+var Header = function Header() {
+  return _react2.default.createElement(
+    StyledHeader,
+    null,
+    'Dekk Elements'
+  );
+};
+var Footer = function Footer() {
+  return _react2.default.createElement(
+    StyledFooter,
+    null,
+    'Dekk Elements'
+  );
 };
 
 var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'demo__Wrapper'
-})(['position:relative;height:10rem;']);
-//# sourceMappingURL=demo.js.map
+})(['position:relative;height:20rem;']);
+
+var mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
+
+var dekkMixin = (0, _styledComponents.css)(['padding:3rem 0 2rem;']);
 
 /***/ }),
 
 /***/ 109:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    _react2.default.createElement(\n      _deck2.default,\n      null,\n      _react2.default.createElement(\n        _2.default,\n        null,\n        _react2.default.createElement(MyPlugin, null)\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        null,\n        'Look at the console'\n      )\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar MyPlugin = function MyPlugin() {\n  return null;\n};\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;']);\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    _react2.default.createElement(\n      _deck2.default,\n      { mixin: dekkMixin },\n      _react2.default.createElement(\n        _2.default,\n        null,\n        _react2.default.createElement(Header, null),\n        _react2.default.createElement(Footer, null)\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin },\n        'Slide 1'\n      )\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar StyledHeader = _styledComponents2.default.header.withConfig({\n  displayName: 'demo__StyledHeader'\n})(['position:absolute;top:0;left:0;right:0;height:3rem;padding:0 1rem;font-size:2rem;line-height:3rem;background:#aa0;color:black;']);\n\nvar StyledFooter = _styledComponents2.default.footer.withConfig({\n  displayName: 'demo__StyledFooter'\n})(['position:absolute;bottom:0;left:0;right:0;height:2rem;padding:0 1rem;line-height:2rem;background:#aa0;color:black;']);\nvar Header = function Header() {\n  return _react2.default.createElement(\n    StyledHeader,\n    null,\n    'Dekk Elements'\n  );\n};\nvar Footer = function Footer() {\n  return _react2.default.createElement(\n    StyledFooter,\n    null,\n    'Dekk Elements'\n  );\n};\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:20rem;']);\n\nvar mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n\nvar dekkMixin = (0, _styledComponents.css)(['padding:3rem 0 2rem;']);"
 
 /***/ }),
 
 /***/ 110:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(14);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _deck = __webpack_require__(18);
+
+var _deck2 = _interopRequireDefault(_deck);
+
+var _slide = __webpack_require__(9);
+
+var _slide2 = _interopRequireDefault(_slide);
+
+var _ = __webpack_require__(23);
+
+var _2 = _interopRequireDefault(_);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* global window */
+
+
+var MyPlugin = function (_Component) {
+  _inherits(MyPlugin, _Component);
+
+  function MyPlugin(props) {
+    _classCallCheck(this, MyPlugin);
+
+    var _this = _possibleConstructorReturn(this, (MyPlugin.__proto__ || Object.getPrototypeOf(MyPlugin)).call(this, props));
+
+    _this.counter = 0;
+    _this.loop = _this.loop.bind(_this);
+    return _this;
+  }
+
+  _createClass(MyPlugin, [{
+    key: 'loop',
+    value: function loop() {
+      var _this2 = this;
+
+      this.props.doSomething('Counter: ' + this.counter++);
+      this.props.toSlide(this.counter % 4);
+      setTimeout(function () {
+        window.requestAnimationFrame(_this2.loop);
+      }, 1000);
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.loop();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return null;
+    }
+  }]);
+
+  return MyPlugin;
+}(_react.Component);
+
+MyPlugin.propTypes = {
+  doSomething: _propTypes2.default.func,
+  toSlide: _propTypes2.default.func
+};
+
+MyPlugin.defaultProps = {
+  doSomething: function doSomething() {
+    return null;
+  },
+  toSlide: function toSlide() {
+    return null;
+  }
+};
+
+var Wrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'demo__Wrapper'
+})(['position:relative;height:10rem;']);
+
+var mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
+
+var Demo = function (_Component2) {
+  _inherits(Demo, _Component2);
+
+  function Demo(props) {
+    _classCallCheck(this, Demo);
+
+    var _this3 = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));
+
+    _this3.state = {
+      content: 'start'
+    };
+    _this3.handleSomething = _this3.handleSomething.bind(_this3);
+    _this3.handleRest = _this3.handleRest.bind(_this3);
+    return _this3;
+  }
+
+  _createClass(Demo, [{
+    key: 'handleSomething',
+    value: function handleSomething(content) {
+      this.setState({ content: content });
+    }
+  }, {
+    key: 'handleRest',
+    value: function handleRest() {
+      this.setState({
+        background: 'hsl(' + ~~(Math.random() * 360) + ', 50%, 50%)'
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _deck2.default,
+          null,
+          _react2.default.createElement(
+            _2.default,
+            null,
+            _react2.default.createElement(MyPlugin, { doSomething: this.handleSomething })
+          ),
+          [].concat(_toConsumableArray(new Array(4))).map(function (x, i) {
+            return _react2.default.createElement(
+              _slide2.default,
+              {
+                key: i,
+                mixin: mixin,
+                background: _this4.state.background,
+                onRest: _this4.handleRest },
+              'Slide ',
+              i + 1,
+              ': ',
+              _this4.state.content
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return Demo;
+}(_react.Component);
+
+exports.default = Demo;
+
+/***/ }),
+
+/***/ 111:
+/***/ (function(module, exports) {
+
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = require('prop-types');\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* global window */\n\n\nvar MyPlugin = function (_Component) {\n  _inherits(MyPlugin, _Component);\n\n  function MyPlugin(props) {\n    _classCallCheck(this, MyPlugin);\n\n    var _this = _possibleConstructorReturn(this, (MyPlugin.__proto__ || Object.getPrototypeOf(MyPlugin)).call(this, props));\n\n    _this.counter = 0;\n    _this.loop = _this.loop.bind(_this);\n    return _this;\n  }\n\n  _createClass(MyPlugin, [{\n    key: 'loop',\n    value: function loop() {\n      var _this2 = this;\n\n      this.props.doSomething('Counter: ' + this.counter++);\n      this.props.toSlide(this.counter % 4);\n      setTimeout(function () {\n        window.requestAnimationFrame(_this2.loop);\n      }, 1000);\n    }\n  }, {\n    key: 'componentDidMount',\n    value: function componentDidMount() {\n      this.loop();\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      return null;\n    }\n  }]);\n\n  return MyPlugin;\n}(_react.Component);\n\nMyPlugin.propTypes = {\n  doSomething: _propTypes2.default.func,\n  toSlide: _propTypes2.default.func\n};\n\nMyPlugin.defaultProps = {\n  doSomething: function doSomething() {\n    return null;\n  },\n  toSlide: function toSlide() {\n    return null;\n  }\n};\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;']);\n\nvar mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n\nvar Demo = function (_Component2) {\n  _inherits(Demo, _Component2);\n\n  function Demo(props) {\n    _classCallCheck(this, Demo);\n\n    var _this3 = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));\n\n    _this3.state = {\n      content: 'start'\n    };\n    _this3.handleSomething = _this3.handleSomething.bind(_this3);\n    _this3.handleRest = _this3.handleRest.bind(_this3);\n    return _this3;\n  }\n\n  _createClass(Demo, [{\n    key: 'handleSomething',\n    value: function handleSomething(content) {\n      this.setState({ content: content });\n    }\n  }, {\n    key: 'handleRest',\n    value: function handleRest() {\n      this.setState({\n        background: 'hsl(' + ~~(Math.random() * 360) + ', 50%, 50%)'\n      });\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var _this4 = this;\n\n      return _react2.default.createElement(\n        Wrapper,\n        null,\n        _react2.default.createElement(\n          _deck2.default,\n          null,\n          _react2.default.createElement(\n            _2.default,\n            null,\n            _react2.default.createElement(MyPlugin, { doSomething: this.handleSomething })\n          ),\n          [].concat(_toConsumableArray(new Array(4))).map(function (x, i) {\n            return _react2.default.createElement(\n              _slide2.default,\n              {\n                key: i,\n                mixin: mixin,\n                background: _this4.state.background,\n                onRest: _this4.handleRest },\n              'Slide ',\n              i + 1,\n              ': ',\n              _this4.state.content\n            );\n          })\n        )\n      );\n    }\n  }]);\n\n  return Demo;\n}(_react.Component);\n\nexports.default = Demo;"
+
+/***/ }),
+
+/***/ 112:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -575,18 +753,18 @@ exports.default = function () {
       ),
       _react2.default.createElement(
         _slide2.default,
-        { mixin: mixin, background: 'hsl(0, 50%, 50%)' },
-        'Press Arrow right'
+        { mixin: mixin },
+        'Press Arrow Right'
       ),
       _react2.default.createElement(
         _slide2.default,
-        { mixin: mixin, background: 'hsl(60, 50%, 50%)' },
-        'Press Arrow right or left'
+        { mixin: mixin },
+        'Press Arrow Left or Right'
       ),
       _react2.default.createElement(
         _slide2.default,
-        { mixin: mixin, background: 'hsl(120, 50%, 50%)' },
-        'Press Arrow left'
+        { mixin: mixin },
+        'Press Arrow Left'
       )
     )
   );
@@ -596,19 +774,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(111);
+var _styledComponents = __webpack_require__(113);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _deck = __webpack_require__(33);
+var _deck = __webpack_require__(22);
 
 var _deck2 = _interopRequireDefault(_deck);
 
-var _slide = __webpack_require__(16);
+var _slide = __webpack_require__(9);
 
 var _slide2 = _interopRequireDefault(_slide);
 
-var _ = __webpack_require__(113);
+var _ = __webpack_require__(114);
 
 var _2 = _interopRequireDefault(_);
 
@@ -618,12 +796,11 @@ var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'demo__Wrapper'
 })(['position:relative;height:10rem;']);
 
-var mixin = (0, _styledComponents.css)(['background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
-//# sourceMappingURL=demo.js.map
+var mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
 
 /***/ }),
 
-/***/ 113:
+/***/ 114:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -864,18 +1041,17 @@ var Paging = function (_Component) {
 }(_react.Component);
 
 exports.default = Paging;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 114:
-/***/ (function(module, exports) {
-
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    _react2.default.createElement(\n      _deck2.default,\n      null,\n      _react2.default.createElement(\n        _deck.Plugins,\n        null,\n        _react2.default.createElement(_2.default, null)\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin, background: 'hsl(0, 50%, 50%)' },\n        'Press Arrow right'\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin, background: 'hsl(60, 50%, 50%)' },\n        'Press Arrow right or left'\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin, background: 'hsl(120, 50%, 50%)' },\n        'Press Arrow left'\n      )\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;']);\n\nvar mixin = (0, _styledComponents.css)(['background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n//# sourceMappingURL=demo.js.map"
 
 /***/ }),
 
 /***/ 115:
+/***/ (function(module, exports) {
+
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    _react2.default.createElement(\n      _deck2.default,\n      null,\n      _react2.default.createElement(\n        _deck.Plugins,\n        null,\n        _react2.default.createElement(_2.default, null)\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin },\n        'Press Arrow Right'\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin },\n        'Press Arrow Left or Right'\n      ),\n      _react2.default.createElement(\n        _slide2.default,\n        { mixin: mixin },\n        'Press Arrow Left'\n      )\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:10rem;']);\n\nvar mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);"
+
+/***/ }),
+
+/***/ 116:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -922,7 +1098,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'demo__Wrapper'
 })(['--highlight-color:#00f;']);
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -969,14 +1144,13 @@ Bold.propTypes = {
 };Bold.displayName = 'Bold';
 
 exports.default = Bold;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 118:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    'Lorem ipsum ',\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'dolor'\n    ),\n    ' sit ',\n    _react2.default.createElement(\n      _2.default,\n      { highlight: true },\n      'amed'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['--highlight-color:#00f;']);\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    Wrapper,\n    null,\n    'Lorem ipsum ',\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'dolor'\n    ),\n    ' sit ',\n    _react2.default.createElement(\n      _2.default,\n      { highlight: true },\n      'amed'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['--highlight-color:#00f;']);"
 
 /***/ }),
 
@@ -1012,7 +1186,6 @@ var _ = __webpack_require__(120);
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -1056,14 +1229,13 @@ Center.propTypes = {
 };Center.displayName = 'Center';
 
 exports.default = Center;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 121:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'Centered text'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'Centered text'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"
 
 /***/ }),
 
@@ -1100,7 +1272,6 @@ var _2 = _interopRequireDefault(_);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var code = 'function hello(name) {\n  return `hello ${name}!`\n}';
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -1193,130 +1364,10 @@ RawCode.propTypes = {
 
 exports.colorSchemes = colorSchemes;
 exports.default = Code;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 16:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(85)
-
-
-/***/ }),
-
-/***/ 20:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * It allows adding plugins to Dekk.
- * Plugins do not render anything.
- * Plugins usually use the Component lifecycle (componentWillMount etc.)
- * to their advantage.
- *
- * @public
- * @param {Object} props
- *   The properties
- * @param {(ReactElement|ReactElement[])} props.children
- *   One or more plugins
- * @example
- * import Deck, {Plugins} from '@dekk/deck'
- * import Url from '@dekk/url'
- * import Paging from '@dekk/paging'
- *
- * export default (
- *   <Deck>
- *     <Plugins>
- *       <Url/>
- *       <Paging/>
- *     </Plugins>
- *   </Deck>
- * )
- */
-var Plugins = function Plugins(props) {
-  return props.children;
-};
-
-/**
- * @private
- */
-Plugins.propTypes = {
-  children: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)])
-};
-
-exports.default = Plugins;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 21:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * It allows adding global/static elements to Dekk.
- * Elements render content and are usually pure functions or stateless
- * components.
- *
- * @public
- * @param {Object} props
- *   The properties
- * @param {(ReactElement|ReactElement[])} props.children
- *   One or more elements
- * @example
- * import Deck, {Elements} from '@dekk/deck'
- *
- * const Header = () => <header>Hello Dekk!</header>
- * export default (
- *   <Deck>
- *     <Elements>
- *       <Header/>
- *     </Elements>
- *   </Deck>
- * )
- */
-var Elements = function Elements(props) {
-  return props.children;
-};
-
-/**
- * @private
- */
-Elements.propTypes = {
-  children: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)])
-};
-
-exports.default = Elements;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 22:
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1343,27 +1394,27 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _mobxReact = __webpack_require__(66);
+var _mobxReact = __webpack_require__(64);
 
-var _utils = __webpack_require__(75);
+var _utils = __webpack_require__(73);
 
-var _store4 = __webpack_require__(79);
+var _store4 = __webpack_require__(77);
 
 var _store5 = _interopRequireDefault(_store4);
 
-var _wrapper = __webpack_require__(34);
+var _wrapper = __webpack_require__(35);
 
 var _wrapper2 = _interopRequireDefault(_wrapper);
 
-var _slidesWrapper = __webpack_require__(84);
+var _slidesWrapper = __webpack_require__(82);
 
 var _slidesWrapper2 = _interopRequireDefault(_slidesWrapper);
 
-var _plugins = __webpack_require__(20);
+var _plugins = __webpack_require__(23);
 
 var _plugins2 = _interopRequireDefault(_plugins);
 
-var _elements = __webpack_require__(21);
+var _elements = __webpack_require__(24);
 
 var _elements2 = _interopRequireDefault(_elements);
 
@@ -1707,19 +1758,18 @@ var Deck = (0, _mobxReact.observer)(_class = function (_Component) {
 }(_react.Component)) || _class;
 
 exports.default = Deck;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 33:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(64)
+module.exports = __webpack_require__(63)
 
 
 /***/ }),
 
-/***/ 34:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1733,7 +1783,116 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styledComponents = __webpack_require__(15);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * It allows adding plugins to Dekk.
+ * Plugins do not render anything.
+ * Plugins usually use the Component lifecycle (componentWillMount etc.)
+ * to their advantage.
+ *
+ * @public
+ * @param {Object} props
+ *   The properties
+ * @param {(ReactElement|ReactElement[])} props.children
+ *   One or more plugins
+ * @example
+ * import Deck, {Plugins} from '@dekk/deck'
+ * import Url from '@dekk/url'
+ * import Paging from '@dekk/paging'
+ *
+ * export default (
+ *   <Deck>
+ *     <Plugins>
+ *       <Url/>
+ *       <Paging/>
+ *     </Plugins>
+ *   </Deck>
+ * )
+ */
+var Plugins = function Plugins(props) {
+  return props.children;
+};
+
+/**
+ * @private
+ */
+Plugins.propTypes = {
+  children: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)])
+};
+
+exports.default = Plugins;
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * It allows adding global/static elements to Dekk.
+ * Elements render content and are usually pure functions or stateless
+ * components.
+ *
+ * @public
+ * @param {Object} props
+ *   The properties
+ * @param {(ReactElement|ReactElement[])} props.children
+ *   One or more elements
+ * @example
+ * import Deck, {Elements} from '@dekk/deck'
+ *
+ * const Header = () => <header>Hello Dekk!</header>
+ * export default (
+ *   <Deck>
+ *     <Elements>
+ *       <Header/>
+ *     </Elements>
+ *   </Deck>
+ * )
+ */
+var Elements = function Elements(props) {
+  return props.children;
+};
+
+/**
+ * @private
+ */
+Elements.propTypes = {
+  children: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)])
+};
+
+exports.default = Elements;
+
+/***/ }),
+
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(14);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
@@ -1802,14 +1961,13 @@ Wrapper.propTypes = {
 };
 
 exports.default = Wrapper;
-//# sourceMappingURL=wrapper.js.map
 
 /***/ }),
 
 /***/ 413:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      { style: _.colorSchemes.docco, languange: 'javascript' },\n      code\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar code = 'function hello(name) {\\n  return `hello ${name}!`\\n}';\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      { style: _.colorSchemes.docco, languange: 'javascript' },\n      code\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar code = 'function hello(name) {\\n  return `hello ${name}!`\\n}';"
 
 /***/ }),
 
@@ -1846,7 +2004,6 @@ var _ = __webpack_require__(415);
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -1931,14 +2088,13 @@ Quote.propTypes = {
 };Quote.displayName = 'Quote';
 
 exports.default = Quote;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 416:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      {\n        cite: 'https://github.com/sinnerschrader/dekk',\n        author: 'Gregor Adams' },\n      'Presentations done right'\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      {\n        cite: 'https://github.com/sinnerschrader/dekk',\n        author: 'Gregor Adams' },\n      'Presentations done right'\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"
 
 /***/ }),
 
@@ -1974,7 +2130,6 @@ var _ = __webpack_require__(418);
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -2018,14 +2173,13 @@ Subtitle.propTypes = {
 };Subtitle.displayName = 'Subtitle';
 
 exports.default = Subtitle;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 419:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'This is a headline'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'This is a headline'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"
 
 /***/ }),
 
@@ -2060,7 +2214,6 @@ var _ = __webpack_require__(421);
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -2103,14 +2256,13 @@ Text.propTypes = {
 };Text.displayName = 'Text';
 
 exports.default = Text;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 422:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'Lorem ipsum dolor sit amed.'\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'Lorem ipsum dolor sit amed.'\n    )\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"
 
 /***/ }),
 
@@ -2146,7 +2298,6 @@ var _ = __webpack_require__(424);
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -2190,14 +2341,13 @@ Title.propTypes = {
 };Title.displayName = 'Title';
 
 exports.default = Title;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 425:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'This is a headline'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'This is a headline'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"
 
 /***/ }),
 
@@ -2241,7 +2391,6 @@ var _ = __webpack_require__(427);
 var _2 = _interopRequireDefault(_);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
@@ -2285,18 +2434,17 @@ Uppercase.propTypes = {
 };Uppercase.displayName = 'Uppercase';
 
 exports.default = Uppercase;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
 /***/ 428:
 /***/ (function(module, exports) {
 
-module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    'Lorem ipsum ',\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'dolor'\n    ),\n    ' sit',\n    ' ',\n    _react2.default.createElement(\n      _2.default,\n      { highlight: true },\n      'amed'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n//# sourceMappingURL=demo.js.map"
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    'Lorem ipsum ',\n    _react2.default.createElement(\n      _2.default,\n      null,\n      'dolor'\n    ),\n    ' sit',\n    ' ',\n    _react2.default.createElement(\n      _2.default,\n      { highlight: true },\n      'amed'\n    ),\n    '.'\n  );\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _ = require('./');\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"
 
 /***/ }),
 
-/***/ 44:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2306,7 +2454,66 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _styledComponents = __webpack_require__(12);
+var _cube = __webpack_require__(94);
+
+Object.defineProperty(exports, 'cube', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_cube).default;
+  }
+});
+
+var _fade = __webpack_require__(46);
+
+Object.defineProperty(exports, 'fade', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_fade).default;
+  }
+});
+
+var _flip = __webpack_require__(95);
+
+Object.defineProperty(exports, 'flip', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_flip).default;
+  }
+});
+
+var _slide = __webpack_require__(47);
+
+Object.defineProperty(exports, 'slide', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_slide).default;
+  }
+});
+
+var _fadeSlide = __webpack_require__(96);
+
+Object.defineProperty(exports, 'fadeSlide', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_fadeSlide).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _styledComponents = __webpack_require__(5);
 
 /**
  * A simple slide transition.
@@ -2323,11 +2530,10 @@ var fade = {
 };
 
 exports.default = fade;
-//# sourceMappingURL=fade.js.map
 
 /***/ }),
 
-/***/ 45:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2337,7 +2543,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _styledComponents = __webpack_require__(12);
+var _styledComponents = __webpack_require__(5);
 
 /**
  * A simple slide transition.
@@ -2360,23 +2566,26 @@ var slide = {
 };
 
 exports.default = slide;
-//# sourceMappingURL=slide.js.map
 
 /***/ }),
 
-/***/ 54:
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    module.exports['@dekk/autoplay/lib/demo.js'] = __webpack_require__(55);
+    module.exports['@dekk/animation/lib/demo.js'] = __webpack_require__(57);
+module.exports['@dekk/animation/lib/demo.js'].js = __webpack_require__(99)
+module.exports['@dekk/autoplay/lib/demo.js'] = __webpack_require__(100);
 module.exports['@dekk/autoplay/lib/demo.js'].js = __webpack_require__(105)
-module.exports['@dekk/deck/lib/elements/demo.js'] = __webpack_require__(106);
-module.exports['@dekk/deck/lib/elements/demo.js'].js = __webpack_require__(107)
-module.exports['@dekk/deck/lib/plugins/demo.js'] = __webpack_require__(108);
-module.exports['@dekk/deck/lib/plugins/demo.js'].js = __webpack_require__(109)
-module.exports['@dekk/paging/lib/demo.js'] = __webpack_require__(110);
-module.exports['@dekk/paging/lib/demo.js'].js = __webpack_require__(114)
-module.exports['@dekk/text/lib/bold/demo.js'] = __webpack_require__(115);
+module.exports['@dekk/deck/lib/deck/demo.js'] = __webpack_require__(106);
+module.exports['@dekk/deck/lib/deck/demo.js'].js = __webpack_require__(107)
+module.exports['@dekk/deck/lib/elements/demo.js'] = __webpack_require__(108);
+module.exports['@dekk/deck/lib/elements/demo.js'].js = __webpack_require__(109)
+module.exports['@dekk/deck/lib/plugins/demo.js'] = __webpack_require__(110);
+module.exports['@dekk/deck/lib/plugins/demo.js'].js = __webpack_require__(111)
+module.exports['@dekk/paging/lib/demo.js'] = __webpack_require__(112);
+module.exports['@dekk/paging/lib/demo.js'].js = __webpack_require__(115)
+module.exports['@dekk/text/lib/bold/demo.js'] = __webpack_require__(116);
 module.exports['@dekk/text/lib/bold/demo.js'].js = __webpack_require__(118)
 module.exports['@dekk/text/lib/center/demo.js'] = __webpack_require__(119);
 module.exports['@dekk/text/lib/center/demo.js'].js = __webpack_require__(121)
@@ -2396,7 +2605,7 @@ module.exports['@dekk/text/lib/uppercase/demo.js'].js = __webpack_require__(428)
 
 /***/ }),
 
-/***/ 55:
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2416,25 +2625,25 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(58);
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(5);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _deck = __webpack_require__(33);
+var _deck = __webpack_require__(22);
 
 var _deck2 = _interopRequireDefault(_deck);
 
-var _slide = __webpack_require__(16);
+var _slide = __webpack_require__(9);
 
 var _slide2 = _interopRequireDefault(_slide);
 
-var _ = __webpack_require__(104);
-
-var _2 = _interopRequireDefault(_);
+var _ = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2444,17 +2653,139 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var OuterWrapper = _styledComponents2.default.div.withConfig({
   displayName: 'demo__OuterWrapper'
-})(['padding-top:3rem;']);
+})(['']);
 
 var Wrapper = _styledComponents2.default.div.withConfig({
   displayName: 'demo__Wrapper'
-})(['position:relative;height:10rem;overflow:visible;']);
+})(['position:relative;height:30rem;overflow:visible;']);
+var ButtonWrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'demo__ButtonWrapper'
+})(['position:absolute;z-index:2;top:0;left:0;right:0;display:flex;flex-wrap:wrap;align-items:flex-start;align-content:flex-start;']);
+
+var dekkMixin = (0, _styledComponents.css)(['background:#000;']);
 
 var StyledButton = _styledComponents2.default.button.withConfig({
   displayName: 'demo__StyledButton'
-})(['box-sizing:border-box;position:absolute;top:0;left:0;margin:0.5rem;padding:0.25rem 0.5rem;height:2rem;font-size:1rem;display:flex;align-items:center;align-content:center;justify-content:center;background:#ddd;color:#111;border:1px solid #aaa;border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,0.3);cursor:pointer;&:hover{background:#bbb;border-color:#888;}']);
+})(['box-sizing:border-box;margin:0.5rem 0.25rem;padding:0.25rem 0.5rem;height:2rem;font-size:1rem;display:inline-flex;align-items:center;align-content:center;justify-content:center;background:#ddd;color:#111;border:1px solid #aaa;border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,0.3);cursor:pointer;&:hover{background:#bbb;border-color:#888;}']);
 
-var mixin = (0, _styledComponents.css)(['background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
+var mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);
+
+var Animations = function Animations(props) {
+  var toNextSlide = function toNextSlide() {
+    if (props.slideIndex < props.slideCount - 1) {
+      props.toNextSlide();
+    } else if (props.slideIndex > 0) {
+      props.toPrevSlide();
+    }
+  };
+  var flipX = function flipX() {
+    props.onClick(_.flip.x);
+    toNextSlide();
+  };
+  var flipY = function flipY() {
+    props.onClick(_.flip.y);
+    toNextSlide();
+  };
+  var slideNormal = function slideNormal() {
+    props.onClick(_.slide.normal);
+    toNextSlide();
+  };
+  var slideReverse = function slideReverse() {
+    props.onClick(_.slide.reverse);
+    toNextSlide();
+  };
+  var cubeSlideX = function cubeSlideX() {
+    props.onClick(_.cube.slideX);
+    toNextSlide();
+  };
+  var cubeSlideY = function cubeSlideY() {
+    props.onClick(_.cube.slideY);
+    toNextSlide();
+  };
+  var cubeSlideXInvert = function cubeSlideXInvert() {
+    props.onClick(_.cube.slideInvertX);
+    toNextSlide();
+  };
+  var cubeSlideYInvert = function cubeSlideYInvert() {
+    props.onClick(_.cube.slideInvertY);
+    toNextSlide();
+  };
+  var fadeIn = function fadeIn() {
+    props.onClick(_.fade.in);
+    toNextSlide();
+  };
+  return _react2.default.createElement(
+    ButtonWrapper,
+    null,
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: flipX },
+      'Flip x'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: flipY },
+      'Flip y'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: slideNormal },
+      'Slide normal'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: slideReverse },
+      'Slide reverse'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: cubeSlideX },
+      'Cube Slide x'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: cubeSlideY },
+      'Cube Slide y'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: cubeSlideXInvert },
+      'Cube Slide x concave'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: cubeSlideYInvert },
+      'Cube Slide y concave'
+    ),
+    _react2.default.createElement(
+      StyledButton,
+      { onClick: fadeIn },
+      'FadeIn'
+    )
+  );
+};
+
+Animations.propTypes = {
+  onClick: _propTypes2.default.func,
+  toNextSlide: _propTypes2.default.func,
+  toPrevSlide: _propTypes2.default.func,
+  slideCount: _propTypes2.default.number,
+  slideIndex: _propTypes2.default.number
+};
+
+Animations.defaultProps = {
+  onClick: function onClick() {
+    return null;
+  },
+  toNextSlide: function toNextSlide() {
+    return null;
+  },
+  toPrevSlide: function toPrevSlide() {
+    return null;
+  },
+  slideCount: 0,
+  slideIndex: 0
+};
 
 var App = function (_Component) {
   _inherits(App, _Component);
@@ -2464,21 +2795,15 @@ var App = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-    _this.state = {
-      isPlaying: false
-    };
-    _this.togglePlay = _this.togglePlay.bind(_this);
+    _this.state = {};
+    _this.handleClick = _this.handleClick.bind(_this);
     return _this;
   }
 
   _createClass(App, [{
-    key: 'togglePlay',
-    value: function togglePlay() {
-      this.setState(function (prevState) {
-        return {
-          isPlaying: !prevState.isPlaying
-        };
-      });
+    key: 'handleClick',
+    value: function handleClick(animation) {
+      this.setState({ animation: animation });
     }
   }, {
     key: 'render',
@@ -2487,32 +2812,32 @@ var App = function (_Component) {
         OuterWrapper,
         null,
         _react2.default.createElement(
-          StyledButton,
-          { onClick: this.togglePlay },
-          this.state.isPlaying ? 'Pause' : 'Play'
-        ),
-        _react2.default.createElement(
           Wrapper,
           null,
           _react2.default.createElement(
             _deck2.default,
-            null,
+            { mixin: dekkMixin },
             _react2.default.createElement(
               _deck.Plugins,
               null,
-              _react2.default.createElement(_2.default, { delay: 3, isPlaying: this.state.isPlaying })
+              _react2.default.createElement(Animations, { onClick: this.handleClick })
             ),
-            [].concat(_toConsumableArray(new Array(60))).map(function (x, i) {
-              return _react2.default.createElement(
-                _slide2.default,
-                {
-                  key: i,
-                  background: 'hsl(' + 20 * i + ', 50%, 50%)',
-                  mixin: mixin },
-                'Slide ',
-                i + 1
-              );
-            })
+            _react2.default.createElement(
+              _slide2.default,
+              {
+                mixin: mixin,
+                animationOut: this.state.animation,
+                background: 'hsl(300, 50%, 50%)' },
+              'Slide 1'
+            ),
+            _react2.default.createElement(
+              _slide2.default,
+              {
+                mixin: mixin,
+                animationIn: this.state.animation,
+                background: 'hsl(200, 50%, 50%)' },
+              'Slide 2'
+            )
           )
         )
       );
@@ -2521,11 +2846,10 @@ var App = function (_Component) {
 
   return App;
 }(_react.Component);
-//# sourceMappingURL=demo.js.map
 
 /***/ }),
 
-/***/ 64:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2535,7 +2859,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _plugins = __webpack_require__(20);
+var _plugins = __webpack_require__(23);
 
 Object.defineProperty(exports, 'Plugins', {
   enumerable: true,
@@ -2544,7 +2868,7 @@ Object.defineProperty(exports, 'Plugins', {
   }
 });
 
-var _elements = __webpack_require__(21);
+var _elements = __webpack_require__(24);
 
 Object.defineProperty(exports, 'Elements', {
   enumerable: true,
@@ -2553,7 +2877,7 @@ Object.defineProperty(exports, 'Elements', {
   }
 });
 
-var _wrapper = __webpack_require__(34);
+var _wrapper = __webpack_require__(35);
 
 Object.defineProperty(exports, 'Wrapper', {
   enumerable: true,
@@ -2562,7 +2886,7 @@ Object.defineProperty(exports, 'Wrapper', {
   }
 });
 
-var _deck = __webpack_require__(22);
+var _deck = __webpack_require__(18);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -2572,19 +2896,18 @@ Object.defineProperty(exports, 'default', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 75:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(76)
+module.exports = __webpack_require__(74)
 
 
 /***/ }),
 
-/***/ 76:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2594,7 +2917,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _checks = __webpack_require__(77);
+var _checks = __webpack_require__(75);
 
 Object.keys(_checks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2606,7 +2929,7 @@ Object.keys(_checks).forEach(function (key) {
   });
 });
 
-var _range = __webpack_require__(78);
+var _range = __webpack_require__(76);
 
 Object.defineProperty(exports, 'range', {
   enumerable: true,
@@ -2616,11 +2939,10 @@ Object.defineProperty(exports, 'range', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 77:
+/***/ 75:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2640,11 +2962,10 @@ var isNumeric = function isNumeric(n) {
 };
 
 exports.isNumeric = isNumeric;
-//# sourceMappingURL=checks.js.map
 
 /***/ }),
 
-/***/ 78:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2662,19 +2983,18 @@ function range(n, max) {
 
   return n >= min && n <= max;
 }
-//# sourceMappingURL=range.js.map
 
 /***/ }),
 
-/***/ 79:
+/***/ 77:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(80)
+module.exports = __webpack_require__(78)
 
 
 /***/ }),
 
-/***/ 80:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2689,11 +3009,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
-var _v = __webpack_require__(81);
+var _v = __webpack_require__(79);
 
 var _v2 = _interopRequireDefault(_v);
 
-var _mobx = __webpack_require__(35);
+var _mobx = __webpack_require__(36);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2955,11 +3275,10 @@ var Store = (_class = function () {
   }
 })), _class);
 exports.default = Store;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 84:
+/***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2973,7 +3292,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styledComponents = __webpack_require__(15);
+var _styledComponents = __webpack_require__(14);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
@@ -3001,11 +3320,10 @@ SlidesWrapper.propTypes = {
 };
 
 exports.default = SlidesWrapper;
-//# sourceMappingURL=slides-wrapper.js.map
 
 /***/ }),
 
-/***/ 85:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3027,15 +3345,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styledComponents = __webpack_require__(86);
+var _styledComponents = __webpack_require__(84);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _reactMotion = __webpack_require__(88);
+var _reactMotion = __webpack_require__(85);
 
-var _animation = __webpack_require__(96);
+var _animation = __webpack_require__(93);
 
-var _speakerNotes = __webpack_require__(102);
+var _speakerNotes = __webpack_require__(97);
 
 var _speakerNotes2 = _interopRequireDefault(_speakerNotes);
 
@@ -3168,7 +3486,8 @@ var Slide = function (_Component) {
       var _props = this.props,
           isPrev = _props.isPrev,
           isNext = _props.isNext,
-          isCurrent = _props.isCurrent;
+          isCurrent = _props.isCurrent,
+          onRest = _props.onRest;
 
       var direction = function () {
         if (_this2.props.fromPrev) {
@@ -3199,9 +3518,14 @@ var Slide = function (_Component) {
       var springStyle = {
         time: (0, _reactMotion.spring)(isPrev || isNext ? 1 : 0, _extends({}, this.props.springSettings))
       };
+      var handleRest = function handleRest() {
+        if (typeof onRest === 'function' && isCurrent) {
+          onRest(_this2.props.slideIndex);
+        }
+      };
       return _react2.default.createElement(
         _reactMotion.Motion,
-        { style: springStyle },
+        { style: springStyle, onRest: handleRest },
         function (_ref) {
           var time = _ref.time;
 
@@ -3290,6 +3614,7 @@ var Slide = function (_Component) {
         present: _propTypes2.default.bool,
         fragmentOrder: _propTypes2.default.number,
         className: _propTypes2.default.string,
+        onRest: _propTypes2.default.func,
         children: _propTypes2.default.node.isRequired,
         springSettings: _propTypes2.default.shape({
           stiffness: _propTypes2.default.number,
@@ -3322,6 +3647,9 @@ var Slide = function (_Component) {
         fromNext: false,
         isPreview: false,
         present: false,
+        onRest: function onRest() {
+          return null;
+        },
         fragmentOrder: 0,
         className: '',
         springSettings: _reactMotion.presets.stiff,
@@ -3397,79 +3725,26 @@ var StyledSlide = (0, _styledComponents2.default)(SlideDirection).withConfig({
 });
 
 exports.default = Slide;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 96:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(97)
+module.exports = __webpack_require__(83)
 
 
 /***/ }),
 
-/***/ 97:
+/***/ 93:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+module.exports = __webpack_require__(45)
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _cube = __webpack_require__(98);
-
-Object.defineProperty(exports, 'cube', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_cube).default;
-  }
-});
-
-var _fade = __webpack_require__(44);
-
-Object.defineProperty(exports, 'fade', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_fade).default;
-  }
-});
-
-var _flip = __webpack_require__(100);
-
-Object.defineProperty(exports, 'flip', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_flip).default;
-  }
-});
-
-var _slide = __webpack_require__(45);
-
-Object.defineProperty(exports, 'slide', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_slide).default;
-  }
-});
-
-var _fadeSlide = __webpack_require__(101);
-
-Object.defineProperty(exports, 'fadeSlide', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_fadeSlide).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 98:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3479,7 +3754,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _styledComponents = __webpack_require__(12);
+var _styledComponents = __webpack_require__(5);
 
 /**
  * A sliding fade transition.
@@ -3505,8 +3780,159 @@ var cube = {
 };
 
 exports.default = cube;
-//# sourceMappingURL=cube.js.map
+
+/***/ }),
+
+/***/ 95:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _styledComponents = __webpack_require__(5);
+
+/**
+ * A simple flip transition.
+ * @property {Array} x
+ *   Flips on the x axis
+ * @property {Array} y
+ *   Flips on the y axis
+ */
+var flip = {
+  x: (0, _styledComponents.css)(['backface-visibility:hidden;transform:perspective(200vw) rotate3d(0,1,0,calc(180deg * var(--direction,-1) * var(--time,1)));']),
+  y: (0, _styledComponents.css)(['backface-visibility:hidden;transform:perspective(200vh) rotate3d(1,0,0,calc(180deg * var(--direction,-1) * var(--time,1)));'])
+};
+
+exports.default = flip;
+
+/***/ }),
+
+/***/ 96:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _styledComponents = __webpack_require__(5);
+
+var _slide = __webpack_require__(47);
+
+var _slide2 = _interopRequireDefault(_slide);
+
+var _fade = __webpack_require__(46);
+
+var _fade2 = _interopRequireDefault(_fade);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * A sliding fade transition.
+ *
+ * @public
+ * @property {Array} in
+ *   Fades in
+ * @property {Array} in.normal
+ *   Transition from left to right
+ * @property {Array} in.reverse
+ *   Transition from right to left
+ * @property {Array} in.up
+ *   Transition upwards
+ * @property {Array} in.down
+ *   Transition downwards
+ * @property {Array} out
+ *   Fades out
+ * @property {Array} out.normal
+ *   Transition from left to right
+ * @property {Array} out.reverse
+ *   Transition from right to left
+ * @property {Array} out.up
+ *   Transition upwards
+ * @property {Array} out.down
+ *   Transition downwards
+ */
+var fadeSlide = {
+  in: {
+    normal: (0, _styledComponents.css)(['--direction:1;--regulator:0;', ';', ';'], _fade2.default.in, _slide2.default.normal),
+    reverse: (0, _styledComponents.css)(['--direction:1;--regulator:0;', ';', ';'], _fade2.default.in, _slide2.default.reverse),
+    up: (0, _styledComponents.css)(['', ';', ';'], _fade2.default.in, _slide2.default.up),
+    down: (0, _styledComponents.css)(['', ';', ';'], _fade2.default.in, _slide2.default.down)
+  },
+  out: {
+    normal: (0, _styledComponents.css)(['--direction:1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.normal),
+    reverse: (0, _styledComponents.css)(['--direction:1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.reverse),
+    up: (0, _styledComponents.css)(['--direction:-1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.up),
+    down: (0, _styledComponents.css)(['--direction:-1;--regulator:1;', ';', ';'], _fade2.default.out, _slide2.default.down)
+  }
+};
+
+exports.default = fadeSlide;
+
+/***/ }),
+
+/***/ 97:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(98)
+
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @public
+ * @param {Object} props
+ * @param {ReactElement} prosp.children
+ */
+var Notes = function Notes(_ref) {
+  var children = _ref.children;
+
+  return typeof children === 'string' ? children : _react.Children.toArray(children).map(function (child, i) {
+    return (0, _react.cloneElement)(child, { key: i });
+  });
+};
+
+/**
+ * @private
+ */
+Notes.propTypes = {
+  className: _propTypes2.default.string,
+  children: _propTypes2.default.node
+};
+
+exports.default = Notes;
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, exports) {
+
+module.exports = "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nexports.default = function () {\n  return _react2.default.createElement(App, null);\n};\n\nvar _react = require('react');\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = require('prop-types');\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _styledComponents = require('styled-components');\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _deck = require('../../deck');\n\nvar _deck2 = _interopRequireDefault(_deck);\n\nvar _slide = require('../../slide');\n\nvar _slide2 = _interopRequireDefault(_slide);\n\nvar _ = require('./');\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar OuterWrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__OuterWrapper'\n})(['']);\n\nvar Wrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__Wrapper'\n})(['position:relative;height:30rem;overflow:visible;']);\nvar ButtonWrapper = _styledComponents2.default.div.withConfig({\n  displayName: 'demo__ButtonWrapper'\n})(['position:absolute;z-index:2;top:0;left:0;right:0;display:flex;flex-wrap:wrap;align-items:flex-start;align-content:flex-start;']);\n\nvar dekkMixin = (0, _styledComponents.css)(['background:#000;']);\n\nvar StyledButton = _styledComponents2.default.button.withConfig({\n  displayName: 'demo__StyledButton'\n})(['box-sizing:border-box;margin:0.5rem 0.25rem;padding:0.25rem 0.5rem;height:2rem;font-size:1rem;display:inline-flex;align-items:center;align-content:center;justify-content:center;background:#ddd;color:#111;border:1px solid #aaa;border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,0.3);cursor:pointer;&:hover{background:#bbb;border-color:#888;}']);\n\nvar mixin = (0, _styledComponents.css)(['--slide-background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font-size:3em;']);\n\nvar Animations = function Animations(props) {\n  var toNextSlide = function toNextSlide() {\n    if (props.slideIndex < props.slideCount - 1) {\n      props.toNextSlide();\n    } else if (props.slideIndex > 0) {\n      props.toPrevSlide();\n    }\n  };\n  var flipX = function flipX() {\n    props.onClick(_.flip.x);\n    toNextSlide();\n  };\n  var flipY = function flipY() {\n    props.onClick(_.flip.y);\n    toNextSlide();\n  };\n  var slideNormal = function slideNormal() {\n    props.onClick(_.slide.normal);\n    toNextSlide();\n  };\n  var slideReverse = function slideReverse() {\n    props.onClick(_.slide.reverse);\n    toNextSlide();\n  };\n  var cubeSlideX = function cubeSlideX() {\n    props.onClick(_.cube.slideX);\n    toNextSlide();\n  };\n  var cubeSlideY = function cubeSlideY() {\n    props.onClick(_.cube.slideY);\n    toNextSlide();\n  };\n  var cubeSlideXInvert = function cubeSlideXInvert() {\n    props.onClick(_.cube.slideInvertX);\n    toNextSlide();\n  };\n  var cubeSlideYInvert = function cubeSlideYInvert() {\n    props.onClick(_.cube.slideInvertY);\n    toNextSlide();\n  };\n  var fadeIn = function fadeIn() {\n    props.onClick(_.fade.in);\n    toNextSlide();\n  };\n  return _react2.default.createElement(\n    ButtonWrapper,\n    null,\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: flipX },\n      'Flip x'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: flipY },\n      'Flip y'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: slideNormal },\n      'Slide normal'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: slideReverse },\n      'Slide reverse'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: cubeSlideX },\n      'Cube Slide x'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: cubeSlideY },\n      'Cube Slide y'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: cubeSlideXInvert },\n      'Cube Slide x concave'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: cubeSlideYInvert },\n      'Cube Slide y concave'\n    ),\n    _react2.default.createElement(\n      StyledButton,\n      { onClick: fadeIn },\n      'FadeIn'\n    )\n  );\n};\n\nAnimations.propTypes = {\n  onClick: _propTypes2.default.func,\n  toNextSlide: _propTypes2.default.func,\n  toPrevSlide: _propTypes2.default.func,\n  slideCount: _propTypes2.default.number,\n  slideIndex: _propTypes2.default.number\n};\n\nAnimations.defaultProps = {\n  onClick: function onClick() {\n    return null;\n  },\n  toNextSlide: function toNextSlide() {\n    return null;\n  },\n  toPrevSlide: function toPrevSlide() {\n    return null;\n  },\n  slideCount: 0,\n  slideIndex: 0\n};\n\nvar App = function (_Component) {\n  _inherits(App, _Component);\n\n  function App(props) {\n    _classCallCheck(this, App);\n\n    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));\n\n    _this.state = {};\n    _this.handleClick = _this.handleClick.bind(_this);\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: 'handleClick',\n    value: function handleClick(animation) {\n      this.setState({ animation: animation });\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      return _react2.default.createElement(\n        OuterWrapper,\n        null,\n        _react2.default.createElement(\n          Wrapper,\n          null,\n          _react2.default.createElement(\n            _deck2.default,\n            { mixin: dekkMixin },\n            _react2.default.createElement(\n              _deck.Plugins,\n              null,\n              _react2.default.createElement(Animations, { onClick: this.handleClick })\n            ),\n            _react2.default.createElement(\n              _slide2.default,\n              {\n                mixin: mixin,\n                animationOut: this.state.animation,\n                background: 'hsl(300, 50%, 50%)' },\n              'Slide 1'\n            ),\n            _react2.default.createElement(\n              _slide2.default,\n              {\n                mixin: mixin,\n                animationIn: this.state.animation,\n                background: 'hsl(200, 50%, 50%)' },\n              'Slide 2'\n            )\n          )\n        )\n      );\n    }\n  }]);\n\n  return App;\n}(_react.Component);"
 
 /***/ })
 
-},[54]);
+},[56]);
