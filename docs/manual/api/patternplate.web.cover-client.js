@@ -1,4 +1,4 @@
-window["patternplate-demo"] =
+window["patternplate-cover-client"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -61,61 +61,25 @@ window["patternplate-demo"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 430);
+/******/ 	return __webpack_require__(__webpack_require__.s = 447);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 430:
+/***/ 447:
 /***/ (function(module, exports) {
 
 /* eslint-env browser */
 /* eslint-disable no-var */
 function main() {
-  var components = window['patternplate-components'];
-  var errors = [];
-  if (!components) {
-    errors.push(new Error('No patternplate components found. There might be errors during bundling.'))
-  }
-  if (errors.length > 0) {
-    errors.forEach(err => console.error(err));
-    return;
-  }
+  var mount = window['patternplate-mount'];
+  var cover = window['patternplate-cover'];
 
-  var component = getComponent(components, getData());
-  component.element = component.element || document.querySelector('[data-patternplate-mount]');
-  var mount = typeof component.mount === "function" ? component.mount : window["patternplate-mount"]
-
-  mount(component);
+  cover.element = cover.element || document.querySelector('[data-patternplate-mount]');
+  mount(cover);
 }
 
 main();
-
-function getData() {
-  var vault = document.querySelector('[data-patternplate-vault]');
-  if (!vault) {
-    return {};
-  }
-  var encodedJson = vault.textContent;
-  if (!encodedJson) {
-    return {};
-  }
-  var json = decodeURIComponent(encodedJson);
-  if (!json) {
-    return {};
-  }
-  return JSON.parse(json);
-}
-
-function getComponent(components, data) {
-  const top = components[data.artifact];
-
-  if (top[data.source]) {
-    return top[data.source];
-  }
-
-  return top;
-}
 
 
 /***/ })
