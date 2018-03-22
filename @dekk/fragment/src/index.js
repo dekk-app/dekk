@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
+import {springSettings} from '@dekk/animation'
 
 import StyledFragment from './fragment'
 
@@ -53,10 +54,7 @@ export default class Fragment extends Component {
       fit: false,
       root: false,
       plain: false,
-      springSettings: {
-        stiffness: 100,
-        damping: 20
-      }
+      springSettings: springSettings.noWobble
     }
   }
 

@@ -18,6 +18,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
+    "@dekk/animation": "^1.2.3",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-motion": "^0.5.2",
