@@ -285,13 +285,15 @@ export const FitFragment = props => <Fragment {...props} fit />
 export const Sequence = props => {
   const nextOrder =
     props.nextOrder < props.order ? props.order : props.nextOrder
-  const index = nextOrder - props.order - (props.time ? 1 : 0)
+  const index = nextOrder - props.order + 1
   return (
     <Fragment {...props} order={nextOrder} plain>
       {(fragmentTime, isActive) => {
-        const time = props.time || fragmentTime
-        const timeline = Math.max(0, index + 1 - time)
-        return isActive && nextOrder < props.order + props.steps - 1 ? (
+        const _last = nextOrder >= props.order + props.steps - 1
+        const {time = fragmentTime} = props
+        const timeline =
+          Math.max(0, index - 1 - time) + (_last ? 1 - fragmentTime : 0)
+        return isActive && !_last ? (
           <Sequence
             {...props}
             nextOrder={nextOrder + 1}
@@ -300,8 +302,8 @@ export const Sequence = props => {
           />
         ) : (
           props.children(
-            Math.ceil(timeline),
-            props.time || fragmentTime,
+            Math.ceil(timeline - 1),
+            time + (Math.ceil(timeline) === props.steps ? fragmentTime : 0),
             timeline
           )
         )
