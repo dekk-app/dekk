@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/sinnerschrader/dekk/compare/v1.2.2...v1.2.3) (2018-03-22)
+
+
+### Bug Fixes
+
+* **fragment:** fix relation of time, timeline and index ([c1de8c7](https://github.com/sinnerschrader/dekk/commit/c1de8c7))
+
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/sinnerschrader/dekk/compare/v1.2.1...v1.2.2) (2018-03-21)
 
