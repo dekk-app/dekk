@@ -64,7 +64,7 @@
     "babel-preset-stage-2": "6.24.1",
     "cross-env": "5.1.4",
     "documentation": "6.1.0",
-    "eslint": "4.19.0",
+    "eslint": "4.19.1",
     "eslint-config-xo-react": "0.16.0",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.7.0",
