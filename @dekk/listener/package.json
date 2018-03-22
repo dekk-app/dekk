@@ -1,6 +1,6 @@
 {
   "name": "@dekk/listener",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,7 +18,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/utils": "^1.2.3",
+    "@dekk/utils": "^1.3.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0"
   },

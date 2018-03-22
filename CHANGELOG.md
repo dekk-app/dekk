@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/sinnerschrader/dekk/compare/v1.2.3...v1.3.0) (2018-03-22)
+
+
+### Bug Fixes
+
+* **fragment:** fixes animation speed ([7f73838](https://github.com/sinnerschrader/dekk/commit/7f73838))
+* **slide:** fixes animation speed ([48158eb](https://github.com/sinnerschrader/dekk/commit/48158eb))
+
+
+### Features
+
+* **animation:** provide spring presets ([c302c4c](https://github.com/sinnerschrader/dekk/commit/c302c4c))
+
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/sinnerschrader/dekk/compare/v1.2.2...v1.2.3) (2018-03-22)
 
