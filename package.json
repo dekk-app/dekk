@@ -49,7 +49,7 @@
   "devDependencies": {
     "@commitlint/cli": "6.1.3",
     "@commitlint/config-conventional": "6.1.3",
-    "@patternplate/cli": "2.0.0-87",
+    "@patternplate/cli": "2.0.0-88",
     "@patternplate/render-styled-components": "2.0.0-87",
     "@patternplate/widgets": "2.0.0-87",
     "babel-cli": "6.26.0",
