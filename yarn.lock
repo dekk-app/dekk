@@ -370,20 +370,26 @@
   dependencies:
     lodash "^4.17.5"
 
-"@patternplate/render-react@^2.0.0-87":
-  version "2.0.0-87"
-  resolved "https://registry.yarnpkg.com/@patternplate/render-react/-/render-react-2.0.0-87.tgz#ca2ed4bc65a6557c1c0541a37e165fa5bda6c689"
+"@patternplate/render-default@^2.0.0-88":
+  version "2.0.0-88"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-default/-/render-default-2.0.0-88.tgz#c7dbe49a53dee2c97f027463da7ac1d971d0aca2"
   dependencies:
-    "@patternplate/render-default" "^2.0.0-87"
+    lodash "^4.17.5"
+
+"@patternplate/render-react@^2.0.0-88":
+  version "2.0.0-88"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-react/-/render-react-2.0.0-88.tgz#7e8dcf32fdde082c60e6bdd80be59d5f6998e348"
+  dependencies:
+    "@patternplate/render-default" "^2.0.0-88"
     lodash "^4.17.5"
     react "^16.2.0"
     react-dom "^16.2.0"
 
-"@patternplate/render-styled-components@2.0.0-87":
-  version "2.0.0-87"
-  resolved "https://registry.yarnpkg.com/@patternplate/render-styled-components/-/render-styled-components-2.0.0-87.tgz#8d30d7d1053b58046669cc1c621cb8b79d61e066"
+"@patternplate/render-styled-components@2.0.0-88":
+  version "2.0.0-88"
+  resolved "https://registry.yarnpkg.com/@patternplate/render-styled-components/-/render-styled-components-2.0.0-88.tgz#8f2bd9abb452a228a5b28e68a141ec41f59a3cff"
   dependencies:
-    "@patternplate/render-react" "^2.0.0-87"
+    "@patternplate/render-react" "^2.0.0-88"
     lodash "^4.17.5"
     react "^16.2.0"
     react-dom "^16.2.0"
