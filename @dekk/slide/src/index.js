@@ -2,7 +2,7 @@ import React, {Component, Children} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Motion, spring} from 'react-motion'
-import {slide, springSettings} from '@dekk/animation'
+import {slide} from '@dekk/animation'
 import Notes from '@dekk/speaker-notes'
 
 /**
