@@ -25,9 +25,10 @@ export default layouts
  * @private
  */
 export const baseStyles = css`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 2rem;
+  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-family, var(--default-font-family));
+  font-size: var(--font-size, 2rem);
 `
 
 /**
@@ -53,7 +54,8 @@ vertical.base = css`
  * @private
  */
 vertical.start = css`
-  ${vertical.base} justify-content: flex-start;
+  ${vertical.base};
+  justify-content: flex-start;
 `
 
 /**
@@ -61,7 +63,8 @@ vertical.start = css`
  * @private
  */
 vertical.end = css`
-  ${vertical.base} justify-content: flex-end;
+  ${vertical.base};
+  justify-content: flex-end;
 `
 
 /**
@@ -69,7 +72,8 @@ vertical.end = css`
  * @private
  */
 vertical.center = css`
-  ${vertical.base} justify-content: center;
+  ${vertical.base};
+  justify-content: center;
 `
 
 /**
