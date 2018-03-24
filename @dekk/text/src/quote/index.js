@@ -25,7 +25,9 @@ const BlockQuote = styled.blockquote`
  * @private
  */
 const Figure = styled.figure`
-  margin: 0;
+  margin: 0.5em;
+  padding: 0.5em 0.5em 0.5em 1em;
+  border-left: 0.5em solid var(--quote-border-color, currentColor);
 `
 
 /**
