@@ -7,6 +7,10 @@ import styled from 'styled-components'
 const Subtitle = styled.h2`
   margin: 0;
   font-size: var(--subtitle-font-size, 2em);
+  font-family: var(
+    --subtitle-font-fammily,
+    var(--title-font-family, var(--font-family, var(--default-font-family)))
+  );
   text-align: center;
 `
 
