@@ -93,13 +93,13 @@ class Slide extends Component {
       present: false,
       onRest: () => null,
       fragmentOrder: 0,
-      className: '',
-      springSettings: springSettings.noWobble,
-      animation: '',
-      animationIn: '',
-      animationOut: '',
-      mixin: '',
-      background: '',
+      className: undefined,
+      springSettings: undefined,
+      animation: undefined,
+      animationIn: undefined,
+      animationOut: undefined,
+      mixin: undefined,
+      background: undefined,
       slideIndex: -1
     }
   }
