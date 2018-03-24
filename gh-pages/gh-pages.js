@@ -8,7 +8,7 @@ import Deck, {Slide, Elements} from '@dekk/dekk'
 import Fragment, {Sequence} from '@dekk/fragment'
 import Notes from '@dekk/speaker-notes'
 import {FitImage} from '@dekk/image'
-import Text, {Title, Subtitle} from '@dekk/text'
+import Text, {Title, Subtitle, Bold} from '@dekk/text'
 import {fadeSlide, fade, flip, cube} from '@dekk/animation'
 import {
   Main,
@@ -25,11 +25,6 @@ import greenImage from './assets/green.jpg'
 import blueImage from './assets/blue.jpg'
 
 import {red, green, blue, grey, black} from './design-system'
-
-const pubnubCreds = {
-  publishKey: 'pub-c-e516655b-9a34-4fd5-84b0-e722cfd38b9d',
-  subscribeKey: 'sub-c-d4bd97fa-1d38-11e8-84be-f641dd32cbde'
-}
 
 const StyledHeader = styled.header`
   background: var(--header-background);
@@ -76,6 +71,7 @@ const baseMixin = css`
   ${baseStyles};
   --slide-background: ${black.main};
   --slide-color: white;
+  --highlight-color: ${red.main};
 `
 
 const deckMixin = css`
@@ -176,7 +172,7 @@ highlight.underline = css`
 `
 
 const handleSeq = (fragementIndex, fragmentOrder) => {
-  console.log(fragementIndex, fragmentOrder)
+  //console.log(fragementIndex, fragmentOrder)
 }
 /**
  * A fragment example
@@ -187,21 +183,30 @@ const fragment = (
       <Title>Fragments</Title>
       <Text>
         A slide can be divided into different{' '}
-        <Fragment order={1} animation={highlight.red}>
-          fragments
+        <Fragment order={0} plain>
+          {(time, isActive) => {
+            if (isActive) {
+              return <Bold highlight>fragments</Bold>
+            } else {
+              return <span>fragments</span>
+            }
+          }}
         </Fragment>. Fragments are sorted by{' '}
         <Fragment order={2} animation={highlight.underline}>
           order
         </Fragment>, which allows multiple fragments to appear at the{' '}
         <Fragment order={3} animation={highlight.green}>
-          {(t, a) => `time: ${a ? t : '...'}`}
+          {(t, a) => `time: ${a ? ~~(t * 10000) / 10000 : '....'}`}
         </Fragment>.
       </Text>
-      <Sequence order={8} steps={5} onRest={handleSeq}>
+      <Sequence order={8} steps={3} onRest={handleSeq}>
         {(index, time, timeline) => {
+          console.log(index, time, timeline)
           return (
             <div>
-              <h4>{~~(timeline * 100) / 100}</h4>
+              <h4>Timeline: {~~(timeline * 10000) / 10000}</h4>
+              <h4>Time: {~~(time * 10000) / 10000}</h4>
+              <h4>Index: {index}</h4>
             </div>
           )
         }}
