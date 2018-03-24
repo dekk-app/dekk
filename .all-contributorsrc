@@ -1,0 +1,46 @@
+{
+  "projectName": "dekk",
+  "projectOwner": "sinnerschrader",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 48,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "pixelass",
+      "name": "Gregor Adams",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1148334?v=4",
+      "profile": "http://pixelass.com",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "infra",
+        "tutorial"
+      ]
+    },
+    {
+      "login": "marionebl",
+      "name": "Mario Nebl",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4248851?v=4",
+      "profile": "https://github.com/marionebl",
+      "contributions": [
+        "ideas",
+        "tool"
+      ]
+    },
+    {
+      "login": "TimPietrusky",
+      "name": "Tim Pietrusky",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/492378?v=4",
+      "profile": "http://timpietrusky.com",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
+    }
+  ]
+}

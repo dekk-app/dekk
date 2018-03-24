@@ -145,3 +145,15 @@ To develop Dekk a lot more than just those 4 packages were needed 😱
 
 
 © Copyright 2018 [Sinnerschrader](https://sinnerschrader.com)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars3.githubusercontent.com/u/1148334?v=4" width="48px;"/><br /><sub><b>Gregor Adams</b></sub>](http://pixelass.com)<br />[💻](https://github.com/sinnerschrader/dekk/commits?author=pixelass "Code") [📖](https://github.com/sinnerschrader/dekk/commits?author=pixelass "Documentation") [🤔](#ideas-pixelass "Ideas, Planning, & Feedback") [🚇](#infra-pixelass "Infrastructure (Hosting, Build-Tools, etc)") [✅](#tutorial-pixelass "Tutorials") | [<img src="https://avatars1.githubusercontent.com/u/4248851?v=4" width="48px;"/><br /><sub><b>Mario Nebl</b></sub>](https://github.com/marionebl)<br />[🤔](#ideas-marionebl "Ideas, Planning, & Feedback") [🔧](#tool-marionebl "Tools") | [<img src="https://avatars3.githubusercontent.com/u/492378?v=4" width="48px;"/><br /><sub><b>Tim Pietrusky</b></sub>](http://timpietrusky.com)<br />[🐛](https://github.com/sinnerschrader/dekk/issues?q=author%3ATimPietrusky "Bug reports") [🤔](#ideas-TimPietrusky "Ideas, Planning, & Feedback") |
+| :---: | :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
