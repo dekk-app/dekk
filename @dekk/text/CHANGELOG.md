@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/sinnerschrader/dekk/compare/v1.3.0...v1.4.0) (2018-03-24)
+
+
+### Bug Fixes
+
+* **text:** add styling to blockquote ([c4735f4](https://github.com/sinnerschrader/dekk/commit/c4735f4))
+
+
+### Features
+
+* **text:** allow setting font families on titles ([4020d09](https://github.com/sinnerschrader/dekk/commit/4020d09))
+
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/sinnerschrader/dekk/compare/v1.2.3...v1.3.0) (2018-03-22)
 
