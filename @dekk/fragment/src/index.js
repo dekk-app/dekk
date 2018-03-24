@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Motion, spring} from 'react-motion'
-import {springSettings} from '@dekk/animation'
 
 import StyledFragment from './fragment'
 
@@ -47,14 +46,14 @@ export default class Fragment extends Component {
    */
   static get defaultProps() {
     return {
-      animation: '',
-      mixin: '',
+      animation: undefined,
+      mixin: undefined,
       onRest() {},
       displayAs: undefined,
       fit: false,
       root: false,
       plain: false,
-      springSettings: springSettings.noWobble
+      springSettings: undefined
     }
   }
 
