@@ -61,12 +61,12 @@ window["patternplate-cover-client"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 447);
+/******/ 	return __webpack_require__(__webpack_require__.s = 441);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 447:
+/***/ 441:
 /***/ (function(module, exports) {
 
 /* eslint-env browser */

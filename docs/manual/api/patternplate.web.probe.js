@@ -61,12 +61,12 @@ window["patternplate-probe"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 431);
+/******/ 	return __webpack_require__(__webpack_require__.s = 425);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 14:
+/***/ 10:
 /***/ (function(module, exports) {
 
 var g;
@@ -94,14 +94,14 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 431:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/* eslint-env browser */
 /* eslint-disable no-var */
-const querystring = __webpack_require__(432);
-const ARSON = __webpack_require__(65);
-const { WebSocketClient } = __webpack_require__(440);
+const querystring = __webpack_require__(426);
+const ARSON = __webpack_require__(60);
+const { WebSocketClient } = __webpack_require__(434);
 
 main();
 
@@ -109,7 +109,7 @@ function main() {
   const query = querystring.parse(global.location.search.slice(1));
 
   if (query.resize === "true") {
-    __webpack_require__(443).iframeResizerContentWindow;
+    __webpack_require__(437).iframeResizerContentWindow;
   }
 
   if (query.reload === "true") {
@@ -141,23 +141,23 @@ function main() {
   });
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 
-/***/ 432:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(433);
-exports.encode = exports.stringify = __webpack_require__(434);
+exports.decode = exports.parse = __webpack_require__(427);
+exports.encode = exports.stringify = __webpack_require__(428);
 
 
 /***/ }),
 
-/***/ 433:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -249,7 +249,7 @@ var isArray = Array.isArray || function (xs) {
 
 /***/ }),
 
-/***/ 434:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -342,7 +342,7 @@ var objectKeys = Object.keys || function (obj) {
 
 /***/ }),
 
-/***/ 435:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var toString = Object.prototype.toString;
@@ -351,7 +351,7 @@ var regExpTag = "[object RegExp]";
 var setTag = "[object Set]";
 var mapTag = "[object Map]";
 
-var arson = __webpack_require__(65);
+var arson = __webpack_require__(60);
 
 typeof Buffer === "function" &&
 typeof Buffer.isBuffer === "function" &&
@@ -447,11 +447,11 @@ arson.registerType("Map", {
   }
 });
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(436).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(430).Buffer))
 
 /***/ }),
 
-/***/ 436:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -465,9 +465,9 @@ arson.registerType("Map", {
 
 
 
-var base64 = __webpack_require__(437)
-var ieee754 = __webpack_require__(438)
-var isArray = __webpack_require__(439)
+var base64 = __webpack_require__(431)
+var ieee754 = __webpack_require__(432)
+var isArray = __webpack_require__(433)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -2245,11 +2245,11 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 
-/***/ 437:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2373,7 +2373,7 @@ function fromByteArray (uint8) {
 
 /***/ }),
 
-/***/ 438:
+/***/ 432:
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -2464,7 +2464,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 /***/ }),
 
-/***/ 439:
+/***/ 433:
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -2476,18 +2476,18 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 440:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(441);
+module.exports = __webpack_require__(435);
 
 
 /***/ }),
 
-/***/ 441:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {const _require = __webpack_require__(442),
+/* WEBPACK VAR INJECTION */(function(global) {const _require = __webpack_require__(436),
       EventEmitter = _require.EventEmitter;
 
 module.exports.WebSocketClient = class WebSocketClient {
@@ -2573,11 +2573,11 @@ module.exports.WebSocketClient = class WebSocketClient {
 
 };
 //# sourceMappingURL=index.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 
-/***/ 442:
+/***/ 436:
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -2886,28 +2886,28 @@ function isUndefined(arg) {
 
 /***/ }),
 
-/***/ 443:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 
-module.exports = __webpack_require__(444);
+module.exports = __webpack_require__(438);
 
 
 /***/ }),
 
-/***/ 444:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.iframeResizer = __webpack_require__(445);
-exports.iframeResizerContentWindow = __webpack_require__(446);
+exports.iframeResizer = __webpack_require__(439);
+exports.iframeResizerContentWindow = __webpack_require__(440);
 
 
 /***/ }),
 
-/***/ 445:
+/***/ 439:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -3969,7 +3969,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 446:
+/***/ 440:
 /***/ (function(module, exports) {
 
 /*
@@ -5086,7 +5086,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 65:
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
 var UNDEFINED_INDEX = -1;
@@ -5115,7 +5115,7 @@ exports.registerType = function (typeName, handlers) {
   return exports;
 };
 
-__webpack_require__(435);
+__webpack_require__(429);
 
 exports.encode = exports.stringify =
 function encode(value) {
