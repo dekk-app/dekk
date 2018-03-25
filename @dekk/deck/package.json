@@ -1,6 +1,6 @@
 {
   "name": "@dekk/deck",
-  "version": "1.5.0",
+  "version": "1.5.1-0",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,8 +18,8 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/store": "^1.5.0",
-    "@dekk/utils": "^1.5.0",
+    "@dekk/store": "^1.5.1-0",
+    "@dekk/utils": "^1.5.1-0",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
     "prop-types": "^15.6.1",
