@@ -209,7 +209,10 @@ export default class Fragment extends Component {
         ? this.props.onRest(store.fragmentIndex, store.fragmentOrder)
         : null
     return (
-      <Motion style={springStyle} onRest={handleRest}>
+      <Motion
+        defaultStyle={{t: isActive && isCurrent ? 0 : 1}}
+        style={springStyle}
+        onRest={handleRest}>
         {({t}) => {
           const time = isActive ? t : 1
           const style = {
@@ -220,7 +223,7 @@ export default class Fragment extends Component {
           ) : (
             <StyledFragment
               style={style}
-              isActive={isActive}
+              isActive={isActive && isCurrent}
               isFit={this.props.fit}
               displayAs={this.props.displayAs}
               mixin={this.props.mixin}
