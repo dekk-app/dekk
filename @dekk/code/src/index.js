@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import dedent from 'dedent'
 import {UnControlled as CodeMirror} from 'react-codemirror2'
 import {Sequence} from '@dekk/fragment'
 import styling from './styles'

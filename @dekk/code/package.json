@@ -20,7 +20,6 @@
   "dependencies": {
     "@dekk/fragment": "^1.5.0",
     "codemirror": "^5.36.0",
-    "dedent": "^0.7.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-codemirror2": "^4.2.1",
