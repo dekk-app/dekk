@@ -155,9 +155,9 @@ export default class Fragment extends Component {
   /**
    * @private
    */
-  renderChildren(time, isActive) {
+  renderChildren(time, isActive, order) {
     if (typeof this.props.children === 'function') {
-      return this.props.children(time, isActive)
+      return this.props.children(time, isActive, order)
     }
     return this.props.children
   }
@@ -198,7 +198,8 @@ export default class Fragment extends Component {
     const isZero = totalFragmentOrder === 0
     const isActivated =
       (fragmentOrder || storedFragmentOrder) >= totalFragmentOrder
-    const isActive = isPreview || isPrev || (isNext ? isZero : isActivated)
+    const isActive =
+      isPreview || (isCurrent && (isPrev || (isNext ? isZero : isActivated)))
     const springStyle = {
       t: spring(isActive ? 0 : 1, {
         ...this.props.springSettings
@@ -208,9 +209,10 @@ export default class Fragment extends Component {
       isActive
         ? this.props.onRest(store.fragmentIndex, store.fragmentOrder)
         : null
+
     return (
       <Motion
-        defaultStyle={{t: isActive && isCurrent ? 0 : 1}}
+        defaultStyle={{t: isActive ? 0 : 1}}
         style={springStyle}
         onRest={handleRest}>
         {({t}) => {
@@ -219,16 +221,16 @@ export default class Fragment extends Component {
             '--time': time
           }
           return this.props.plain ? (
-            this.renderChildren(time, isActive && isCurrent)
+            this.renderChildren(time, isActive, store.fragmentOrder)
           ) : (
             <StyledFragment
               style={style}
-              isActive={isActive && isCurrent}
+              isActive={isActive}
               isFit={this.props.fit}
               displayAs={this.props.displayAs}
               mixin={this.props.mixin}
               animation={this.props.animation}>
-              {this.renderChildren(time, isActive)}
+              {this.renderChildren(time, isActive, store.fragmentOrder)}
             </StyledFragment>
           )
         }}
@@ -283,33 +285,28 @@ export const FitFragment = props => <Fragment {...props} fit />
  *   A Fragment component as sequence
  */
 export const Sequence = props => {
-  const nextOrder =
-    props.nextOrder < props.order ? props.order : props.nextOrder
-  const index = nextOrder - props.order + 1
-  return (
-    <Fragment {...props} order={nextOrder} plain>
-      {(fragmentTime, isActive) => {
-        const _last = nextOrder >= props.order + props.steps - 1
-        const {time = fragmentTime} = props
-        const timeline =
-          Math.max(0, index - 1 - time) + (_last ? 1 - fragmentTime : 0)
-        return isActive && !_last ? (
-          <Sequence
-            {...props}
-            nextOrder={nextOrder + 1}
-            time={fragmentTime}
-            root={false}
-          />
-        ) : (
-          props.children(
-            Math.ceil(timeline - 1),
-            time + (Math.ceil(timeline) === props.steps ? fragmentTime : 0),
-            timeline
-          )
-        )
-      }}
-    </Fragment>
-  )
+  const {order, nextOrder = order + 1, time = 1, steps} = props
+  const index = Math.max(-1, nextOrder - order - 2)
+  const timeline = Math.max(0, index - time + 1)
+  if (nextOrder - order <= steps) {
+    return (
+      <Fragment {...props} order={nextOrder} plain>
+        {(fragmentTime, isActive) => {
+          if (isActive) {
+            return (
+              <Sequence
+                {...props}
+                nextOrder={nextOrder + 1}
+                time={fragmentTime}
+              />
+            )
+          }
+          return props.children(index, time, timeline)
+        }}
+      </Fragment>
+    )
+  }
+  return props.children(index, time, timeline)
 }
 
 /**
@@ -318,8 +315,8 @@ export const Sequence = props => {
 Sequence.defaultProps = {
   children() {},
   onRest() {},
-  time: 1,
-  nextOrder: 0,
+  time: undefined,
+  nextOrder: undefined,
   order: 0,
   steps: 2
 }
