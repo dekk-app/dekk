@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/sinnerschrader/dekk/compare/v1.4.0...v1.5.0) (2018-03-25)
+
+
+### Bug Fixes
+
+* **speaker-deck:** controls were hidden on smaller viewports ([2099ff8](https://github.com/sinnerschrader/dekk/commit/2099ff8))
+
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/sinnerschrader/dekk/compare/v1.3.0...v1.4.0) (2018-03-24)
 

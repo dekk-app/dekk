@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/sinnerschrader/dekk/compare/v1.4.0...v1.5.0) (2018-03-25)
+
+
+### Bug Fixes
+
+* **fragment:** fix inital state ([b140535](https://github.com/sinnerschrader/dekk/commit/b140535))
+* **local-storage:** animations were off after fragments ([d107aaa](https://github.com/sinnerschrader/dekk/commit/d107aaa))
+* **speaker-deck:** controls were hidden on smaller viewports ([2099ff8](https://github.com/sinnerschrader/dekk/commit/2099ff8))
+
+
+### Features
+
+* **deck:** set element and plugin data from slides ([0863122](https://github.com/sinnerschrader/dekk/commit/0863122))
+
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/sinnerschrader/dekk/compare/v1.3.0...v1.4.0) (2018-03-24)
 
