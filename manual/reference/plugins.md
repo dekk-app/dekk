@@ -40,6 +40,39 @@ export default (
 )
 ```
 
+## Setting plugin data
+
+Data can be set from slides. You can use the Static Helper `Data`
+from `Plugins`
+
+```jsx
+import React from 'react'
+import Deck, {Plugins} from '@dekk/deck'
+import Slide from '@dekk/slide'
+import Paging from '@dekk/paging'
+
+const MyPlugin = props => {
+  console.log(props.foobar) // baz, qux, undefined
+}
+export default (
+  <Deck>
+    <Plugins>
+      <Paging/>
+      <MyPlugin />
+    </Plugins>
+    <Slide>
+      <Plugins.Data foobar="baz"/>
+      <span>Slide 1</span>
+    </Slide>
+    <Slide>
+      <Plugins.Data foobar="qux"/>
+      <span>Slide 2</span>
+    </Slide>
+    <Slide> Slide 3 </Slide>
+  </Deck>
+)
+```
+
 ## Paging
 
 This plugin enables paging via the arrow keys of your keyboard.

@@ -38,3 +38,36 @@ export default (
   </Deck>
 )
 ```
+
+## Setting element data
+
+Data can be set from slides. You can use the Static Helper `Data`
+from `Elements`
+
+```jsx
+import React from 'react'
+import Deck, {Plugins, Elements} from '@dekk/deck'
+import Slide from '@dekk/slide'
+import Paging from '@dekk/paging'
+
+const Header = props => <header>{props.title}</header>
+Header.defaultProps = {
+  title: 'Hello World!'
+}
+export default (
+  <Deck>
+    <Plugins>
+      <Paging/>
+    </Plugins>
+    <Slide>
+      <Elements.Data title="Welcome Slide 1"/>
+      <span>Slide 1</span>
+    </Slide>
+    <Slide>
+      <Elements.Data title="dynamic data in static elements"/>
+      <span>Slide 2</span>
+    </Slide>
+    <Slide> Sldie 3 </Slide>
+  </Deck>
+)
+```
