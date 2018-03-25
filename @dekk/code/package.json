@@ -1,0 +1,63 @@
+{
+  "name": "@dekk/code",
+  "version": "1.5.0",
+  "license": "MIT",
+  "author": "Gregor Adams <greg@pixelass.com>",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "babel": "npm run clean && cross-env NODE_ENV=production babel src --out-dir lib --copy-files",
+    "babel:watch": "babel src --out-dir lib --copy-files -w -s",
+    "clean": "rimraf lib",
+    "format:js": "prettier --write src/**/*.js",
+    "lint": "xo 'src/**/*.js'",
+    "test": "ava",
+    "posttest": "npm run lint"
+  },
+  "dependencies": {
+    "@dekk/fragment": "^1.5.0",
+    "codemirror": "^5.36.0",
+    "dedent": "^0.7.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-codemirror2": "^4.2.1",
+    "styled-components": "^3.2.3"
+  },
+  "devDependencies": {
+    "ava": "0.25.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-register": "6.26.0",
+    "cross-env": "5.1.4",
+    "prettier": "1.11.1",
+    "rimraf": "2.6.2",
+    "xo": "0.20.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
+    "extends": [
+      "@ava/stage-4"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "tap": true
+  },
+  "xo": {
+    "prettier": true,
+    "extends": [
+      "../../config/xo/config.json"
+    ]
+  }
+}
