@@ -17,9 +17,9 @@ const Controls = styled.div`
   grid-template-columns: 10rem 1fr repeat(3, 2rem);
   grid-gap: 0.25rem;
   grid-template-areas:
-    'PageNumber ControlB PlayButton ThemeToggle LayoutToggle '
-    'FragmentNumber . . . .'
-    'ControlA ControlA ControlA ControlA ControlA';
+    'PageNumber . PlayButton ThemeToggle LayoutToggle '
+    'FragmentNumber ControlA ControlA ControlA ControlA'
+    'ControlB ControlB ControlB ControlB ControlB';
   font-size: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
