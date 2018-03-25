@@ -34,4 +34,9 @@ Elements.propTypes = {
   ])
 }
 
+/**
+ * This static method can be used in slides to stream dataa to elements.
+ */
+Elements.Data = () => null
+
 export default Elements

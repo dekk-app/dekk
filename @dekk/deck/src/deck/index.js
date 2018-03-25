@@ -79,6 +79,11 @@ export default class Deck extends Component {
     }
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
   /**
    * @private
    * @return {{store: store}}
@@ -134,6 +139,7 @@ export default class Deck extends Component {
       .filter(Boolean)
       .map((plugin, index) =>
         cloneElement(plugin, {
+          ...this.getPluginsData(slideIndex),
           key: `${plugin.type.name}_${index}`,
           ...this.store.publicMethods,
           slideIndex,
@@ -158,6 +164,7 @@ export default class Deck extends Component {
       .filter(Boolean)
       .map((element, index) =>
         cloneElement(element, {
+          ...this.getElementsData(slideIndex),
           key: `${element.type.name}_${index}`,
           ...this.store.publicMethods,
           slideIndex,
@@ -236,6 +243,30 @@ export default class Deck extends Component {
           })
         })
     )
+  }
+
+  getPluginsData(slideIndex) {
+    const activeSlide = this.slides.find((c, i) => i === slideIndex)
+
+    const children = Children.toArray(activeSlide.props.children)
+    const pluginsData = children.filter(child => child.type === Plugins.Data)
+
+    const props = pluginsData.reduce((obj, el) => {
+      return {...obj, ...el.props}
+    }, {})
+    return props
+  }
+
+  getElementsData(slideIndex) {
+    const activeSlide = this.slides.find((c, i) => i === slideIndex)
+
+    const children = Children.toArray(activeSlide.props.children)
+    const elementsData = children.filter(child => child.type === Elements.Data)
+
+    const props = elementsData.reduce((obj, el) => {
+      return {...obj, ...el.props}
+    }, {})
+    return props
   }
 
   /**

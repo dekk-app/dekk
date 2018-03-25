@@ -37,4 +37,9 @@ Plugins.propTypes = {
   ])
 }
 
+/**
+ * This static method can be used in slides to stream dataa to plugins.
+ */
+Plugins.Data = () => null
+
 export default Plugins
