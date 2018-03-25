@@ -85,11 +85,11 @@ export default class LocalStorage extends Component {
   /**
    * @private
    */
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.subscribe) {
       const oldValue = window.localStorage.getItem(this.props.channel)
       try {
-        this.handleMessage(JSON.parse(oldValue))
+        this.handleMessage(JSON.parse(oldValue), true)
       } finally {
         window.addEventListener('storage', this.handleStore)
       }
@@ -112,11 +112,12 @@ export default class LocalStorage extends Component {
    * change.
    * @private
    */
-  componentWillReceiveProps({slideIndex, fragmentIndex, publish}) {
+  componentDidUpdate(oldProps) {
+    const {slideIndex, fragmentIndex, publish} = this.props
     if (publish) {
       if (
-        slideIndex !== this.props.slideIndex ||
-        fragmentIndex !== this.props.fragmentIndex
+        slideIndex !== oldProps.slideIndex ||
+        fragmentIndex !== oldProps.fragmentIndex
       ) {
         const message = {
           slideIndex,
@@ -141,15 +142,25 @@ export default class LocalStorage extends Component {
   /**
    * @private
    * @param {String} message
-   *   The mesage that has been sent
+   *   The message that has been sent
    */
-  handleMessage(message) {
+  handleMessage(message, init) {
     // Only allow messages of type `object`
     if (typeof message === 'object') {
       const {slideIndex, fragmentIndex} = message
       if (isNumeric(slideIndex) && isNumeric(fragmentIndex)) {
-        this.props.toSlide(slideIndex)
-        this.props.toFragment(fragmentIndex)
+        if (
+          (slideIndex !== this.props.slideIndex &&
+            fragmentIndex !== this.props.fragmentIndex) ||
+          init
+        ) {
+          this.props.toSlide(slideIndex)
+          this.props.toFragment(fragmentIndex)
+        } else if (slideIndex !== this.props.slideIndex) {
+          this.props.toSlide(slideIndex)
+        } else if (fragmentIndex !== this.props.fragmentIndex) {
+          this.props.toFragment(fragmentIndex)
+        }
       }
     }
   }
