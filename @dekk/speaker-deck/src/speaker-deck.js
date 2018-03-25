@@ -111,7 +111,7 @@ export default class SpeakerDeck extends Deck {
     return {
       mixin: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
       children: PropTypes.node.isRequired,
-      timer: PropTypes.number.isRequired,
+      timer: PropTypes.number,
       timerWarning: PropTypes.number
     }
   }
@@ -121,6 +121,7 @@ export default class SpeakerDeck extends Deck {
    */
   static get defaultProps() {
     return {
+      timer: 30,
       timerWarning: 0,
       mixin: ''
     }
@@ -142,7 +143,7 @@ export default class SpeakerDeck extends Deck {
      * Data from url
      * @private
      */
-    const {layout = 0, theme = 'light', playing: isPlaying} = search.parse(
+    const {layout = 1, theme = 'light', playing} = search.parse(
       window.location.href
     )
 
@@ -152,7 +153,7 @@ export default class SpeakerDeck extends Deck {
      * @property {String} theme
      * @property {Boolean} isPlaying
      */
-    this.state = {layout, theme, isPlaying}
+    this.state = {layout, theme, isPlaying: playing === 'true'}
 
     this.switchLayout = this.switchLayout.bind(this)
     this.switchTheme = this.switchTheme.bind(this)
