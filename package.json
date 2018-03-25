@@ -32,7 +32,7 @@
     "lint": "lerna run lint --concurrency",
     "prerelease": "yarn run test && yarn run babel:packages",
     "release": "lerna publish --conventional-commits --force-publish=*",
-    "release:prerelease": "yarn run prerelease && lerna publish --conventional-commits --cd-version=prerelease",
+    "release:prerelease": "yarn run prerelease && lerna publish --conventional-commits --cd-version=prerelease --force-publish=*",
     "serve:docs": "http-server docs/",
     "prepush": "yarn run test",
     "test": "lerna run test --concurrency",
