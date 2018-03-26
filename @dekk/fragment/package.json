@@ -1,6 +1,6 @@
 {
   "name": "@dekk/fragment",
-  "version": "1.5.1-0",
+  "version": "1.5.1-1",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,7 +18,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/animation": "^1.5.1-0",
+    "@dekk/animation": "^1.5.1-1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-motion": "^0.5.2",
