@@ -23,7 +23,7 @@ class Code extends Component {
       order: PropTypes.number,
       ranges: PropTypes.array,
       options: PropTypes.object,
-      children: PropTypes.string
+      children: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     }
   }
 
@@ -32,11 +32,17 @@ class Code extends Component {
     const {length: steps} = ranges
     return (
       <Sequence order={order} steps={steps}>
-        {index => {
+        {(index, time, timeline) => {
+          const renderChildren = () => {
+            if (typeof children === 'function') {
+              return children(index, time, timeline)
+            }
+            return children
+          }
           return (
             <CodeMirror
               className="__dekk-code__"
-              value={children}
+              value={renderChildren()}
               options={options}
               selection={{
                 ranges: ranges[index]
