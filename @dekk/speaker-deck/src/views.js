@@ -5,7 +5,7 @@ import styled from 'styled-components'
  * @private
  */
 const View = styled.div`
-  --scale: var(--view-scale);
+  --scale: var(--view-scale, 1);
   position: relative;
   height: 100%;
   width: 100%;
@@ -16,6 +16,13 @@ const View = styled.div`
 `
 
 export default View
+
+export const Iframe = styled.iframe`
+  transform-origin: 0 0;
+  width: calc(100% / var(--scale, 1));
+  height: calc(100% / var(--scale, 1));
+  transform: scale(var(--scale, 1));
+`
 
 /**
  * @private
@@ -28,7 +35,7 @@ export const Preload = styled.div`
  * @private
  */
 export const Preview = styled.div`
-  --scale: var(--preview-scale);
+  --scale: var(--preview-scale, 1);
   position: relative;
   height: 100%;
   width: 100%;

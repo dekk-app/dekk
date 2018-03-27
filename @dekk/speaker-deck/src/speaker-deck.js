@@ -1,11 +1,8 @@
 /* global window */
-import React, {cloneElement} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {css} from 'styled-components'
 import {observer} from 'mobx-react'
-import {range} from '@dekk/utils'
-import Slide from '@dekk/slide'
-import {Title} from '@dekk/text'
 import {search} from '@dekk/url'
 import Timer, {renderCountdown} from '@dekk/countdown'
 import Deck, {Wrapper} from '@dekk/deck'
@@ -23,36 +20,10 @@ import Controls, {
   Label
 } from './controls'
 
-import View, {Preload, Nextview, Preview} from './views'
+import View, {Preload, Preview, Iframe} from './views'
 
 import NoteProvider, {Notes} from './notes'
 import layouts from './layouts'
-
-/**
- * Styles for empty slides.
- * This is used for preview & next-view if no more slides exist.
- * @private
- */
-const emptyStyle = css`
-  background: #000;
-  color: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-`
-
-/**
- * End of presentation slide.
- * This is used for preview & next-view if no more slides exist.
- * @private
- */
-const endOfPresentation = (
-  <Slide mixin={emptyStyle}>
-    <Title>End of presentation</Title>
-  </Slide>
-)
 
 /**
  * Styles for the speaker-dek.
@@ -143,7 +114,7 @@ export default class SpeakerDeck extends Deck {
      * Data from url
      * @private
      */
-    const {layout = 1, theme = 'light', playing} = search.parse(
+    const {layout = 0, theme = 'light', playing} = search.parse(
       window.location.href
     )
 
@@ -158,69 +129,6 @@ export default class SpeakerDeck extends Deck {
     this.switchLayout = this.switchLayout.bind(this)
     this.switchTheme = this.switchTheme.bind(this)
     this.togglePlaying = this.togglePlaying.bind(this)
-  }
-
-  /**
-   * Setup slides fr the seaker.
-   * Fills the slides with modified properties to show future states
-   * @private
-   */
-  get speakerSlides() {
-    const {slideIndex, fragmentOrder, fragmentIndex} = this.store
-
-    // Get the current fragmentHost
-    // and create a boolean flag to check for fragments
-    const fragmentHost = this.store.fragmentHosts[slideIndex]
-    const hasFragments = fragmentHost.length - fragmentIndex > 1
-
-    // We need a maximum of 2 slides `[current, next]`
-    const filteredSlides = this.slides.filter((c, i) =>
-      range(i, slideIndex + 2, slideIndex)
-    )
-
-    const [
-      currentSlide,
-      nextSlide = endOfPresentation,
-      realNextSlide = endOfPresentation
-    ] = filteredSlides
-
-    const currentView = cloneElement(currentSlide, {
-      fragmentOrder,
-      slideIndex,
-      direction: 0,
-      present: true,
-      isCurrent: true,
-      key: 'currentView'
-    })
-
-    // The "pre-view" is either the current slide or the next slide
-    // depending on the fragemnt flag
-    const preView = hasFragments ? currentSlide : nextSlide
-    const nextView = cloneElement(preView, {
-      direction: 0,
-      present: true,
-      isNext: true,
-      slideIndex: hasFragments ? slideIndex : slideIndex + 1,
-      fragmentOrder: hasFragments ? fragmentHost[fragmentIndex + 1] : 0,
-      key: 'nextView'
-    })
-
-    // The "real next-view" is the next view after the preview.
-    // This is either the current view `+1` or `+2`
-    const realNextView = cloneElement(
-      hasFragments ? nextSlide : realNextSlide,
-      {
-        direction: 0,
-        present: true,
-        isNext: true,
-        slideIndex: hasFragments ? slideIndex + 1 : slideIndex + 2,
-        isPreview: true,
-        key: 'realNextView'
-      }
-    )
-
-    // Only return 3 slides
-    return [currentView, nextView, realNextView]
   }
 
   /**
@@ -317,7 +225,6 @@ export default class SpeakerDeck extends Deck {
    *   The entire Deck inside a Wrapper
    */
   render() {
-    const [view, preview, nextView] = this.speakerSlides
     const mixin = css`
       ${this.props.mixin};
       ${presenterStyles};
@@ -333,6 +240,12 @@ export default class SpeakerDeck extends Deck {
       timerWarning: this.props.timerWarning || 0,
       render: renderCountdown
     }
+    const currentSrc = `${window.location.origin}${
+      window.location.pathname
+    }?preview=0`
+    const previewSrc = `${window.location.origin}${
+      window.location.pathname
+    }?preview=1`
     return (
       <Wrapper mixin={mixin} theme={this.state.theme}>
         {this.plugins}
@@ -357,9 +270,22 @@ export default class SpeakerDeck extends Deck {
               </Countdown>
             </ControlB>
           </Controls>
-          <View>{view}</View>
-          <Preview>{preview}</Preview>
-          <Nextview layout={this.state.layout}>{nextView}</Nextview>
+          <View>
+            <Iframe
+              src={currentSrc}
+              height="100%"
+              width="100%"
+              frameBorder="0"
+            />
+          </View>
+          <Preview>
+            <Iframe
+              src={previewSrc}
+              height="100%"
+              width="100%"
+              frameBorder="0"
+            />
+          </Preview>
           <Notes>
             <NoteProvider>
               {this.store.notes[this.store.slideIndex]}

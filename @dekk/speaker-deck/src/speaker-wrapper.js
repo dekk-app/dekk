@@ -15,11 +15,18 @@ const SpeakerWrapper = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
-  display: grid;
-  box-sizing: border-box;
-  grid-gap: 1rem;
-  padding: 1rem;
-  ${({layout}) => layouts[layout]};
+
+  ${({layout}) => {
+    if (typeof layout === 'number') {
+      return `
+      display: grid;
+      box-sizing: border-box;
+      grid-gap: 1rem;
+      padding: 1rem;
+      ${layouts[layout]}
+      `
+    }
+  }};
 `
 
 /**
@@ -29,7 +36,10 @@ const SpeakerWrapper = styled.div`
  * @type {Object}
  */
 SpeakerWrapper.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element)
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ])
 }
 
 export default SpeakerWrapper

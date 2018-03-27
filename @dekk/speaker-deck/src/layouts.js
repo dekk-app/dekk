@@ -6,20 +6,6 @@ import {css} from 'styled-components'
  */
 const layouts = [
   css`
-    --view-scale: calc(1 / 6 * 4);
-    --preview-scale: calc(1 / 6 * 2);
-    --nextview-scale: calc(1 / 6 * 2);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas:
-      'Preview Preview Controls Controls Nextview Nextview'
-      'Preview Preview Controls Controls Nextview Nextview'
-      'View View View View Notes Notes'
-      'View View View View Notes Notes'
-      'View View View View Notes Notes'
-      'View View View View Notes Notes';
-  `,
-  css`
     --view-scale: calc(1 / 3 * 2);
     --preview-scale: calc(1 / 3);
     --nextview-scale: calc(1 / 3);
