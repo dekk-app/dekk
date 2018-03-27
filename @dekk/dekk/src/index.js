@@ -1,8 +1,11 @@
 /* global window */
-import React from 'react'
+import React, {Children} from 'react'
 import PropTypes from 'prop-types'
 import Deck, {Plugins, Elements} from '@dekk/deck'
-import SpeakerDeck from '@dekk/speaker-deck'
+import SpeakerDeck, {
+  Preview as NextView
+  // View as CurrentView
+} from '@dekk/speaker-deck'
 import Paging from '@dekk/paging'
 import Url, {search} from '@dekk/url'
 import LocalStorage from '@dekk/local-storage'
@@ -13,7 +16,16 @@ export {Plugins, Elements}
 /**
  * Flag to set presenter mode
  */
-const {present, live} = search.parse(window.location.href)
+const {present = null, live = null, preview = null} = search.parse(
+  window.location.href
+)
+
+export const Live = ({children}) =>
+  live !== null && <React.Fragment>{children}</React.Fragment>
+export const Present = ({children}) =>
+  present !== null && <React.Fragment>{children}</React.Fragment>
+export const Preview = ({children}) =>
+  preview !== null && <React.Fragment>{children}</React.Fragment>
 
 /**
  * A preconfigured Deck with paging, URLs,
@@ -33,13 +45,26 @@ const Dekk = props => {
   // Render the Speaker Deck
   if (present) {
     return (
-      <SpeakerDeck {...props}>
+      <SpeakerDeck
+        {...props}
+        mixin={[
+          ...props.mixin,
+          `
+        --header-height: 0;
+        --footer-height: 0;
+        `
+        ]}>
         <Plugins>
           <Paging />
           <Url />
           <LocalStorage publish />
         </Plugins>
-        {props.children}
+        {Children.toArray(props.children).filter(x => {
+          if (typeof x === 'object' && x) {
+            return x.type !== Elements
+          }
+          return false
+        })}
       </SpeakerDeck>
     )
   }
@@ -50,8 +75,44 @@ const Dekk = props => {
         <Plugins>
           <LocalStorage subscribe />
         </Plugins>
-        {props.children}
+        {Children.toArray(props.children).filter(x => {
+          if (typeof x === 'object' && x) {
+            return x.type !== Plugins
+          }
+          return false
+        })}
       </Deck>
+    )
+  }
+  // Render the preview Deck
+  if (preview === 0) {
+    return (
+      <Deck {...props}>
+        <Plugins>
+          <LocalStorage subscribe />
+        </Plugins>
+        {Children.toArray(props.children).filter(x => {
+          if (typeof x === 'object' && x) {
+            return x.type !== Plugins
+          }
+          return false
+        })}
+      </Deck>
+    )
+  }
+  if (preview === 1) {
+    return (
+      <NextView {...props}>
+        <Plugins>
+          <LocalStorage subscribe />
+        </Plugins>
+        {Children.toArray(props.children).filter(x => {
+          if (typeof x === 'object' && x) {
+            return x.type !== Plugins
+          }
+          return false
+        })}
+      </NextView>
     )
   }
   // Otherwise render a default Deck
