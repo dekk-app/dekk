@@ -199,7 +199,8 @@ export default class Fragment extends Component {
     const isActivated =
       (fragmentOrder || storedFragmentOrder) >= totalFragmentOrder
     const isActive =
-      isPreview || (isCurrent && (isPrev || (isNext ? isZero : isActivated)))
+      isPreview ||
+      ((isCurrent && isActivated) || (isPrev || (isNext && isZero)))
     const springStyle = {
       t: spring(isActive ? 0 : 1, {
         ...this.props.springSettings
