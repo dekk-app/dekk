@@ -88,10 +88,12 @@ export default class LocalStorage extends Component {
   componentDidMount() {
     if (this.props.subscribe) {
       const oldValue = window.localStorage.getItem(this.props.channel)
-      try {
-        this.handleMessage(JSON.parse(oldValue), true)
-      } finally {
-        window.addEventListener('storage', this.handleStore)
+      if (oldValue) {
+        try {
+          this.handleMessage(JSON.parse(oldValue), true)
+        } finally {
+          window.addEventListener('storage', this.handleStore)
+        }
       }
     }
   }
