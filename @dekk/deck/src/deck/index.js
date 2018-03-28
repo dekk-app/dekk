@@ -1,12 +1,16 @@
+/* global window */
 import React, {Component, Children, cloneElement} from 'react'
 import PropTypes from 'prop-types'
 import {observer} from 'mobx-react'
 import {range} from '@dekk/utils'
 import Store from '@dekk/store'
+import {search} from '@dekk/url'
 import Wrapper from '../wrapper'
 import SlidesWrapper from '../slides-wrapper'
 import Plugins from '../plugins'
 import Elements from '../elements'
+
+const {live, present, preview = null} = search.parse(window.location.href)
 
 /**
  * A wrapper around the slides.
@@ -135,6 +139,25 @@ export default class Deck extends Component {
     const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]
     return Children.toArray(this.props.children)
       .filter(child => typeof child === 'object' && child.type === Plugins)
+      .filter(({props}) => {
+        const {mode = []} = props
+        const {length} = mode
+        for (let i = 0; i < length; i++) {
+          if (mode[i] === 'live' && live) {
+            return true
+          }
+          if (mode[i] === 'preview' && preview !== null) {
+            return true
+          }
+          if (mode[i] === 'present' && present) {
+            return true
+          }
+          if (mode[i] === 'default' && !live && !present && preview === null) {
+            return true
+          }
+        }
+        return length === 0
+      })
       .reduce((a, b) => a.concat(b.props.children), [])
       .filter(Boolean)
       .map((plugin, index) =>
@@ -160,6 +183,25 @@ export default class Deck extends Component {
     const {length: fragmentCount} = this.store.fragmentHosts[slideIndex]
     return Children.toArray(this.props.children)
       .filter(child => typeof child === 'object' && child.type === Elements)
+      .filter(({props}) => {
+        const {mode = []} = props
+        const {length} = mode
+        for (let i = 0; i < length; i++) {
+          if (mode[i] === 'live' && live) {
+            return true
+          }
+          if (mode[i] === 'preview' && preview !== null) {
+            return true
+          }
+          if (mode[i] === 'present' && present) {
+            return true
+          }
+          if (mode[i] === 'default' && !live && !present && preview === null) {
+            return true
+          }
+        }
+        return length === 0
+      })
       .reduce((a, b) => a.concat(b.props.children), [])
       .filter(Boolean)
       .map((element, index) =>

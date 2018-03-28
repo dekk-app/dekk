@@ -20,6 +20,7 @@
   "dependencies": {
     "@dekk/store": "^2.0.0-0",
     "@dekk/utils": "^2.0.0-0",
+    "@dekk/url": "^2.0.0-0",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
     "prop-types": "^15.6.1",

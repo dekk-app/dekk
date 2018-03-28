@@ -31,6 +31,7 @@ const Plugins = props => props.children
  * @private
  */
 Plugins.propTypes = {
+  mode: PropTypes.array,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)

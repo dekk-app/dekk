@@ -28,6 +28,7 @@ const Elements = props => props.children
  * @private
  */
 Elements.propTypes = {
+  mode: PropTypes.array,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)

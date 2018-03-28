@@ -44,6 +44,7 @@ const Wrapper = styled.div`
   bottom: 0 !important;
   left: 0 !important;
   display: flex !important;
+  flex-direction: column !important;
   box-sizing: border-box !important;
   ${({mixin}) => mixin || ''};
 `
