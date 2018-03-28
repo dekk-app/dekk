@@ -176,7 +176,7 @@ class Slide extends Component {
   /**
    * @private
    */
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.isCurrent) {
       this.setNotes(this.notes, this.props.slideIndex)
     }
@@ -185,9 +185,9 @@ class Slide extends Component {
   /**
    * @private
    */
-  componentWillReceiveProps(newProps) {
-    if (newProps.isCurrent && newProps.slideIndex !== this.props.slideIndex) {
-      this.setNotes(this.getNotes(newProps.children), newProps.slideIndex)
+  componentDidUpdate(oldProps) {
+    if (this.props.isCurrent && oldProps.slideIndex !== this.props.slideIndex) {
+      this.setNotes(this.getNotes(this.props.children), this.props.slideIndex)
     }
   }
 
