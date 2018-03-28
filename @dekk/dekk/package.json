@@ -1,6 +1,6 @@
 {
   "name": "@dekk/dekk",
-  "version": "2.0.0-1",
+  "version": "2.0.0-2",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,12 +18,12 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/deck": "^2.0.0-1",
-    "@dekk/local-storage": "^2.0.0-1",
-    "@dekk/paging": "^2.0.0-1",
-    "@dekk/slide": "^2.0.0-1",
-    "@dekk/speaker-deck": "^2.0.0-1",
-    "@dekk/url": "^2.0.0-1",
+    "@dekk/deck": "^2.0.0-2",
+    "@dekk/local-storage": "^2.0.0-2",
+    "@dekk/paging": "^2.0.0-2",
+    "@dekk/slide": "^2.0.0-2",
+    "@dekk/speaker-deck": "^2.0.0-2",
+    "@dekk/url": "^2.0.0-2",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "styled-components": "^3.2.3"
