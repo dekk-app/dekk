@@ -1,5 +1,5 @@
 /* global window */
-import React, {Children} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Deck, {Plugins, Elements} from '@dekk/deck'
 import SpeakerDeck, {
@@ -45,26 +45,13 @@ const Dekk = props => {
   // Render the Speaker Deck
   if (present) {
     return (
-      <SpeakerDeck
-        {...props}
-        mixin={[
-          ...props.mixin,
-          `
-        --header-height: 0;
-        --footer-height: 0;
-        `
-        ]}>
+      <SpeakerDeck {...props}>
         <Plugins>
           <Paging />
           <Url />
           <LocalStorage publish />
         </Plugins>
-        {Children.toArray(props.children).filter(x => {
-          if (typeof x === 'object' && x) {
-            return x.type !== Elements
-          }
-          return false
-        })}
+        {props.children}
       </SpeakerDeck>
     )
   }
@@ -75,12 +62,7 @@ const Dekk = props => {
         <Plugins>
           <LocalStorage subscribe />
         </Plugins>
-        {Children.toArray(props.children).filter(x => {
-          if (typeof x === 'object' && x) {
-            return x.type !== Plugins
-          }
-          return false
-        })}
+        {props.children}
       </Deck>
     )
   }
@@ -91,12 +73,7 @@ const Dekk = props => {
         <Plugins>
           <LocalStorage subscribe />
         </Plugins>
-        {Children.toArray(props.children).filter(x => {
-          if (typeof x === 'object' && x) {
-            return x.type !== Plugins
-          }
-          return false
-        })}
+        {props.children}
       </Deck>
     )
   }
@@ -106,12 +83,7 @@ const Dekk = props => {
         <Plugins>
           <LocalStorage subscribe />
         </Plugins>
-        {Children.toArray(props.children).filter(x => {
-          if (typeof x === 'object' && x) {
-            return x.type !== Plugins
-          }
-          return false
-        })}
+        {props.children}
       </NextView>
     )
   }
