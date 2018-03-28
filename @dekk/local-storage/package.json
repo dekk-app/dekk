@@ -1,6 +1,6 @@
 {
   "name": "@dekk/local-storage",
-  "version": "2.0.0-0",
+  "version": "2.0.0-1",
   "license": "MIT",
   "author": "Gregor Adams <greg@pixelass.com>",
   "files": [
@@ -18,7 +18,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@dekk/utils": "^2.0.0-0",
+    "@dekk/utils": "^2.0.0-1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0"
   },

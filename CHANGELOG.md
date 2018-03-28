@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0-1"></a>
+# [2.0.0-1](https://github.com/sinnerschrader/dekk/compare/v2.0.0-0...v2.0.0-1) (2018-03-28)
+
+
+### Features
+
+* **deck:** filter plugins and elements ([4473f88](https://github.com/sinnerschrader/dekk/commit/4473f88))
+* **dekk:** remove filtering elements and plugins ([780499b](https://github.com/sinnerschrader/dekk/commit/780499b))
+* **speaker-deck:** filter plugins and elements ([49c37ff](https://github.com/sinnerschrader/dekk/commit/49c37ff))
+
+
+
+
 <a name="2.0.0-0"></a>
 # [2.0.0-0](https://github.com/sinnerschrader/dekk/compare/v1.5.1-1...v2.0.0-0) (2018-03-27)
 
