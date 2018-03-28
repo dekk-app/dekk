@@ -10,7 +10,7 @@ import layouts from './layouts'
  * @private
  */
 const SpeakerWrapper = styled.div`
-  flex: 1 0 100%;
+  flex: 1;
   height: 100%;
   width: 100%;
   position: relative;

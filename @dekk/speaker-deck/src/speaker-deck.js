@@ -275,7 +275,7 @@ export default class SpeakerDeck extends Deck {
               src={currentSrc}
               height="100%"
               width="100%"
-              frameBorder="0"
+              frameborder="0"
             />
           </View>
           <Preview>
@@ -283,7 +283,7 @@ export default class SpeakerDeck extends Deck {
               src={previewSrc}
               height="100%"
               width="100%"
-              frameBorder="0"
+              frameborder="0"
             />
           </Preview>
           <Notes>

@@ -129,6 +129,16 @@ export default class SpeakerDeck extends Deck {
     if (this.previewData.slideIndex >= slideCount) {
       return Children.toArray(this.props.children)
         .filter(child => typeof child === 'object' && child.type === Elements)
+        .filter(({props}) => {
+          const {mode = []} = props
+          const {length} = mode
+          for (let i = 0; i < length; i++) {
+            if (mode[i] === 'preview') {
+              return true
+            }
+          }
+          return length === 0
+        })
         .reduce((a, b) => a.concat(b.props.children), [])
         .filter(Boolean)
         .map((element, index) =>
@@ -142,6 +152,16 @@ export default class SpeakerDeck extends Deck {
     ]
     return Children.toArray(this.props.children)
       .filter(child => typeof child === 'object' && child.type === Elements)
+      .filter(({props}) => {
+        const {mode = []} = props
+        const {length} = mode
+        for (let i = 0; i < length; i++) {
+          if (mode[i] === 'preview') {
+            return true
+          }
+        }
+        return length === 0
+      })
       .reduce((a, b) => a.concat(b.props.children), [])
       .filter(Boolean)
       .map((element, index) =>
