@@ -54,7 +54,7 @@
     "@patternplate/widgets": "2.0.0-88",
     "all-contributors-cli": "^4.11.1",
     "babel-cli": "6.26.0",
-    "babel-core": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-eslint": "8.2.2",
     "babel-loader": "7.1.4",
     "babel-plugin-styled-components": "1.5.1",
