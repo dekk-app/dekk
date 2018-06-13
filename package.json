@@ -50,7 +50,7 @@
     "@commitlint/cli": "6.1.3",
     "@commitlint/config-conventional": "6.1.3",
     "@patternplate/cli": "2.0.0-88",
-    "@patternplate/render-styled-components": "2.0.0-88",
+    "@patternplate/render-styled-components": "2.5.18",
     "@patternplate/widgets": "2.0.0-88",
     "all-contributors-cli": "^4.11.1",
     "babel-cli": "6.26.0",
