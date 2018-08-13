@@ -49,7 +49,7 @@
   "devDependencies": {
     "@commitlint/cli": "6.1.3",
     "@commitlint/config-conventional": "6.1.3",
-    "@patternplate/cli": "2.0.0-88",
+    "@patternplate/cli": "2.5.25",
     "@patternplate/render-styled-components": "2.0.0-88",
     "@patternplate/widgets": "2.0.0-88",
     "all-contributors-cli": "^4.11.1",
