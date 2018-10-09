@@ -44,7 +44,7 @@
   "dependencies": {
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "styled-components": "3.2.3"
+    "styled-components": "3.4.10"
   },
   "devDependencies": {
     "@commitlint/cli": "6.1.3",
