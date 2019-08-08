@@ -36,7 +36,7 @@
     "cross-env": "5.1.4",
     "prettier": "1.11.1",
     "rimraf": "2.6.2",
-    "xo": "0.20.3"
+    "xo": "0.24.0"
   },
   "publishConfig": {
     "access": "public"
