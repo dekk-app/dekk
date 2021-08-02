@@ -7,9 +7,9 @@
 [![Travis branch](https://img.shields.io/travis/pixelass/dekk/master.svg?style=for-the-badge)](https://travis-ci.org/pixelass/dekk)
 
 [![npm](https://img.shields.io/npm/v/@dekk/dekk.svg?style=for-the-badge)](https://www.npmjs.com/org/dekk)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/pixelass/dekk/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/dekk-app/dekk/master/LICENSE)
 
-[![Patternplate](https://img.shields.io/badge/manual-patternplate-3399ff.svg?style=for-the-badge)](https://pixelass.github.io/dekk/manual/)
+[![Patternplate](https://img.shields.io/badge/manual-patternplate-3399ff.svg?style=for-the-badge)](https://dekk-app.github.io/dekk/manual/)
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
@@ -86,7 +86,7 @@ The supported engines are listed in [`package.json~engines`](https://github.com/
 2. Clone Dekk
 
 ```shell
-git clone git@github.com:pixelass/dekk.git
+git clone git@github.com:dekk-app/dekk.git
 cd dekk
 ```
 
